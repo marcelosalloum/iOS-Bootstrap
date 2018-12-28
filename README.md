@@ -4,6 +4,7 @@
 
 * iOS Version: *9.4.1*
 * Swift version: *Swift 4*
+* Cocoapods Version: *1.5.3*
 
 ## Challenge for iOS Developer 2.0 | Cheesecake Labs
 
@@ -20,7 +21,7 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 ### Extras
 
-[] Use a dependency manager;
+[x] Use a dependency manager;
 [] Tablet-adaptive layout;
 [] Persistent info;
 [] Design tweaks: animation, icons, etc;
