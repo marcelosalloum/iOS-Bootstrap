@@ -13,6 +13,7 @@
 		1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */; };
 		1F88EFF221D5766900275972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF121D5766900275972 /* Assets.xcassets */; };
 		1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF321D5766900275972 /* LaunchScreen.storyboard */; };
+		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		1F88EFF121D5766900275972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F88EFF421D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F88EFF621D5766900275972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		B8DA3CF7472269D2DA9CAEFB /* Pods-CKL iOS Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
 				1F88EFE521D5766900275972 /* Products */,
+				AE22B14963B4D54B33DAF208 /* Pods */,
+				782204D88925974F844285AB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
 		};
+		782204D88925974F844285AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE22B14963B4D54B33DAF208 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8DA3CF7472269D2DA9CAEFB /* Pods-CKL iOS Challenge.debug.xcconfig */,
+				86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F88EFF921D5766900275972 /* Build configuration list for PBXNativeTarget "CKL iOS Challenge" */;
 			buildPhases = (
+				CE00BC07F36091BDCDC51E46 /* [CP] Check Pods Manifest.lock */,
 				1F88EFE021D5766900275972 /* Sources */,
 				1F88EFE121D5766900275972 /* Frameworks */,
 				1F88EFE221D5766900275972 /* Resources */,
+				586E302204C7343C46B0E7F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +159,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		586E302204C7343C46B0E7F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE00BC07F36091BDCDC51E46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CKL iOS Challenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F88EFE021D5766900275972 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F88EFEA21D5766900275972 /* ViewController.swift in Sources */,
+				1FB1FC9621D68BC90043757D /* ArticleTableViewCell.swift in Sources */,
+				1FFD91E421D66D4600758F2B /* RestAPI.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
+				1FB1FC9221D673B20043757D /* ArticlesTableViewController.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +349,7 @@
 		};
 		1F88EFFA21D5766900275972 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8DA3CF7472269D2DA9CAEFB /* Pods-CKL iOS Challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +368,7 @@
 		};
 		1F88EFFB21D5766900275972 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
