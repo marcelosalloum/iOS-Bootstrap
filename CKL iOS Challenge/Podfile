@@ -7,5 +7,7 @@ target 'CKL iOS Challenge' do
 
   # Makes REST requests:
   pod 'Alamofire', '4.7.3'
+  pod 'PKHUD', '5.2.0'
+#  pod 'SwiftyJSON'
 
 end
