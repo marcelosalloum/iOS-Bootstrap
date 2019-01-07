@@ -10,15 +10,22 @@ import UIKit
 import PKHUD
 
 class ArticleTableViewController: UITableViewController {
+    var articles: [Article] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        RestAPI.getArticlesList({
-            print("A")
-        }, failureCallback: { (error) in
+        RestAPI.getArticlesList({ (articles) in
+            self.articles = articles
+            self.tableView.reloadData()
+        }) { (error) in
             HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-        })
+        }
+//        RestAPI.getArticlesList({
+//            print("A")
+//        }, failure: { (error) in
+//            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+//        })
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -37,19 +44,21 @@ class ArticleTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+        
+        let article = articles[indexPath.row]
 
-        articleCell.titleLabel?.text = "Title Label"
-        articleCell.tagsLabel?.text = "Tags Label"
+        articleCell.titleLabel?.text = article.title
+        articleCell.tagsLabel?.text = article.authors
 
         return articleCell
     }

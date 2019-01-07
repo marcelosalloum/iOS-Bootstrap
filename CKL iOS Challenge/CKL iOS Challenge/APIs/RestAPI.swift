@@ -12,7 +12,7 @@ import Alamofire
 import CoreData
 
 class RestAPI: NSObject {
-    static func getArticlesList(_ successCallback: @escaping () -> Void, failureCallback: @escaping (Error) -> Void) {
+    static func getArticlesList(_ success: (([Article]) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         Alamofire.request("https://private-0d75e8-cklchallenge.apiary-mock.com/article").validate().responseJSON { (response) in
             switch response.result {
             case .success:
@@ -20,18 +20,22 @@ class RestAPI: NSObject {
                 
                 if let jsonValue = response.result.value {
                     let swiftyJsonVar = JSON(jsonValue)
-                    storeFetched(articles: swiftyJsonVar.array)
+                    storeFetched(articles: swiftyJsonVar.array, success: success, failure: failure)
                 }
-                successCallback()
+//                success()
             case .failure(let error):
                 print(error)
-                failureCallback(error)
+//                failure(error)
             }
         }
-        
     }
     
-    static func storeFetched(articles: [JSON]?) {
+    public enum GetOrCreate: String {
+        case get
+        case create
+    }
+    
+    static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         // Input validations
         guard let articles = articles else { return }
         if articles.isEmpty { return }
@@ -40,59 +44,86 @@ class RestAPI: NSObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Article", in: context)
+        var articlesArray: [Article] = []
         
-        let articlesIDs = articles.compactMap{$0["id"]}
+        // Looping over the articles
         for articleJSON in articles {
             let articleID = articleJSON["id"].intValue
-            let predicate = NSPredicate(format: "%K == %i", "id", articleID)
-            fetchRequest.predicate = predicate
             
-            // query for object with specified trackId, note that while SoundCloud returns field "id", we save it in "trackId" name
-            var fetchedResults: [Article] = []
+            // GET or CREATE
+            let (articleOptional, _, error) = getOrCreate(context: context, fetchRequest: fetchRequest, articleID: articleID)
             
-            do {
-                fetchedResults = try context.fetch(fetchRequest)
-            } catch let error as NSError {
-                print("ERROR: \(error.localizedDescription)")
+            // Error handling [GET or CREATE]
+            if let error = error {
+                failure?(error)
                 return
             }
-            
-            // if there are any result, we just skip
-            if (fetchedResults.count > 0) {
-                continue
-            }
-            // else, we create the track like this
-            let article = Article(context: context)
-            if let id = articleJSON["id"].int16 {
-                article.id = id
-            }
-            if let authors = articleJSON["authors"].string {
-                article.authors = authors
-            }
-            if let content = articleJSON["content"].string {
-                article.content = content
-            }
-            if let imageUrl = articleJSON["image_url"].string {
-                article.imageUrl = imageUrl
-            }
-            if let title = articleJSON["title"].string {
-                article.title = title
-            }
-            if let website = articleJSON["website"].string {
-                article.website = website
-            }
+            guard let article = articleOptional else { return }
+            importJSON(from: articleJSON, toObject: article)
+            articlesArray.append(article)
         }
-        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
 
+        // Context Save
         do {
             try context.save()
+            success?(articlesArray)
         } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
+            // Error handling [Context Save]
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            failure?(error)
             return
         }
-        
-        
     }
-
+    
+    fileprivate static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Article>, articleID: Int) -> (Article?, GetOrCreate?, Error?) {
+        // Initializing return variables
+        var article: Article!
+        var getOrCreate: GetOrCreate!
+        var fetchedResults: [Article] = []
+        
+        // Seting up core data predicate
+        let predicate = NSPredicate(format: "%K == %i", "id", articleID)
+        fetchRequest.predicate = predicate
+        
+        // GET
+        do {
+            fetchedResults = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            return (nil, nil, error)
+        }
+        
+        // If GET is empty, then CREATE
+        if (fetchedResults.count > 0) {
+            article = fetchedResults[0]
+            getOrCreate = .get
+        } else {
+            article = Article(context: context)
+            getOrCreate = .create
+        }
+        
+        return (article, getOrCreate, nil)
+    }
+    
+    fileprivate static func importJSON(from: JSON, toObject: Article) {
+        // else, we create the track like this
+        if let id = from["id"].int16 {
+            toObject.id = id
+        }
+        if let authors = from["authors"].string {
+            toObject.authors = authors
+        }
+        if let content = from["content"].string {
+            toObject.content = content
+        }
+        if let imageUrl = from["image_url"].string {
+            toObject.imageUrl = imageUrl
+        }
+        if let title = from["title"].string {
+            toObject.title = title
+        }
+        if let website = from["website"].string {
+            toObject.website = website
+        }
+    }
 }
