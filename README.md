@@ -6,6 +6,10 @@
 * Swift version: *Swift 4*
 * Cocoapods Version: *1.5.3*
 
+## Utils:
+
+* Generate all icon sizes from one source image: https://appicon.co/
+
 ## Challenge for iOS Developer 2.0 | Cheesecake Labs
 
 The main goal of this challenge is to analyze the skills and knowledge the applicant presents related to iOS programming and its latest trends, as well as his/her ability to implement mockups, write code, comments and meaningful git commits.

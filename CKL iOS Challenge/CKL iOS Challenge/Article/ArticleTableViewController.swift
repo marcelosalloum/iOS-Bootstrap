@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import PKHUD
 
 class ArticleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        RestAPI.getArticlesList({
+            print("A")
+        }, failureCallback: { (error) in
+            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+        })
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

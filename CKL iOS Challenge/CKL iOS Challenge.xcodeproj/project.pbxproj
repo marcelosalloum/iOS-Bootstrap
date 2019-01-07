@@ -63,6 +63,14 @@
 			path = Article;
 			sourceTree = "<group>";
 		};
+		1F6653ED21E37CB300982F99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +92,7 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1F6653ED21E37CB300982F99 /* Models */,
 				1F196BB521D6F796002421AB /* APIs */,
 				1F1A409F21D694FF005BC0F3 /* Article */,
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
@@ -91,7 +100,6 @@
 				1F88EFF121D5766900275972 /* Assets.xcassets */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
-				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
 			);
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
@@ -192,11 +200,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
