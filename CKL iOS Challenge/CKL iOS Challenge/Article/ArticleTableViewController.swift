@@ -10,46 +10,36 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: UITableViewController {
+class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
+    
+    // Mark - Article Table Delegate
+    func updateData(articles: [Article], endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func displayError(error: Error, endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+    }
+    
+    
+    let articleTableViewModel = ArticleTableViewModel()
     
     // MARK - Pull to refresh action
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
-        fetchAPIData {
-            sender.endRefreshing()
-        }
+        articleTableViewModel.fetchAPIData()
     }
     
-    // MARK - Load data
-    func fetchAPIData(_ completion: (() -> ())? = nil) {
-        RestAPI.getArticlesList({ (fetchedArticles) in
-            self.articles = fetchedArticles
-            self.tableView.reloadData()
-            completion?()
-        }) { (error) in
-            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-            completion?()
-        }
-    }
-    
-    func setupInitialData() {
-        RestAPI.fetchAllArticles(success: {(fetchedArticles) in
-            articles = fetchedArticles
-            self.tableView.reloadData()
-        })
-    }
-    
-    var articles: [Article] = []
-    
-    // MARK - ViewController methods
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInitialData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        articleTableViewModel.delegate = self
         refreshControl?.programaticallyBeginRefreshing(in: tableView)
+        articleTableViewModel.setupInitialData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,7 +56,7 @@ class ArticleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+        return articleTableViewModel.articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,8 +64,8 @@ class ArticleTableViewController: UITableViewController {
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
         // Retrieve the correspondant article
-        if indexPath.row >= articles.count { return articleCell }
-        let article = articles[indexPath.row]
+        if indexPath.row >= articleTableViewModel.articles.count { return articleCell }
+        let article = articleTableViewModel.articles[indexPath.row]
 
         // Set-up the cell content
         articleCell.titleLabel?.text = article.title
@@ -102,9 +92,9 @@ class ArticleTableViewController: UITableViewController {
         // Data validations
         guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
         guard let row = tableView.indexPathForSelectedRow?.row else { return }
-        if row >= articles.count { return }
+        if row >= articleTableViewModel.articles.count { return }
         
         // Article Detail Setup
-        articleDetailViewController.article = articles[row]
+        articleDetailViewController.article = articleTableViewModel.articles[row]
     }
 }
