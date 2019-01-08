@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196BB621D6F7B1002421AB /* RestAPI.swift */; };
+		1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */; };
+		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
-		1F88EFEA21D5766900275972 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE921D5766900275972 /* ViewController.swift */; };
 		1F88EFED21D5766900275972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Main.storyboard */; };
 		1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */; };
 		1F88EFF221D5766900275972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF121D5766900275972 /* Assets.xcassets */; };
 		1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF321D5766900275972 /* LaunchScreen.storyboard */; };
+		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */; };
 		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F196BB621D6F7B1002421AB /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
+		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F88EFE921D5766900275972 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F88EFEF21D5766900275972 /* CKL_iOS_Challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CKL_iOS_Challenge.xcdatamodel; sourceTree = "<group>"; };
 		1F88EFF121D5766900275972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F88EFF421D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F88EFF621D5766900275972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift"; sourceTree = "<group>"; };
 		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		B8DA3CF7472269D2DA9CAEFB /* Pods-CKL iOS Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -42,9 +48,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F196BB521D6F796002421AB /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				1F196BB621D6F7B1002421AB /* RestAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		1F1A409F21D694FF005BC0F3 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
+				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		1F6653ED21E37CB300982F99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
+				1FDC4A1221E4C89F0064AC13 /* Extensions */,
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
 				1F88EFE521D5766900275972 /* Products */,
 				AE22B14963B4D54B33DAF208 /* Pods */,
@@ -63,15 +95,24 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1F6653ED21E37CB300982F99 /* Models */,
+				1F196BB521D6F796002421AB /* APIs */,
+				1F1A409F21D694FF005BC0F3 /* Article */,
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
-				1F88EFE921D5766900275972 /* ViewController.swift */,
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
 				1F88EFF121D5766900275972 /* Assets.xcassets */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
-				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
 			);
 			path = "CKL iOS Challenge";
+			sourceTree = "<group>";
+		};
+		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		782204D88925974F844285AB /* Frameworks */ = {
@@ -125,6 +166,7 @@
 				TargetAttributes = {
 					1F88EFE321D5766900275972 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -168,10 +210,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -203,10 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FB1FC9621D68BC90043757D /* ArticleTableViewCell.swift in Sources */,
-				1FFD91E421D66D4600758F2B /* RestAPI.swift in Sources */,
+				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */,
+				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
+				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
-				1FB1FC9221D673B20043757D /* ArticlesTableViewController.swift in Sources */,
+				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +410,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -380,7 +429,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
