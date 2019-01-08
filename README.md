@@ -6,6 +6,13 @@
 * Swift version: *Swift 4*
 * Cocoapods Version: *1.5.3*
 
+## Pods Versions
+
+* Alamofire: *4.7.3*
+* PKHUD: *5.2.0*
+* SwiftyJSON: *4.2.0*
+* Kingfisher: *4.10.0*
+
 ## Utils
 
 * Generate all icon sizes from one source image: https://appicon.co/
@@ -17,28 +24,44 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 ### MVP
 
-[-] Create a table with the articles following the provided mockup;
+[x] Create a table with the articles following the provided mockup;
+
 [] Ability to visualize content (all provided info);
+
 [] Ability to sort articles (date, title and author);
+
 [] Ability to mark articles as read/unread;
+
 [] Push your code to the provided Github repository and create a Pull Request to the master branch adding "cheesecakelabs-challenges" user as a reviewer.
 
 ### Extras
 
 [x] Use a dependency manager;
+
 [] Tablet-adaptive layout;
+
 [-] Persistent info;
+
 [-] Design tweaks: animation, icons, etc;
+
 [] Manage network errors;
+
 [x] Image caching;
 
 ### Evaluation criteria
 
 [] Technical capacity;
+
 [] Knowledge on the platform;
+
 [] Knowledge on the platform design guidelines;
+
 [] Knowledge on the used tools;
+
 [] Code readability;
+
 [] Code reusability;
+
 [] Clarity on descriptive texts.
+
 [] Deadline
