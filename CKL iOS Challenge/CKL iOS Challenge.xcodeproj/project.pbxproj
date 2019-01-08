@@ -25,7 +25,7 @@
 		1F196BB621D6F7B1002421AB /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaddingLabel.swift; path = Extensions/PaddingLabel.swift; sourceTree = "<group>"; };
+		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
+				1F8BDB4021E53417007A338A /* Custom Controls' Views */,
 				1FDC4A1221E4C89F0064AC13 /* Extensions */,
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
 				1F88EFE521D5766900275972 /* Products */,
@@ -111,6 +112,14 @@
 				1F88EFF621D5766900275972 /* Info.plist */,
 			);
 			path = "CKL iOS Challenge";
+			sourceTree = "<group>";
+		};
+		1F8BDB4021E53417007A338A /* Custom Controls' Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
+			);
+			path = "Custom Controls' Views";
 			sourceTree = "<group>";
 		};
 		1F9B0CB021E50E4A0069FD3E /* Detail */ = {
