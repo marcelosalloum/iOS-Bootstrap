@@ -96,4 +96,20 @@ class ArticleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section: \(section)"
     }
+    
+    // MARK - Action - Did Select Row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "articleDetail", sender: self)
+//        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Data validations
+        guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
+        guard let row = tableView.indexPathForSelectedRow?.row else { return }
+        if row >= articles.count { return }
+        
+        // Article Detail Setup
+        articleDetailViewController.article = articles[row]
+    }
 }
