@@ -111,11 +111,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frU-nG-RCb">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frU-nG-RCb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tq7-JW-ytv">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="360.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iib-xc-x4v">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
@@ -194,7 +194,6 @@
                                             <constraint firstItem="rEW-Pr-Jxt" firstAttribute="leading" secondItem="tq7-JW-ytv" secondAttribute="leading" id="bL0-88-g3T"/>
                                             <constraint firstItem="6Kc-xZ-Ucl" firstAttribute="leading" secondItem="tq7-JW-ytv" secondAttribute="leading" constant="8" id="f0X-8l-tKn"/>
                                             <constraint firstItem="6G0-1w-Cou" firstAttribute="centerY" secondItem="hGd-QF-n9M" secondAttribute="centerY" id="gKf-Sb-69U"/>
-                                            <constraint firstAttribute="bottom" secondItem="IYV-hl-0oR" secondAttribute="bottom" constant="8" id="kKo-56-cd8"/>
                                             <constraint firstItem="iib-xc-x4v" firstAttribute="leading" secondItem="tq7-JW-ytv" secondAttribute="leading" id="luw-eo-8To"/>
                                             <constraint firstItem="iib-xc-x4v" firstAttribute="top" secondItem="tq7-JW-ytv" secondAttribute="top" id="sdV-ki-wSf"/>
                                             <constraint firstItem="hGd-QF-n9M" firstAttribute="top" secondItem="6Kc-xZ-Ucl" secondAttribute="bottom" constant="16" id="woN-SP-Q59"/>

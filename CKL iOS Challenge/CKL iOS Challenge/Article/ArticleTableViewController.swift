@@ -12,14 +12,14 @@ import Kingfisher
 
 class ArticleTableViewController: UITableViewController {
     
-    // MARK - Pull to Refresh action
+    // MARK - Pull to refresh action
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
         fetchAPIData {
             sender.endRefreshing()
         }
     }
     
-    // MARK - Reload Data Action
+    // MARK - Load data
     func fetchAPIData(_ completion: (() -> ())? = nil) {
         RestAPI.getArticlesList({ (fetchedArticles) in
             self.articles = fetchedArticles
@@ -39,6 +39,8 @@ class ArticleTableViewController: UITableViewController {
     }
     
     var articles: [Article] = []
+    
+    // MARK - ViewController methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +58,6 @@ class ArticleTableViewController: UITableViewController {
         self.pullToRefresh(refreshControl)
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,37 +66,36 @@ class ArticleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue cell
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
+        // Retrieve the correspondant article
+        if indexPath.row >= articles.count { return articleCell }
         let article = articles[indexPath.row]
 
+        // Set-up the cell content
         articleCell.titleLabel?.text = article.title
         articleCell.tagsLabel?.text = article.authors
-        guard let articleImageView = articleCell.articleImageView else { return articleCell }
         
+        // Setup the cell image
+        guard let articleImageView = articleCell.articleImageView else { return articleCell }
         guard let imageURL = article.imageUrl else { return articleCell }
         guard let url = URL(string: imageURL) else { return articleCell }
-        
         // Image Caching
         articleImageView.kf.indicatorType = .activity
         articleImageView.kf.setImage(with: url)
      
         return articleCell
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section: \(section)"
-    }
-    
+
     // MARK - Action - Did Select Row
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "articleDetail", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
