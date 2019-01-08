@@ -81,13 +81,32 @@ class ArticleTableViewController: UITableViewController {
 
         articleCell.titleLabel?.text = article.title
         articleCell.tagsLabel?.text = article.authors
-        guard let imageView = articleCell.imageView else { return articleCell }
+        guard let articleImageView = articleCell.articleImageView else { return articleCell }
         
         guard let imageURL = article.imageUrl else { return articleCell }
         guard let url = URL(string: imageURL) else { return articleCell }
         
         // Nuke
-        Nuke.loadImage(with: url, into: imageView)
+//        Nuke.loadImage(
+//            with: url,
+//            options: ImageLoadingOptions(
+//                placeholder: UIImage(named: "CKL-icon-blue-on-black"),
+//                transition: .fadeIn(duration: 0.33),
+//                contentModes: .init(
+//                    success: .center,
+//                    failure: .center,
+//                    placeholder: .center
+//                )
+//            ),
+//            into: imageView)
+        
+        Nuke.loadImage(
+            with: url,
+            options: ImageLoadingOptions(
+                placeholder: UIImage(named: "CKL-icon-blue-on-black"),
+                transition: .fadeIn(duration: 0.33)
+            ),
+            into: articleImageView)
      
         return articleCell
     }
