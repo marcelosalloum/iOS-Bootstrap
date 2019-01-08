@@ -11,17 +11,31 @@ import PKHUD
 import Nuke
 
 class ArticleTableViewController: UITableViewController {
+    
+    // MARK - Pull to Refresh action
+    @IBAction func reloadTable(_ sender: UIRefreshControl) {
+        reloadData {
+            sender.endRefreshing()
+        }
+    }
+    
+    // MARK - Reload Data Action
+    func reloadData(_ completion: (() -> ())? = nil) {
+        RestAPI.getArticlesList({ (articles) in
+            self.articles = articles
+            self.tableView.reloadData()
+            completion?()
+        }) { (error) in
+            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+            completion?()
+        }
+    }
+    
     var articles: [Article] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        RestAPI.getArticlesList({ (articles) in
-            self.articles = articles
-            self.tableView.reloadData()
-        }) { (error) in
-            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-        }
+        reloadData()
     }
 
     override func didReceiveMemoryWarning() {
