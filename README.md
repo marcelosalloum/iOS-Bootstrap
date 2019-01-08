@@ -6,7 +6,7 @@
 * Swift version: *Swift 4*
 * Cocoapods Version: *1.5.3*
 
-## Utils:
+## Utils
 
 * Generate all icon sizes from one source image: https://appicon.co/
 
@@ -17,7 +17,7 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 ### MVP
 
-[] Create a table with the articles following the provided mockup;
+[-] Create a table with the articles following the provided mockup;
 [] Ability to visualize content (all provided info);
 [] Ability to sort articles (date, title and author);
 [] Ability to mark articles as read/unread;
@@ -27,10 +27,10 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Use a dependency manager;
 [] Tablet-adaptive layout;
-[] Persistent info;
-[] Design tweaks: animation, icons, etc;
+[-] Persistent info;
+[-] Design tweaks: animation, icons, etc;
 [] Manage network errors;
-[] Image caching;
+[x] Image caching;
 
 ### Evaluation criteria
 

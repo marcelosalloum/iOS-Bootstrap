@@ -8,7 +8,7 @@
 
 import UIKit
 import PKHUD
-import Nuke
+import Kingfisher
 
 class ArticleTableViewController: UITableViewController {
     
@@ -86,27 +86,9 @@ class ArticleTableViewController: UITableViewController {
         guard let imageURL = article.imageUrl else { return articleCell }
         guard let url = URL(string: imageURL) else { return articleCell }
         
-        // Nuke
-//        Nuke.loadImage(
-//            with: url,
-//            options: ImageLoadingOptions(
-//                placeholder: UIImage(named: "CKL-icon-blue-on-black"),
-//                transition: .fadeIn(duration: 0.33),
-//                contentModes: .init(
-//                    success: .center,
-//                    failure: .center,
-//                    placeholder: .center
-//                )
-//            ),
-//            into: imageView)
-        
-        Nuke.loadImage(
-            with: url,
-            options: ImageLoadingOptions(
-                placeholder: UIImage(named: "CKL-icon-blue-on-black"),
-                transition: .fadeIn(duration: 0.33)
-            ),
-            into: articleImageView)
+        // Image Caching
+        articleImageView.kf.indicatorType = .activity
+        articleImageView.kf.setImage(with: url)
      
         return articleCell
     }

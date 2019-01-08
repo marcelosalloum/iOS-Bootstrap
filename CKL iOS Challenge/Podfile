@@ -9,6 +9,6 @@ target 'CKL iOS Challenge' do
   pod 'Alamofire', '4.7.3'
   pod 'PKHUD', '5.2.0'
   pod 'SwiftyJSON', '4.2.0'
-  pod 'Nuke', '7.4.1'
+  pod 'Kingfisher', '4.10.0'
 
 end
