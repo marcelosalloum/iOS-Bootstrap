@@ -12,7 +12,7 @@ import Alamofire
 import CoreData
 
 class RestAPI: NSObject {
-    static func getArticlesList(_ success: (([Article]) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    static func getArticlesList(_ success: @escaping (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
         Alamofire.request("https://private-0d75e8-cklchallenge.apiary-mock.com/article").validate().responseJSON { (response) in
             switch response.result {
             case .success:
@@ -21,11 +21,12 @@ class RestAPI: NSObject {
                 if let jsonValue = response.result.value {
                     let swiftyJsonVar = JSON(jsonValue)
                     storeFetched(articles: swiftyJsonVar.array, success: success, failure: failure)
+                } else {
+                    success([])
                 }
-//                success()
             case .failure(let error):
                 print(error)
-//                failure(error)
+                failure?(error)
             }
         }
     }
@@ -35,7 +36,28 @@ class RestAPI: NSObject {
         case create
     }
     
-    static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    static func fetchAllArticles(success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
+        // Basic CoreData Setup
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
+        var fetchedResults: [Article] = []
+        
+        // Seting up core data predicate
+        let sort = NSSortDescriptor(key: "id", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
+        // Fetch All
+        do {
+            fetchedResults = try context.fetch(fetchRequest)
+            success(fetchedResults)
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            failure?(error)
+        }
+    }
+    
+    static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Input validations
         guard let articles = articles else { return }
         if articles.isEmpty { return }
@@ -66,7 +88,7 @@ class RestAPI: NSObject {
         // Context Save
         do {
             try context.save()
-            success?(articlesArray)
+            success(articlesArray)
         } catch let error as NSError {
             // Error handling [Context Save]
             print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option

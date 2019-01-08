@@ -89,7 +89,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="68A-It-Gmv">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="reloadTable:" destination="Kz5-bs-vHV" eventType="valueChanged" id="VJo-WA-9Ag"/>
+                            <action selector="pullToRefresh:" destination="Kz5-bs-vHV" eventType="valueChanged" id="VJo-WA-9Ag"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>

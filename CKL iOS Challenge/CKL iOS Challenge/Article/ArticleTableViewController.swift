@@ -13,16 +13,16 @@ import Nuke
 class ArticleTableViewController: UITableViewController {
     
     // MARK - Pull to Refresh action
-    @IBAction func reloadTable(_ sender: UIRefreshControl) {
-        reloadData {
+    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
+        fetchAPIData {
             sender.endRefreshing()
         }
     }
     
     // MARK - Reload Data Action
-    func reloadData(_ completion: (() -> ())? = nil) {
-        RestAPI.getArticlesList({ (articles) in
-            self.articles = articles
+    func fetchAPIData(_ completion: (() -> ())? = nil) {
+        RestAPI.getArticlesList({ (fetchedArticles) in
+            self.articles = fetchedArticles
             self.tableView.reloadData()
             completion?()
         }) { (error) in
@@ -31,12 +31,31 @@ class ArticleTableViewController: UITableViewController {
         }
     }
     
+    func setupInitialData() {
+        RestAPI.fetchAllArticles(success: {(fetchedArticles) in
+            articles = fetchedArticles
+            self.tableView.reloadData()
+        })
+    }
+    
     var articles: [Article] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        reloadData()
+        setupInitialData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshControl?.programaticallyBeginRefreshing(in: tableView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let refreshControl = self.refreshControl else { return }
+        self.pullToRefresh(refreshControl)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
