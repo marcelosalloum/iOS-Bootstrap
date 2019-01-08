@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import Nuke
 
 class ArticleTableViewController: UITableViewController {
     var articles: [Article] = []
@@ -21,18 +22,6 @@ class ArticleTableViewController: UITableViewController {
         }) { (error) in
             HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
         }
-//        RestAPI.getArticlesList({
-//            print("A")
-//        }, failure: { (error) in
-//            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-//        })
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +48,14 @@ class ArticleTableViewController: UITableViewController {
 
         articleCell.titleLabel?.text = article.title
         articleCell.tagsLabel?.text = article.authors
-
+        guard let imageView = articleCell.imageView else { return articleCell }
+        
+        guard let imageURL = article.imageUrl else { return articleCell }
+        guard let url = URL(string: imageURL) else { return articleCell }
+        
+        // Nuke
+        Nuke.loadImage(with: url, into: imageView)
+     
         return articleCell
     }
     
