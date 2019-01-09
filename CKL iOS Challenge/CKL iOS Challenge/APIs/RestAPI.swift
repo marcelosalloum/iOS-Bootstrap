@@ -38,11 +38,11 @@ class RestAPI: NSObject {
         }
     }
     
-    public enum GetOrCreate: String {
-        case get
-        case create
-    }
-    
+//    public enum GetOrCreate: String {
+//        case get
+//        case create
+//    }
+//
     static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Input validations
         guard let articles = articles else { return }
@@ -56,10 +56,10 @@ class RestAPI: NSObject {
         
         // Looping over the articles
         for articleJSON in articles {
-            let articleID = articleJSON["id"].intValue
+            let articleID = String(articleJSON["id"].intValue)
             
             // GET or CREATE
-            let (articleOptional, _, error) = getOrCreate(context: context, fetchRequest: fetchRequest, articleID: articleID)
+            let (articleOptional, _, error) = Article.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: "id", value: articleID)
             
             // Error handling [GET or CREATE]
             if let error = error {
@@ -82,36 +82,6 @@ class RestAPI: NSObject {
             failure?(error)
             return
         }
-    }
-    
-    fileprivate static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Article>, articleID: Int) -> (Article?, GetOrCreate?, Error?) {
-        // Initializing return variables
-        var article: Article!
-        var getOrCreate: GetOrCreate!
-        var fetchedResults: [Article] = []
-        
-        // Seting up core data predicate
-        let predicate = NSPredicate(format: "%K == %i", "id", articleID)
-        fetchRequest.predicate = predicate
-        
-        // GET
-        do {
-            fetchedResults = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            return (nil, nil, error)
-        }
-        
-        // If GET is empty, then CREATE
-        if (fetchedResults.count > 0) {
-            article = fetchedResults[0]
-            getOrCreate = .get
-        } else {
-            article = Article(context: context)
-            getOrCreate = .create
-        }
-        
-        return (article, getOrCreate, nil)
     }
     
     fileprivate static func importJSON(from: JSON, toObject: Article) {

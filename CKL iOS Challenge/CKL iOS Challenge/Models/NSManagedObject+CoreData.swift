@@ -6,16 +6,20 @@
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
-import Foundation
-import CoreData
-
 /**
  Extends `NSFetchRequestResult` with
  methods that make fetching, inserting, deleting, and change management easier.
  */
-@available(iOS, introduced: 10.0)
-@available(tvOS, introduced: 10.0)
-@available(OSX, introduced: 10.12)
+
+import Foundation
+import CoreData
+
+public enum GetOrCreate: String {
+    case error
+    case get
+    case create
+}
+
 extension NSFetchRequestResult where Self: NSManagedObject {
     /**
      Creates a new fetch request for the `NSManagedObject` entity.
@@ -99,6 +103,37 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         executeAsyncRequest(context, fetchRequest: fetchRequest, success: success, failure: failure)
     }
     
+    /*
+     GET or CREATE
+     */
+
+    
+    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
+        // Initializing return variables
+        var object: Self?
+        var getOrCreate: GetOrCreate = .error
+        var fetchedObjects: [Self] = []
+        
+        // GET
+        do {
+            fetchedObjects = try fetchInContext(context, attribute: attribute, value: value, sortDescriptors: nil)
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            return (object, getOrCreate, error)
+        }
+        
+        // If GET is empty, then CREATE
+        if (fetchedObjects.count > 0) {
+            object = fetchedObjects[0]
+            getOrCreate = .get
+        } else {
+            object = Self(context: context)
+            getOrCreate = .create
+        }
+        
+        return (object, getOrCreate, nil)
+    }
+    
     
     /**
 
@@ -120,7 +155,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncFetch(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncFetchInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Prepare the request
         let fetchRequest = fetchRequestInContext(context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
         executeAsyncRequest(context, fetchRequest: fetchRequest, success: success, failure: failure)
