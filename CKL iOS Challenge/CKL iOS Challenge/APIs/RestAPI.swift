@@ -43,27 +43,6 @@ class RestAPI: NSObject {
         case create
     }
     
-    static func fetchAllArticles(success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
-        // Basic CoreData Setup
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
-        var fetchedResults: [Article] = []
-        
-        // Seting up core data predicate
-        let sort = NSSortDescriptor(key: "id", ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        
-        // Fetch All
-        do {
-            fetchedResults = try context.fetch(fetchRequest)
-            success(fetchedResults)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            failure?(error)
-        }
-    }
-    
     static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Input validations
         guard let articles = articles else { return }

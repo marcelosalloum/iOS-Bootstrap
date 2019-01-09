@@ -31,11 +31,11 @@ class ArticleTableViewModel: NSObject {
     }
     
     func setupInitialData() {
-        RestAPI.fetchAllArticles(success: {(fetchedArticles) in
-            articles = fetchedArticles
-            self.delegate?.updateData(articles: fetchedArticles, endRefreshing: false)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        Article.asyncAllInContext(context, success: {(coreDataArticles) in
+            self.articles = coreDataArticles
+            self.delegate?.updateData(articles: coreDataArticles, endRefreshing: false)
         })
     }
-
-    
 }
