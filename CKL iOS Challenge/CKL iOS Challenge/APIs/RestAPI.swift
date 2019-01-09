@@ -11,15 +11,22 @@ import SwiftyJSON
 import Alamofire
 import CoreData
 
+
+struct APIPaths {
+    static let rootUrl: String = "https://private-0d75e8-cklchallenge.apiary-mock.com"
+    static let articleURL: String = "\(APIPaths.rootUrl)/article"
+}
+
+
 class RestAPI: NSObject {
     static func getArticlesList(_ success: @escaping (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
-        Alamofire.request("https://private-0d75e8-cklchallenge.apiary-mock.com/article").validate().responseJSON { (response) in
+        Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
-                print("Validation Successful")
-                
                 if let jsonValue = response.result.value {
                     let swiftyJsonVar = JSON(jsonValue)
+                    
+                    // TODO: send to a separateFile:
                     storeFetched(articles: swiftyJsonVar.array, success: success, failure: failure)
                 } else {
                     success([])
@@ -81,6 +88,7 @@ class RestAPI: NSObject {
                 return
             }
             guard let article = articleOptional else { return }
+            // TODO: Ask from Articles class:
             importJSON(from: articleJSON, toObject: article)
             articlesArray.append(article)
         }
