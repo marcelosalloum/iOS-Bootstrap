@@ -69,7 +69,7 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
 
         // Set-up the cell content
         articleCell.titleLabel.text = article.title
-        articleCell.timeLabel.text = NSDate.timeAgoSince(article.date)
+        articleCell.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
         articleCell.authorLabel.text = article.authors
         
         // Setup the cell image
