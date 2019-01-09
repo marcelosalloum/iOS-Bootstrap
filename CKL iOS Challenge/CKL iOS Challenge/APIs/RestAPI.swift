@@ -146,6 +146,14 @@ class RestAPI: NSObject {
         if let content = from["content"].string {
             toObject.content = content
         }
+        if let dateString = from["date"].string {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            
+            if let date = dateFormatter.date(from: dateString) {
+                toObject.date = date
+            }
+        }
         if let imageUrl = from["image_url"].string {
             toObject.imageUrl = imageUrl
         }
@@ -155,5 +163,14 @@ class RestAPI: NSObject {
         if let website = from["website"].string {
             toObject.website = website
         }
+        // TODO:
+//        if let tagsArray = from["tags"].array {
+//            for tagDict in tagsArray {
+//                // Get Tag ID
+//                // Get or Create Tag
+//                // Update Tag values
+//                // Add tag to Article
+//            }
+//        }
     }
 }

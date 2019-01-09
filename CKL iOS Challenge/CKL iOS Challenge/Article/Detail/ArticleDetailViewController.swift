@@ -44,7 +44,7 @@ class ArticleDetailViewController: UIViewController {
         titleLabel?.text = article?.title
         authorLabel?.text = article?.authors
         contentLabel?.text = article?.content
-        //        timeLabel?.text = article?.date
+        timeLabel?.text = NSDate.timeAgoSince(article?.date)
         //        tagsLabel?.text = article?.tags
     }
 }
