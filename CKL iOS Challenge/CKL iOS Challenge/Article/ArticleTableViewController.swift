@@ -68,8 +68,9 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         let article = articleTableViewModel.articles[indexPath.row]
 
         // Set-up the cell content
-        articleCell.titleLabel?.text = article.title
-        articleCell.tagsLabel?.text = article.authors
+        articleCell.titleLabel.text = article.title
+        articleCell.timeLabel.text = NSDate.timeAgoSince(article.date)
+        articleCell.authorLabel.text = article.authors
         
         // Setup the cell image
         guard let articleImageView = articleCell.articleImageView else { return articleCell }
