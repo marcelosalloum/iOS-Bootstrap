@@ -220,10 +220,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lk2-9b-EDl"/>
                     </view>
+                    <navigationItem key="navigationItem" id="SqB-hV-w7U">
+                        <barButtonItem key="rightBarButtonItem" title="Mark as read" id="LR6-wb-SSJ">
+                            <connections>
+                                <action selector="didSelectRightBarButtonItem:" destination="DeF-FT-CjK" id="ISf-uP-oPe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="rEW-Pr-Jxt" id="1w7-fa-RPo"/>
                         <outlet property="contentLabel" destination="IYV-hl-0oR" id="31x-v6-kH0"/>
                         <outlet property="imageView" destination="iib-xc-x4v" id="HQD-fA-tp0"/>
+                        <outlet property="rightBarButtonItem" destination="LR6-wb-SSJ" id="gg4-m9-Idt"/>
                         <outlet property="tagsLabel" destination="HKR-dG-26V" id="aug-SQ-aSt"/>
                         <outlet property="timeLabel" destination="hGd-QF-n9M" id="Tzw-DJ-Zal"/>
                         <outlet property="titleLabel" destination="6Kc-xZ-Ucl" id="wmP-L4-U7q"/>

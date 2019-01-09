@@ -16,6 +16,19 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    
+    @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
+        var text = ""
+        if let oldText = self.navigationItem.rightBarButtonItem?.title {
+            text = oldText
+        }
+        
+        text = (text == ReadState.markUnread.rawValue) ? ReadState.markRead.rawValue : ReadState.markUnread.rawValue
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: text, style: .plain, target: self, action: #selector(didSelectRightBarButtonItem(_: )))
+    }
+    
     var article: Article?
 
     override func viewDidLoad() {
