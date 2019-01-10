@@ -11,6 +11,11 @@ import Foundation
 
 extension NSDate {
     
+    static public func timeAgoSince(_ date: NSDate?, shortPattern: Bool = false) -> String? {
+        guard let date = date as Date? else { return nil }
+        return timeAgoSince(date, shortPattern: shortPattern)
+    }
+    
     static public func timeAgoSince(_ date: Date?, shortPattern: Bool = false) -> String? {
         
         guard let date = date else { return nil }

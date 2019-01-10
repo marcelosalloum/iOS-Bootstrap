@@ -17,23 +17,44 @@ enum CKLCoreDataError: Error {
     case getOrCreateObjIsEmpty
 }
 
+enum CKLCoreDateLogLevel: String {
+    case debug
+    case silent
+}
+
 
 protocol ParseJSONToEntityProtocol {
     func importDict(from: JSON, toObject: NSManagedObject)
 }
 
 class CKLCoreData: NSObject {
+    
+    // Used by your project
     public static let shared = CKLCoreData() // singleton
 
+    // Used by the NSManagedObject extensions and your ptoject
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    var jsonMappingDicts = [String: [String: String]]()
     
+    // Logging level
+    static var logLevel = CKLCoreDateLogLevel.silent
+    
+    static func log(logText: Any?) {
+        switch logLevel {
+        case .debug:
+            guard let text = logText else { return }
+            print(text)
+            return
+        case .silent:
+            return
+        }
+    }
+
 //    func registerJSONMapping<T>(t: T.Type, dict: [String: String]?) -> Void {
 //        let dictKey: String = String(describing: t)
 //        jsonMappingDicts[dictKey] = dict
 //    }
     
+    // TODO: think of a more ellegant way to do this
     func importJSON(from: JSON, toObject: NSManagedObject) {
         let objectClass: String = String(describing: type(of: toObject))
         switch objectClass {
@@ -65,7 +86,7 @@ class CKLCoreData: NSObject {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             
-            if let date = dateFormatter.date(from: dateString) {
+            if let date = dateFormatter.date(from: dateString) as NSDate? {
                 toObject.date = date
             }
         }

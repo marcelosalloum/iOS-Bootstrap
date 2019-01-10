@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Article+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Article+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Tag+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Tag+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:CKL iOS Challenge.xcodeproj">
    </FileRef>
    <FileRef
