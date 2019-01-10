@@ -13,6 +13,7 @@
 
 import Foundation
 import CoreData
+import SwiftyJSON
 
 public enum GetOrCreate: String {
     case error
@@ -44,7 +45,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         do {
             // Execute Asynchronous Fetch Request
             let asynchronousFetchResult = try context.execute(asynchronousFetchRequest)
-            print(asynchronousFetchResult)
             
         } catch {
             print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
@@ -127,7 +127,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             object = fetchedObjects[0]
             getOrCreate = .get
         } else {
-            object = Self(context: context)
+            object = Self.init(entity: self.entity(), insertInto: context)
             getOrCreate = .create
         }
         
@@ -136,7 +136,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     
     /**
-
+     SELECT (*) from Article WHERE "attribute" equals "value"
      */
     
     fileprivate static func fetchRequestInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
@@ -161,6 +161,46 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         executeAsyncRequest(context, fetchRequest: fetchRequest, success: success, failure: failure)
     }
     
+    /*
+     Import from JSON
+     */
+    static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, success: (([Self]) -> Void), failure: ((Error) -> Void)? = nil, idKey: String = "id") {
+        // Input validations
+        guard let jsonArray = jsonArray else { return }
+        if jsonArray.isEmpty { return }
+        var objectsArray: [Self] = []
+        
+        // Basic CoreData Setup
+        let fetchRequest = fetchRequestForEntity(inContext: context)
+        
+        // Looping over the articles
+        for objectJSON in jsonArray {
+            
+            // GET or CREATE
+            let objectId = String(objectJSON["\(idKey)"].intValue)
+            let (getOrCreateObj, _, error) = Self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: "id", value: objectId)
+            
+            // Error handling [GET or CREATE]
+            if let error = error {
+                failure?(error)
+                return
+            }
+            guard let object = getOrCreateObj else { return }
+            CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
+            objectsArray.append(object)
+        }
+        
+        // Context Save
+        do {
+            try context.save()
+            success(objectsArray)
+        } catch let error as NSError {
+            // Error handling [Context Save]
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            failure?(error)
+            return
+        }
+    }
     
     // MARK: - Counting Objects
     
