@@ -9,9 +9,7 @@
 import UIKit
 
 
-protocol ArticleTableDelegate: class {
-    // The following command (ie, method) must be obeyed by any
-    // underling (ie, delegate) of the older sibling.
+protocol ArticleTableProtocol: class {
     func updateData(articles: [Article], endRefreshing: Bool)
     func displayError(error: Error, endRefreshing: Bool)
 }
@@ -19,8 +17,9 @@ protocol ArticleTableDelegate: class {
 class ArticleTableViewModel: NSObject {
     
     var articles: [Article] = []
-    weak var delegate: ArticleTableDelegate?
+    weak var delegate: ArticleTableProtocol?
 
+    // GET API Data
     func fetchAPIData() {
         RestAPI.getArticlesList({ (fetchedArticles) in
             self.articles = fetchedArticles
@@ -30,6 +29,7 @@ class ArticleTableViewModel: NSObject {
         }
     }
     
+    // Get CoreData stored data
     func setupInitialData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -39,6 +39,7 @@ class ArticleTableViewModel: NSObject {
         })
     }
     
+    // Update the read status in the CoreData (this is currently only saved locally)
     func updateReadStatus(finalReadState: Bool, article: Article?, success: (() -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
