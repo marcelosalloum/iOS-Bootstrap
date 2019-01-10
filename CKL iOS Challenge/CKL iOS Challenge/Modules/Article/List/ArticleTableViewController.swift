@@ -71,6 +71,7 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         articleCell.titleLabel.text = article.title
         articleCell.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
         articleCell.authorLabel.text = article.authors
+        articleCell.updateWasReadStatus(article.wasRead)
         
         // Setup the cell image
         guard let articleImageView = articleCell.articleImageView else { return articleCell }

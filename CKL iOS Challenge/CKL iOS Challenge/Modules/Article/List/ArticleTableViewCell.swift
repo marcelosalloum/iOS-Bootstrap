@@ -25,5 +25,9 @@ class ArticleTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func updateWasReadStatus(_ wasRead: Bool) {
+        self.backgroundColor = wasRead ? UIColor.white : UIColor.lightGray
+    }
 
 }
