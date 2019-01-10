@@ -23,7 +23,8 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     let articleDetailViewModel = ArticleDetailViewModel()
     
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
-        self.articleDetailViewModel.didSelectRightBarButton()
+        
+        self.articleDetailViewModel.updateReadStatus(!articleDetailViewModel.article.wasRead)
     }
     
     func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?) {
@@ -34,6 +35,7 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     // MARK - View Controller methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.articleDetailViewModel.updateReadStatus(true)
         articleDetailViewModel.delegate = self
         setupView()
     }

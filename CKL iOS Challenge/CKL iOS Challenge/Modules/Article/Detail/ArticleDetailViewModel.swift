@@ -19,8 +19,8 @@ class ArticleDetailViewModel: NSObject {
     
     var article: Article!
     
-    func didSelectRightBarButton() {
-        article.toggleWasRead()
+    func updateReadStatus(_ wasRead: Bool) {
+        article.wasRead = wasRead
         let context = CKLCoreData.context
         Article.asyncSave(context, successCallback: {
             let newRightBarButtonItem = barButtonItem(for: article)
