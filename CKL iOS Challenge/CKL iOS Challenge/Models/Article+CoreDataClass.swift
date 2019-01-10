@@ -12,5 +12,7 @@ import CoreData
 
 
 public class Article: NSManagedObject {
-
+    func toggleWasRead() {
+        self.wasRead = !self.wasRead
+    }
 }

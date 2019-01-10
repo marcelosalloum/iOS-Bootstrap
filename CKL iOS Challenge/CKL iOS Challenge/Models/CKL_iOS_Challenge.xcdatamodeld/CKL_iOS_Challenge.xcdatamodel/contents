@@ -7,6 +7,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wasRead" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="articles" inverseEntity="Tag" syncable="YES"/>
     </entity>
@@ -16,7 +17,7 @@
         <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="tags" inverseEntity="Article" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="180"/>
         <element name="Tag" positionX="-54" positionY="45" width="128" height="90"/>
     </elements>
 </model>
