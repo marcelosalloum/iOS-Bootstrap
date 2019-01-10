@@ -79,10 +79,8 @@
 		1F1A409F21D694FF005BC0F3 /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				1F86B9AA21E77A2D0059D2CB /* List */,
 				1F9B0CB021E50E4A0069FD3E /* Detail */,
-				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
-				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
-				1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -91,21 +89,52 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F86B9AA21E77A2D0059D2CB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
+				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
+				1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		1F86B9AB21E77A430059D2CB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1F1A409F21D694FF005BC0F3 /* Article */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1F86B9AC21E77AA30059D2CB /* CKLCoreData */ = {
+			isa = PBXGroup;
+			children = (
 				1F86B99C21E669D10059D2CB /* CKLCoreData.swift */,
 				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
 				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
 				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
 			);
-			path = Models;
+			path = CKLCoreData;
+			sourceTree = "<group>";
+		};
+		1F86B9AD21E77ABA0059D2CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F196BB521D6F796002421AB /* APIs */,
+				1F86B9AC21E77AA30059D2CB /* CKLCoreData */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
-				1F8BDB4321E5356A007A338A /* Constants */,
-				1F8BDB4021E53417007A338A /* Custom Controls' Views */,
-				1FDC4A1221E4C89F0064AC13 /* Extensions */,
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
 				1F88EFE521D5766900275972 /* Products */,
 				AE22B14963B4D54B33DAF208 /* Pods */,
@@ -124,9 +153,12 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1F86B9AD21E77ABA0059D2CB /* Services */,
+				1F8BDB4321E5356A007A338A /* Constants */,
+				1FDC4A1221E4C89F0064AC13 /* Extensions */,
+				1F8BDB4021E53417007A338A /* Custom Views */,
 				1F6653ED21E37CB300982F99 /* Models */,
-				1F196BB521D6F796002421AB /* APIs */,
-				1F1A409F21D694FF005BC0F3 /* Article */,
+				1F86B9AB21E77A430059D2CB /* Modules */,
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
 				1F88EFF121D5766900275972 /* Assets.xcassets */,
@@ -136,12 +168,12 @@
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
 		};
-		1F8BDB4021E53417007A338A /* Custom Controls' Views */ = {
+		1F8BDB4021E53417007A338A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
 			);
-			path = "Custom Controls' Views";
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		1F8BDB4321E5356A007A338A /* Constants */ = {
