@@ -10,10 +10,38 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: UITableViewController, ArticleTableProtocol {
+class ArticleTableViewController: UITableViewController, ArticleTableProtocol, UISearchResultsUpdating {
+    
     
     // MARK: - Initializers
     let articleTableViewModel = ArticleTableViewModel()
+    var searchController: UISearchController!
+    
+    // MARK: - Search Controller
+    func initializeSearchController() {
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense. Should probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            articleTableViewModel.filterArticles(searchText)
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - ViewController
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
@@ -25,6 +53,7 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol {
         articleTableViewModel.delegate = self
         refreshControl?.programaticallyBeginRefreshing(in: tableView)
         articleTableViewModel.setupInitialData()
+        initializeSearchController()
     }
 
     override func viewDidAppear(_ animated: Bool) {

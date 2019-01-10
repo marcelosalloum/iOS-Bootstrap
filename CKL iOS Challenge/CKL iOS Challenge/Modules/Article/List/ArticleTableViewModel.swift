@@ -31,12 +31,26 @@ class ArticleTableViewModel: NSObject {
     
     // Get CoreData stored data
     func setupInitialData() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        Article.asyncAllInContext(context, success: {(coreDataArticles) in
+        Article.asyncReadObjects(CKLCoreData.context, sortDescriptors: [CKLCoreData.sortDescriptor], success: { (coreDataArticles) in
             self.articles = coreDataArticles
             self.delegate?.updateData(articles: coreDataArticles, endRefreshing: false)
         })
+    }
+    
+    func filterArticles(_ searchText: String) {
+        var predicate: NSPredicate? = nil
+        
+        if searchText.count > 0 {
+            predicate = NSPredicate(format: "title CONTAINS[c] '\(searchText)' or authors CONTAINS[c] '\(searchText)'")
+        }
+
+        do {
+            let articles = try Article.readObjects(CKLCoreData.context, predicate: predicate, sortDescriptors: [CKLCoreData.sortDescriptor])
+            self.articles = articles
+            self.delegate?.updateData(articles: articles, endRefreshing: false)
+        } catch let e as NSError {
+            print(e.localizedDescription)
+        }
     }
     
     // Update the read status in the CoreData (this is currently only saved locally)
