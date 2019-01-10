@@ -11,6 +11,13 @@ import UIKit
 import SwiftyJSON
 
 
+enum CKLCoreDataError: Error {
+    case contextIsEmpty
+    case jsonIsEmpty
+    case getOrCreateObjIsEmpty
+}
+
+
 protocol ParseJSONToEntityProtocol {
     func importDict(from: JSON, toObject: NSManagedObject)
 }
@@ -31,7 +38,6 @@ class CKLCoreData: NSObject {
         let objectClass: String = String(describing: type(of: toObject))
         switch objectClass {
         case String(describing: Article.self):
-            print("Article")
             if let article = toObject as? Article {
                 importArticle(from: from, toObject: article)
             }
