@@ -99,4 +99,29 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         // Article Detail Setup
         articleDetailViewController.articleDetailViewModel.article = articleTableViewModel.articles[row]
     }
+    
+    // MARK - Swipe to Action:
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // Get Article:
+        let article = articleTableViewModel.articles[indexPath.row]
+        let initialReadStatus = article.wasRead
+        let finalReadStatusText = ArticleState.getText(initialReadStatus: initialReadStatus)
+        
+        // Setups Button Text
+        let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { tableViewRowAction, indexPath in
+            self.articleTableViewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) {
+                let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+                articleCell.updateWasReadStatus(initialReadStatus)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        readStatus.backgroundColor = .blue
+        
+        return [readStatus]
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

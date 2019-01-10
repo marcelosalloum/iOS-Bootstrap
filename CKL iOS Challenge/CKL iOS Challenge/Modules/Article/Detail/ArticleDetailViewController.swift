@@ -23,14 +23,12 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     let articleDetailViewModel = ArticleDetailViewModel()
     
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
-        
         self.articleDetailViewModel.updateReadStatus(!articleDetailViewModel.article.wasRead)
     }
     
     func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?) {
         self.navigationItem.rightBarButtonItem = barButtonItem
     }
-    
     
     // MARK - View Controller methods
     override func viewDidLoad() {

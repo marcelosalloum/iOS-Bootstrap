@@ -11,7 +11,7 @@ import Foundation
 struct ArticleState {
     static let markRead: String = "Mark as read"
     static let markUnread: String = "Mark as unread"
-    static func getText(wasRead: Bool) -> String {
+    static func getText(initialReadStatus wasRead: Bool) -> String {
         if wasRead {
             return ArticleState.markUnread
         }

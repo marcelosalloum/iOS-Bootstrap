@@ -19,8 +19,8 @@ class ArticleDetailViewModel: NSObject {
     
     var article: Article!
     
-    func updateReadStatus(_ wasRead: Bool) {
-        article.wasRead = wasRead
+    func updateReadStatus(_ finalReadState: Bool) {
+        article.wasRead = finalReadState
         let context = CKLCoreData.context
         Article.asyncSave(context, successCallback: {
             let newRightBarButtonItem = barButtonItem(for: article)
@@ -30,7 +30,7 @@ class ArticleDetailViewModel: NSObject {
     
     func barButtonItem(for article: Article?) -> UIBarButtonItem? {
         guard let wasRead = article?.wasRead else { return nil }
-        let buttonText = ArticleState.getText(wasRead: wasRead)
+        let buttonText = ArticleState.getText(initialReadStatus: wasRead)
         return UIBarButtonItem(title: buttonText, style: .plain, target: self.delegate, action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_: )))
     }
 }

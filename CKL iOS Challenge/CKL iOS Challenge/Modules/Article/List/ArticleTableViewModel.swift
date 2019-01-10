@@ -38,4 +38,11 @@ class ArticleTableViewModel: NSObject {
             self.delegate?.updateData(articles: coreDataArticles, endRefreshing: false)
         })
     }
+    
+    func updateReadStatus(finalReadState: Bool, article: Article?, success: (() -> ())) {
+        guard let article = article else { return }
+        article.wasRead = finalReadState
+        let context = CKLCoreData.context
+        Article.asyncSave(context, successCallback: success)
+    }
 }
