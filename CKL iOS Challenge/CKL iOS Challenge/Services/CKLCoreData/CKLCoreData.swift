@@ -66,7 +66,6 @@ class CKLCoreData: NSObject {
             if let tag = toObject as? Tag {
                 importTag(from: from, toObject: tag)
             }
-            print("Tag")
         default:
             print("None")
         }

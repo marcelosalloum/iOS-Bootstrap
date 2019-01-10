@@ -8,7 +8,13 @@
 
 import Foundation
 
-enum ReadState: String {
-    case markRead = "Mark as read"
-    case markUnread = "Mark as unread"
+struct ArticleState {
+    static let markRead: String = "Mark as read"
+    static let markUnread: String = "Mark as unread"
+    static func getText(initialReadStatus wasRead: Bool) -> String {
+        if wasRead {
+            return ArticleState.markUnread
+        }
+        return ArticleState.markRead
+    }
 }

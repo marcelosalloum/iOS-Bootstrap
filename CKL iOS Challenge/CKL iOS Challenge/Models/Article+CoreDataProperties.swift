@@ -24,6 +24,7 @@ extension Article {
     @NSManaged public var imageUrl: String?
     @NSManaged public var title: String?
     @NSManaged public var website: String?
+    @NSManaged public var wasRead: Bool
     @NSManaged public var tags: NSSet?
 
 }

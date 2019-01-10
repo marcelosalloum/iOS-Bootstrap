@@ -26,11 +26,11 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Create a table with the articles following the provided mockup;
 
-[] Ability to visualize content (all provided info);
+[x] Ability to visualize content (all provided info);
 
 [] Ability to sort articles (date, title and author);
 
-[] Ability to mark articles as read/unread;
+[x] Ability to mark articles as read/unread;
 
 [] Push your code to the provided Github repository and create a Pull Request to the master branch adding "cheesecakelabs-challenges" user as a reviewer.
 
