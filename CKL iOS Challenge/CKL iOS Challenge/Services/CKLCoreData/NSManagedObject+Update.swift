@@ -42,17 +42,27 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         }
         
         // Context Save
+        
         if (save) {
-            do {
-                try context.save()
+//            asyncSave(context, {
+//                success(objectsArray)
+//            }, failure: failure)
+            asyncSave(context, successCallback: {
                 success(objectsArray)
-            } catch let error as NSError {
-                // Error handling [Context Save]
-                print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-                failure?(error)
-            }
+            }, failure: failure)
         } else {
             success(objectsArray)
+        }
+    }
+    
+    static func asyncSave(_ context: NSManagedObjectContext, successCallback: (() -> ()), failure: ((Error) -> Void)? = nil) {
+        do {
+            try context.save()
+            successCallback()
+        } catch let error as NSError {
+            // Error handling [Context Save]
+            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            failure?(error)
         }
     }
     

@@ -96,6 +96,6 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         if row >= articleTableViewModel.articles.count { return }
         
         // Article Detail Setup
-        articleDetailViewController.article = articleTableViewModel.articles[row]
+        articleDetailViewController.articleDetailViewModel.article = articleTableViewModel.articles[row]
     }
 }

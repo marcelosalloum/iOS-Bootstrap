@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleDetailViewController: UIViewController {
+class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,33 +18,37 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
+    
+    // MARK: - View Model
+    let articleDetailViewModel = ArticleDetailViewModel()
+    
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
-        var text = ""
-        if let oldText = self.navigationItem.rightBarButtonItem?.title {
-            text = oldText
-        }
-        
-        text = (text == ReadState.markUnread.rawValue) ? ReadState.markRead.rawValue : ReadState.markUnread.rawValue
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: text, style: .plain, target: self, action: #selector(didSelectRightBarButtonItem(_: )))
+        self.articleDetailViewModel.didSelectRightBarButton()
     }
     
-    var article: Article?
-
+    func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?) {
+        self.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    
+    // MARK - View Controller methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        articleDetailViewModel.delegate = self
         setupView()
     }
     
     fileprivate func setupView() {
-        guard let imageUrl = article?.imageUrl else { return }
+        guard let imageUrl = articleDetailViewModel.article.imageUrl else { return }
         guard let url = URL(string: imageUrl) else { return }
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: url)
-        titleLabel?.text = article?.title
-        authorLabel?.text = article?.authors
-        contentLabel?.text = article?.content
-        timeLabel?.text = NSDate.timeAgoSince(article?.date)
+        titleLabel?.text = articleDetailViewModel.article.title
+        authorLabel?.text = articleDetailViewModel.article.authors
+        contentLabel?.text = articleDetailViewModel.article.content
+        timeLabel?.text = NSDate.timeAgoSince(articleDetailViewModel.article.date)
         //        tagsLabel?.text = article?.tags
+        
+        self.navigationItem.rightBarButtonItem = articleDetailViewModel.barButtonItem(for: articleDetailViewModel.article)
     }
 }
