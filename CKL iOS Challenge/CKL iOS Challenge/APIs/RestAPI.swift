@@ -11,15 +11,22 @@ import SwiftyJSON
 import Alamofire
 import CoreData
 
+
+struct APIPaths {
+    static let rootUrl: String = "https://private-0d75e8-cklchallenge.apiary-mock.com"
+    static let articleURL: String = "\(APIPaths.rootUrl)/article"
+}
+
+
 class RestAPI: NSObject {
     static func getArticlesList(_ success: @escaping (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
-        Alamofire.request("https://private-0d75e8-cklchallenge.apiary-mock.com/article").validate().responseJSON { (response) in
+        Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
-                print("Validation Successful")
-                
                 if let jsonValue = response.result.value {
                     let swiftyJsonVar = JSON(jsonValue)
+                    
+                    // TODO: send to a separateFile:
                     storeFetched(articles: swiftyJsonVar.array, success: success, failure: failure)
                 } else {
                     success([])
@@ -31,32 +38,11 @@ class RestAPI: NSObject {
         }
     }
     
-    public enum GetOrCreate: String {
-        case get
-        case create
-    }
-    
-    static func fetchAllArticles(success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
-        // Basic CoreData Setup
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
-        var fetchedResults: [Article] = []
-        
-        // Seting up core data predicate
-        let sort = NSSortDescriptor(key: "id", ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        
-        // Fetch All
-        do {
-            fetchedResults = try context.fetch(fetchRequest)
-            success(fetchedResults)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            failure?(error)
-        }
-    }
-    
+//    public enum GetOrCreate: String {
+//        case get
+//        case create
+//    }
+//
     static func storeFetched(articles: [JSON]?, success: (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Input validations
         guard let articles = articles else { return }
@@ -70,10 +56,10 @@ class RestAPI: NSObject {
         
         // Looping over the articles
         for articleJSON in articles {
-            let articleID = articleJSON["id"].intValue
+            let articleID = String(articleJSON["id"].intValue)
             
             // GET or CREATE
-            let (articleOptional, _, error) = getOrCreate(context: context, fetchRequest: fetchRequest, articleID: articleID)
+            let (articleOptional, _, error) = Article.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: "id", value: articleID)
             
             // Error handling [GET or CREATE]
             if let error = error {
@@ -81,6 +67,7 @@ class RestAPI: NSObject {
                 return
             }
             guard let article = articleOptional else { return }
+            // TODO: Ask from Articles class:
             importJSON(from: articleJSON, toObject: article)
             articlesArray.append(article)
         }
@@ -97,36 +84,6 @@ class RestAPI: NSObject {
         }
     }
     
-    fileprivate static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Article>, articleID: Int) -> (Article?, GetOrCreate?, Error?) {
-        // Initializing return variables
-        var article: Article!
-        var getOrCreate: GetOrCreate!
-        var fetchedResults: [Article] = []
-        
-        // Seting up core data predicate
-        let predicate = NSPredicate(format: "%K == %i", "id", articleID)
-        fetchRequest.predicate = predicate
-        
-        // GET
-        do {
-            fetchedResults = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            return (nil, nil, error)
-        }
-        
-        // If GET is empty, then CREATE
-        if (fetchedResults.count > 0) {
-            article = fetchedResults[0]
-            getOrCreate = .get
-        } else {
-            article = Article(context: context)
-            getOrCreate = .create
-        }
-        
-        return (article, getOrCreate, nil)
-    }
-    
     fileprivate static func importJSON(from: JSON, toObject: Article) {
         // else, we create the track like this
         if let id = from["id"].int16 {
@@ -138,6 +95,14 @@ class RestAPI: NSObject {
         if let content = from["content"].string {
             toObject.content = content
         }
+        if let dateString = from["date"].string {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            
+            if let date = dateFormatter.date(from: dateString) {
+                toObject.date = date
+            }
+        }
         if let imageUrl = from["image_url"].string {
             toObject.imageUrl = imageUrl
         }
@@ -147,5 +112,14 @@ class RestAPI: NSObject {
         if let website = from["website"].string {
             toObject.website = website
         }
+        // TODO:
+//        if let tagsArray = from["tags"].array {
+//            for tagDict in tagsArray {
+//                // Get Tag ID
+//                // Get or Create Tag
+//                // Update Tag values
+//                // Add tag to Article
+//            }
+//        }
     }
 }

@@ -10,44 +10,36 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: UITableViewController {
+class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
     
-    // MARK - Pull to Refresh action
+    // Mark - Article Table Delegate
+    func updateData(articles: [Article], endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func displayError(error: Error, endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+    }
+    
+    
+    let articleTableViewModel = ArticleTableViewModel()
+    
+    // MARK - Pull to refresh action
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
-        fetchAPIData {
-            sender.endRefreshing()
-        }
+        articleTableViewModel.fetchAPIData()
     }
     
-    // MARK - Reload Data Action
-    func fetchAPIData(_ completion: (() -> ())? = nil) {
-        RestAPI.getArticlesList({ (fetchedArticles) in
-            self.articles = fetchedArticles
-            self.tableView.reloadData()
-            completion?()
-        }) { (error) in
-            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-            completion?()
-        }
-    }
-    
-    func setupInitialData() {
-        RestAPI.fetchAllArticles(success: {(fetchedArticles) in
-            articles = fetchedArticles
-            self.tableView.reloadData()
-        })
-    }
-    
-    var articles: [Article] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInitialData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        articleTableViewModel.delegate = self
         refreshControl?.programaticallyBeginRefreshing(in: tableView)
+        articleTableViewModel.setupInitialData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -56,12 +48,6 @@ class ArticleTableViewController: UITableViewController {
         self.pullToRefresh(refreshControl)
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,30 +56,46 @@ class ArticleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return articles.count
+        return articleTableViewModel.articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue cell
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
-        let article = articles[indexPath.row]
+        // Retrieve the correspondant article
+        if indexPath.row >= articleTableViewModel.articles.count { return articleCell }
+        let article = articleTableViewModel.articles[indexPath.row]
 
-        articleCell.titleLabel?.text = article.title
-        articleCell.tagsLabel?.text = article.authors
-        guard let articleImageView = articleCell.articleImageView else { return articleCell }
+        // Set-up the cell content
+        articleCell.titleLabel.text = article.title
+        articleCell.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+        articleCell.authorLabel.text = article.authors
         
+        // Setup the cell image
+        guard let articleImageView = articleCell.articleImageView else { return articleCell }
         guard let imageURL = article.imageUrl else { return articleCell }
         guard let url = URL(string: imageURL) else { return articleCell }
-        
         // Image Caching
         articleImageView.kf.indicatorType = .activity
         articleImageView.kf.setImage(with: url)
      
         return articleCell
     }
+
+    // MARK - Action - Did Select Row
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section: \(section)"
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "articleDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Data validations
+        guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
+        guard let row = tableView.indexPathForSelectedRow?.row else { return }
+        if row >= articleTableViewModel.articles.count { return }
+        
+        // Article Detail Setup
+        articleDetailViewController.article = articleTableViewModel.articles[row]
     }
 }
