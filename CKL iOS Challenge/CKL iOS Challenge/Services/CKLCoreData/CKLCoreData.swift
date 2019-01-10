@@ -86,7 +86,7 @@ class CKLCoreData: NSObject {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             
-            if let date = dateFormatter.date(from: dateString) {
+            if let date = dateFormatter.date(from: dateString) as NSDate? {
                 toObject.date = date
             }
         }
