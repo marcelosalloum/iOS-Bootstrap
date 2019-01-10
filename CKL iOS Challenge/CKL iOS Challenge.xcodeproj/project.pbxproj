@@ -11,7 +11,11 @@
 		1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
-		1F86B99B21E617100059D2CB /* NSManagedObject+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99A21E617100059D2CB /* NSManagedObject+CoreData.swift */; };
+		1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* CKLCoreData.swift */; };
+		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
+		1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */; };
+		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
+		1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
 		1F88EFED21D5766900275972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Main.storyboard */; };
 		1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */; };
@@ -30,7 +34,11 @@
 		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		1F86B99A21E617100059D2CB /* NSManagedObject+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreData.swift"; sourceTree = "<group>"; };
+		1F86B99C21E669D10059D2CB /* CKLCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKLCoreData.swift; sourceTree = "<group>"; };
+		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
+		1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreData.swift"; sourceTree = "<group>"; };
+		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
+		1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Delete.swift"; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,7 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
-				1F86B99A21E617100059D2CB /* NSManagedObject+CoreData.swift */,
+				1F86B99C21E669D10059D2CB /* CKLCoreData.swift */,
+				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
+				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
+				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
+				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -298,16 +310,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */,
+				1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */,
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
+				1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */,
+				1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
-				1F86B99B21E617100059D2CB /* NSManagedObject+CoreData.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
 				1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */,
 				1F8BDB4521E53592007A338A /* States.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
+				1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */,
+				1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
