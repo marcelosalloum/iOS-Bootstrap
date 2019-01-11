@@ -19,20 +19,11 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     
     // MARK: - Search Controller
     func initializeSearchController() {
-        // Initializing with searchResultsController set to nil means that
-        // searchController will use this view controller to display the search results
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        
-        // If we are using this same view controller to present the results
-        // dimming it out wouldn't make sense. Should probably only set
-        // this to yes if using another controller to display the search results.
-        searchController.dimsBackgroundDuringPresentation = false
-        
-        searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
-        
-        // Sets this view controller as presenting view controller for the search interface
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search the news..."
+        navigationItem.searchController = searchController
         definesPresentationContext = true
     }
     
@@ -51,9 +42,13 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         articleTableViewModel.delegate = self
-        refreshControl?.programaticallyBeginRefreshing(in: tableView)
         articleTableViewModel.setupInitialData()
         initializeSearchController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +69,6 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     
     // MARK: - TableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 

@@ -68,7 +68,7 @@ class CKLCoreData: NSObject {
                 importTag(from: from, toObject: tag)
             }
         default:
-            print("None")
+            print("JSON parser unavailable")
         }
     }
     

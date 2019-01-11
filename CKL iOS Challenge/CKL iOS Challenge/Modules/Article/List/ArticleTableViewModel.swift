@@ -49,7 +49,7 @@ class ArticleTableViewModel: NSObject {
             self.articles = articles
             self.delegate?.updateData(articles: articles, endRefreshing: false)
         } catch let e as NSError {
-            print(e.localizedDescription)
+            print("ERROR: \(e.localizedDescription)")
         }
     }
     
