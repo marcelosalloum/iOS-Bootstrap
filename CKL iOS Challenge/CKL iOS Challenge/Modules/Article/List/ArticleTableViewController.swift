@@ -10,12 +10,19 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: UITableViewController, ArticleTableProtocol, UISearchResultsUpdating {
+class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
     
     // MARK: - Initializers
+    @IBOutlet weak var tableView: UITableView!
     let articleTableViewModel = ArticleTableViewModel()
     var searchController: UISearchController!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ArticleTableViewController.pullToRefresh(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
     
     // MARK: - Search Controller
     func initializeSearchController() {
@@ -41,19 +48,24 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         articleTableViewModel.delegate = self
+        tableView.addSubview(self.refreshControl)
         articleTableViewModel.setupInitialData()
         initializeSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        articleTableViewModel.transitionBottomViewToState(bottomView, hidden: true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        articleTableViewModel.transitionBottomViewToState(bottomView, hidden: true, animated: false)
+        bottomView.isHidden = false
         super.viewDidAppear(animated)
-        guard let refreshControl = self.refreshControl else { return }
         self.pullToRefresh(refreshControl)
     }
     
@@ -68,15 +80,15 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     }
     
     // MARK: - TableViewDataSource
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articleTableViewModel.articles.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue cell
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
@@ -103,15 +115,15 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     
     // MARK: - TableViewDelegate:
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "articleDetail", sender: self)
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Get Article:
         let article = articleTableViewModel.articles[indexPath.row]
         let initialReadStatus = article.wasRead
@@ -134,15 +146,22 @@ class ArticleTableViewController: UITableViewController, ArticleTableProtocol, U
     
     func updateData(articles: [Article], endRefreshing: Bool) {
         if endRefreshing {
-            refreshControl?.endRefreshing()
+            refreshControl.endRefreshing()
         }
         self.tableView.reloadData()
     }
     
     func displayError(error: Error, endRefreshing: Bool) {
         if endRefreshing {
-            refreshControl?.endRefreshing()
+            refreshControl.endRefreshing()
         }
         HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+    }
+    
+    // MARK: - Filter
+    @IBOutlet weak var bottomView: UIView!
+    
+    @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
+        articleTableViewModel.searchButtonClicked(bottomView)
     }
 }

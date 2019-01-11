@@ -60,4 +60,48 @@ class ArticleTableViewModel: NSObject {
         let context = CKLCoreData.context
         Article.asyncSave(context, successCallback: success)
     }
+    
+    // MARK: Animating Botton Bar
+    let bottomViewHeight: CGFloat = 44;
+    var shouldShowBottomView: Bool = false
+    
+    func showBottomViewRect(_ view: UIView) -> CGRect? {
+        guard let superviewFrame = view.superview?.frame else { return nil }
+        return CGRect(x: superviewFrame.minX,
+                      y: superviewFrame.maxY - bottomViewHeight,
+                      width: superviewFrame.maxX,
+                      height: bottomViewHeight)
+    }
+    
+    func hideBottomViewRect(_ view: UIView) -> CGRect? {
+        guard let superviewFrame = view.superview?.frame else { return nil }
+        return CGRect(x: superviewFrame.minX,
+                      y: superviewFrame.maxY,
+                      width: superviewFrame.maxX,
+                      height: bottomViewHeight)
+    }
+    
+    func transitionBottomViewToState(_ bottomView: UIView, hidden: Bool, animated: Bool = true) {
+        let finalRect: CGRect
+        if hidden {
+            guard let rect = hideBottomViewRect(bottomView) else { return }
+            finalRect = rect
+        } else {
+            guard let rect = showBottomViewRect(bottomView) else { return }
+            finalRect = rect
+        }
+        
+        if !animated {
+            bottomView.frame = finalRect
+            return
+        }
+        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
+            bottomView.frame = finalRect
+        })
+    }
+    
+    func searchButtonClicked(_ bottomView: UIView, animated: Bool = true) {
+        transitionBottomViewToState(bottomView, hidden: !shouldShowBottomView)
+        shouldShowBottomView = !shouldShowBottomView
+    }
 }
