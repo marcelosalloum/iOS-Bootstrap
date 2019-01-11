@@ -216,14 +216,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-6U-Y92">
                                         <rect key="frame" x="79" y="7" width="30" height="30"/>
                                         <state key="normal" title="Title"/>
+                                        <connections>
+                                            <action selector="titleFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="and-ow-Qgq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-Oe-ysP">
                                         <rect key="frame" x="160.5" y="7" width="54" height="30"/>
                                         <state key="normal" title="Authors"/>
+                                        <connections>
+                                            <action selector="authorsFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="vBl-dj-RRf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGR-zU-eDK">
                                         <rect key="frame" x="278" y="7" width="50" height="30"/>
                                         <state key="normal" title="Default"/>
+                                        <connections>
+                                            <action selector="defaultFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="UnU-vc-Qlc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -235,7 +244,7 @@
                                     <constraint firstItem="oGR-zU-eDK" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="WIR-Qd-eTv"/>
                                     <constraint firstAttribute="height" constant="44" id="dOD-gb-Lwc"/>
                                     <constraint firstAttribute="trailing" secondItem="oGR-zU-eDK" secondAttribute="trailing" constant="47" id="m3M-VZ-hRS"/>
-                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AVc-Hk-Z91" secondAttribute="leading" symbolic="YES" id="vyI-2J-2xS"/>
+                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AVc-Hk-Z91" secondAttribute="leading" constant="20" symbolic="YES" id="vyI-2J-2xS"/>
                                 </constraints>
                             </view>
                         </subviews>

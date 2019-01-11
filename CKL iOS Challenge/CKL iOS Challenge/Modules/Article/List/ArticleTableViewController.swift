@@ -16,54 +16,54 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
     let articleTableViewModel = ArticleTableViewModel()
-    var searchController: UISearchController!
     
+    // MARK: - RefreshControl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ArticleTableViewController.pullToRefresh(_:)), for: UIControl.Event.valueChanged)
         return refreshControl
     }()
     
+    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
+        articleTableViewModel.fetchAPIData()
+    }
+    
     // MARK: - Search Controller
-    func initializeSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search the news..."
-        navigationItem.searchController = searchController
         definesPresentationContext = true
-    }
+        return searchController
+    }()
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            articleTableViewModel.filterArticles(searchText)
-            tableView.reloadData()
+            articleTableViewModel.searchTerm = searchText
         }
     }
     
     // MARK: - ViewController
-    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
-        articleTableViewModel.fetchAPIData()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        articleTableViewModel.delegate = self
         tableView.addSubview(self.refreshControl)
+        navigationItem.searchController = searchController
+
+        articleTableViewModel.delegate = self
         articleTableViewModel.setupInitialData()
-        initializeSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        articleTableViewModel.transitionBottomViewToState(bottomView, hidden: true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        articleTableViewModel.transitionBottomViewToState(bottomView, hidden: true, animated: false)
+        articleTableViewModel.transitionBottomViewToState(bottomView, shouldShow: false, animated: false)
         bottomView.isHidden = false
         super.viewDidAppear(animated)
         self.pullToRefresh(refreshControl)
@@ -162,6 +162,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var bottomView: UIView!
     
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
-        articleTableViewModel.searchButtonClicked(bottomView)
+        articleTableViewModel.filterButtonClicked(bottomView)
+    }
+    
+    @IBAction func titleFilterClicked(_ sender: UIButton) {
+        articleTableViewModel.articlesOrder = .title
+    }
+    
+    @IBAction func authorsFilterClicked(_ sender: UIButton) {
+        articleTableViewModel.articlesOrder = .authors
+    }
+    
+    @IBAction func defaultFilterClicked(_ sender: Any) {
+        articleTableViewModel.articlesOrder = .id
     }
 }
