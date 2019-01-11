@@ -34,6 +34,7 @@ class CKLCoreData: NSObject {
 
     // Used by the NSManagedObject extensions and your ptoject
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
     
     // Logging level
     static var logLevel = CKLCoreDateLogLevel.silent
@@ -67,7 +68,7 @@ class CKLCoreData: NSObject {
                 importTag(from: from, toObject: tag)
             }
         default:
-            print("None")
+            print("JSON parser unavailable")
         }
     }
     

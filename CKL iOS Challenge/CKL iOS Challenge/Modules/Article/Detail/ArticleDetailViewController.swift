@@ -38,6 +38,11 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     fileprivate func setupView() {
         guard let imageUrl = articleDetailViewModel.article.imageUrl else { return }
         guard let url = URL(string: imageUrl) else { return }

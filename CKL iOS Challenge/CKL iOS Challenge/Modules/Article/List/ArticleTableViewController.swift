@@ -10,27 +10,31 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
-    
-    // Mark - Article Table Delegate
-    func updateData(articles: [Article], endRefreshing: Bool) {
-        if endRefreshing {
-            refreshControl?.endRefreshing()
-        }
-        self.tableView.reloadData()
-    }
-    
-    func displayError(error: Error, endRefreshing: Bool) {
-        if endRefreshing {
-            refreshControl?.endRefreshing()
-        }
-        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
-    }
+class ArticleTableViewController: UITableViewController, ArticleTableProtocol, UISearchResultsUpdating {
     
     
+    // MARK: - Initializers
     let articleTableViewModel = ArticleTableViewModel()
+    var searchController: UISearchController!
     
-    // MARK - Pull to refresh action
+    // MARK: - Search Controller
+    func initializeSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search the news..."
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            articleTableViewModel.filterArticles(searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    // MARK: - ViewController
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
         articleTableViewModel.fetchAPIData()
     }
@@ -38,8 +42,13 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         articleTableViewModel.delegate = self
-        refreshControl?.programaticallyBeginRefreshing(in: tableView)
         articleTableViewModel.setupInitialData()
+        initializeSearchController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -48,10 +57,18 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         self.pullToRefresh(refreshControl)
     }
     
-    // MARK: - Table view data source
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Data validations
+        guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
+        guard let row = tableView.indexPathForSelectedRow?.row else { return }
+        if row >= articleTableViewModel.articles.count { return }
+        
+        // Article Detail Setup
+        articleDetailViewController.articleDetailViewModel.article = articleTableViewModel.articles[row]
+    }
+    
+    // MARK: - TableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -83,24 +100,16 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
      
         return articleCell
     }
-
-    // MARK - Action - Did Select Row
+    
+    // MARK: - TableViewDelegate:
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "articleDetail", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Data validations
-        guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
-        guard let row = tableView.indexPathForSelectedRow?.row else { return }
-        if row >= articleTableViewModel.articles.count { return }
-        
-        // Article Detail Setup
-        articleDetailViewController.articleDetailViewModel.article = articleTableViewModel.articles[row]
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
-    
-    // MARK - Swipe to Action:
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Get Article:
@@ -120,8 +129,20 @@ class ArticleTableViewController: UITableViewController, ArticleTableDelegate {
         
         return [readStatus]
     }
+
+    // MARK: - ArticleTableProtocol
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    func updateData(articles: [Article], endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func displayError(error: Error, endRefreshing: Bool) {
+        if endRefreshing {
+            refreshControl?.endRefreshing()
+        }
+        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
     }
 }

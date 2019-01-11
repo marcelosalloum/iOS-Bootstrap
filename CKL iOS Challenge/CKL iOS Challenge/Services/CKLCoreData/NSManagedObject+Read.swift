@@ -68,8 +68,8 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
     }
     
-    // Read All
-    fileprivate static func fetchRequestAllInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
+    // Read From Predicate
+    fileprivate static func readObjects(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
         let fetchRequest = fetchRequestForEntity(inContext: context)
         fetchRequest.sortDescriptors = sortDescriptors
@@ -77,15 +77,15 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func allInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
+    static public func readObjects(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
         // Prepare the request
-        let fetchRequest = fetchRequestAllInContext(context, predicate: predicate, sortDescriptors: sortDescriptors)
+        let fetchRequest = readObjects(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncAllInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadObjects(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Prepare the request
-        let fetchRequest = fetchRequestAllInContext(context, predicate: predicate, sortDescriptors: sortDescriptors)
+        let fetchRequest = readObjects(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
         executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
     }
     
