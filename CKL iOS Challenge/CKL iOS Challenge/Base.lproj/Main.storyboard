@@ -212,9 +212,30 @@
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-Hk-Z91">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-6U-Y92">
+                                        <rect key="frame" x="79" y="7" width="30" height="30"/>
+                                        <state key="normal" title="Title"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-Oe-ysP">
+                                        <rect key="frame" x="160.5" y="7" width="54" height="30"/>
+                                        <state key="normal" title="Authors"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGR-zU-eDK">
+                                        <rect key="frame" x="278" y="7" width="50" height="30"/>
+                                        <state key="normal" title="Default"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="CVL-5q-dHZ"/>
+                                    <constraint firstItem="Iii-Oe-ysP" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="Cd3-dh-Jz9"/>
+                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="centerX" secondItem="AVc-Hk-Z91" secondAttribute="trailing" multiplier="1:4" id="IZa-Em-W6K"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iii-Oe-ysP" secondAttribute="centerX" multiplier="4:2" id="SzO-es-uuV"/>
+                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="WIR-Qd-eTv"/>
                                     <constraint firstAttribute="height" constant="44" id="dOD-gb-Lwc"/>
+                                    <constraint firstAttribute="trailing" secondItem="oGR-zU-eDK" secondAttribute="trailing" constant="47" id="m3M-VZ-hRS"/>
+                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AVc-Hk-Z91" secondAttribute="leading" symbolic="YES" id="vyI-2J-2xS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -241,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysJ-0K-NOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="310" y="687"/>
+            <point key="canvasLocation" x="309.60000000000002" y="686.80659670164926"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="2L7-pD-5NS">
