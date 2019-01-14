@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 
 protocol ArticleTableProtocol: class {
@@ -52,22 +53,11 @@ class ArticleTableViewModel: NSObject {
     }
     
     // Get CoreData stored data
-    func setupInitialData(orderBy: ArticlesOrder = .null, endRefefreshing: Bool = true) {
-        let sortAttribute = (orderBy == .null) ? _articlesOrder : orderBy
-        _articlesOrder = sortAttribute
-        
-        let sortDescriptor = NSSortDescriptor(key: orderBy.rawValue, ascending: true)
-        Article.asyncReadObjects(CKLCoreData.context, sortDescriptors: [sortDescriptor], success: { (coreDataArticles) in
-            self.articles = coreDataArticles
-            self.delegate?.updateData(articles: coreDataArticles, endRefreshing: endRefefreshing)
-        })
-    }
-    
-    func filterArticles(_ searchTerm: String?, orderBy: ArticlesOrder = .null, ascending: Bool = true) {
+    func filterArticles(_ searchTerm: String? = nil, orderBy: ArticlesOrder = .null, ascending: Bool = true) {
         // Sorting - ORDER BY
         let sortAttribute = (orderBy == .null) ? _articlesOrder : orderBy
         _articlesOrder = sortAttribute
-        let sortDescriptor = NSSortDescriptor(key: orderBy.rawValue, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: _articlesOrder.rawValue, ascending: true)
         
         // Filtering - WHERE
         var predicate: NSPredicate? = nil
@@ -133,27 +123,30 @@ class ArticleTableViewModel: NSObject {
         isShowingBottomView = !isShowingBottomView
     }
     
-//    func transitionBottomViewToState(_ bottomView: UIView, shouldShow: Bool, animated: Bool = true) {
-//        let finalRect: CGRect
-//        if shouldShow {
-//            guard let rect = showBottomViewRect(bottomView) else { return }
-//            finalRect = rect
-//        } else {
-//            guard let rect = hideBottomViewRect(bottomView) else { return }
-//            finalRect = rect
-//        }
-//
-//        if !animated {
-//            bottomView.frame = finalRect
-//            return
-//        }
-//        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
-//            bottomView.frame = finalRect
-//        })
-//    }
-//
-//    func filterButtonClicked(_ bottomView: UIView, animated: Bool = true) {
-//        transitionBottomViewToState(bottomView, shouldShow: !isShowingBottomView)
-//        isShowingBottomView = !isShowingBottomView
-//    }
+    // MARK: - Online/Offline modes
+    @objc func phoneIsOnline(notification: Notification) {
+        print("Phone is Online")
+        SwiftMessages.hide()
+    }
+    
+    deinit {
+        SwiftMessages.hide()
+    }
+    
+    lazy var offlineMessageView: MessageView = {
+        let view = MessageView.viewFromNib(layout: .statusLine)
+        view.configureTheme(.warning)
+        view.configureDropShadow()
+        view.configureContent(title: "Warning", body: "No Internet Connection")
+        view.layoutMarginAdditions = UIEdgeInsets(top: 2, left: 20, bottom: 2, right: 20)
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        return view
+    }()
+    
+    @objc func phoneIsOffline(notification: Notification) {
+        print("Phone is Offline")
+        var config = SwiftMessages.defaultConfig
+        config.duration = .forever
+        SwiftMessages.show(config: config, view: offlineMessageView)
+    }
 }

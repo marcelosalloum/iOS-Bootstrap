@@ -30,7 +30,7 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Ability to search articles (title and author);
 
-[] Ability to sort articles (date, title and author);
+[x] Ability to sort articles (date, title and author);
 
 [x] Ability to mark articles as read/unread;
 
@@ -44,7 +44,7 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Persistent info;
 
-[-] Design tweaks: animation, icons, etc;
+[x] Design tweaks: animation, icons, etc;
 
 [] Manage network errors;
 

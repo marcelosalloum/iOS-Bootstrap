@@ -12,7 +12,21 @@ import CoreData
 
 
 public class Article: NSManagedObject {
-    func toggleWasRead() {
-        self.wasRead = !self.wasRead
+    func tagsToString() -> String {
+        
+        guard let tags = self.tags else { return "" }
+        if tags.count == 0 { return "" }
+        guard let tagsArray = tags.allObjects as? [Tag] else { return "" }
+        
+        var stringfiedTags = ""
+        for tag in tagsArray {
+            guard let label = tag.label else { continue }
+            if stringfiedTags.count > 0 {
+                stringfiedTags += ", "
+            }
+            stringfiedTags += label
+        }
+        
+        return stringfiedTags
     }
 }
