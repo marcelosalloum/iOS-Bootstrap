@@ -423,6 +423,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_filter" width="75" height="75"/>
+        <image name="icon_filter" width="36" height="36"/>
     </resources>
 </document>
