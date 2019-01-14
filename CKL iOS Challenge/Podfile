@@ -10,5 +10,6 @@ target 'CKL iOS Challenge' do
   pod 'PKHUD', '5.2.0'
   pod 'SwiftyJSON', '4.2.0'
   pod 'Kingfisher', '4.10.0'
-
+  pod 'Fabric', '1.7.12'
+  pod 'Crashlytics', '3.10.8'
 end
