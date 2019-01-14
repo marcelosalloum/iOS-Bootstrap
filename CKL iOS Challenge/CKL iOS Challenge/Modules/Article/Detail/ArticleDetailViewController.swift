@@ -20,10 +20,10 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     
     
     // MARK: - View Model
-    let articleDetailViewModel = ArticleDetailViewModel()
+    let viewModel = ArticleDetailViewModel()
     
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
-        self.articleDetailViewModel.updateReadStatus(!articleDetailViewModel.article.wasRead)
+        self.viewModel.updateReadStatus(!viewModel.article.wasRead)
     }
     
     func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?) {
@@ -33,8 +33,8 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     // MARK - View Controller methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.articleDetailViewModel.updateReadStatus(true)
-        articleDetailViewModel.delegate = self
+        self.viewModel.updateReadStatus(true)
+        viewModel.delegate = self
         setupView()
     }
     
@@ -44,16 +44,16 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     }
     
     fileprivate func setupView() {
-        guard let imageUrl = articleDetailViewModel.article.imageUrl else { return }
+        guard let imageUrl = viewModel.article.imageUrl else { return }
         guard let url = URL(string: imageUrl) else { return }
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: url)
-        titleLabel?.text = articleDetailViewModel.article.title
-        authorLabel?.text = articleDetailViewModel.article.authors
-        contentLabel?.text = articleDetailViewModel.article.content
-        timeLabel?.text = NSDate.timeAgoSince(articleDetailViewModel.article.date)
-        tagsLabel?.text = articleDetailViewModel.article.tagsToString()
+        titleLabel?.text = viewModel.article.title
+        authorLabel?.text = viewModel.article.authors
+        contentLabel?.text = viewModel.article.content
+        timeLabel?.text = NSDate.timeAgoSince(viewModel.article.date)
+        tagsLabel?.text = viewModel.article.tagsToString()
 
-        self.navigationItem.rightBarButtonItem = articleDetailViewModel.barButtonItem(for: articleDetailViewModel.article)
+        self.navigationItem.rightBarButtonItem = viewModel.barButtonItem(for: viewModel.article)
     }
 }

@@ -81,7 +81,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         if row >= viewModel.articles.count { return }
         
         // Article Detail Setup
-        articleDetailViewController.articleDetailViewModel.article = viewModel.articles[row]
+        articleDetailViewController.viewModel.article = viewModel.articles[row]
     }
     
     // MARK: - TableViewDataSource
