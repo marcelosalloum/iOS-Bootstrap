@@ -52,8 +52,8 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
         authorLabel?.text = articleDetailViewModel.article.authors
         contentLabel?.text = articleDetailViewModel.article.content
         timeLabel?.text = NSDate.timeAgoSince(articleDetailViewModel.article.date)
-        //        tagsLabel?.text = article?.tags
-        
+        tagsLabel?.text = articleDetailViewModel.article.tagsToString()
+
         self.navigationItem.rightBarButtonItem = articleDetailViewModel.barButtonItem(for: articleDetailViewModel.article)
     }
 }
