@@ -117,27 +117,43 @@ class ArticleTableViewModel: NSObject {
                       height: bottomViewHeight)
     }
     
-    func transitionBottomViewToState(_ bottomView: UIView, shouldShow: Bool, animated: Bool = true) {
-        let finalRect: CGRect
-        if shouldShow {
-            guard let rect = showBottomViewRect(bottomView) else { return }
-            finalRect = rect
-        } else {
-            guard let rect = hideBottomViewRect(bottomView) else { return }
-            finalRect = rect
-        }
+    func transitionBottomView(_ bottomView: UIView, shouldShow: Bool, layoutConstraint: NSLayoutConstraint, animated: Bool = true) {
+        let constraintConstant: CGFloat = shouldShow ? 0 : -44
         
-        if !animated {
-            bottomView.frame = finalRect
-            return
+        layoutConstraint.constant = constraintConstant
+        if animated {
+            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
+                bottomView.layoutIfNeeded()
+            })
         }
-        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
-            bottomView.frame = finalRect
-        })
     }
     
-    func filterButtonClicked(_ bottomView: UIView, animated: Bool = true) {
-        transitionBottomViewToState(bottomView, shouldShow: !isShowingBottomView)
+    func filterButtonClicked(_ bottomView: UIView, layoutConstraint: NSLayoutConstraint, animated: Bool = true) {
+        transitionBottomView(bottomView, shouldShow: !isShowingBottomView, layoutConstraint: layoutConstraint, animated: animated)
         isShowingBottomView = !isShowingBottomView
     }
+    
+//    func transitionBottomViewToState(_ bottomView: UIView, shouldShow: Bool, animated: Bool = true) {
+//        let finalRect: CGRect
+//        if shouldShow {
+//            guard let rect = showBottomViewRect(bottomView) else { return }
+//            finalRect = rect
+//        } else {
+//            guard let rect = hideBottomViewRect(bottomView) else { return }
+//            finalRect = rect
+//        }
+//
+//        if !animated {
+//            bottomView.frame = finalRect
+//            return
+//        }
+//        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
+//            bottomView.frame = finalRect
+//        })
+//    }
+//
+//    func filterButtonClicked(_ bottomView: UIView, animated: Bool = true) {
+//        transitionBottomViewToState(bottomView, shouldShow: !isShowingBottomView)
+//        isShowingBottomView = !isShowingBottomView
+//    }
 }

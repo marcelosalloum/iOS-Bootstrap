@@ -12,10 +12,11 @@ import Kingfisher
 
 class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
+    @IBOutlet weak var bottomViewConstraintBottom: NSLayoutConstraint!
     
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
-    let articleTableViewModel = ArticleTableViewModel()
+    let viewModel = ArticleTableViewModel()
     
     // MARK: - RefreshControl
     lazy var refreshControl: UIRefreshControl = {
@@ -25,7 +26,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }()
     
     @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
-        articleTableViewModel.fetchAPIData()
+        viewModel.fetchAPIData()
     }
     
     // MARK: - Search Controller
@@ -40,7 +41,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            articleTableViewModel.searchTerm = searchText
+            viewModel.searchTerm = searchText
         }
     }
     
@@ -48,35 +49,39 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TableView
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Refresh Controller
         tableView.addSubview(self.refreshControl)
+        
+        // Search Controller
         navigationItem.searchController = searchController
 
-        articleTableViewModel.delegate = self
-        articleTableViewModel.setupInitialData()
+        // ViewModel
+        viewModel.delegate = self
+        viewModel.setupInitialData()
+        viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
+
+        // Navigation Controller
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        articleTableViewModel.transitionBottomViewToState(bottomView, shouldShow: false, animated: false)
-        bottomView.isHidden = false
-        super.viewDidAppear(animated)
         self.pullToRefresh(refreshControl)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Data validations
         guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
         guard let row = tableView.indexPathForSelectedRow?.row else { return }
-        if row >= articleTableViewModel.articles.count { return }
+        if row >= viewModel.articles.count { return }
         
         // Article Detail Setup
-        articleDetailViewController.articleDetailViewModel.article = articleTableViewModel.articles[row]
+        articleDetailViewController.articleDetailViewModel.article = viewModel.articles[row]
     }
     
     // MARK: - TableViewDataSource
@@ -85,7 +90,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleTableViewModel.articles.count
+        return viewModel.articles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,8 +98,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
         // Retrieve the correspondant article
-        if indexPath.row >= articleTableViewModel.articles.count { return articleCell }
-        let article = articleTableViewModel.articles[indexPath.row]
+        if indexPath.row >= viewModel.articles.count { return articleCell }
+        let article = viewModel.articles[indexPath.row]
 
         // Set-up the cell content
         articleCell.titleLabel.text = article.title
@@ -125,13 +130,13 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Get Article:
-        let article = articleTableViewModel.articles[indexPath.row]
+        let article = viewModel.articles[indexPath.row]
         let initialReadStatus = article.wasRead
         let finalReadStatusText = ArticleState.getText(initialReadStatus: initialReadStatus)
         
         // Setups Button Text
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { tableViewRowAction, indexPath in
-            self.articleTableViewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) {
+            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) {
                 let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
                 articleCell.updateWasReadStatus(initialReadStatus)
                 tableView.reloadRows(at: [indexPath], with: .none)
@@ -162,18 +167,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var bottomView: UIView!
     
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
-        articleTableViewModel.filterButtonClicked(bottomView)
+        viewModel.filterButtonClicked(self.view, layoutConstraint: bottomViewConstraintBottom)
     }
     
     @IBAction func titleFilterClicked(_ sender: UIButton) {
-        articleTableViewModel.articlesOrder = .title
+        viewModel.articlesOrder = .title
     }
     
     @IBAction func authorsFilterClicked(_ sender: UIButton) {
-        articleTableViewModel.articlesOrder = .authors
+        viewModel.articlesOrder = .authors
     }
     
     @IBAction func defaultFilterClicked(_ sender: Any) {
-        articleTableViewModel.articlesOrder = .id
+        viewModel.articlesOrder = .id
     }
 }
