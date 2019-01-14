@@ -155,7 +155,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
-        readStatus.backgroundColor = .blue
+        readStatus.backgroundColor = Color.mainColor()
         
         return [readStatus]
     }

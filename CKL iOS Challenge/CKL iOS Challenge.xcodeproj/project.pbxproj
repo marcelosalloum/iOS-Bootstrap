@@ -29,6 +29,7 @@
 		1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */; };
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
+		1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -63,6 +64,7 @@
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1F9B4A7721ECC61300E5E360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1F9B4A7821ECC69900E5E360 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				1F8BDB4421E53592007A338A /* States.swift */,
 				1F9B4A7421ECC43900E5E360 /* Localizable.strings */,
+				1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			files = (
 				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */,
 				1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */,
+				1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */,
 				1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */,
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,

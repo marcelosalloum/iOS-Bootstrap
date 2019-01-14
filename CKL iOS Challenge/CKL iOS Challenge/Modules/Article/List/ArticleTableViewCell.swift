@@ -24,6 +24,6 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     func updateWasReadStatus(_ wasRead: Bool) {
-        self.backgroundColor = wasRead ? UIColor.white : UIColor.lightGray
+        self.backgroundColor = wasRead ? UIColor.gray5() : UIColor.gray20()
     }
 }
