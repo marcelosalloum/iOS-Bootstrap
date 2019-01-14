@@ -9,6 +9,8 @@
 import UIKit
 import PKHUD
 import Kingfisher
+import SwiftMessages
+
 
 class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
@@ -67,8 +69,19 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 
         // Navigation Controller
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // Offline Handling
+        type(of: self).setupReachability()
+        
+        NotificationCenter.default.addObserver(viewModel, selector: #selector(ArticleTableViewModel.phoneIsOnline(notification:)), name: AppNotifications.PhoneIsOnline, object: nil)
+        NotificationCenter.default.addObserver(viewModel, selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)), name: AppNotifications.PhoneIsOffline, object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(viewModel, name: AppNotifications.PhoneIsOnline, object: nil)
+        NotificationCenter.default.removeObserver(viewModel, name: AppNotifications.PhoneIsOffline, object: nil)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.pullToRefresh(refreshControl)

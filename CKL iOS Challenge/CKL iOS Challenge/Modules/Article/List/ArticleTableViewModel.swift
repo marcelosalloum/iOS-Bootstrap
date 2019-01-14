@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 
 protocol ArticleTableProtocol: class {
@@ -120,5 +121,32 @@ class ArticleTableViewModel: NSObject {
     func filterButtonClicked(_ bottomView: UIView, layoutConstraint: NSLayoutConstraint, animated: Bool = true) {
         transitionBottomView(bottomView, shouldShow: !isShowingBottomView, layoutConstraint: layoutConstraint, animated: animated)
         isShowingBottomView = !isShowingBottomView
+    }
+    
+    // MARK: - Online/Offline modes
+    @objc func phoneIsOnline(notification: Notification) {
+        print("Phone is Online")
+        SwiftMessages.hide()
+    }
+    
+    deinit {
+        SwiftMessages.hide()
+    }
+    
+    lazy var offlineMessageView: MessageView = {
+        let view = MessageView.viewFromNib(layout: .statusLine)
+        view.configureTheme(.warning)
+        view.configureDropShadow()
+        view.configureContent(title: "Warning", body: "No Internet Connection")
+        view.layoutMarginAdditions = UIEdgeInsets(top: 2, left: 20, bottom: 2, right: 20)
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        return view
+    }()
+    
+    @objc func phoneIsOffline(notification: Notification) {
+        print("Phone is Offline")
+        var config = SwiftMessages.defaultConfig
+        config.duration = .forever
+        SwiftMessages.show(config: config, view: offlineMessageView)
     }
 }
