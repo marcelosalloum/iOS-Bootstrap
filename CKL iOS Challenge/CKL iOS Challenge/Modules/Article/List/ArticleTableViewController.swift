@@ -36,7 +36,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search the news..."
+        searchController.searchBar.placeholder = "Search the news...".localized
         definesPresentationContext = true
         return searchController
     }()

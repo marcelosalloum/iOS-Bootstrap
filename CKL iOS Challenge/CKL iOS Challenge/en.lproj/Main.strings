@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "Authors"; ObjectID = "0DG-J2-fNQ"; */
+"0DG-J2-fNQ.text" = "Authors";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "6Kc-xZ-Ucl"; */
+"6Kc-xZ-Ucl.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "FFA-kA-ueH"; */
+"FFA-kA-ueH.title" = "News";
+
+/* Class = "UILabel"; text = "Tags"; ObjectID = "HKR-dG-26V"; */
+"HKR-dG-26V.text" = "Tags";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "IYV-hl-0oR"; */
+"IYV-hl-0oR.text" = "Content";
+
+/* Class = "UIButton"; normalTitle = "Authors"; ObjectID = "Iii-Oe-ysP"; */
+"Iii-Oe-ysP.normalTitle" = "Authors";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "L6G-J6-L0O"; */
+"L6G-J6-L0O.text" = "Time";
+
+/* Class = "UIBarButtonItem"; title = "Mark as read"; ObjectID = "LR6-wb-SSJ"; */
+"LR6-wb-SSJ.title" = "Mark as read";
+
+/* Class = "UILabel"; text = "Authors"; ObjectID = "Zq2-bg-1nD"; */
+"Zq2-bg-1nD.text" = "Authors";
+
+/* Class = "UIButton"; normalTitle = "Title"; ObjectID = "gdF-6U-Y92"; */
+"gdF-6U-Y92.normalTitle" = "Title";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "hGd-QF-n9M"; */
+"hGd-QF-n9M.text" = "Time";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "n0j-0D-Wnn"; */
+"n0j-0D-Wnn.text" = "Time";
+
+/* Class = "UIButton"; normalTitle = "Default"; ObjectID = "oGR-zU-eDK"; */
+"oGR-zU-eDK.normalTitle" = "Default";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "pmL-Zl-Gvk"; */
+"pmL-Zl-Gvk.title" = "Item";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "rEW-Pr-Jxt"; */
+"rEW-Pr-Jxt.text" = "Author";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "xOJ-E0-QFQ"; */
+"xOJ-E0-QFQ.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "y7R-FZ-AY2"; */
+"y7R-FZ-AY2.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "yU6-Zd-kSm"; */
+"yU6-Zd-kSm.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Articles"; ObjectID = "yW4-L6-Wfw"; */
+"yW4-L6-Wfw.title" = "Articles";
