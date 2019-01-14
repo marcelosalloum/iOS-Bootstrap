@@ -62,7 +62,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 
         // ViewModel
         viewModel.delegate = self
-        viewModel.setupInitialData()
+        viewModel.filterArticles()
         viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
 
         // Navigation Controller

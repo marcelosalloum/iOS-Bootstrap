@@ -52,22 +52,11 @@ class ArticleTableViewModel: NSObject {
     }
     
     // Get CoreData stored data
-    func setupInitialData(orderBy: ArticlesOrder = .null, endRefefreshing: Bool = true) {
-        let sortAttribute = (orderBy == .null) ? _articlesOrder : orderBy
-        _articlesOrder = sortAttribute
-        
-        let sortDescriptor = NSSortDescriptor(key: orderBy.rawValue, ascending: true)
-        Article.asyncReadObjects(CKLCoreData.context, sortDescriptors: [sortDescriptor], success: { (coreDataArticles) in
-            self.articles = coreDataArticles
-            self.delegate?.updateData(articles: coreDataArticles, endRefreshing: endRefefreshing)
-        })
-    }
-    
-    func filterArticles(_ searchTerm: String?, orderBy: ArticlesOrder = .null, ascending: Bool = true) {
+    func filterArticles(_ searchTerm: String? = nil, orderBy: ArticlesOrder = .null, ascending: Bool = true) {
         // Sorting - ORDER BY
         let sortAttribute = (orderBy == .null) ? _articlesOrder : orderBy
         _articlesOrder = sortAttribute
-        let sortDescriptor = NSSortDescriptor(key: orderBy.rawValue, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: _articlesOrder.rawValue, ascending: true)
         
         // Filtering - WHERE
         var predicate: NSPredicate? = nil
@@ -132,28 +121,4 @@ class ArticleTableViewModel: NSObject {
         transitionBottomView(bottomView, shouldShow: !isShowingBottomView, layoutConstraint: layoutConstraint, animated: animated)
         isShowingBottomView = !isShowingBottomView
     }
-    
-//    func transitionBottomViewToState(_ bottomView: UIView, shouldShow: Bool, animated: Bool = true) {
-//        let finalRect: CGRect
-//        if shouldShow {
-//            guard let rect = showBottomViewRect(bottomView) else { return }
-//            finalRect = rect
-//        } else {
-//            guard let rect = hideBottomViewRect(bottomView) else { return }
-//            finalRect = rect
-//        }
-//
-//        if !animated {
-//            bottomView.frame = finalRect
-//            return
-//        }
-//        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
-//            bottomView.frame = finalRect
-//        })
-//    }
-//
-//    func filterButtonClicked(_ bottomView: UIView, animated: Bool = true) {
-//        transitionBottomViewToState(bottomView, shouldShow: !isShowingBottomView)
-//        isShowingBottomView = !isShowingBottomView
-//    }
 }
