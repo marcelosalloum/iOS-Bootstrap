@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-6U-Y92">
-                                        <rect key="frame" x="77" y="5.5" width="34" height="33"/>
+                                        <rect key="frame" x="0.0" y="5.5" width="125" height="33"/>
                                         <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Title"/>
                                         <connections>
@@ -139,7 +139,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-Oe-ysP">
-                                        <rect key="frame" x="156" y="5.5" width="63" height="33"/>
+                                        <rect key="frame" x="125" y="5.5" width="125" height="33"/>
                                         <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Authors"/>
                                         <connections>
@@ -154,7 +154,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGR-zU-eDK">
-                                        <rect key="frame" x="271" y="5.5" width="57" height="33"/>
+                                        <rect key="frame" x="250" y="5.5" width="125" height="33"/>
                                         <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Default"/>
                                         <connections>
@@ -165,16 +165,18 @@
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hSD-XA-7Ey" firstAttribute="leading" secondItem="AVc-Hk-Z91" secondAttribute="leading" id="7ci-O4-EJD"/>
-                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="CVL-5q-dHZ"/>
                                     <constraint firstItem="Iii-Oe-ysP" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="Cd3-dh-Jz9"/>
+                                    <constraint firstItem="Iii-Oe-ysP" firstAttribute="leading" secondItem="gdF-6U-Y92" secondAttribute="trailing" id="D1c-R8-T3h"/>
+                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="leading" secondItem="Iii-Oe-ysP" secondAttribute="trailing" id="Dwd-0D-a9C"/>
                                     <constraint firstItem="hSD-XA-7Ey" firstAttribute="top" secondItem="AVc-Hk-Z91" secondAttribute="top" id="HWR-By-wtb"/>
-                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="centerX" secondItem="AVc-Hk-Z91" secondAttribute="trailing" multiplier="1:4" id="IZa-Em-W6K"/>
                                     <constraint firstAttribute="trailing" secondItem="hSD-XA-7Ey" secondAttribute="trailing" constant="-278" id="Ny4-Jd-DWc"/>
-                                    <constraint firstAttribute="trailing" secondItem="Iii-Oe-ysP" secondAttribute="centerX" multiplier="4:2" id="SzO-es-uuV"/>
+                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="OuB-ai-QMR"/>
                                     <constraint firstItem="oGR-zU-eDK" firstAttribute="centerY" secondItem="AVc-Hk-Z91" secondAttribute="centerY" id="WIR-Qd-eTv"/>
                                     <constraint firstAttribute="height" constant="44" id="dOD-gb-Lwc"/>
-                                    <constraint firstAttribute="trailing" secondItem="oGR-zU-eDK" secondAttribute="trailing" constant="47" id="m3M-VZ-hRS"/>
-                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AVc-Hk-Z91" secondAttribute="leading" constant="20" symbolic="YES" id="vyI-2J-2xS"/>
+                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="leading" secondItem="AVc-Hk-Z91" secondAttribute="leading" id="eID-Y3-YO5"/>
+                                    <constraint firstItem="gdF-6U-Y92" firstAttribute="width" secondItem="AVc-Hk-Z91" secondAttribute="width" multiplier="1:3" id="gPV-By-cYy"/>
+                                    <constraint firstItem="oGR-zU-eDK" firstAttribute="width" secondItem="AVc-Hk-Z91" secondAttribute="width" multiplier="1:3" id="jJp-eE-7Mw"/>
+                                    <constraint firstItem="Iii-Oe-ysP" firstAttribute="width" secondItem="AVc-Hk-Z91" secondAttribute="width" multiplier="1:3" id="mOa-Aq-ugB"/>
                                 </constraints>
                             </view>
                         </subviews>
