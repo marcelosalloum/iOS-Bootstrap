@@ -149,7 +149,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         // Setups Button Text
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { tableViewRowAction, indexPath in
-            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) {
+            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) { completion in
+                if case .failure(_) = completion { return }
                 let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
                 articleCell.updateWasReadStatus(initialReadStatus)
                 tableView.reloadRows(at: [indexPath], with: .none)

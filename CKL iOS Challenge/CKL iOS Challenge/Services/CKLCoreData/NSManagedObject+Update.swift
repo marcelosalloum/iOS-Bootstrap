@@ -15,7 +15,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     /*
      Import from JSON
      */
-    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, success: (([Self]) -> Void), failure: ((Error) -> Void)? = nil, idKey: String = "id", save: Bool = true) {
+    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (Completion<Self>) -> (), idKey: String = "id", save: Bool = true) {
         // Input validations
         guard let jsonArray = jsonArray else { return }
         if jsonArray.isEmpty { return }
@@ -33,7 +33,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
             
             // Error handling [GET or CREATE]
             if let error = error {
-                failure?(error)
+                completion(.failure(error: error))
                 return
             }
             guard let object = getOrCreateObj else { return }
@@ -42,27 +42,27 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         }
         
         // Context Save
-        
         if (save) {
-//            asyncSave(context, {
-//                success(objectsArray)
-//            }, failure: failure)
-            asyncSave(context, successCallback: {
-                success(objectsArray)
-            }, failure: failure)
+            asyncSave(context) { (inwardCompletion) in
+                switch inwardCompletion {
+                case .success(objects: _):
+                    completion(Completion<Self>.success(objects: objectsArray))
+                case .failure(error: let error):
+                    completion(Completion<Self>.failure(error: error))
+                }
+            }
         } else {
-            success(objectsArray)
+            completion(Completion<Self>.success(objects: objectsArray))
         }
     }
     
-    static func asyncSave(_ context: NSManagedObjectContext, successCallback: (() -> ()), failure: ((Error) -> Void)? = nil) {
+    static func asyncSave(_ context: NSManagedObjectContext, completion: (Completion<Self>) -> ()) {
         do {
             try context.save()
-            successCallback()
+            completion(.success(objects: nil))
         } catch let error as NSError {
-            // Error handling [Context Save]
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            failure?(error)
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            completion(.failure(error: error))
         }
     }
     

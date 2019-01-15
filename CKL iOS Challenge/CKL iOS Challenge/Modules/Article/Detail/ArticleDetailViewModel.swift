@@ -22,7 +22,8 @@ class ArticleDetailViewModel: NSObject {
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
         let context = CKLCoreData.context
-        Article.asyncSave(context, successCallback: {
+        Article.asyncSave(context, completion: { completion in
+            if case .failure(_) = completion { return }
             let newRightBarButtonItem = barButtonItem(for: article)
             self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
         })

@@ -38,7 +38,7 @@ class CKLCoreData: NSObject {
     // Logging level
     static var logLevel = CKLCoreDateLogLevel.silent
     
-    static func log(logText: Any?) {
+    static func log(_ logText: Any?) {
         switch logLevel {
         case .debug:
             guard let text = logText else { return }
@@ -49,11 +49,6 @@ class CKLCoreData: NSObject {
         }
     }
 
-//    func registerJSONMapping<T>(t: T.Type, dict: [String: String]?) -> Void {
-//        let dictKey: String = String(describing: t)
-//        jsonMappingDicts[dictKey] = dict
-//    }
-    
     // TODO: think of a more ellegant way to do this
     func importJSON(from: JSON, toObject: NSManagedObject) {
         let objectClass: String = String(describing: type(of: toObject))
