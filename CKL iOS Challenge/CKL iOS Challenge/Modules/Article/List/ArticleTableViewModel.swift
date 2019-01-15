@@ -125,7 +125,6 @@ class ArticleTableViewModel: NSObject {
     
     // MARK: - Online/Offline modes
     @objc func phoneIsOnline(notification: Notification) {
-        print("Phone is Online")
         SwiftMessages.hide()
     }
     
@@ -137,14 +136,13 @@ class ArticleTableViewModel: NSObject {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.configureTheme(.warning)
         view.configureDropShadow()
-        view.configureContent(title: "Warning", body: "No Internet Connection")
+        view.configureContent(title: "Warning".localized, body: "No Internet Connection".localized)
         view.layoutMarginAdditions = UIEdgeInsets(top: 2, left: 20, bottom: 2, right: 20)
         (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
         return view
     }()
     
     @objc func phoneIsOffline(notification: Notification) {
-        print("Phone is Offline")
         var config = SwiftMessages.defaultConfig
         config.duration = .forever
         SwiftMessages.show(config: config, view: offlineMessageView)

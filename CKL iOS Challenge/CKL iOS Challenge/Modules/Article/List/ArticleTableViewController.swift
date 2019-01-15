@@ -36,7 +36,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search the news..."
+        searchController.searchBar.placeholder = "Search the news...".localized
         definesPresentationContext = true
         return searchController
     }()
@@ -155,7 +155,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
-        readStatus.backgroundColor = .blue
+        readStatus.backgroundColor = Color.mainColor()
         
         return [readStatus]
     }
