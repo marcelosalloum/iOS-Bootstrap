@@ -17,6 +17,11 @@ struct APIPaths {
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
+enum Completion<Object> {
+    case success(objects: [Object])
+    case failure(error: Error)
+}
+
 
 class RestAPI: NSObject {
     
