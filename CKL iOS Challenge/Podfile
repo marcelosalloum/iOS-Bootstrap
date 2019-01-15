@@ -13,4 +13,5 @@ target 'CKL iOS Challenge' do
   pod 'Fabric', '1.7.12'
   pod 'Crashlytics', '3.10.8'
   pod 'SwiftMessages', '6.0.0'
+  pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'
 end
