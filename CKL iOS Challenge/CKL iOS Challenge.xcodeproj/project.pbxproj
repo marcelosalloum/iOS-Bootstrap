@@ -30,6 +30,32 @@
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
 		1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */; };
+		1F9B4A8221ED3F3700E5E360 /* Colfax-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */; };
+		1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */; };
+		1F9B4A8421ED3F3700E5E360 /* Colfax-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */; };
+		1F9B4A9021ED3F4700E5E360 /* ProximaNova-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */; };
+		1F9B4A9121ED3F4700E5E360 /* ProximaNova-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */; };
+		1F9B4A9221ED3F4700E5E360 /* ProximaNova-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */; };
+		1F9B4A9321ED3F4700E5E360 /* ProximaNova-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */; };
+		1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */; };
+		1F9B4A9521ED3F4700E5E360 /* ProximaNova-Extra-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */; };
+		1F9B4A9621ED3F4700E5E360 /* ProximaNova-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */; };
+		1F9B4A9721ED3F4700E5E360 /* ProximaNova-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */; };
+		1F9B4A9821ED3F4700E5E360 /* ProximaNova-Regular-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */; };
+		1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */; };
+		1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */; };
+		1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */; };
+		1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */; };
+		1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA021ED522100E5E360 /* Brandon_med.otf */; };
+		1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */; };
+		1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */; };
+		1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA321ED522100E5E360 /* Brandon_light.otf */; };
+		1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */; };
+		1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */; };
+		1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */; };
+		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
+		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
+		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -65,6 +91,32 @@
 		1F9B4A7721ECC61300E5E360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1F9B4A7821ECC69900E5E360 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Medium.ttf"; sourceTree = "<group>"; };
+		1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Regular.ttf"; sourceTree = "<group>"; };
+		1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.ttf"; sourceTree = "<group>"; };
+		1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Extra-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.ttf"; sourceTree = "<group>"; };
+		1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.ttf"; sourceTree = "<group>"; };
+		1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med_it.otf; sourceTree = "<group>"; };
+		1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld.otf; sourceTree = "<group>"; };
+		1F9B4AA021ED522100E5E360 /* Brandon_med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med.otf; sourceTree = "<group>"; };
+		1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light_it.otf; sourceTree = "<group>"; };
+		1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg.otf; sourceTree = "<group>"; };
+		1F9B4AA321ED522100E5E360 /* Brandon_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light.otf; sourceTree = "<group>"; };
+		1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk_it.otf; sourceTree = "<group>"; };
+		1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg_it.otf; sourceTree = "<group>"; };
+		1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin.otf; sourceTree = "<group>"; };
+		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
+		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
+		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -176,6 +228,7 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B4A7C21ED3F0500E5E360 /* Resources */,
 				1F86B9AD21E77ABA0059D2CB /* Services */,
 				1F8BDB4321E5356A007A338A /* Constants */,
 				1FDC4A1221E4C89F0064AC13 /* Extensions */,
@@ -184,7 +237,6 @@
 				1F86B9AB21E77A430059D2CB /* Modules */,
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
-				1F88EFF121D5766900275972 /* Assets.xcassets */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
 			);
@@ -216,6 +268,72 @@
 				1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		1F9B4A7C21ED3F0500E5E360 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A7D21ED3F1A00E5E360 /* Fonts */,
+				1F88EFF121D5766900275972 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1F9B4A7D21ED3F1A00E5E360 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A9D21ED522100E5E360 /* Brandon */,
+				1F9B4A8521ED3F4600E5E360 /* ProximaNova */,
+				1F9B4A7E21ED3F2100E5E360 /* Colfax */,
+				1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1F9B4A7E21ED3F2100E5E360 /* Colfax */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */,
+				1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */,
+				1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */,
+			);
+			path = Colfax;
+			sourceTree = "<group>";
+		};
+		1F9B4A8521ED3F4600E5E360 /* ProximaNova */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */,
+				1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */,
+				1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */,
+				1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */,
+				1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */,
+				1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */,
+				1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */,
+				1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */,
+				1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */,
+				1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */,
+			);
+			path = ProximaNova;
+			sourceTree = "<group>";
+		};
+		1F9B4A9D21ED522100E5E360 /* Brandon */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */,
+				1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */,
+				1F9B4AA021ED522100E5E360 /* Brandon_med.otf */,
+				1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */,
+				1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */,
+				1F9B4AA321ED522100E5E360 /* Brandon_light.otf */,
+				1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */,
+				1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */,
+				1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */,
+				1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */,
+				1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */,
+				1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */,
+			);
+			path = Brandon;
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
@@ -308,10 +426,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9B4A9821ED3F4700E5E360 /* ProximaNova-Regular-Italic.ttf in Resources */,
 				1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */,
+				1F9B4A9321ED3F4700E5E360 /* ProximaNova-Semibold.ttf in Resources */,
+				1F9B4A9521ED3F4700E5E360 /* ProximaNova-Extra-Bold.ttf in Resources */,
+				1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */,
+				1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */,
+				1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */,
+				1F9B4A8421ED3F3700E5E360 /* Colfax-Bold.ttf in Resources */,
+				1F9B4A9021ED3F4700E5E360 /* ProximaNova-Light.ttf in Resources */,
 				1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */,
+				1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */,
+				1F9B4A9121ED3F4700E5E360 /* ProximaNova-Bold.ttf in Resources */,
 				1F88EFF221D5766900275972 /* Assets.xcassets in Resources */,
+				1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */,
+				1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */,
+				1F9B4A9221ED3F4700E5E360 /* ProximaNova-Bold-Italic.ttf in Resources */,
+				1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */,
+				1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */,
+				1F9B4A8221ED3F3700E5E360 /* Colfax-Medium.ttf in Resources */,
+				1F9B4A9621ED3F4700E5E360 /* ProximaNova-Regular.ttf in Resources */,
+				1F9B4A9721ED3F4700E5E360 /* ProximaNova-Black.ttf in Resources */,
+				1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */,
+				1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */,
+				1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */,
+				1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */,
+				1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */,
+				1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */,
 				1F88EFED21D5766900275972 /* Main.storyboard in Resources */,
+				1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +556,7 @@
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
+				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
 				1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */,
 				1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,

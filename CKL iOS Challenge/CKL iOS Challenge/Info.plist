@@ -55,5 +55,33 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>ProximaNova-Black.ttf</string>
+        <string>ProximaNova-Bold.ttf</string>
+        <string>ProximaNova-Bold-Italic.ttf</string>
+        <string>ProximaNova-Extra-Bold.ttf</string>
+        <string>ProximaNova-Light-Italic.ttf</string>
+        <string>ProximaNova-Light.ttf</string>
+        <string>ProximaNova-Regular-Italic.ttf</string>
+        <string>ProximaNova-Regular.ttf</string>
+        <string>ProximaNova-Semibold-Italic.ttf</string>
+        <string>ProximaNova-Semibold.ttf</string>
+        <string>Colfax-Regular.ttf</string>
+        <string>Colfax-Medium.ttf</string>
+        <string>Colfax-Bold.ttf</string>
+        <string>Brandon_bld.otf</string>
+        <string>Brandon_bld_it.otf</string>
+        <string>Brandon_blk.otf</string>
+        <string>Brandon_blk_it.otf</string>
+        <string>Brandon_light.otf</string>
+        <string>Brandon_light_it.otf</string>
+        <string>Brandon_med.otf</string>
+        <string>Brandon_med_it.otf</string>
+        <string>Brandon_reg.otf</string>
+        <string>Brandon_reg_it.otf</string>
+        <string>Brandon_thin.otf</string>
+        <string>Brandon_thin_it.otf</string>
+    </array>
 </dict>
 </plist>
