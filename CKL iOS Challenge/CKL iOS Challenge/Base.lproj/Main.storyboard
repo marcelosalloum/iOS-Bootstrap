@@ -9,6 +9,20 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Colfax-Bold.ttf">
+            <string>Colfax-Bold</string>
+        </array>
+        <array key="Colfax-Regular.ttf">
+            <string>Colfax-Regular</string>
+        </array>
+        <array key="ProximaNova-Light.ttf">
+            <string>ProximaNova-Light</string>
+        </array>
+        <array key="ProximaNova-Regular.ttf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="Slg-79-mzh">
@@ -18,6 +32,12 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.20392157137393951" green="0.21176470816135406" blue="0.24705882370471954" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.20392157137393951" green="0.21176470816135406" blue="0.24705882370471954" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="SBW-QV-xEd" kind="relationship" relationship="rootViewController" id="Ylm-6g-Dhe"/>
@@ -155,15 +175,15 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOJ-E0-QFQ">
-                                                    <rect key="frame" x="108" y="8.5" width="36.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="108" y="8.5" width="37" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="Colfax-Bold" family="Colfax" pointSize="17"/>
+                                                    <color key="textColor" red="0.20392157137393951" green="0.21176470816135406" blue="0.24705882370471954" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6G-J6-L0O">
                                                     <rect key="frame" x="108" y="73.5" width="30" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
+                                                    <color key="textColor" red="0.48235294222831726" green="0.48235294222831726" blue="0.5058823823928833" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82K-gs-2uN">
@@ -176,7 +196,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DG-J2-fNQ">
                                                     <rect key="frame" x="172" y="73.5" width="47.5" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
                                                     <color key="textColor" red="0.14117647707462311" green="0.40392157435417175" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -211,14 +231,16 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-6U-Y92">
-                                        <rect key="frame" x="79" y="7" width="30" height="30"/>
+                                        <rect key="frame" x="77" y="5.5" width="34" height="33"/>
+                                        <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Title"/>
                                         <connections>
                                             <action selector="titleFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="and-ow-Qgq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-Oe-ysP">
-                                        <rect key="frame" x="160.5" y="7" width="54" height="30"/>
+                                        <rect key="frame" x="156" y="5.5" width="63" height="33"/>
+                                        <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Authors"/>
                                         <connections>
                                             <action selector="authorsFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="vBl-dj-RRf"/>
@@ -232,7 +254,8 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGR-zU-eDK">
-                                        <rect key="frame" x="278" y="7" width="50" height="30"/>
+                                        <rect key="frame" x="271" y="5.5" width="57" height="33"/>
+                                        <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Default"/>
                                         <connections>
                                             <action selector="defaultFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="UnU-vc-Qlc"/>
@@ -269,7 +292,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="News" id="FFA-kA-ueH">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="icon_filter" id="yU6-Zd-kSm">
-                            <color key="tintColor" red="0.14117647707462311" green="0.40392157435417175" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="filterButtonClicked:" destination="SBW-QV-xEd" id="Ne6-c3-a06"/>
                             </connections>
@@ -298,7 +320,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tq7-JW-ytv">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="359.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iib-xc-x4v">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
@@ -307,19 +329,19 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kc-xZ-Ucl">
-                                                <rect key="frame" x="8" y="261" width="359" height="23"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="8" y="258" width="359" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Colfax-Bold" family="Colfax" pointSize="17"/>
+                                                <color key="textColor" red="0.20392157137393951" green="0.21176470816135406" blue="0.24705882370471954" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-QF-n9M">
-                                                <rect key="frame" x="8" y="300" width="30" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <rect key="frame" x="8" y="294.5" width="30" height="16"/>
+                                                <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
                                                 <color key="textColor" red="0.48235294222831726" green="0.48235294222831726" blue="0.5058823823928833" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-1w-Cou">
-                                                <rect key="frame" x="46" y="299.5" width="2" height="17"/>
+                                                <rect key="frame" x="46" y="294" width="2" height="17"/>
                                                 <color key="backgroundColor" red="0.48235294222831726" green="0.48235294222831726" blue="0.5058823823928833" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="w59-GL-FhA"/>
@@ -327,9 +349,9 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEW-Pr-Jxt" customClass="PaddingLabel" customModule="CKL_iOS_Challenge" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="211" width="375" height="34"/>
+                                                <rect key="frame" x="0.0" y="211" width="375" height="31"/>
                                                 <color key="backgroundColor" red="0.92186309858672744" green="0.93099045599847718" blue="0.93099045599847718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -348,14 +370,14 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-dG-26V">
-                                                <rect key="frame" x="56" y="300" width="29" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <rect key="frame" x="56" y="294.5" width="28.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
                                                 <color key="textColor" red="0.1411764771" green="0.40392157439999998" blue="0.91764706370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYV-hl-0oR">
-                                                <rect key="frame" x="8" y="332" width="359" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="334.5" width="359" height="17"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -371,6 +393,7 @@
                                             <constraint firstItem="6G0-1w-Cou" firstAttribute="leading" secondItem="hGd-QF-n9M" secondAttribute="trailing" constant="8" id="I5U-SA-ZSh"/>
                                             <constraint firstItem="hGd-QF-n9M" firstAttribute="leading" secondItem="tq7-JW-ytv" secondAttribute="leading" constant="8" id="NQA-kM-4He"/>
                                             <constraint firstAttribute="trailing" secondItem="iib-xc-x4v" secondAttribute="trailing" id="Qe7-tX-CWg"/>
+                                            <constraint firstAttribute="bottom" secondItem="IYV-hl-0oR" secondAttribute="bottom" constant="8" id="S3n-Of-XEd"/>
                                             <constraint firstItem="6Kc-xZ-Ucl" firstAttribute="top" secondItem="rEW-Pr-Jxt" secondAttribute="bottom" constant="16" id="WJE-Hb-ZWh"/>
                                             <constraint firstItem="HKR-dG-26V" firstAttribute="leading" secondItem="6G0-1w-Cou" secondAttribute="trailing" constant="8" id="Y0r-EA-zwd"/>
                                             <constraint firstAttribute="trailing" secondItem="rEW-Pr-Jxt" secondAttribute="trailing" id="avT-Xb-loW"/>
@@ -380,10 +403,11 @@
                                             <constraint firstItem="iib-xc-x4v" firstAttribute="leading" secondItem="tq7-JW-ytv" secondAttribute="leading" id="luw-eo-8To"/>
                                             <constraint firstItem="iib-xc-x4v" firstAttribute="top" secondItem="tq7-JW-ytv" secondAttribute="top" id="sdV-ki-wSf"/>
                                             <constraint firstItem="hGd-QF-n9M" firstAttribute="top" secondItem="6Kc-xZ-Ucl" secondAttribute="bottom" constant="16" id="woN-SP-Q59"/>
-                                            <constraint firstItem="IYV-hl-0oR" firstAttribute="top" secondItem="hGd-QF-n9M" secondAttribute="bottom" constant="16" id="x7u-qf-5xT"/>
+                                            <constraint firstItem="IYV-hl-0oR" firstAttribute="top" secondItem="hGd-QF-n9M" secondAttribute="bottom" constant="24" id="x7u-qf-5xT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.91764706373214722" green="0.92941176891326904" blue="0.95686274766921997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tq7-JW-ytv" secondAttribute="trailing" id="1BL-mn-gjg"/>
                                     <constraint firstItem="tq7-JW-ytv" firstAttribute="width" secondItem="frU-nG-RCb" secondAttribute="width" id="GlZ-IQ-tcX"/>
