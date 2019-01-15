@@ -45,10 +45,14 @@ class ArticleTableViewModel: NSObject {
 
     // GET API Data
     func fetchAPIData() {
-        RestAPI.getArticlesList({ (_) in
-            self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-        }) {  (error) in
-            self.delegate?.displayError(error: error, endRefreshing: true)
+        RestAPI.getArticlesList { (apiCompletion) in
+            switch apiCompletion {
+            case .success(objects: _):
+                self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+            case .failure(error: let error):
+                self.delegate?.displayError(error: error, endRefreshing: true)
+            }
+            
         }
     }
     

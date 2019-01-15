@@ -44,4 +44,28 @@ class RestAPI: NSObject {
             }
         }
     }
+    
+    static func getArticlesList(_ completion: @escaping (Completion<Article>) -> Void) {
+        Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
+            switch response.result {
+            case .success:
+                if let jsonValue = response.result.value {
+                    let swiftyJSONVar = JSON(jsonValue)
+                    
+                    // TODO: send to a separateFile:
+                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                    Article.asyncImportObjects(swiftyJSONVar.array, context: context, success: { articles in
+                        completion(Completion<Article>.success(objects: articles))
+                    }, failure: { error in
+                        completion(Completion<Article>.failure(error: error))
+                    }, idKey: "id")
+                } else {
+                    completion(Completion<Article>.success(objects: []))
+                }
+            case .failure(let error):
+                print(error)
+                completion(Completion<Article>.failure(error: error))
+            }
+        }
+    }
 }
