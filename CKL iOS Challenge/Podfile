@@ -6,11 +6,12 @@ target 'CKL iOS Challenge' do
   use_frameworks!
 
   # Makes REST requests:
-  pod 'Alamofire', '4.7.3'
-  pod 'PKHUD', '5.2.0'
-  pod 'SwiftyJSON', '4.2.0'
-  pod 'Kingfisher', '4.10.0'
-  pod 'Fabric', '1.7.12'
-  pod 'Crashlytics', '3.10.8'
-  pod 'SwiftMessages', '6.0.0'
+  pod 'Alamofire', '4.7.3'                  # Deals with API requests
+  pod 'PKHUD', '5.2.0'                      # HUD: Head-Up Display
+  pod 'SwiftyJSON', '4.2.0'                 # Helps dealinh with JSON
+  pod 'Kingfisher', '4.10.0'                # Image caching
+  pod 'Fabric', '1.7.12'                    # Beta distribution
+  pod 'Crashlytics', '3.10.8'               # Crash reports
+  pod 'SwiftMessages', '6.0.0'              # Display Status Bar Messages
+  pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'   # Analytics
 end

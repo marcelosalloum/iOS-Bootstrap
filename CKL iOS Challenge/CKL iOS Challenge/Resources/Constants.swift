@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Constants {
+    static let flurryAPIKey: String = "WMFS8685YKR8J5Z4XQ5V"
+}
+
 struct ArticleState {
     static let markRead: String = "Mark as read"
     static let markUnread: String = "Mark as unread"
