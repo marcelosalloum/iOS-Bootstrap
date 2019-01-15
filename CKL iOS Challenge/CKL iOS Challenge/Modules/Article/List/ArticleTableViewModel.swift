@@ -45,10 +45,14 @@ class ArticleTableViewModel: NSObject {
 
     // GET API Data
     func fetchAPIData() {
-        RestAPI.getArticlesList({ (_) in
-            self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-        }) {  (error) in
-            self.delegate?.displayError(error: error, endRefreshing: true)
+        RestAPI.getArticlesList { (apiCompletion) in
+            switch apiCompletion {
+            case .success(objects: _):
+                self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+            case .failure(error: let error):
+                self.delegate?.displayError(error: error, endRefreshing: true)
+            }
+            
         }
     }
     
@@ -80,11 +84,11 @@ class ArticleTableViewModel: NSObject {
     }
     
     // Update the read status in the CoreData (this is currently only saved locally)
-    func updateReadStatus(finalReadState: Bool, article: Article?, success: (() -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((Completion<Article>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = CKLCoreData.context
-        Article.asyncSave(context, successCallback: success)
+        Article.asyncSave(context, completion: completion)
     }
     
     // MARK: Animating Botton Bar

@@ -17,10 +17,15 @@ struct APIPaths {
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
+enum Completion<Object> {
+    case success(objects: [Object]?)
+    case failure(error: Error)
+}
+
 
 class RestAPI: NSObject {
     
-    static func getArticlesList(_ success: @escaping (([Article]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static func getArticlesList(_ completion: @escaping (Completion<Article>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
@@ -29,13 +34,14 @@ class RestAPI: NSObject {
                     
                     // TODO: send to a separateFile:
                     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                    Article.asyncImportObjects(swiftyJSONVar.array, context: context, success: success, failure: failure, idKey: "id")
+                    Article.asyncImportObjects(swiftyJSONVar.array, context: context, completion: completion, idKey: "id")
                 } else {
-                    success([])
+                    completion(Completion<Article>.success(objects: []))
+                    print("Method **getArticlesList** got empty results from GET Request to the API")
                 }
             case .failure(let error):
                 print(error)
-                failure?(error)
+                completion(Completion<Article>.failure(error: error))
             }
         }
     }
