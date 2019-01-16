@@ -58,7 +58,10 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     static func asyncSave(_ context: NSManagedObjectContext, completion: (Completion<Self>) -> ()) {
         do {
-            try context.save()
+            if context.hasChanges {
+                try context.save()
+                CKLCoreData.log("WARNING, variable \"CONTEXT\" is empty")
+            }
             completion(.success(objects: nil))
         } catch let error as NSError {
             CKLCoreData.log("ERROR: \(error.localizedDescription)")
