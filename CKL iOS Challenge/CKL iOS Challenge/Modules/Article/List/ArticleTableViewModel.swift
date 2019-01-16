@@ -75,7 +75,7 @@ class ArticleTableViewModel: NSObject {
         }
 
         do {
-            let articles = try Article.readObjects(CKLCoreData.context, predicate: predicate, sortDescriptors: [sortDescriptor])
+            let articles = try Article.readAll(CKLCoreData.context, predicate: predicate, sortDescriptors: [sortDescriptor])
             self.articles = articles
             self.delegate?.updateData(articles: articles, endRefreshing: true)
         } catch let e as NSError {
