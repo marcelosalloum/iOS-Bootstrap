@@ -20,6 +20,7 @@ extension NSManagedObject: CKLCoreDataProtocol {
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     
+    // MARK: - READ SYNC
     static public func fetchRequestForEntity(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()

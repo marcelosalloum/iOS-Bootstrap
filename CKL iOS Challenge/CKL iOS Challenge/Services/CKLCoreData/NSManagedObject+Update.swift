@@ -61,7 +61,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
             try context.save()
             completion(.success(objects: nil))
         } catch let error as NSError {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
             completion(.failure(error: error))
         }
     }

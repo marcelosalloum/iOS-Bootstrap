@@ -36,7 +36,7 @@ class CKLCoreData: NSObject {
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // Logging level
-    static var logLevel = CKLCoreDateLogLevel.silent
+    static var logLevel = CKLCoreDateLogLevel.debug
     
     static func log(_ logText: Any?) {
         switch logLevel {
@@ -100,7 +100,7 @@ class CKLCoreData: NSObject {
                 toObject.addToTags(tagsSet)
             } catch let error as NSError {
                 // Error handling [Context Save]
-                print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+                CKLCoreData.log("ERROR: \(error.localizedDescription)")
             }
         }
     }

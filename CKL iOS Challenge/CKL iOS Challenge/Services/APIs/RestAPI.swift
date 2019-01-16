@@ -32,7 +32,6 @@ class RestAPI: NSObject {
                 if let jsonValue = response.result.value {
                     let swiftyJSONVar = JSON(jsonValue)
                     
-                    // TODO: send to a separateFile:
                     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                     Article.asyncImportObjects(swiftyJSONVar.array, context: context, completion: completion, idKey: "id")
                 } else {

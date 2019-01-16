@@ -32,7 +32,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         do {
             fetchedObjects = try fetchInContext(context, attribute: attribute, value: value, sortDescriptors: nil)
         } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
             return (object, getOrCreate, error)
         }
         
