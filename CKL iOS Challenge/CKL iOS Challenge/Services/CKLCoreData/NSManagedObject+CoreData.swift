@@ -10,6 +10,12 @@ import Foundation
 import CoreData
 
 
+public enum AwesomeDataResult<Object> {
+    case success(objectList: [Object]?)
+    case failure(error: Error)
+}
+
+
 public protocol CKLCoreDataProtocol {
 }
 
@@ -27,19 +33,21 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func executeAsyncFetchRequest(inContext context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    // MARK: - READ ASYNC
+    static public func asyncFetchRequest(inContext context: NSManagedObjectContext,
+                                                fetchRequest: NSFetchRequest<Self>,
+                                                completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
             if let fetchedObjects = asyncFetchResult.finalResult {
-                success(fetchedObjects)
+                completion(.success(objectList: fetchedObjects))
             }
         }
         
-        // Execute Asynchronous Fetch Request
         do {
             let _ = try context.execute(asynchronousFetchRequest)
         } catch {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            failure?(error)
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            completion(.failure(error: error))
         }
     }
     

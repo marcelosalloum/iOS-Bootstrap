@@ -65,7 +65,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     static public func findFirstAsync(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         let fetchRequest = findFirstFetchRequest(inContext: context, predicate: predicate)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
+            switch dataResult {
+            case .success(objectList: let objectList):
+                if let objectList = objectList { success(objectList) }
+            case .failure(error: let error):
+                failure?(error)
+            }
+        })
     }
     
     // Read From Predicate
@@ -86,7 +93,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     static public func asyncReadObjects(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Prepare the request
         let fetchRequest = readObjects(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
+            switch dataResult {
+            case .success(objectList: let objectList):
+                if let objectList = objectList { success(objectList) }
+            case .failure(error: let error):
+                failure?(error)
+            }
+        })
     }
     
     /**
@@ -112,7 +126,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     static public func asyncFetchInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Prepare the request
         let fetchRequest = fetchRequestInContext(context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
+            switch dataResult {
+            case .success(objectList: let objectList):
+                if let objectList = objectList { success(objectList) }
+            case .failure(error: let error):
+                failure?(error)
+            }
+        })
     }
     
     // Count
@@ -133,7 +154,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     static public func asyncCountInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
         // Prepare the request
         let fetchRequest = fetchRequestCountInContext(context, predicate: predicate)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
+            switch dataResult {
+            case .success(objectList: let objectList):
+                if let objectList = objectList { success(objectList) }
+            case .failure(error: let error):
+                failure?(error)
+            }
+        })
     }
 }
 
