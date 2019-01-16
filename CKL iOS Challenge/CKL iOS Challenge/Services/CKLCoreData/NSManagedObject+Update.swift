@@ -13,9 +13,39 @@ import SwiftyJSON
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     /*
+     GET or CREATE
+     */
+    
+    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
+        // Initializing return variables
+        var object: Self?
+        var getOrCreate: GetOrCreate = .error
+        var fetchedObjects: [Self] = []
+        
+        // GET
+        do {
+            fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
+        } catch let error as NSError {
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            return (object, getOrCreate, error)
+        }
+        
+        // If GET is empty, then CREATE
+        if (fetchedObjects.count > 0) {
+            object = fetchedObjects[0]
+            getOrCreate = .get
+        } else {
+            object = Self.init(entity: self.entity(), insertInto: context)
+            getOrCreate = .create
+        }
+        
+        return (object, getOrCreate, nil)
+    }
+    
+    /*
      Import from JSON
      */
-    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (Completion<Self>) -> (), idKey: String = "id", save: Bool = true) {
+    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (AwesomeDataResult<Self>) -> (), idKey: String = "id", save: Bool = true) {
         // Input validations
         guard let jsonArray = jsonArray else { return }
         if jsonArray.isEmpty { return }
@@ -45,24 +75,25 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         if (save) {
             asyncSave(context) { (inwardCompletion) in
                 switch inwardCompletion {
-                case .success(objects: _):
-                    completion(Completion<Self>.success(objects: objectsArray))
+                case .success(objectList: _):
+                    completion(AwesomeDataResult<Self>.success(objectList: objectsArray))
                 case .failure(error: let error):
-                    completion(Completion<Self>.failure(error: error))
+                    completion(AwesomeDataResult<Self>.failure(error: error))
                 }
             }
         } else {
-            completion(Completion<Self>.success(objects: objectsArray))
+            completion(AwesomeDataResult<Self>.success(objectList: objectsArray))
         }
     }
     
-    static func asyncSave(_ context: NSManagedObjectContext, completion: (Completion<Self>) -> ()) {
+    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<Self>) -> ()) {
         do {
             if context.hasChanges {
                 try context.save()
-                CKLCoreData.log("WARNING, variable \"CONTEXT\" is empty")
+            } else {
+                CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
             }
-            completion(.success(objects: nil))
+            completion(.success(objectList: nil))
         } catch let error as NSError {
             CKLCoreData.log("ERROR: \(error.localizedDescription)")
             completion(.failure(error: error))

@@ -47,7 +47,7 @@ class ArticleTableViewModel: NSObject {
     func fetchAPIData() {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
-            case .success(objects: _):
+            case .success(objectList: _):
                 self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
             case .failure(error: let error):
                 self.delegate?.displayError(error: error, endRefreshing: true)
@@ -84,18 +84,18 @@ class ArticleTableViewModel: NSObject {
     }
     
     // Update the read status in the CoreData (this is currently only saved locally)
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((Completion<Article>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<Article>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = CKLCoreData.context
         Article.asyncSave(context, completion: completion)
     }
     
-    // MARK: Animating Botton Bar
+    // MARK: Animating Bottom Bar
     let bottomViewHeight: CGFloat = 44;
     var isShowingBottomView: Bool = false
     
-    func showBottomViewRect(_ view: UIView) -> CGRect? {
+    func rectForVisibleBottomView(_ view: UIView) -> CGRect? {
         guard let superviewFrame = view.superview?.frame else { return nil }
         return CGRect(x: superviewFrame.minX,
                       y: superviewFrame.maxY - bottomViewHeight,
@@ -103,7 +103,7 @@ class ArticleTableViewModel: NSObject {
                       height: bottomViewHeight)
     }
     
-    func hideBottomViewRect(_ view: UIView) -> CGRect? {
+    func rectForHiddenBottomView(_ view: UIView) -> CGRect? {
         guard let superviewFrame = view.superview?.frame else { return nil }
         return CGRect(x: superviewFrame.minX,
                       y: superviewFrame.maxY,

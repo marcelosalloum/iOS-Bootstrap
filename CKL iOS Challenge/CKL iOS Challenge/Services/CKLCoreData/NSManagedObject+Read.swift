@@ -18,36 +18,6 @@ public enum GetOrCreate: String {
 
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
-    /*
-     GET or CREATE
-     */
-    
-    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
-        // Initializing return variables
-        var object: Self?
-        var getOrCreate: GetOrCreate = .error
-        var fetchedObjects: [Self] = []
-        
-        // GET
-        do {
-            fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
-        } catch let error as NSError {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")
-            return (object, getOrCreate, error)
-        }
-        
-        // If GET is empty, then CREATE
-        if (fetchedObjects.count > 0) {
-            object = fetchedObjects[0]
-            getOrCreate = .get
-        } else {
-            object = Self.init(entity: self.entity(), insertInto: context)
-            getOrCreate = .create
-        }
-        
-        return (object, getOrCreate, nil)
-    }
-    
     // Read First
     static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
         let fetchRequest = fetchRequestForEntity(inContext: context)
@@ -63,16 +33,11 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return try context.fetch(fetchRequest).first
     }
     
-    static public func asyncReadFirst(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadFirst(inContext context: NSManagedObjectContext,
+                                      predicate: NSPredicate? = nil,
+                                      completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
-            switch dataResult {
-            case .success(objectList: let objectList):
-                if let objectList = objectList { success(objectList) }
-            case .failure(error: let error):
-                failure?(error)
-            }
-        })
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
     // Read From Predicate
@@ -90,17 +55,13 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncReadAll(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadAll(_ context: NSManagedObjectContext,
+                                    predicate: NSPredicate? = nil,
+                                    sortDescriptors: [NSSortDescriptor]? = nil,
+                                    completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         // Prepare the request
         let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
-            switch dataResult {
-            case .success(objectList: let objectList):
-                if let objectList = objectList { success(objectList) }
-            case .failure(error: let error):
-                failure?(error)
-            }
-        })
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
     /**
@@ -123,17 +84,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncReadAwesome(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadAwesome(inContext context: NSManagedObjectContext,
+                                        attribute: String? = nil,
+                                        value: String? = nil,
+                                        sortDescriptors: [NSSortDescriptor]? = nil,
+                                        completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         // Prepare the request
         let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
-            switch dataResult {
-            case .success(objectList: let objectList):
-                if let objectList = objectList { success(objectList) }
-            case .failure(error: let error):
-                failure?(error)
-            }
-        })
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
     // Count
@@ -151,17 +109,12 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return try context.count(for: fetchRequest)
     }
     
-    static public func asycCount(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asycCount(inContext context: NSManagedObjectContext,
+                                 predicate: NSPredicate? = nil,
+                                 completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         // Prepare the request
         let fetchRequest = countFetchRequest(inContext: context, predicate: predicate)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: { dataResult in
-            switch dataResult {
-            case .success(objectList: let objectList):
-                if let objectList = objectList { success(objectList) }
-            case .failure(error: let error):
-                failure?(error)
-            }
-        })
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
 }
 
