@@ -35,9 +35,17 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     static public func asyncReadFirst(inContext context: NSManagedObjectContext,
                                       predicate: NSPredicate? = nil,
-                                      completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                      completion: @escaping (AwesomeDataResult<Self>) -> Void) {
         let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: {awesomeResult in
+            switch awesomeResult {
+            case AwesomeDataResult<[Self]>.success(objectList: let objectList):
+                let firstObject: Self? = objectList?.first
+                completion(AwesomeDataResult<Self>.success(objectList: firstObject))
+            case .failure(error: let error):
+                completion(AwesomeDataResult<Self>.failure(error: error))
+            }
+        })
     }
     
     
@@ -64,6 +72,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
+    
     
     // MARK: - Read With Attributes
     fileprivate static func readAwesomeFetchRequest(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
@@ -92,6 +101,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
+
     // MARK: - Count
     static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
         // Prepare the request
