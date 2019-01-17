@@ -14,7 +14,7 @@ import SwiftyJSON
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Get or Create
-    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> AwesomeDataResult<Self> {
+    static func getOrCreateResult(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> AwesomeDataResult<Self> {
         // Initializing return variables
         var object: Self!
         var fetchedObjects: [Self] = []
@@ -37,6 +37,16 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return AwesomeDataResult<Self>.success(objectList: object)
     }
     
+    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> Self? {
+        switch self.getOrCreateResult(context: context, fetchRequest: fetchRequest, attribute: attribute, value: value) {
+        case .success(objectList: let object):
+            guard let object = object else { return nil }
+            return object
+        case .failure(error: _):
+            return nil
+        }
+    }
+    
     // MARK: - Import from JSON
     static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool) throws -> [Self]? {
         // Input validations
@@ -49,17 +59,10 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         
         // Looping over the articles
         for objectJSON in jsonArray {
-            
             // GET or CREATE
             let objectId = String(objectJSON["\(idKey)"].intValue)
-            switch self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId) {
-            case .success(objectList: let object):
-                guard let object = object else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
-                CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
-                objectsArray.append(object)
-            case .failure(error: let error):
-                throw error
-            }
+            guard let object = self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId) else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
+            objectsArray.append(object)
         }
         
         // Context Save
@@ -88,17 +91,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 
                 // GET or CREATE
                 let objectId = String(objectJSON["\(idKey)"].intValue)
-                switch self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId) {
-                case .success(objectList: let object):
-                    guard let object = object else {
-                        completion(AwesomeDataResult<[Self]>.failure(error: CKLCoreDataError.getOrCreateObjIsEmpty))
-                        return
-                    }
-                    CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
-                    objectsArray.append(object)
-                case .failure(error: let error):
-                    completion(AwesomeDataResult<[Self]>.failure(error: error))
+                guard let object = self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId) else {
+                    completion(AwesomeDataResult<[Self]>.failure(error: CKLCoreDataError.getOrCreateObjIsEmpty))
+                    return
                 }
+                objectsArray.append(object)
             }
             
             // Context Save
