@@ -11,6 +11,13 @@ import CoreData
 import SwiftyJSON
 
 
+public enum GetOrCreate: String {
+    case error
+    case get
+    case create
+}
+
+
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     /*
      GET or CREATE

@@ -10,13 +10,6 @@ import Foundation
 import CoreData
 
 
-public enum GetOrCreate: String {
-    case error
-    case get
-    case create
-}
-
-
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     // MARK: - Read First
     static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
@@ -42,7 +35,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
             case AwesomeDataResult<[Self]>.success(objectList: let objectList):
                 let firstObject: Self? = objectList?.first
                 completion(AwesomeDataResult<Self>.success(objectList: firstObject))
-            case .failure(error: let error):
+            case AwesomeDataResult<[Self]>.failure(error: let error):
                 completion(AwesomeDataResult<Self>.failure(error: error))
             }
         })
