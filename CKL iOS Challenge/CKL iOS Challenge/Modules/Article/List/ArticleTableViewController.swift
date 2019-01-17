@@ -64,7 +64,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 
         // ViewModel
         viewModel.delegate = self
-        viewModel.filterArticles()
+        viewModel.searchTerm = ""
         viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
 
         // Navigation Controller
