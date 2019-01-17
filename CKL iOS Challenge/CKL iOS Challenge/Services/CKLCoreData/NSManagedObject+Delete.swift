@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension CKLCoreDataProtocol where Self: NSManagedObject {
+extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Remove All
     static public func removeAll(inContext context: NSManagedObjectContext, except toKeep: [Self]?) throws {
         let fetchRequest = syncFetchRequest(inContext: context)

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension CKLCoreDataProtocol where Self: NSManagedObject {
+extension NSFetchRequestResult where Self: NSManagedObject {
     
     
     // MARK: - Read First

@@ -17,17 +17,8 @@ public enum AwesomeDataResult<Object> {
 }
 
 
-// MARK: - Declared just to use as a Protocol Extension
-public protocol CKLCoreDataProtocol {
-}
-
-
-extension NSManagedObject: CKLCoreDataProtocol {
-}
-
-
 // MARK: - Read Helpers
-extension CKLCoreDataProtocol where Self: NSManagedObject {
+extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Sync Read
     static public func syncFetchRequest(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {

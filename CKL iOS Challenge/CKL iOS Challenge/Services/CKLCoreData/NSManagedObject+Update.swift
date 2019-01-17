@@ -18,7 +18,7 @@ public enum GetOrCreate: String {
 }
 
 
-extension CKLCoreDataProtocol where Self: NSManagedObject {
+extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Get or Create
     static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
