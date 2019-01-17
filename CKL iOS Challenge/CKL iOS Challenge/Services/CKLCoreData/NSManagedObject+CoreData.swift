@@ -10,12 +10,14 @@ import Foundation
 import CoreData
 
 
+// MARK: - Error Handling
 public enum AwesomeDataResult<Object> {
     case success(objectList: [Object]?)
     case failure(error: Error)
 }
 
 
+// MARK: - Declared just to use as a Protocol Extension
 public protocol CKLCoreDataProtocol {
 }
 
@@ -24,6 +26,7 @@ extension NSManagedObject: CKLCoreDataProtocol {
 }
 
 
+// MARK: - Read Helpers
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     // MARK: - READ SYNC
@@ -50,5 +53,4 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
             completion(.failure(error: error))
         }
     }
-    
 }

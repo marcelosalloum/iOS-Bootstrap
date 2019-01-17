@@ -18,7 +18,7 @@ public enum GetOrCreate: String {
 
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
-    // Read First
+    // MARK: - Read First
     static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
         let fetchRequest = fetchRequestForEntity(inContext: context)
         fetchRequest.predicate = predicate
@@ -40,7 +40,8 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
-    // Read From Predicate
+    
+    // MARK: - Read All
     fileprivate static func readAllFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
         let fetchRequest = fetchRequestForEntity(inContext: context)
@@ -64,10 +65,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
-    /**
-     Read objects with attribute
-     SELECT (*) from Article WHERE "attribute" equals "value"
-     */
+    // MARK: - Read With Attributes
     fileprivate static func readAwesomeFetchRequest(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
         let fetchRequest = fetchRequestForEntity(inContext: context)
@@ -94,8 +92,8 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
-    // Count
-    fileprivate static func countFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
+    // MARK: - Count
+    static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
         // Prepare the request
         let fetchRequest = fetchRequestForEntity(inContext: context)
         fetchRequest.includesSubentities = false
