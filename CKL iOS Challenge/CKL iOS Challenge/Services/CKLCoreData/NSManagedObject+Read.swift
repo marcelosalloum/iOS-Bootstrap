@@ -98,21 +98,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         let fetchRequest = fetchRequestForEntity(inContext: context)
         fetchRequest.includesSubentities = false
         fetchRequest.predicate = predicate
-        return fetchRequest
-    }
-    
-    static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
-        // Prepare the request
-        let fetchRequest = countFetchRequest(inContext: context, predicate: predicate)
         return try context.count(for: fetchRequest)
-    }
-    
-    static public func asycCount(inContext context: NSManagedObjectContext,
-                                 predicate: NSPredicate? = nil,
-                                 completion: @escaping (AwesomeDataResult<Self>) -> Void) {
-        // Prepare the request
-        let fetchRequest = countFetchRequest(inContext: context, predicate: predicate)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
 }
 
