@@ -84,7 +84,7 @@ class ArticleTableViewModel: NSObject {
     }
     
     // Update the read status in the CoreData (this is currently only saved locally)
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<Article>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<[Article]>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = CKLCoreData.context

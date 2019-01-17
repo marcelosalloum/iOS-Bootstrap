@@ -45,14 +45,14 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     /*
      Import from JSON
      */
-    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (AwesomeDataResult<Self>) -> (), idKey: String = "id", save: Bool = true) {
+    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> (), idKey: String = "id", save: Bool = true) {
         // Input validations
         guard let jsonArray = jsonArray else { return }
         if jsonArray.isEmpty { return }
         var objectsArray: [Self] = []
         
         // Basic CoreData Setup
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         
         // Looping over the articles
         for objectJSON in jsonArray {
@@ -76,17 +76,17 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
             asyncSave(context) { (inwardCompletion) in
                 switch inwardCompletion {
                 case .success(objectList: _):
-                    completion(AwesomeDataResult<Self>.success(objectList: objectsArray))
+                    completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
                 case .failure(error: let error):
-                    completion(AwesomeDataResult<Self>.failure(error: error))
+                    completion(AwesomeDataResult<[Self]>.failure(error: error))
                 }
             }
         } else {
-            completion(AwesomeDataResult<Self>.success(objectList: objectsArray))
+            completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
         }
     }
     
-    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<Self>) -> ()) {
+    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> ()) {
         do {
             if context.hasChanges {
                 try context.save()
@@ -107,7 +107,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         var objectsArray: [Self] = []
         
         // Basic CoreData Setup
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         
         // Looping over the articles
         for objectJSON in jsonArray {

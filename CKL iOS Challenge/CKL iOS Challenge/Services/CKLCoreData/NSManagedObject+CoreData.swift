@@ -12,7 +12,7 @@ import CoreData
 
 // MARK: - Error Handling
 public enum AwesomeDataResult<Object> {
-    case success(objectList: [Object]?)
+    case success(objectList: Object?)
     case failure(error: Error)
 }
 
@@ -30,7 +30,7 @@ extension NSManagedObject: CKLCoreDataProtocol {
 extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     // MARK: - READ SYNC
-    static public func fetchRequestForEntity(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+    static public func syncFetchRequest(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()
         return fetchRequest
@@ -39,7 +39,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     // MARK: - READ ASYNC
     static public func asyncFetchRequest(inContext context: NSManagedObjectContext,
                                                 fetchRequest: NSFetchRequest<Self>,
-                                                completion: @escaping (AwesomeDataResult<Self>) -> Void) {
+                                                completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
         let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
             if let fetchedObjects = asyncFetchResult.finalResult {
                 completion(.success(objectList: fetchedObjects))

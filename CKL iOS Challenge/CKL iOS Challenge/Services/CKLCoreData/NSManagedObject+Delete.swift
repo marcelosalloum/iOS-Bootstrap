@@ -15,20 +15,20 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
     
     // Remove All objects from entity
     static public func removeAll(inContext context: NSManagedObjectContext) throws {
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         try removeAllObjectsReturnedByRequest(fetchRequest, inContext: context)
     }
     
     // Remove All objects from entity, exept list of objects [Self]
     static public func removeAll(inContext context: NSManagedObjectContext, except toKeep: [Self]) throws {
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.predicate = NSPredicate(format: "NOT (self IN %@)", toKeep)
         try removeAllObjectsReturnedByRequest(fetchRequest, inContext: context)
     }
     
     // Remove All objects from entity, exept list of objects with "attributeName in [toKeep]"
     static public func removeAll(inContext context: NSManagedObjectContext, except attributeName: String, toKeep: [String]) throws {
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)
         try removeAllObjectsReturnedByRequest(fetchRequest, inContext: context)
     }
