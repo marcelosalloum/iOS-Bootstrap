@@ -96,10 +96,9 @@ class CKLCoreData: NSObject {
         if let tags = from["tags"].array {
             do {
                 guard let tagObjects = try Tag.importObjects(tags, context: CKLCoreData.context, idKey: "id", shouldSave: false) else { return }
-                let tagsSet = NSSet.init(array: tagObjects)
+                let tagsSet = NSSet(array: tagObjects)
                 toObject.addToTags(tagsSet)
             } catch let error as NSError {
-                // Error handling [Context Save]
                 CKLCoreData.log("ERROR: \(error.localizedDescription)")
             }
         }
