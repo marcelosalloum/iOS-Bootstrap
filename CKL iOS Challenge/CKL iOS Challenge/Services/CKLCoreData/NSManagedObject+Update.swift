@@ -21,10 +21,9 @@ public enum GetOrCreate: String {
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Get or Create
-    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
+    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> AwesomeDataResult<Self> {
         // Initializing return variables
-        var object: Self?
-        var getOrCreate: GetOrCreate = .error
+        var object: Self!
         var fetchedObjects: [Self] = []
         
         // GET
@@ -32,64 +31,65 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
         } catch let error as NSError {
             CKLCoreData.log("ERROR: \(error.localizedDescription)")
-            return (object, getOrCreate, error)
+            return AwesomeDataResult<Self>.failure(error: error)
         }
         
         // If GET is empty, then CREATE
         if (fetchedObjects.count > 0) {
             object = fetchedObjects[0]
-            getOrCreate = .get
         } else {
             object = Self.init(entity: self.entity(), insertInto: context)
-            getOrCreate = .create
         }
         
-        return (object, getOrCreate, nil)
+        return AwesomeDataResult<Self>.success(objectList: object)
     }
     
     // MARK: - Import from JSON
-    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> (), idKey: String = "id", save: Bool = true) {
-        // Input validations
-        guard let jsonArray = jsonArray else { return }
-        if jsonArray.isEmpty { return }
-        var objectsArray: [Self] = []
+    static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: @escaping (AwesomeDataResult<[Self]>) -> (), idKey: String = "id") {
         
-        // Basic CoreData Setup
-        let fetchRequest = syncFetchRequest(inContext: context)
+        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateContext.parent = context
         
-        // Looping over the articles
-        for objectJSON in jsonArray {
+        privateContext.perform {
+            // Input validations
+            guard let jsonArray = jsonArray else { return }
+            if jsonArray.isEmpty { return }
+            var objectsArray: [Self] = []
             
-            // GET or CREATE
-            let objectId = String(objectJSON["\(idKey)"].intValue)
-            let (getOrCreateObj, _, error) = Self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: "id", value: objectId)
+            // Basic CoreData Setup
+            let fetchRequest = syncFetchRequest(inContext: context)
             
-            // Error handling [GET or CREATE]
-            if let error = error {
-                completion(.failure(error: error))
-                return
-            }
-            guard let object = getOrCreateObj else { return }
-            CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
-            objectsArray.append(object)
-        }
-        
-        // Context Save
-        if (save) {
-            asyncSave(context) { (inwardCompletion) in
-                switch inwardCompletion {
-                case .success(objectList: _):
-                    completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
+            // Looping over the articles
+            for objectJSON in jsonArray {
+                
+                // GET or CREATE
+                let objectId = String(objectJSON["\(idKey)"].intValue)
+                let objectResult = self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId)
+                switch objectResult {
+                case .success(objectList: let object):
+                    guard let object = object else {
+                        completion(AwesomeDataResult<[Self]>.failure(error: CKLCoreDataError.getOrCreateObjIsEmpty))
+                        return
+                    }
+                    CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
+                    objectsArray.append(object)
                 case .failure(error: let error):
                     completion(AwesomeDataResult<[Self]>.failure(error: error))
                 }
             }
-        } else {
-            completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
+            
+            // Context Save
+            do {
+                try save(context)
+                completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
+            } catch let error {
+                CKLCoreData.log("ERROR: \(error.localizedDescription)")
+                completion(AwesomeDataResult<[Self]>.failure(error: error))
+            }
         }
     }
     
-    static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool = true) throws -> [Self]? {
+    static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool) throws -> [Self]? {
         // Input validations
         guard let jsonArray = jsonArray else { throw CKLCoreDataError.contextIsEmpty }
         if jsonArray.isEmpty { throw CKLCoreDataError.jsonIsEmpty }
@@ -103,19 +103,20 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             
             // GET or CREATE
             let objectId = String(objectJSON["\(idKey)"].intValue)
-            let (getOrCreateObj, _, error) = Self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: "id", value: objectId)
-            
-            // Error handling [GET or CREATE]
-            if let err = error {
-                throw err
+            switch Self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: objectId) {
+            case .success(objectList: let object):
+                guard let object = object else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
+                CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
+                objectsArray.append(object)
+            case .failure(error: let error):
+                throw error
             }
-            guard let object = getOrCreateObj else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
-            CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
-            objectsArray.append(object)
         }
         
         // Context Save
-        try save(context)
+        if (shouldSave) {
+            try save(context)
+        }
         return objectsArray
     }
 }
