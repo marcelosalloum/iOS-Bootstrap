@@ -19,10 +19,8 @@ public enum GetOrCreate: String {
 
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
-    /*
-     GET or CREATE
-     */
     
+    // MARK: - Get or Create
     static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
         // Initializing return variables
         var object: Self?
@@ -49,9 +47,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return (object, getOrCreate, nil)
     }
     
-    /*
-     Import from JSON
-     */
+    // MARK: - Import from JSON
     static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> (), idKey: String = "id", save: Bool = true) {
         // Input validations
         guard let jsonArray = jsonArray else { return }
@@ -93,21 +89,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         }
     }
     
-    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> ()) {
-        do {
-            if context.hasChanges {
-                try context.save()
-            } else {
-                CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
-            }
-            completion(.success(objectList: nil))
-        } catch let error as NSError {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")
-            completion(.failure(error: error))
-        }
-    }
-    
-    static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, idKey: String = "id", save: Bool = true) throws -> [Self]? {
+    static func importObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool = true) throws -> [Self]? {
         // Input validations
         guard let jsonArray = jsonArray else { throw CKLCoreDataError.contextIsEmpty }
         if jsonArray.isEmpty { throw CKLCoreDataError.jsonIsEmpty }
@@ -133,9 +115,7 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         }
         
         // Context Save
-        if (save) {
-            try context.save()
-        }
+        try save(context)
         return objectsArray
     }
 }

@@ -11,6 +11,8 @@ import CoreData
 
 
 extension CKLCoreDataProtocol where Self: NSManagedObject {
+    
+    
     // MARK: - Read First
     static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
         let fetchRequest = syncFetchRequest(inContext: context)
