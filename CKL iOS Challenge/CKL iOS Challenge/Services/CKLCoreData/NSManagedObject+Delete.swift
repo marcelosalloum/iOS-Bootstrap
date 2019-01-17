@@ -12,28 +12,26 @@ import CoreData
 
 extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Remove All
-    static public func removeAll(inContext context: NSManagedObjectContext, except toKeep: [Self]?) throws {
-        let fetchRequest = syncFetchRequest(inContext: context)
+    static public func deleteAll(inContext context: NSManagedObjectContext, except toKeep: [Self]? = nil) throws {
+        let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        deleteFetchRequest.entity = entity()
         if let toKeep = toKeep, toKeep.count > 0 {
-            fetchRequest.predicate = NSPredicate(format: "NOT (self IN %@)", toKeep)
+            deleteFetchRequest.predicate = NSPredicate(format: "NOT (self IN %@)", toKeep)
         }
-        try removeAllObjectsReturnedByRequest(fetchRequest, inContext: context)
+        try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
     }
     
     // MARK: - Remove All that match attribute
-    static public func removeAll(inContext context: NSManagedObjectContext, except attributeName: String, toKeep: [String]) throws {
-        let fetchRequest = syncFetchRequest(inContext: context)
-        fetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)
-        try removeAllObjectsReturnedByRequest(fetchRequest, inContext: context)
+    static public func deleteAll(inContext context: NSManagedObjectContext, except attributeName: String, toKeep: [String]) throws {
+        let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        deleteFetchRequest.entity = entity()
+        deleteFetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)
+        try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
     }
     
     // MARK: - Private Funcs
-    static private func removeAllObjectsReturnedByRequest(_ fetchRequest: NSFetchRequest<Self>, inContext context: NSManagedObjectContext) throws {
-        //  A batch delete would be more efficient here on iOS 9 and up
-        //  however it complicates things since the request requires a context with
-        //  an NSPersistentStoreCoordinator directly connected. (MOC cannot be a child of another MOC)
-        fetchRequest.includesPropertyValues = false
-        fetchRequest.includesSubentities = false
-        try context.fetch(fetchRequest).lazy.forEach(context.delete(_:))
+    fileprivate static func deleteAllFromFetchRequest(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>, inContext context: NSManagedObjectContext) throws {
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try context.execute(deleteRequest)
     }
 }
