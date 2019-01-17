@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flurry.startSession(Constants.flurryAPIKey, with: FlurrySessionBuilder
             .init()
             .withCrashReporting(true)
-            .withLogLevel(FlurryLogLevelAll))
+            .withLogLevel(FlurryLogLevelNone))
         return true
     }
 
