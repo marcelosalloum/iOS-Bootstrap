@@ -26,8 +26,7 @@ class RestAPI: NSObject {
                 if let jsonValue = response.result.value {
                     let swiftyJSONVar = JSON(jsonValue)
                     
-                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                    Article.asyncImportObjects(swiftyJSONVar.array, context: context, completion: completion, idKey: "id")
+                    Article.asyncImportObjects(swiftyJSONVar.array, context: CKLCoreData.context, completion: completion, idKey: "id")
                 } else {
                     completion(AwesomeDataResult<[Article]>.success(objectList: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")
