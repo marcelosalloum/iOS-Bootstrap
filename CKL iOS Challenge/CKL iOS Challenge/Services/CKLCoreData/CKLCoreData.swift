@@ -26,9 +26,9 @@ enum CKLCoreDateLogLevel: String {
 class CKLCoreData: NSObject {
     
     // Used by your project
-    public static let shared = CKLCoreData() // singleton
+    public static let shared = CKLCoreData()  // singleton
 
-    // Used by the NSManagedObject extensions and your ptoject
+    // Used by the NSManagedObject extensions and your project
     static let context = (UIApplication.shared.delegate as! AppDelegate).dataController.persistentContainer.viewContext
     
     // Logging level

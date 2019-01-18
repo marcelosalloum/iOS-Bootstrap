@@ -56,7 +56,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         // Basic CoreData Setup
         let fetchRequest = syncFetchRequest(inContext: context)
 
-        // Looping over the articles
+        // Looping over the array
         for objectJSON in jsonArray {
             // GET or CREATE
             guard let objectId = objectJSON[idKey] as? Int else { throw CKLCoreDataError.invalidIdKey }
@@ -72,6 +72,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return objectsArray
     }
     
+    // TODO
     public static func asyncImportObjects(_ jsonArray: [[String: Any]]?, context: NSManagedObjectContext, completion: @escaping (AwesomeDataResult<[Self]>) -> (), idKey: String = "id") {
         // Input validations
         guard let jsonArray = jsonArray else { return }
@@ -81,7 +82,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         // Basic CoreData Setup
         let fetchRequest = syncFetchRequest(inContext: context)
         
-        // Looping over the articles
+        // Looping over the array
         for objectJSON in jsonArray {
             
             // GET or CREATE
@@ -103,37 +104,4 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             completion(AwesomeDataResult<[Self]>.failure(error: error))
         }
     }
-    
-//    public static func asyncImportObjects(_ jsonArray: [JSON]?, context: NSManagedObjectContext, completion: @escaping (AwesomeDataResult<[Self]>) -> (), idKey: String = "id") {
-//        // Creates a private context
-//        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-//        privateContext.parent = context
-//        privateContext.perform {
-//            // Input validations
-//            guard let jsonArray = jsonArray else { return }
-//            if jsonArray.isEmpty { return }
-//            var objectsArray: [Self] = []
-//
-//            // Basic CoreData Setup
-//            let fetchRequest = syncFetchRequest(inContext: privateContext)
-//
-//            // Looping over the articles
-//            for objectJSON in jsonArray {
-//
-//                // GET or CREATE
-//                let objectId = String(objectJSON["\(idKey)"].intValue)
-//                guard let object = self.getOrCreate(context: privateContext, fetchRequest: fetchRequest, attribute: idKey, value: objectId) else {
-//                    completion(AwesomeDataResult<[Self]>.failure(error: CKLCoreDataError.getOrCreateObjIsEmpty))
-//                    return
-//                }
-//                CKLCoreData.shared.importJSON(from: objectJSON, toObject: object)
-//                objectsArray.append(object)
-//            }
-//
-//            // Context Save
-//
-//            saveContextToStore(privateContext, completion: completion)
-//        }
-//    }
- 
 }

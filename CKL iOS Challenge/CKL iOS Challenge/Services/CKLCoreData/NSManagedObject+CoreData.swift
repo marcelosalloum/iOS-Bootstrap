@@ -53,7 +53,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    // MARK: - Async Save
+    // MARK: - "Async" Save
     static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> ()) {
         do {
             try save(context)
@@ -64,7 +64,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    
+    // MARK: - Sync Save
     static func save(_ context: NSManagedObjectContext) throws {
         if context.hasChanges {
             try context.save()
