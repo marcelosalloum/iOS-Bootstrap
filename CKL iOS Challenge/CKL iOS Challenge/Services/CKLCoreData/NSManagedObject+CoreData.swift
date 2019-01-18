@@ -17,6 +17,14 @@ public enum AwesomeDataResult<Object> {
 }
 
 
+// MARK: - Used for importing a JSON into an NSManagedObjectContext
+extension NSManagedObject {
+    @objc func populateFromJSON(_ json: [String: Any]) {
+        print("NSManagedObject")
+    }
+}
+
+
 // MARK: - Read Helpers
 extension NSFetchRequestResult where Self: NSManagedObject {
     

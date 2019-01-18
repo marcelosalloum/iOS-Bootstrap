@@ -23,7 +23,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func readFirst(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Self? {
+    static public func readFirst(inContext context: NSManagedObjectContext,
+                                 predicate: NSPredicate? = nil) throws -> Self? {
         let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
         return try context.fetch(fetchRequest).first
     }

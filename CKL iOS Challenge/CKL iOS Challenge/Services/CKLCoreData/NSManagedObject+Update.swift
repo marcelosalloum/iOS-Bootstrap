@@ -10,12 +10,6 @@ import Foundation
 import CoreData
 
 
-extension NSManagedObject {
-    @objc func populateFromJSON(_ json: [String: Any]) {
-        print("NSManagedObject")
-    }
-}
-
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Get or Create
