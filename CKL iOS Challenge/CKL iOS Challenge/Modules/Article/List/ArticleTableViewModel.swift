@@ -34,14 +34,14 @@ class ArticleTableViewModel: NSObject {
     
     // MARK: - Filtering CoreData Results
     var articlesOrder: ArticlesOrder = .id {
-        didSet(newValue) {
-            filterArticles(searchTerm, orderBy: newValue, ascending: true)
+        didSet {
+            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
     
     var searchTerm: String = "" {
-        didSet(newValue) {
-            filterArticles(newValue, orderBy: articlesOrder, ascending: true)
+        didSet {
+            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
 
