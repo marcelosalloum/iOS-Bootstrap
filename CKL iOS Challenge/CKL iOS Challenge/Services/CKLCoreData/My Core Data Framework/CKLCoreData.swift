@@ -29,7 +29,7 @@ class CKLCoreData: NSObject {
     public static let shared = CKLCoreData()  // singleton
 
     // Used by the NSManagedObject extensions and your project
-    static let context = (UIApplication.shared.delegate as! AppDelegate).dataController.persistentContainer.viewContext
+    static let context = CoreDataManager.shared.managedObjectContext
     
     // Logging level
     static var logLevel = CKLCoreDateLogLevel.debug

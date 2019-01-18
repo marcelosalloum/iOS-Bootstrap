@@ -13,20 +13,24 @@ import Crashlytics
 
 
 class CoreDataManager: NSObject {
+    
+    static let shared: CoreDataManager = CoreDataManager{}
+    
     var persistentContainer: NSPersistentContainer
+    
     var managedObjectContext: NSManagedObjectContext {
         get {
             return persistentContainer.viewContext
         }
     }
     
-    init(_ completionClosure: @escaping () -> ()) {
+    init(_ completion: @escaping () -> ()) {
         persistentContainer = NSPersistentContainer(name: Constants.databaseName)
         persistentContainer.loadPersistentStores() { (description, error) in
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")
             }
-            completionClosure()
+            completion()
         }
     }
     
