@@ -17,14 +17,6 @@ public enum AwesomeDataResult<Object> {
 }
 
 
-// MARK: - Used for importing a JSON into an NSManagedObjectContext
-extension NSManagedObject {
-    @objc func populateFromJSON(_ json: [String: Any]) {
-        print("NSManagedObject")
-    }
-}
-
-
 // MARK: - Read Helpers
 extension NSFetchRequestResult where Self: NSManagedObject {
     
@@ -53,21 +45,21 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    // MARK: Async Task !!!
-    static func asyncTask(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
-        
-        let backgroundContext = persistantContainer.newBackgroundContext()
-        backgroundContext.perform {
-            completion(backgroundContext)
-        }
-    }
-    
     // MARK: - Sync Save
     static func save(_ context: NSManagedObjectContext) throws {
         if context.hasChanges {
             try context.save()
         } else {
             CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
+        }
+    }
+    
+    // MARK: Async Task !!!
+    static func asyncTask(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
+        
+        let backgroundContext = persistantContainer.newBackgroundContext()
+        backgroundContext.perform {
+            completion(backgroundContext)
         }
     }
 }

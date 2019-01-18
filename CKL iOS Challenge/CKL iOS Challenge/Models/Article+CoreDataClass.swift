@@ -53,7 +53,7 @@ extension Article {
 
         if let tags = json["tags"] as? [[String: Any]] {
             do {
-                guard let tagObjects = try Tag.importObjects(tags, context: CKLCoreData.context, idKey: "id", shouldSave: false) else { return }
+                guard let tagObjects = try Tag.importList(tags, context: CKLCoreData.context, idKey: "id", shouldSave: false) else { return }
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
             } catch let error as NSError {

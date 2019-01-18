@@ -10,10 +10,19 @@ import Foundation
 import CoreData
 
 
+// MARK: - Used for importing a JSON into an NSManagedObjectContext
+extension NSManagedObject {
+    @objc func populateFromJSON(_ json: [String: Any]) {
+        print("NSManagedObject")
+    }
+}
+
+
 extension NSFetchRequestResult where Self: NSManagedObject {
     
+    
     // MARK: - Get or Create
-    public static func getOrCreateResult(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> AwesomeDataResult<Self> {
+    public static func getOrCreate(context: NSManagedObjectContext, attribute: String?, value: String?) -> Self? {
         // Initializing return variables
         var object: Self!
         var fetchedObjects: [Self] = []
@@ -23,7 +32,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
         } catch let error as NSError {
             CKLCoreData.log("ERROR: \(error.localizedDescription)")
-            return AwesomeDataResult<Self>.failure(error: error)
+            return nil
         }
         
         // CREATE if idKey doesn't exist
@@ -33,21 +42,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             object = Self.init(entity: self.entity(), insertInto: context)
         }
         
-        return AwesomeDataResult<Self>.success(objectList: object)
-    }
-    
-    public static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> Self? {
-        switch self.getOrCreateResult(context: context, fetchRequest: fetchRequest, attribute: attribute, value: value) {
-        case .success(objectList: let object):
-            guard let object = object else { return nil }
-            return object
-        case .failure(error: _):
-            return nil
-        }
+        return object
     }
     
     // MARK: - Import from JSON
-    public static func importObjects(_ jsonArray: [[String: Any]]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool) throws -> [Self]? {
+    public static func importList(_ jsonArray: [[String: Any]]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool) throws -> [Self]? {
         // Input validations
         guard let jsonArray = jsonArray else { throw CKLCoreDataError.contextIsEmpty }
         if jsonArray.isEmpty { throw CKLCoreDataError.jsonIsEmpty }
@@ -60,7 +59,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         for objectJSON in jsonArray {
             // GET or CREATE
             guard let objectId = objectJSON[idKey] as? Int else { throw CKLCoreDataError.invalidIdKey }
-            guard let object = self.getOrCreate(context: context, fetchRequest: fetchRequest, attribute: idKey, value: String(describing: objectId)) else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
+            guard let object = getOrCreate(context: context, attribute: idKey, value: String(describing: objectId)) else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
             object.populateFromJSON(objectJSON)
             objectsArray.append(object)
         }
