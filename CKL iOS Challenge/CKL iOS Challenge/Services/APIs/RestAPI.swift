@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Alamofire
 import CoreData
 
@@ -23,10 +22,8 @@ class RestAPI: NSObject {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
-                if let jsonValue = response.result.value {
-                    let swiftyJSONVar = JSON(jsonValue)
-                    
-                    Article.asyncImportObjects(swiftyJSONVar.array, context: CKLCoreData.context, completion: completion, idKey: "id")
+                if let jsonArray = response.result.value as? [[String: Any]] {
+                    Article.asyncImportObjects(jsonArray, context: CKLCoreData.context, completion: completion, idKey: "id")
                 } else {
                     completion(AwesomeDataResult<[Article]>.success(objectList: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")

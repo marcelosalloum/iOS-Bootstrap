@@ -9,7 +9,6 @@
 
 import Foundation
 import CoreData
-import SwiftyJSON
 
 
 public class Article: NSManagedObject {
