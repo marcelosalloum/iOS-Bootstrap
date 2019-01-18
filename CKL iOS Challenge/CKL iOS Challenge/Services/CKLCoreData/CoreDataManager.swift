@@ -14,14 +14,20 @@ import Crashlytics
 
 class CoreDataManager: NSObject {
     
+//    NSPersistentContainer has two properties, more specifically, the property and method: viewContext and newBackgroundContext. The first is associated with the main queue, the second with privateQueueConcurrencyType. When we write something in newBackgroundContext, it sends a notification for viewContext object to merge content. Therefore, it appears that we no longer need to subscribe to this notification. From viewContext documentation:
+    
     static let shared: CoreDataManager = CoreDataManager{}
     
     var persistentContainer: NSPersistentContainer
     
-    var managedObjectContext: NSManagedObjectContext {
+    var managedObjectContext: NSManagedObjectContext {  // mainQueueContext //    is associated with the mainQueue
         get {
             return persistentContainer.viewContext
         }
+    }
+    
+    func newPrivateQueueContext() -> NSManagedObjectContext {  // newPrivateQueueContext    is associated with the privateQueueConcurrencyType
+        return persistentContainer.newBackgroundContext()
     }
     
     init(_ completion: @escaping () -> ()) {
@@ -42,8 +48,7 @@ class CoreDataManager: NSObject {
             } catch let error {
                 print("ERROR: \(error.localizedDescription)")
                 Answers.logCustomEvent(withName: "Crash on method DataController.saveContext()", customAttributes: ["DataController.saveContext()": error.localizedDescription])
-                
-            }
+                }
         }
     }
 }

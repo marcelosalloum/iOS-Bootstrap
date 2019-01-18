@@ -13,12 +13,38 @@ import CoreData
 extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Remove All
     static public func deleteAll(inContext context: NSManagedObjectContext, except toKeep: [Self]? = nil) throws {
+        // Fech Reqest
         let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
         deleteFetchRequest.entity = entity()
+        // Predicate
         if let toKeep = toKeep, toKeep.count > 0 {
             deleteFetchRequest.predicate = NSPredicate(format: "NOT (self IN %@)", toKeep)
         }
+        // Delete Request
         try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
+    }
+    
+    static public func asyncDeleteAll(persistantContainer: NSPersistentContainer,
+                                      except toKeep: [Self]? = nil,
+                                      completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+        runInBackgroundContext(persistantContainer) { (backgroundContext) in
+            let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
+            deleteFetchRequest.entity = entity()
+            if let toKeep = toKeep, toKeep.count > 0 {
+                deleteFetchRequest.predicate = NSPredicate(format: "NOT (self IN %@)", toKeep)
+            }
+            // Delete Request
+            do {
+                try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
+//                try print(Article.count(inContext: backgroundContext))
+//                try print(Article.count(inContext: context))
+                completion(.success(objectList: nil))
+                CKLCoreData.log("Deeted list of objects")
+            } catch let error {
+                CKLCoreData.log("ERROR: \(error)")
+                completion(.failure(error: error))
+            }
+        }
     }
     
     // MARK: - Remove All that match attribute
@@ -29,6 +55,33 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
     }
     
+    static public func asyncDeleteAll(persistantContainer: NSPersistentContainer,
+                                      except attributeName: String,
+                                      toKeep: [String],
+                                      completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+        runInBackgroundContext(persistantContainer) { (backgroundContext) in
+            let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
+            deleteFetchRequest.entity = entity()
+            deleteFetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)
+            // Delete Request
+            do {
+                try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
+                completion(.success(objectList: nil))
+            } catch let error {
+                CKLCoreData.log("ERROR: \(error)")
+                completion(.failure(error: error))
+            }
+        }
+    }
+    
+    static func runInBackgroundContext(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
+        
+        let backgroundContext = persistantContainer.newBackgroundContext()
+        backgroundContext.perform {
+            completion(backgroundContext)
+        }
+    }
+
     // MARK: - Private Funcs
     fileprivate static func deleteAllFromFetchRequest(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>, inContext context: NSManagedObjectContext) throws {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
