@@ -12,7 +12,7 @@ import Fabric
 import Crashlytics
 
 
-class DataController: NSObject {
+class CoreDataManager: NSObject {
     var persistentContainer: NSPersistentContainer
     var managedObjectContext: NSManagedObjectContext {
         get {
