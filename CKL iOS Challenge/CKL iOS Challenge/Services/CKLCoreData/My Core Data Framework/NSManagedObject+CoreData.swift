@@ -53,14 +53,12 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    // MARK: - "Async" Save
-    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> ()) {
-        do {
-            try save(context)
-            completion(.success(objectList: nil))
-        } catch let error as NSError {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")
-            completion(.failure(error: error))
+    // MARK: Async Task !!!
+    static func asyncTask(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
+        
+        let backgroundContext = persistantContainer.newBackgroundContext()
+        backgroundContext.perform {
+            completion(backgroundContext)
         }
     }
     

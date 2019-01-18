@@ -22,11 +22,13 @@ class ArticleDetailViewModel: NSObject {
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
         let context = CKLCoreData.context
-        Article.asyncSave(context, completion: { completion in
-            if case .failure(_) = completion { return }
+        do {
+            try Article.save(context)
             let newRightBarButtonItem = barButtonItem(for: article)
             self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
-        })
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")
+        }
     }
     
     func barButtonItem(for article: Article?) -> UIBarButtonItem? {

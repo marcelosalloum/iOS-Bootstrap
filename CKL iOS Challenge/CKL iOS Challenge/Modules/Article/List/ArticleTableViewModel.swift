@@ -86,7 +86,13 @@ class ArticleTableViewModel: NSObject {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = CKLCoreData.context
-        Article.asyncSave(context, completion: completion)
+        do {
+            try Article.save(context)
+            completion(.success(objectList: nil))
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")
+            completion(.failure(error: error))
+        }
     }
     
     

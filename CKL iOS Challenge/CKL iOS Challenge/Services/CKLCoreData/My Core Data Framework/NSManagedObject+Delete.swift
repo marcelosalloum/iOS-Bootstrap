@@ -11,7 +11,12 @@ import CoreData
 
 
 extension NSFetchRequestResult where Self: NSManagedObject {
-    // MARK: - Remove All
+    // MARK: - Delete One
+    static public func delete(inContext context: NSManagedObjectContext, object: Self) {
+        context.delete(object)
+    }
+    
+    // MARK: - Delete All
     static public func deleteAll(inContext context: NSManagedObjectContext, except toKeep: [Self]? = nil) throws {
         // Fech Reqest
         let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
@@ -27,7 +32,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     static public func asyncDeleteAll(persistantContainer: NSPersistentContainer,
                                       except toKeep: [Self]? = nil,
                                       completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
-        runInBackgroundContext(persistantContainer) { (backgroundContext) in
+        asyncTask(persistantContainer) { (backgroundContext) in
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
             if let toKeep = toKeep, toKeep.count > 0 {
@@ -59,7 +64,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                                       except attributeName: String,
                                       toKeep: [String],
                                       completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
-        runInBackgroundContext(persistantContainer) { (backgroundContext) in
+        asyncTask(persistantContainer) { (backgroundContext) in
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
             deleteFetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)
@@ -74,14 +79,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    static func runInBackgroundContext(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
-        
-        let backgroundContext = persistantContainer.newBackgroundContext()
-        backgroundContext.perform {
-            completion(backgroundContext)
-        }
-    }
-
     // MARK: - Private Funcs
     fileprivate static func deleteAllFromFetchRequest(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>, inContext context: NSManagedObjectContext) throws {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
