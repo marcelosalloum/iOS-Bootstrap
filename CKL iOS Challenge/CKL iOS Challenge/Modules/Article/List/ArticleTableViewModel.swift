@@ -35,17 +35,17 @@ class ArticleTableViewModel: NSObject {
     // MARK: - Filtering CoreData Results
     var articlesOrder: ArticlesOrder = .id {
         didSet {
-            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
+            searchArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
     
     var searchTerm: String = "" {
         didSet {
-            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
+            searchArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
 
-    fileprivate func filterArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
+    fileprivate func searchArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
         // Build NSPredicate
         var predicate: NSPredicate? = nil
         if searchTerm.count > 0 {
@@ -54,10 +54,10 @@ class ArticleTableViewModel: NSObject {
 
         // Build NSSortDescriptor
         let sortDescriptor = NSSortDescriptor(key: articlesOrder.rawValue, ascending: true)
-        
+
         // Read from the database
         do {
-            articles = try Article.readAll(CKLCoreData.context, predicate: predicate, sortDescriptors: [sortDescriptor])
+            articles = try Article.readAll(predicate: predicate, sortDescriptors: [sortDescriptor])
             self.delegate?.updateData(articles: articles, endRefreshing: true)
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")
@@ -69,8 +69,10 @@ class ArticleTableViewModel: NSObject {
     func fetchAPIData() {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
-            case .success(objectList: _):
-                self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+            case .success(result: let articleList):
+                Article.deleteAll(except: articleList, backgroundContext: EZCoreData.privateThreadContext, completion: { _ in
+                    self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+                })
             case .failure(error: let error):
                 self.delegate?.displayError(error: error, endRefreshing: true)
             }
@@ -80,11 +82,11 @@ class ArticleTableViewModel: NSObject {
     
     
     // MARK: - Update the read status in the CoreData
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<[Article]>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: @escaping ((EZCoreDataResult<Any>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
-        let context = CKLCoreData.context
-        Article.asyncSave(context, completion: completion)
+        let context = EZCoreData.shared.mainThredContext
+        context.saveContextToStore(completion)
     }
     
     

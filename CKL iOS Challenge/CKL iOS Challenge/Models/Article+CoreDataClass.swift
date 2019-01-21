@@ -12,6 +12,7 @@ import CoreData
 
 
 public class Article: NSManagedObject {
+    /// Transfors the list of tagsinto a comma-separated string
     func tagsToString() -> String {
         
         guard let tags = self.tags else { return "" }
@@ -33,7 +34,8 @@ public class Article: NSManagedObject {
 
 
 extension Article {
-    override public func populateFromJSON(_ json: [String: Any]) {
+    /// Populates Article objects from JSON
+    override public func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
         guard let id = json["id"] as? Int16 else { return }
         self.id = id
         self.authors = json["authors"] as? String
@@ -53,11 +55,11 @@ extension Article {
 
         if let tags = json["tags"] as? [[String: Any]] {
             do {
-                guard let tagObjects = try Tag.importObjects(tags, context: CKLCoreData.context, idKey: "id", shouldSave: false) else { return }
+                guard let tagObjects = try Tag.importList(tags, idKey: "id", shouldSave: false, context: context) else { return }
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
-            } catch let error as NSError {
-                CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            } catch let error {
+                EZCoreDataLogger.logError(error.localizedDescription)
             }
         }
     }

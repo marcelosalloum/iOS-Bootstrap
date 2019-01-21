@@ -12,9 +12,8 @@
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
-		1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* CKLCoreData.swift */; };
+		1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */; };
 		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
-		1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */; };
 		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
 		1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
@@ -56,11 +55,12 @@
 		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
 		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
 		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
-		1FAC98E821F11A19000B8E68 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* DataController.swift */; };
+		1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* EZCoreData.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
 		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
+		1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */; };
 		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -71,9 +71,8 @@
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		1F86B99C21E669D10059D2CB /* CKLCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKLCoreData.swift; sourceTree = "<group>"; };
+		1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreDataLogger.swift; sourceTree = "<group>"; };
 		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
-		1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreData.swift"; sourceTree = "<group>"; };
 		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
 		1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Delete.swift"; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,11 +117,12 @@
 		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
 		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
 		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
-		1FAC98E721F11A19000B8E68 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		1FAC98E721F11A19000B8E68 /* EZCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreData.swift; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
 		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,11 +191,7 @@
 		1F86B9AC21E77AA30059D2CB /* CKLCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1F86B99C21E669D10059D2CB /* CKLCoreData.swift */,
-				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
-				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
-				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
-				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
+				1FC76B1A21F1DEB6005782ED /* My Core Data Framework */,
 			);
 			path = CKLCoreData;
 			sourceTree = "<group>";
@@ -240,7 +236,6 @@
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
-				1FAC98E721F11A19000B8E68 /* DataController.swift */,
 			);
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
@@ -329,6 +324,19 @@
 				1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */,
 			);
 			path = Brandon;
+			sourceTree = "<group>";
+		};
+		1FC76B1A21F1DEB6005782ED /* My Core Data Framework */ = {
+			isa = PBXGroup;
+			children = (
+				1FAC98E721F11A19000B8E68 /* EZCoreData.swift */,
+				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
+				1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */,
+				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
+				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
+				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
+			);
+			path = "My Core Data Framework";
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
@@ -537,11 +545,11 @@
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
 				1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */,
-				1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */,
+				1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
-				1FAC98E821F11A19000B8E68 /* DataController.swift in Sources */,
+				1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,
@@ -551,9 +559,9 @@
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
+				1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
-				1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */,
 				1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);

@@ -21,12 +21,10 @@ class ArticleDetailViewModel: NSObject {
     
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
-        let context = CKLCoreData.context
-        Article.asyncSave(context, completion: { completion in
-            if case .failure(_) = completion { return }
-            let newRightBarButtonItem = barButtonItem(for: article)
-            self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
-        })
+        let context = EZCoreData.shared.mainThredContext
+        context.saveContextToStore()
+        let newRightBarButtonItem = barButtonItem(for: article)
+        self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
     }
     
     func barButtonItem(for article: Article?) -> UIBarButtonItem? {
