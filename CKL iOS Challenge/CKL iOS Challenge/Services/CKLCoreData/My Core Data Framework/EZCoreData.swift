@@ -10,10 +10,8 @@ import UIKit
 import CoreData
 
 
+// MARK: - Basic Setup
 public class EZCoreData: NSObject {
-    
-    
-    // MARK: - Basic Setup
     
     /// Daatabase Name. Default value is `EZCoreData_DBName`
     static var databaseName: String = "EZCoreData_DBName"
@@ -61,11 +59,5 @@ public class EZCoreData: NSObject {
             }
             completion()
         }
-    }
-    
-    // MARK: - Save
-    /// A helper used to save the private and main Contexts. The private context will be saved first then recursively save it's parent(s)
-    func saveChanges() {
-        privateThreadContext.saveContextToStore { _ in }
     }
 }

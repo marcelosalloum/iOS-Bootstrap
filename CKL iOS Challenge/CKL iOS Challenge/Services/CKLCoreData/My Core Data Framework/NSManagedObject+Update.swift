@@ -94,7 +94,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     public static func importList(_ jsonArray: [[String: Any]]?,
                                   idKey: String = "id",
                                   backgroundContext: NSManagedObjectContext = EZCoreData.privateThreadContext,
-                                  completion: @escaping (EZCoreDataResult<[Self]>) -> ()) {
+                                  completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         backgroundContext.perform {
             // Input validations
             guard let jsonArray = jsonArray else { return }
@@ -112,8 +112,14 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             }
             
             // Context Save
-            EZCoreData.shared.saveChanges()
-            completion(EZCoreDataResult<[Self]>.success(result: objectsArray))
+            backgroundContext.saveContextToStore({ (result) in
+                switch result {
+                case .success(result: _):
+                    completion(EZCoreDataResult<[Self]>.success(result: objectsArray))
+                case .failure(error: let error):
+                    completion(EZCoreDataResult<[Self]>.failure(error: error))
+                }
+            })
         }
     }
 }

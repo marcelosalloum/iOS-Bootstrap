@@ -10,10 +10,6 @@ import Foundation
 import CoreData
 
 
-/**
- Convenience extension to `NSManagedObjectContext` that ensures that saves to contexts of type
- `.mainQueueConcurrencyType` and `.privateQueueConcurrencyType` are dispatched on the correct GCD queue.
- */
 public extension NSManagedObjectContext {
     
     /// Saves the context ASYNCRONOUSLY. Also saves context parents recursively (parent, then parent's parent, and so on
