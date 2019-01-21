@@ -14,20 +14,53 @@ import Crashlytics
 
 class CoreDataManager: NSObject {
     
-//    NSPersistentContainer has two properties, more specifically, the property and method: viewContext and newBackgroundContext. The first is associated with the main queue, the second with privateQueueConcurrencyType. When we write something in newBackgroundContext, it sends a notification for viewContext object to merge content. Therefore, it appears that we no longer need to subscribe to this notification. From viewContext documentation:
-    
     static let shared: CoreDataManager = CoreDataManager{}
     
     var persistentContainer: NSPersistentContainer
     
-    var managedObjectContext: NSManagedObjectContext {  // mainQueueContext //    is associated with the mainQueue
-        get {
-            return persistentContainer.viewContext
-        }
-    }
+    // Executes in Main Thread:
+    lazy var mainThredContext: NSManagedObjectContext = {
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        
+        managedObjectContext.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+        
+        return managedObjectContext
+    }()
     
-    func newPrivateQueueContext() -> NSManagedObjectContext {  // newPrivateQueueContext    is associated with the privateQueueConcurrencyType
-        return persistentContainer.newBackgroundContext()
+    // Executes in Private Thread:
+    lazy var privateThreadContext: NSManagedObjectContext = {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        
+        managedObjectContext.parent = self.mainThredContext
+        
+        return managedObjectContext
+    }()
+    
+    func saveChanges() {
+        privateThreadContext.perform {
+            do {
+                if self.privateThreadContext.hasChanges {
+                    try self.privateThreadContext.save()
+                }
+            } catch {
+                let saveError = error as NSError
+                print("Unable to Save Changes of Managed Object Context")
+                print("\(saveError), \(saveError.localizedDescription)")
+            }
+            
+            self.mainThredContext.perform {
+                do {
+                    if self.mainThredContext.hasChanges {
+                        try self.mainThredContext.save()
+                    }
+                } catch {
+                    let saveError = error as NSError
+                    print("Unable to Save Changes of Private Managed Object Context")
+                    print("\(saveError), \(saveError.localizedDescription)")
+                }
+            }
+            
+        }
     }
     
     init(_ completion: @escaping () -> ()) {

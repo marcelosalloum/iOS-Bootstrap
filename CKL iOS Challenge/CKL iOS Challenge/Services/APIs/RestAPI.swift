@@ -23,7 +23,7 @@ class RestAPI: NSObject {
             switch response.result {
             case .success:
                 if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.asyncImportObjects(jsonArray, context: CKLCoreData.context, completion: completion, idKey: "id")
+                    Article.asyncImportObjects(jsonArray, backgroundContext: CoreDataManager.shared.privateThreadContext, completion: completion, idKey: "id")
                 } else {
                     completion(AwesomeDataResult<[Article]>.success(objectList: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")

@@ -21,7 +21,7 @@ class ArticleDetailViewModel: NSObject {
     
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
-        let context = CKLCoreData.context
+        let context = CoreDataManager.shared.mainThredContext
         do {
             try Article.save(context)
             let newRightBarButtonItem = barButtonItem(for: article)

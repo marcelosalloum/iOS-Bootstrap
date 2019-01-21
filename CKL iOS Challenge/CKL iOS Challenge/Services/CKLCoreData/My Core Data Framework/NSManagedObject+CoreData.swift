@@ -53,13 +53,4 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
         }
     }
-    
-    // MARK: Async Task !!!
-    static func asyncTask(_ persistantContainer: NSPersistentContainer, _ completion: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
-        
-        let backgroundContext = persistantContainer.newBackgroundContext()
-        backgroundContext.perform {
-            completion(backgroundContext)
-        }
-    }
 }

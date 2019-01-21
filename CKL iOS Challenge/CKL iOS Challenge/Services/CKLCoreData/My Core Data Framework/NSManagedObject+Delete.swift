@@ -29,10 +29,10 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
     }
     
-    static public func asyncDeleteAll(persistantContainer: NSPersistentContainer,
+    static public func asyncDeleteAll(backgroundContext: NSManagedObjectContext,
                                       except toKeep: [Self]? = nil,
                                       completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
-        asyncTask(persistantContainer) { (backgroundContext) in
+        backgroundContext.perform {
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
             if let toKeep = toKeep, toKeep.count > 0 {
@@ -44,7 +44,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 //                try print(Article.count(inContext: backgroundContext))
 //                try print(Article.count(inContext: context))
                 completion(.success(objectList: nil))
-                CKLCoreData.log("Deeted list of objects")
+                CKLCoreData.log("Deleted list of objects")
             } catch let error {
                 CKLCoreData.log("ERROR: \(error)")
                 completion(.failure(error: error))
@@ -60,11 +60,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         try deleteAllFromFetchRequest(deleteFetchRequest, inContext: context)
     }
     
-    static public func asyncDeleteAll(persistantContainer: NSPersistentContainer,
+    static public func asyncDeleteAll(backgroundContext: NSManagedObjectContext,
                                       except attributeName: String,
                                       toKeep: [String],
                                       completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
-        asyncTask(persistantContainer) { (backgroundContext) in
+        backgroundContext.perform {
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
             deleteFetchRequest.predicate = NSPredicate(format: "NOT (\(attributeName) IN %@)", toKeep)

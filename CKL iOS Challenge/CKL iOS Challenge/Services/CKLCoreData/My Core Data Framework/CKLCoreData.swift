@@ -19,17 +19,12 @@ enum CKLCoreDataError: Error {
 
 enum CKLCoreDateLogLevel: String {
     case debug
+    case error
     case silent
 }
 
 
-class CKLCoreData: NSObject {
-    
-    // Used by your project
-    public static let shared = CKLCoreData()  // singleton
-
-    // Used by the NSManagedObject extensions and your project
-    static let context = CoreDataManager.shared.managedObjectContext
+struct CKLCoreData {
     
     // Logging level
     static var logLevel = CKLCoreDateLogLevel.debug
@@ -37,6 +32,17 @@ class CKLCoreData: NSObject {
     static func log(_ logText: Any?) {
         switch logLevel {
         case .debug:
+            guard let text = logText else { return }
+            print(text)
+            return
+        case .error, .silent:
+            return
+        }
+    }
+    
+    static func logError(_ logText: Any?) {
+        switch logLevel {
+        case .debug, .error:
             guard let text = logText else { return }
             print(text)
             return

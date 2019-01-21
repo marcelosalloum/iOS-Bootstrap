@@ -17,7 +17,7 @@ public class Tag: NSManagedObject {
 
 
 extension Tag {
-    override public func populateFromJSON(_ json: [String: Any]) {
+    override public func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
         guard let id = json["id"] as? Int16 else { return }
         self.id = id
         self.label = json["label"] as? String
