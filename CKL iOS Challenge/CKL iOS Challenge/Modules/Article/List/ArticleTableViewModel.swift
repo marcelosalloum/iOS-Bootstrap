@@ -57,7 +57,7 @@ class ArticleTableViewModel: NSObject {
 
         // Read from the database
         do {
-            articles = try Article.readAll(EZCoreData.shared.mainThredContext, predicate: predicate, sortDescriptors: [sortDescriptor])
+            articles = try Article.readAll(predicate: predicate, sortDescriptors: [sortDescriptor])
             self.delegate?.updateData(articles: articles, endRefreshing: true)
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")

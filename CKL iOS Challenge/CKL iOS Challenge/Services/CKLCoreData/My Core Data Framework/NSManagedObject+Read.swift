@@ -10,11 +10,43 @@ import Foundation
 import CoreData
 
 
+
+// MARK: - Read Helpers
 extension NSFetchRequestResult where Self: NSManagedObject {
     
+    // MARK: - Sync Read
+    static public func syncFetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+        let fetchRequest = NSFetchRequest<Self>()
+        fetchRequest.entity = entity()
+        return fetchRequest
+    }
     
-    // MARK: - Read First
-    static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
+    // MARK: - Async Read
+    static public func asyncFetchRequest(_ fetchRequest: NSFetchRequest<Self>,
+                                         context: NSManagedObjectContext,
+                                         completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
+            if let fetchedObjects = asyncFetchResult.finalResult {
+                completion(.success(result: fetchedObjects))
+            }
+        }
+        
+        do {
+            let _ = try context.execute(asynchronousFetchRequest)
+        } catch {
+            EZCoreDataLogger.logError(error.localizedDescription)
+            completion(.failure(error: error))
+        }
+    }
+    
+}
+
+
+// MARK: - Read First
+extension NSFetchRequestResult where Self: NSManagedObject {
+    
+    static func readFirstFetchRequest(_ predicate: NSPredicate? = nil,
+                                      context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = syncFetchRequest(context)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1
@@ -23,30 +55,35 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func readFirst(inContext context: NSManagedObjectContext,
-                                 predicate: NSPredicate? = nil) throws -> Self? {
-        let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
+    static public func readFirst(_ predicate: NSPredicate? = nil,
+                                 context: NSManagedObjectContext = EZCoreData.mainThredContext) throws -> Self? {
+        let fetchRequest = readFirstFetchRequest(predicate, context: context)
         return try context.fetch(fetchRequest).first
+        
     }
     
-    static public func asyncReadFirst(inContext context: NSManagedObjectContext,
-                                      predicate: NSPredicate? = nil,
+    static public func asyncReadFirst(_ predicate: NSPredicate? = nil,
+                                      context: NSManagedObjectContext = EZCoreData.mainThredContext,
                                       completion: @escaping (EZCoreDataResult<Self>) -> Void) {
-        let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
+        let fetchRequest = readFirstFetchRequest(predicate, context: context)
         asyncFetchRequest(fetchRequest, context: context, completion: {awesomeResult in
             switch awesomeResult {
-            case EZCoreDataResult<[Self]>.success(result: let objectList):
-                let firstObject: Self? = objectList?.first
-                completion(EZCoreDataResult<Self>.success(result: firstObject))
-            case EZCoreDataResult<[Self]>.failure(error: let error):
+            case .success(result: let objectList):
+                completion(EZCoreDataResult<Self>.success(result: objectList?.first))
+            case .failure(error: let error):
                 completion(EZCoreDataResult<Self>.failure(error: error))
             }
         })
     }
-    
-    
-    // MARK: - Read All
-    fileprivate static func readAllFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
+}
+
+
+// MARK: - Read All
+extension NSFetchRequestResult where Self: NSManagedObject {
+
+    fileprivate static func readAllFetchRequest(_ predicate: NSPredicate? = nil,
+                                                context: NSManagedObjectContext,
+                                                sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
         let fetchRequest = syncFetchRequest(context)
         fetchRequest.sortDescriptors = sortDescriptors
@@ -54,24 +91,31 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func readAll(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
+    static public func readAll(predicate: NSPredicate? = nil,
+                               context: NSManagedObjectContext = EZCoreData.mainThredContext,
+                               sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
         // Prepare the request
-        let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAllFetchRequest(predicate, context: context, sortDescriptors: sortDescriptors)
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncReadAll(_ context: NSManagedObjectContext,
-                                    predicate: NSPredicate? = nil,
-                                    sortDescriptors: [NSSortDescriptor]? = nil,
-                                    completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
+    static public func readAll(predicate: NSPredicate? = nil,
+                               sortDescriptors: [NSSortDescriptor]? = nil,
+                               context: NSManagedObjectContext = EZCoreData.mainThredContext,
+                               completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
-        let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAllFetchRequest(predicate, context: context, sortDescriptors: sortDescriptors)
         asyncFetchRequest(fetchRequest, context: context, completion: completion)
     }
-    
-    
-    // MARK: - Read With Attributes
-    fileprivate static func readAwesomeFetchRequest(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
+}
+
+
+// MARK: - Read With Attributes
+extension NSFetchRequestResult where Self: NSManagedObject {
+    fileprivate static func readAllByAttributeFetchRequest(_ attribute: String? = nil,
+                                                           value: String? = nil,
+                                                           sortDescriptors: [NSSortDescriptor]? = nil,
+                                                           context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         // Prepare the request
         let fetchRequest = syncFetchRequest(context)
         fetchRequest.sortDescriptors = sortDescriptors
@@ -81,25 +125,32 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func readAwesome(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
+    static public func readAllByAttribute(_ attribute: String? = nil,
+                                          value: String? = nil,
+                                          sortDescriptors: [NSSortDescriptor]? = nil,
+                                          context: NSManagedObjectContext = EZCoreData.mainThredContext) throws -> [Self] {
         // Prepare the request
-        let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAllByAttributeFetchRequest(attribute, value: value, sortDescriptors: sortDescriptors, context: context)
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncReadAwesome(inContext context: NSManagedObjectContext,
-                                        attribute: String? = nil,
-                                        value: String? = nil,
-                                        sortDescriptors: [NSSortDescriptor]? = nil,
-                                        completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
+    static public func readAllByAttribute(_ attribute: String? = nil,
+                                          value: String? = nil,
+                                          sortDescriptors: [NSSortDescriptor]? = nil,
+                                          context: NSManagedObjectContext = EZCoreData.mainThredContext,
+                                          completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
-        let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAllByAttributeFetchRequest(attribute, value: value, sortDescriptors: sortDescriptors, context: context)
         asyncFetchRequest(fetchRequest, context: context, completion: completion)
     }
-    
+}
 
-    // MARK: - Count
-    static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
+
+// MARK: - Count
+extension NSFetchRequestResult where Self: NSManagedObject {
+
+    static public func count(predicate: NSPredicate? = nil,
+                             context: NSManagedObjectContext = EZCoreData.mainThredContext) throws -> Int {
         // Prepare the request
         let fetchRequest = syncFetchRequest(context)
         fetchRequest.includesSubentities = false
@@ -107,4 +158,3 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return try context.count(for: fetchRequest)
     }
 }
-

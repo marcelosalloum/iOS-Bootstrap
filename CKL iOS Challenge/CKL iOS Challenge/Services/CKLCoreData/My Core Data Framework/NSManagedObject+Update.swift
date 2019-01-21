@@ -29,7 +29,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         
         // GET, if idKey exists
         do {
-            fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
+            fetchedObjects = try readAllByAttribute(attribute, value: value, context: context)
         } catch let error {
             EZCoreDataLogger.logError(error.localizedDescription)
             return nil

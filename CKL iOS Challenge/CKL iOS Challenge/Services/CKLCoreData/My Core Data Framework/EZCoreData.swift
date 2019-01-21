@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class EZCoreData: NSObject {
+public class EZCoreData: NSObject {
     
     
     // MARK: - Basic Setup
@@ -30,6 +30,10 @@ class EZCoreData: NSObject {
         return managedObjectContext
     }()
     
+    public static var mainThredContext: NSManagedObjectContext {
+        return shared.mainThredContext
+    }
+    
     // Executes in Private Thread:
     lazy var privateThreadContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -39,9 +43,12 @@ class EZCoreData: NSObject {
         return managedObjectContext
     }()
     
+    public static var privateThreadContext: NSManagedObjectContext {
+        return shared.privateThreadContext
+    }
     
     // MARK: - Init
-    init(_ completion: @escaping () -> ()) {
+    init(_ completion: @escaping () -> Void) {
         persistentContainer = NSPersistentContainer(name: EZCoreData.databaseName)
         persistentContainer.loadPersistentStores() { (description, error) in
             if let error = error {

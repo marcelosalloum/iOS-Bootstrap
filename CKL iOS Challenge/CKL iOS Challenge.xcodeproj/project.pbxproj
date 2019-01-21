@@ -14,7 +14,6 @@
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
 		1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */; };
 		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
-		1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */; };
 		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
 		1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
@@ -74,7 +73,6 @@
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreDataLogger.swift; sourceTree = "<group>"; };
 		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
-		1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreData.swift"; sourceTree = "<group>"; };
 		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
 		1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Delete.swift"; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,7 +331,6 @@
 			children = (
 				1FAC98E721F11A19000B8E68 /* EZCoreData.swift */,
 				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
-				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
 				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
 				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
@@ -565,7 +562,6 @@
 				1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
-				1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */,
 				1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
