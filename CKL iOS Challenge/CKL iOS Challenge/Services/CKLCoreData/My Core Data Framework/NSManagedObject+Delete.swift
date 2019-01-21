@@ -91,7 +91,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     
     // MARK: - Private Funcs
-    fileprivate static func deleteAllFromFetchRequest(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>, context: NSManagedObjectContext) throws {
+    /// Delete all objects returned in the given NSFetchRequest
+    fileprivate static func deleteAllFromFetchRequest(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>,
+                                                      context: NSManagedObjectContext) throws {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try context.execute(deleteRequest)
     }

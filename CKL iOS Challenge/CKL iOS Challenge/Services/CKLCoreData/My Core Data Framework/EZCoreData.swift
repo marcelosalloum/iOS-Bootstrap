@@ -14,14 +14,16 @@ public class EZCoreData: NSObject {
     
     
     // MARK: - Basic Setup
+    
+    /// Daatabase Name. Default value is `EZCoreData_DBName`
     static var databaseName: String = "EZCoreData_DBName"
 
-    // If the shared version is not enough for your case, you're encoouraged to create an intance of your own
+    /// Shared instance of `EZCoreData`. If the shared version is not enough for your case, you're encoouraged to create an intance of your own
     static let shared: EZCoreData = EZCoreData {}
     
     var persistentContainer: NSPersistentContainer
     
-    // Executes in Main Thread:
+    /// NSManagedObjectContext that executes in Main Thread
     lazy var mainThredContext: NSManagedObjectContext = {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         
@@ -30,11 +32,12 @@ public class EZCoreData: NSObject {
         return managedObjectContext
     }()
     
+    /// static NSManagedObjectContext that executes in Main Thread
     public static var mainThredContext: NSManagedObjectContext {
         return shared.mainThredContext
     }
     
-    // Executes in Private Thread:
+    /// NSManagedObjectContext that executes in a Private Thread
     lazy var privateThreadContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         
@@ -43,11 +46,13 @@ public class EZCoreData: NSObject {
         return managedObjectContext
     }()
     
+    /// static NSManagedObjectContext that executes in a Private Thread
     public static var privateThreadContext: NSManagedObjectContext {
         return shared.privateThreadContext
     }
     
     // MARK: - Init
+    /// Async initialization of the NSPersistentContainer
     init(_ completion: @escaping () -> Void) {
         persistentContainer = NSPersistentContainer(name: EZCoreData.databaseName)
         persistentContainer.loadPersistentStores() { (description, error) in
@@ -59,7 +64,7 @@ public class EZCoreData: NSObject {
     }
     
     // MARK: - Save
-    // TODO: make a sync and and async saveChanges
+    /// A helper used to save the private and main Contexts. The private context will be saved first then recursively save it's parent(s)
     func saveChanges() {
         privateThreadContext.saveContextToStore { _ in }
     }

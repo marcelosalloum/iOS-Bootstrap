@@ -12,17 +12,11 @@ import CoreData
 
 /**
  Convenience extension to `NSManagedObjectContext` that ensures that saves to contexts of type
- `MainQueueConcurrencyType` and `PrivateQueueConcurrencyType` are dispatched on the correct GCD queue.
+ `.mainQueueConcurrencyType` and `.privateQueueConcurrencyType` are dispatched on the correct GCD queue.
  */
 public extension NSManagedObjectContext {
-    /**
-     Convenience method to asynchronously save the `NSManagedObjectContext` if changes are present.
-     If any parent contexts are found, they too will be saved asynchronously.
-     Method also ensures that the save is executed on the correct queue when using Main/Private queue concurrency types.
-     
-     - parameter completion: Completion closure with a `EZCoreDataResult` to be executed
-     either upon the completion of the top most context's save operation or the first encountered save error.
-     */
+    
+    /// Saves the context ASYNCRONOUSLY. Also saves context parents recursively (parent, then parent's parent, and so on
     public func saveContextToStore(_ completion: @escaping (EZCoreDataResult<Any>) -> Void) {
         func saveFlow() {
             do {
@@ -48,6 +42,7 @@ public extension NSManagedObjectContext {
         }
     }
     
+    /// Saves the context SYNCRONOUSLY. Also saves context parents recursively (parent, then parent's parent, and so on
     public func saveContextToStore() {
         do {
             try regularSaveFlow()
@@ -63,6 +58,7 @@ public extension NSManagedObjectContext {
         }
     }
     
+    /// Saves the context if there is any changes
     private func regularSaveFlow() throws {
         if !hasChanges {
             EZCoreDataLogger.log("Context has no changes to be saved")
