@@ -10,47 +10,12 @@ import Foundation
 import CoreData
 
 
-public enum GetOrCreate: String {
-    case error
-    case get
-    case create
-}
-
-
-extension CKLCoreDataProtocol where Self: NSManagedObject {
-    /*
-     GET or CREATE
-     */
+extension NSFetchRequestResult where Self: NSManagedObject {
     
-    static func getOrCreate(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, attribute: String?, value: String?) -> (Self?, GetOrCreate?, Error?) {
-        // Initializing return variables
-        var object: Self?
-        var getOrCreate: GetOrCreate = .error
-        var fetchedObjects: [Self] = []
-        
-        // GET
-        do {
-            fetchedObjects = try fetchInContext(context, attribute: attribute, value: value, sortDescriptors: nil)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            return (object, getOrCreate, error)
-        }
-        
-        // If GET is empty, then CREATE
-        if (fetchedObjects.count > 0) {
-            object = fetchedObjects[0]
-            getOrCreate = .get
-        } else {
-            object = Self.init(entity: self.entity(), insertInto: context)
-            getOrCreate = .create
-        }
-        
-        return (object, getOrCreate, nil)
-    }
     
-    // Read First
-    static func findFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+    // MARK: - Read First
+    static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1
         fetchRequest.returnsObjectsAsFaults = false
@@ -58,44 +23,57 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func findFirst(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Self? {
-        let fetchRequest = findFirstFetchRequest(inContext: context, predicate: predicate)
+    static public func readFirst(inContext context: NSManagedObjectContext,
+                                 predicate: NSPredicate? = nil) throws -> Self? {
+        let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
         return try context.fetch(fetchRequest).first
     }
     
-    static public func findFirstAsync(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
-        let fetchRequest = findFirstFetchRequest(inContext: context, predicate: predicate)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+    static public func asyncReadFirst(inContext context: NSManagedObjectContext,
+                                      predicate: NSPredicate? = nil,
+                                      completion: @escaping (AwesomeDataResult<Self>) -> Void) {
+        let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: {awesomeResult in
+            switch awesomeResult {
+            case AwesomeDataResult<[Self]>.success(objectList: let objectList):
+                let firstObject: Self? = objectList?.first
+                completion(AwesomeDataResult<Self>.success(objectList: firstObject))
+            case AwesomeDataResult<[Self]>.failure(error: let error):
+                completion(AwesomeDataResult<Self>.failure(error: error))
+            }
+        })
     }
     
-    // Read From Predicate
-    fileprivate static func readObjects(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
+    
+    // MARK: - Read All
+    fileprivate static func readAllFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
         return fetchRequest
     }
     
-    static public func readObjects(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
+    static public func readAll(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
         // Prepare the request
-        let fetchRequest = readObjects(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncReadObjects(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadAll(_ context: NSManagedObjectContext,
+                                    predicate: NSPredicate? = nil,
+                                    sortDescriptors: [NSSortDescriptor]? = nil,
+                                    completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
         // Prepare the request
-        let fetchRequest = readObjects(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
-    /**
-     Read objects with attribute
-     SELECT (*) from Article WHERE "attribute" equals "value"
-     */
-    fileprivate static func fetchRequestInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
+    
+    // MARK: - Read With Attributes
+    fileprivate static func readAwesomeFetchRequest(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.sortDescriptors = sortDescriptors
         if let attribute = attribute, let value = value {
             fetchRequest.predicate = NSPredicate(format: "\(attribute) == \(value)")
@@ -103,37 +81,30 @@ extension CKLCoreDataProtocol where Self: NSManagedObject {
         return fetchRequest
     }
     
-    static public func fetchInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
+    static public func readAwesome(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Self] {
         // Prepare the request
-        let fetchRequest = fetchRequestInContext(context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
+        let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
         return try context.fetch(fetchRequest)
     }
     
-    static public func asyncFetchInContext(_ context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    static public func asyncReadAwesome(inContext context: NSManagedObjectContext,
+                                        attribute: String? = nil,
+                                        value: String? = nil,
+                                        sortDescriptors: [NSSortDescriptor]? = nil,
+                                        completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
         // Prepare the request
-        let fetchRequest = fetchRequestInContext(context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
+        let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
+        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
     }
     
-    // Count
-    fileprivate static func fetchRequestCountInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
+
+    // MARK: - Count
+    static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
         // Prepare the request
-        let fetchRequest = fetchRequestForEntity(inContext: context)
+        let fetchRequest = syncFetchRequest(inContext: context)
         fetchRequest.includesSubentities = false
         fetchRequest.predicate = predicate
-        return fetchRequest
-    }
-    
-    static public func countInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
-        // Prepare the request
-        let fetchRequest = fetchRequestCountInContext(context, predicate: predicate)
         return try context.count(for: fetchRequest)
-    }
-    
-    static public func asyncCountInContext(_ context: NSManagedObjectContext, predicate: NSPredicate? = nil, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
-        // Prepare the request
-        let fetchRequest = fetchRequestCountInContext(context, predicate: predicate)
-        executeAsyncFetchRequest(inContext: context, fetchRequest: fetchRequest, success: success, failure: failure)
     }
 }
 

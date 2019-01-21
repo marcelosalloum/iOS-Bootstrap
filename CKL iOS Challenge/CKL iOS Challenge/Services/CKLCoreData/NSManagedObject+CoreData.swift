@@ -10,36 +10,66 @@ import Foundation
 import CoreData
 
 
-public protocol CKLCoreDataProtocol {
+// MARK: - Error Handling
+public enum AwesomeDataResult<Object> {
+    case success(objectList: Object?)
+    case failure(error: Error)
 }
 
 
-extension NSManagedObject: CKLCoreDataProtocol {
+// MARK: - Used for importing a JSON into an NSManagedObjectContext
+extension NSManagedObject {
+    @objc func populateFromJSON(_ json: [String: Any]) {
+        print("NSManagedObject")
+    }
 }
 
 
-extension CKLCoreDataProtocol where Self: NSManagedObject {
+// MARK: - Read Helpers
+extension NSFetchRequestResult where Self: NSManagedObject {
     
-    static public func fetchRequestForEntity(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+    // MARK: - Sync Read
+    static public func syncFetchRequest(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()
         return fetchRequest
     }
     
-    static public func executeAsyncFetchRequest(inContext context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Self>, success: @escaping (([Self]) -> Void), failure: ((Error) -> Void)? = nil) {
+    // MARK: - Async Read
+    static public func asyncFetchRequest(inContext context: NSManagedObjectContext,
+                                         fetchRequest: NSFetchRequest<Self>,
+                                         completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
         let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
             if let fetchedObjects = asyncFetchResult.finalResult {
-                success(fetchedObjects)
+                completion(.success(objectList: fetchedObjects))
             }
         }
         
-        // Execute Asynchronous Fetch Request
         do {
             let _ = try context.execute(asynchronousFetchRequest)
         } catch {
-            print("ERROR: \(error.localizedDescription)")  // TODO: turn on/off verbose option
-            failure?(error)
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            completion(.failure(error: error))
         }
     }
     
+    // MARK: - "Async" Save
+    static func asyncSave(_ context: NSManagedObjectContext, completion: (AwesomeDataResult<[Self]>) -> ()) {
+        do {
+            try save(context)
+            completion(.success(objectList: nil))
+        } catch let error as NSError {
+            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            completion(.failure(error: error))
+        }
+    }
+    
+    // MARK: - Sync Save
+    static func save(_ context: NSManagedObjectContext) throws {
+        if context.hasChanges {
+            try context.save()
+        } else {
+            CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
+        }
+    }
 }

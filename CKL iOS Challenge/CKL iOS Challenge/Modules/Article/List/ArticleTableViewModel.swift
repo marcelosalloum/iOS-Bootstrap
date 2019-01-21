@@ -10,44 +10,66 @@ import UIKit
 import SwiftMessages
 
 
+// MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
 protocol ArticleTableProtocol: class {
     func updateData(articles: [Article], endRefreshing: Bool)
     func displayError(error: Error, endRefreshing: Bool)
 }
 
+
+// MARK: - Used to order the Articles
 enum ArticlesOrder: String {
-    case null
     case id
     case authors
     case title
 }
 
+
 class ArticleTableViewModel: NSObject {
     
+    // MARK: - Initial Set-up
     var articles: [Article] = []
     weak var delegate: ArticleTableProtocol?
     
-    fileprivate var _articlesOrder: ArticlesOrder = .id
+    
+    // MARK: - Filtering CoreData Results
     var articlesOrder: ArticlesOrder = .id {
         didSet {
-            _articlesOrder = articlesOrder
-            filterArticles(_searchTerm, orderBy: _articlesOrder, ascending: true)
+            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
     
-    fileprivate var _searchTerm: String = ""
     var searchTerm: String = "" {
         didSet {
-            _searchTerm = searchTerm
-            filterArticles(_searchTerm, orderBy: _articlesOrder, ascending: true)
+            filterArticles(searchTerm, orderBy: articlesOrder, ascending: true)
         }
     }
 
-    // GET API Data
+    fileprivate func filterArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
+        // Build NSPredicate
+        var predicate: NSPredicate? = nil
+        if searchTerm.count > 0 {
+            predicate = NSPredicate(format: "title CONTAINS[c] '\(searchTerm)' or authors CONTAINS[c] '\(searchTerm)'")
+        }
+
+        // Build NSSortDescriptor
+        let sortDescriptor = NSSortDescriptor(key: articlesOrder.rawValue, ascending: true)
+        
+        // Read from the database
+        do {
+            articles = try Article.readAll(CKLCoreData.context, predicate: predicate, sortDescriptors: [sortDescriptor])
+            self.delegate?.updateData(articles: articles, endRefreshing: true)
+        } catch let e as NSError {
+            print("ERROR: \(e.localizedDescription)")
+        }
+    }
+    
+    
+    // MARK: - GET Articles from API
     func fetchAPIData() {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
-            case .success(objects: _):
+            case .success(objectList: _):
                 self.filterArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
             case .failure(error: let error):
                 self.delegate?.displayError(error: error, endRefreshing: true)
@@ -56,46 +78,21 @@ class ArticleTableViewModel: NSObject {
         }
     }
     
-    // Get CoreData stored data
-    func filterArticles(_ searchTerm: String? = nil, orderBy: ArticlesOrder = .null, ascending: Bool = true) {
-        // Sorting - ORDER BY
-        let sortAttribute = (orderBy == .null) ? _articlesOrder : orderBy
-        _articlesOrder = sortAttribute
-        let sortDescriptor = NSSortDescriptor(key: _articlesOrder.rawValue, ascending: true)
-        
-        // Filtering - WHERE
-        var predicate: NSPredicate? = nil
-        var searchText: String = ""
-        if let searchTerm = searchTerm {
-            _searchTerm = searchTerm
-        }
-        searchText = _searchTerm
-        if searchText.count > 0 {
-            predicate = NSPredicate(format: "title CONTAINS[c] '\(searchText)' or authors CONTAINS[c] '\(searchText)'")
-        }
-
-        do {
-            let articles = try Article.readObjects(CKLCoreData.context, predicate: predicate, sortDescriptors: [sortDescriptor])
-            self.articles = articles
-            self.delegate?.updateData(articles: articles, endRefreshing: true)
-        } catch let e as NSError {
-            print("ERROR: \(e.localizedDescription)")
-        }
-    }
     
-    // Update the read status in the CoreData (this is currently only saved locally)
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((Completion<Article>) -> ())) {
+    // MARK: - Update the read status in the CoreData
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<[Article]>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = CKLCoreData.context
         Article.asyncSave(context, completion: completion)
     }
     
-    // MARK: Animating Botton Bar
+    
+    // MARK: - Animating Bottom Bar
     let bottomViewHeight: CGFloat = 44;
     var isShowingBottomView: Bool = false
     
-    func showBottomViewRect(_ view: UIView) -> CGRect? {
+    private func rectForVisibleBottomView(_ view: UIView) -> CGRect? {
         guard let superviewFrame = view.superview?.frame else { return nil }
         return CGRect(x: superviewFrame.minX,
                       y: superviewFrame.maxY - bottomViewHeight,
@@ -103,7 +100,7 @@ class ArticleTableViewModel: NSObject {
                       height: bottomViewHeight)
     }
     
-    func hideBottomViewRect(_ view: UIView) -> CGRect? {
+    private func rectForHiddenBottomView(_ view: UIView) -> CGRect? {
         guard let superviewFrame = view.superview?.frame else { return nil }
         return CGRect(x: superviewFrame.minX,
                       y: superviewFrame.maxY,
@@ -126,6 +123,7 @@ class ArticleTableViewModel: NSObject {
         transitionBottomView(bottomView, shouldShow: !isShowingBottomView, layoutConstraint: layoutConstraint, animated: animated)
         isShowingBottomView = !isShowingBottomView
     }
+    
     
     // MARK: - Online/Offline modes
     @objc func phoneIsOnline(notification: Notification) {

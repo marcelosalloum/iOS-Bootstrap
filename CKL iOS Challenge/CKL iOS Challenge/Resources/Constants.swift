@@ -10,6 +10,7 @@ import Foundation
 
 struct Constants {
     static let flurryAPIKey: String = "WMFS8685YKR8J5Z4XQ5V"
+    static let databaseName: String = "CKL_iOS_Challenge"
 }
 
 struct ArticleState {

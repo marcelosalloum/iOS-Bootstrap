@@ -64,7 +64,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 
         // ViewModel
         viewModel.delegate = self
-        viewModel.filterArticles()
+        viewModel.searchTerm = ""
         viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
 
         // Navigation Controller
@@ -164,17 +164,21 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - ArticleTableProtocol
     
     func updateData(articles: [Article], endRefreshing: Bool) {
-        if endRefreshing {
-            refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            if endRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
     
     func displayError(error: Error, endRefreshing: Bool) {
-        if endRefreshing {
-            refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            if endRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
         }
-        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
     }
     
     // MARK: - Filter
