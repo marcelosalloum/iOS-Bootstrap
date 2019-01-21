@@ -8,13 +8,16 @@
 
 import UIKit
 import CoreData
-import Fabric
-import Crashlytics
 
 
-class CoreDataManager: NSObject {
+class EZDataManager: NSObject {
     
-    static let shared: CoreDataManager = CoreDataManager{}
+    
+    // MARK: - Basic Setup
+    static var databaseName: String = "EZ_DB_Name"
+
+    // If the shared version is not enough for your case, you're encoouraged to create an intance of your own
+    static let shared: EZDataManager = EZDataManager {}
     
     var persistentContainer: NSPersistentContainer
     
@@ -36,6 +39,20 @@ class CoreDataManager: NSObject {
         return managedObjectContext
     }()
     
+    
+    // MARK: - Init
+    init(_ completion: @escaping () -> ()) {
+        persistentContainer = NSPersistentContainer(name: Constants.databaseName)
+        persistentContainer.loadPersistentStores() { (description, error) in
+            if let error = error {
+                fatalError("Failed to load Core Data stack: \(error)")
+            }
+            completion()
+        }
+    }
+    
+    // MARK: - Save
+    // TODO: make a sync and n async saveChanges
     func saveChanges() {
         privateThreadContext.perform {
             do {
@@ -59,29 +76,7 @@ class CoreDataManager: NSObject {
                     print("\(saveError), \(saveError.localizedDescription)")
                 }
             }
-            
         }
     }
     
-    init(_ completion: @escaping () -> ()) {
-        persistentContainer = NSPersistentContainer(name: Constants.databaseName)
-        persistentContainer.loadPersistentStores() { (description, error) in
-            if let error = error {
-                fatalError("Failed to load Core Data stack: \(error)")
-            }
-            completion()
-        }
-    }
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch let error {
-                print("ERROR: \(error.localizedDescription)")
-                Answers.logCustomEvent(withName: "Crash on method DataController.saveContext()", customAttributes: ["DataController.saveContext()": error.localizedDescription])
-                }
-        }
-    }
 }

@@ -31,7 +31,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         do {
             fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
         } catch let error {
-            CKLCoreData.logError(error.localizedDescription)
+            EZCoreDataLogger.logError(error.localizedDescription)
             return nil
         }
         
@@ -48,15 +48,15 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Import from JSON
     public static func importList(_ jsonArray: [[String: Any]]?, context: NSManagedObjectContext, idKey: String = "id", shouldSave: Bool) throws -> [Self]? {
         // Input validations
-        guard let jsonArray = jsonArray else { throw CKLCoreDataError.jsonIsEmpty }
-        if jsonArray.isEmpty { throw CKLCoreDataError.jsonIsEmpty }
+        guard let jsonArray = jsonArray else { throw EZCoreDataError.jsonIsEmpty }
+        if jsonArray.isEmpty { throw EZCoreDataError.jsonIsEmpty }
         var objectsArray: [Self] = []
 
         // Looping over the array
         for objectJSON in jsonArray {
             // GET or CREATE
-            guard let objectId = objectJSON[idKey] as? Int else { throw CKLCoreDataError.invalidIdKey }
-            guard let object = getOrCreate(context: context, attribute: idKey, value: String(describing: objectId)) else { throw CKLCoreDataError.getOrCreateObjIsEmpty }
+            guard let objectId = objectJSON[idKey] as? Int else { throw EZCoreDataError.invalidIdKey }
+            guard let object = getOrCreate(context: context, attribute: idKey, value: String(describing: objectId)) else { throw EZCoreDataError.getOrCreateObjIsEmpty }
             object.populateFromJSON(objectJSON, context: context)
             objectsArray.append(object)
         }
@@ -68,7 +68,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return objectsArray
     }
     
-    public static func asyncImportObjects(_ jsonArray: [[String: Any]]?, backgroundContext: NSManagedObjectContext, completion: @escaping (AwesomeDataResult<[Self]>) -> (), idKey: String = "id") {
+    public static func asyncImportObjects(_ jsonArray: [[String: Any]]?, backgroundContext: NSManagedObjectContext, completion: @escaping (EZCoreDataResult<[Self]>) -> (), idKey: String = "id") {
         backgroundContext.perform {
             // Input validations
             guard let jsonArray = jsonArray else { return }
@@ -81,7 +81,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 // GET or CREATE
                 guard let objectId = objectJSON[idKey] as? Int else { return }
                 guard let object = self.getOrCreate(context: backgroundContext, attribute: idKey, value: String(describing: objectId)) else {
-                    completion(AwesomeDataResult<[Self]>.failure(error: CKLCoreDataError.getOrCreateObjIsEmpty))
+                    completion(EZCoreDataResult<[Self]>.failure(error: EZCoreDataError.getOrCreateObjIsEmpty))
                     return
                 }
                 object.populateFromJSON(objectJSON, context: backgroundContext)
@@ -89,8 +89,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             }
             
             // Context Save
-            CoreDataManager.shared.saveChanges()
-            completion(AwesomeDataResult<[Self]>.success(objectList: objectsArray))
+            EZDataManager.shared.saveChanges()
+            completion(EZCoreDataResult<[Self]>.success(objectList: objectsArray))
         }
     }
 }

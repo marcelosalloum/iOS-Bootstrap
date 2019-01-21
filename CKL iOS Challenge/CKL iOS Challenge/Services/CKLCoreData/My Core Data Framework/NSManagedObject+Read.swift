@@ -31,15 +31,15 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     static public func asyncReadFirst(inContext context: NSManagedObjectContext,
                                       predicate: NSPredicate? = nil,
-                                      completion: @escaping (AwesomeDataResult<Self>) -> Void) {
+                                      completion: @escaping (EZCoreDataResult<Self>) -> Void) {
         let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: {awesomeResult in
             switch awesomeResult {
-            case AwesomeDataResult<[Self]>.success(objectList: let objectList):
+            case EZCoreDataResult<[Self]>.success(objectList: let objectList):
                 let firstObject: Self? = objectList?.first
-                completion(AwesomeDataResult<Self>.success(objectList: firstObject))
-            case AwesomeDataResult<[Self]>.failure(error: let error):
-                completion(AwesomeDataResult<Self>.failure(error: error))
+                completion(EZCoreDataResult<Self>.success(objectList: firstObject))
+            case EZCoreDataResult<[Self]>.failure(error: let error):
+                completion(EZCoreDataResult<Self>.failure(error: error))
             }
         })
     }
@@ -63,7 +63,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     static public func asyncReadAll(_ context: NSManagedObjectContext,
                                     predicate: NSPredicate? = nil,
                                     sortDescriptors: [NSSortDescriptor]? = nil,
-                                    completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                    completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
         let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
@@ -91,7 +91,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                                         attribute: String? = nil,
                                         value: String? = nil,
                                         sortDescriptors: [NSSortDescriptor]? = nil,
-                                        completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                        completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
         let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
         asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)

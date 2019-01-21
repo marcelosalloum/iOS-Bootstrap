@@ -12,7 +12,7 @@
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
-		1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* CKLCoreData.swift */; };
+		1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */; };
 		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
 		1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */; };
 		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
@@ -56,7 +56,7 @@
 		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
 		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
 		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
-		1FAC98E821F11A19000B8E68 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* CoreDataManager.swift */; };
+		1FAC98E821F11A19000B8E68 /* EZDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* EZDataManager.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -71,7 +71,7 @@
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		1F86B99C21E669D10059D2CB /* CKLCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKLCoreData.swift; sourceTree = "<group>"; };
+		1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreDataLogger.swift; sourceTree = "<group>"; };
 		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
 		1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreData.swift"; sourceTree = "<group>"; };
 		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
 		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
 		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
-		1FAC98E721F11A19000B8E68 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1FAC98E721F11A19000B8E68 /* EZDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZDataManager.swift; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -192,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				1FC76B1A21F1DEB6005782ED /* My Core Data Framework */,
-				1FAC98E721F11A19000B8E68 /* CoreDataManager.swift */,
 			);
 			path = CKLCoreData;
 			sourceTree = "<group>";
@@ -330,7 +329,8 @@
 		1FC76B1A21F1DEB6005782ED /* My Core Data Framework */ = {
 			isa = PBXGroup;
 			children = (
-				1F86B99C21E669D10059D2CB /* CKLCoreData.swift */,
+				1FAC98E721F11A19000B8E68 /* EZDataManager.swift */,
+				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
 				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
 				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
@@ -545,11 +545,11 @@
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
 				1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */,
-				1F86B99D21E669D10059D2CB /* CKLCoreData.swift in Sources */,
+				1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
-				1FAC98E821F11A19000B8E68 /* CoreDataManager.swift in Sources */,
+				1FAC98E821F11A19000B8E68 /* EZDataManager.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,

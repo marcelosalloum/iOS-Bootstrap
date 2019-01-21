@@ -10,13 +10,6 @@ import Foundation
 import CoreData
 
 
-// MARK: - Error Handling
-public enum AwesomeDataResult<Object> {
-    case success(objectList: Object?)
-    case failure(error: Error)
-}
-
-
 // MARK: - Read Helpers
 extension NSFetchRequestResult where Self: NSManagedObject {
     
@@ -30,7 +23,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Async Read
     static public func asyncFetchRequest(inContext context: NSManagedObjectContext,
                                          fetchRequest: NSFetchRequest<Self>,
-                                         completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                         completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
             if let fetchedObjects = asyncFetchResult.finalResult {
                 completion(.success(objectList: fetchedObjects))
@@ -40,7 +33,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         do {
             let _ = try context.execute(asynchronousFetchRequest)
         } catch {
-            CKLCoreData.logError(error.localizedDescription)
+            EZCoreDataLogger.logError(error.localizedDescription)
             completion(.failure(error: error))
         }
     }
@@ -50,7 +43,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         if context.hasChanges {
             try context.save()
         } else {
-            CKLCoreData.logWarning("There is no new data to save in the Core Data")
+            EZCoreDataLogger.logWarning("There is no new data to save in the Core Data")
         }
     }
 }

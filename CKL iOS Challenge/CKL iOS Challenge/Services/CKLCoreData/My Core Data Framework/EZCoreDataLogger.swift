@@ -10,28 +10,39 @@ import CoreData
 import UIKit
 
 
-enum CKLCoreDataError: Error {
+// MARK: - Result Handling
+public enum EZCoreDataResult<Object> {
+    case success(objectList: Object?)
+    case failure(error: Error)
+}
+
+
+// MARK: - Error Handling
+enum EZCoreDataError: Error {
     case contextIsEmpty
     case jsonIsEmpty
     case getOrCreateObjIsEmpty
     case invalidIdKey
 }
 
-enum CKLCoreDateLogLevel: String {
+
+// MARK: - Logging Handling
+enum EZCoreDataLogLevel: String {
     case info
     case warning
     case error
     case silent
 }
 
-
-struct CKLCoreData {
+struct EZCoreDataLogger {
     
-    fileprivate static let libSuffix = "[CKLCoreData]"
+    fileprivate static let libSuffix = "[EZCoreData]"
     
     // Logging level
-    static var logLevel = CKLCoreDateLogLevel.info
+    static var logLevel = EZCoreDataLogLevel.info
+
     
+    // Logging methods
     static func log(_ logText: Any?) {
         if logLevel == .info {
             guard let text = logText else { return }

@@ -31,7 +31,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     static public func asyncDeleteAll(backgroundContext: NSManagedObjectContext,
                                       except toKeep: [Self]? = nil,
-                                      completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                      completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         backgroundContext.perform {
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
@@ -44,9 +44,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 //                try print(Article.count(inContext: backgroundContext))
 //                try print(Article.count(inContext: context))
                 completion(.success(objectList: nil))
-                CKLCoreData.log("Deleted list of objects")
+                EZCoreDataLogger.log("Deleted list of objects")
             } catch let error {
-                CKLCoreData.logError(error.localizedDescription)
+                EZCoreDataLogger.logError(error.localizedDescription)
                 completion(.failure(error: error))
             }
         }
@@ -63,7 +63,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     static public func asyncDeleteAll(backgroundContext: NSManagedObjectContext,
                                       except attributeName: String,
                                       toKeep: [String],
-                                      completion: @escaping (AwesomeDataResult<[Self]>) -> Void) {
+                                      completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         backgroundContext.perform {
             let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>()
             deleteFetchRequest.entity = entity()
@@ -73,7 +73,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
                 completion(.success(objectList: nil))
             } catch let error {
-                CKLCoreData.logError(error.localizedDescription)
+                EZCoreDataLogger.logError(error.localizedDescription)
                 completion(.failure(error: error))
             }
         }

@@ -57,7 +57,7 @@ class ArticleTableViewModel: NSObject {
 
         // Read from the database
         do {
-            articles = try Article.readAll(CoreDataManager.shared.mainThredContext, predicate: predicate, sortDescriptors: [sortDescriptor])
+            articles = try Article.readAll(EZDataManager.shared.mainThredContext, predicate: predicate, sortDescriptors: [sortDescriptor])
             self.delegate?.updateData(articles: articles, endRefreshing: true)
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")
@@ -70,7 +70,7 @@ class ArticleTableViewModel: NSObject {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
             case .success(objectList: let articleList):
-                Article.asyncDeleteAll(backgroundContext: CoreDataManager.shared.privateThreadContext, except: articleList, completion: { _ in
+                Article.asyncDeleteAll(backgroundContext: EZDataManager.shared.privateThreadContext, except: articleList, completion: { _ in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):
@@ -82,10 +82,10 @@ class ArticleTableViewModel: NSObject {
     
     
     // MARK: - Update the read status in the CoreData
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((AwesomeDataResult<[Article]>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((EZCoreDataResult<[Article]>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
-        let context = CoreDataManager.shared.mainThredContext
+        let context = EZDataManager.shared.mainThredContext
         do {
             try Article.save(context)
             completion(.success(objectList: nil))

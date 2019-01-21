@@ -57,7 +57,7 @@ extension Article {
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
             } catch let error {
-                CKLCoreData.logError(error.localizedDescription)
+                EZCoreDataLogger.logError(error.localizedDescription)
             }
         }
     }

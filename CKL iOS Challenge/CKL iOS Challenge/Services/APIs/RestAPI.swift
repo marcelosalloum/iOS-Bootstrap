@@ -18,19 +18,19 @@ struct APIPaths {
 
 class RestAPI: NSObject {
     
-    static func getArticlesList(_ completion: @escaping (AwesomeDataResult<[Article]>) -> Void) {
+    static func getArticlesList(_ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
                 if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.asyncImportObjects(jsonArray, backgroundContext: CoreDataManager.shared.privateThreadContext, completion: completion, idKey: "id")
+                    Article.asyncImportObjects(jsonArray, backgroundContext: EZDataManager.shared.privateThreadContext, completion: completion, idKey: "id")
                 } else {
-                    completion(AwesomeDataResult<[Article]>.success(objectList: []))
+                    completion(EZCoreDataResult<[Article]>.success(objectList: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")
                 }
             case .failure(let error):
                 print(error)
-                completion(AwesomeDataResult<[Article]>.failure(error: error))
+                completion(EZCoreDataResult<[Article]>.failure(error: error))
             }
         }
     }
