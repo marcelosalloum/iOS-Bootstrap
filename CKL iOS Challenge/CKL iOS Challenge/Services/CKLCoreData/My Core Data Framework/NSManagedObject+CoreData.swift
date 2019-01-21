@@ -40,7 +40,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         do {
             let _ = try context.execute(asynchronousFetchRequest)
         } catch {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            CKLCoreData.logError(error.localizedDescription)
             completion(.failure(error: error))
         }
     }
@@ -50,7 +50,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         if context.hasChanges {
             try context.save()
         } else {
-            CKLCoreData.log("WARNING, there is no new data to save in the Core Data")
+            CKLCoreData.logWarning("There is no new data to save in the Core Data")
         }
     }
 }

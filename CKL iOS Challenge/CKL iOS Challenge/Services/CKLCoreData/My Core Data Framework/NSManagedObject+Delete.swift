@@ -46,7 +46,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 completion(.success(objectList: nil))
                 CKLCoreData.log("Deleted list of objects")
             } catch let error {
-                CKLCoreData.log("ERROR: \(error)")
+                CKLCoreData.logError(error.localizedDescription)
                 completion(.failure(error: error))
             }
         }
@@ -73,7 +73,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
                 completion(.success(objectList: nil))
             } catch let error {
-                CKLCoreData.log("ERROR: \(error)")
+                CKLCoreData.logError(error.localizedDescription)
                 completion(.failure(error: error))
             }
         }

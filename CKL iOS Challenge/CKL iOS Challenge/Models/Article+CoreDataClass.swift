@@ -56,8 +56,8 @@ extension Article {
                 guard let tagObjects = try Tag.importList(tags, context: context, idKey: "id", shouldSave: false) else { return }
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
-            } catch let error as NSError {
-                CKLCoreData.log("ERROR: \(error.localizedDescription)")
+            } catch let error {
+                CKLCoreData.logError(error.localizedDescription)
             }
         }
     }

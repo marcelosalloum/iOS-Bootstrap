@@ -30,8 +30,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         // GET, if idKey exists
         do {
             fetchedObjects = try readAwesome(inContext: context, attribute: attribute, value: value, sortDescriptors: nil)
-        } catch let error as NSError {
-            CKLCoreData.log("ERROR: \(error.localizedDescription)")
+        } catch let error {
+            CKLCoreData.logError(error.localizedDescription)
             return nil
         }
         

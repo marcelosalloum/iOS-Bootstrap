@@ -18,7 +18,8 @@ enum CKLCoreDataError: Error {
 }
 
 enum CKLCoreDateLogLevel: String {
-    case debug
+    case info
+    case warning
     case error
     case silent
 }
@@ -26,28 +27,29 @@ enum CKLCoreDateLogLevel: String {
 
 struct CKLCoreData {
     
+    fileprivate static let libSuffix = "[CKLCoreData]"
+    
     // Logging level
-    static var logLevel = CKLCoreDateLogLevel.debug
+    static var logLevel = CKLCoreDateLogLevel.info
     
     static func log(_ logText: Any?) {
-        switch logLevel {
-        case .debug:
+        if logLevel == .info {
             guard let text = logText else { return }
-            print(text)
-            return
-        case .error, .silent:
-            return
+            print("\(libSuffix) INFO: \(text)")
+        }
+    }
+    
+    static func logWarning(_ logText: Any?) {
+        if [.info, .warning].contains(logLevel) {
+            guard let text = logText else { return }
+            print("\(libSuffix) WARNING: \(text)")
         }
     }
     
     static func logError(_ logText: Any?) {
-        switch logLevel {
-        case .debug, .error:
+        if [.info, .warning, .error].contains(logLevel) {
             guard let text = logText else { return }
-            print(text)
-            return
-        case .silent:
-            return
+            print("\(libSuffix) ERROR: \(text)")
         }
     }
 }
