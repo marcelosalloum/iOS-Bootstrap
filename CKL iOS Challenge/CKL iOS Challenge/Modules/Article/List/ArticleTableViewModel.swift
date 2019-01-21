@@ -70,7 +70,7 @@ class ArticleTableViewModel: NSObject {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
-                Article.asyncDeleteAll(backgroundContext: EZCoreData.shared.privateThreadContext, except: articleList, completion: { _ in
+                Article.deleteAll(except: articleList, backgroundContext: EZCoreData.privateThreadContext, completion: { _ in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):
