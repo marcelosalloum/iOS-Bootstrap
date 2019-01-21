@@ -89,7 +89,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             }
             
             // Context Save
-            EZDataManager.shared.saveChanges()
+            EZCoreData.shared.saveChanges()
             completion(EZCoreDataResult<[Self]>.success(objectList: objectsArray))
         }
     }

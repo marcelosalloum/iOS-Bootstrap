@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 
 
-class EZDataManager: NSObject {
+class EZCoreData: NSObject {
     
     
     // MARK: - Basic Setup
-    static var databaseName: String = "EZ_DB_Name"
+    static var databaseName: String = "EZCoreData_DBName"
 
     // If the shared version is not enough for your case, you're encoouraged to create an intance of your own
-    static let shared: EZDataManager = EZDataManager {}
+    static let shared: EZCoreData = EZCoreData {}
     
     var persistentContainer: NSPersistentContainer
     
@@ -42,7 +42,7 @@ class EZDataManager: NSObject {
     
     // MARK: - Init
     init(_ completion: @escaping () -> ()) {
-        persistentContainer = NSPersistentContainer(name: Constants.databaseName)
+        persistentContainer = NSPersistentContainer(name: EZCoreData.databaseName)
         persistentContainer.loadPersistentStores() { (description, error) in
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")

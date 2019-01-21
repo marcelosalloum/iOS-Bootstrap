@@ -56,7 +56,7 @@
 		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
 		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
 		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
-		1FAC98E821F11A19000B8E68 /* EZDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* EZDataManager.swift */; };
+		1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* EZCoreData.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -118,7 +118,7 @@
 		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
 		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
 		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
-		1FAC98E721F11A19000B8E68 /* EZDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZDataManager.swift; sourceTree = "<group>"; };
+		1FAC98E721F11A19000B8E68 /* EZCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreData.swift; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 		1FC76B1A21F1DEB6005782ED /* My Core Data Framework */ = {
 			isa = PBXGroup;
 			children = (
-				1FAC98E721F11A19000B8E68 /* EZDataManager.swift */,
+				1FAC98E721F11A19000B8E68 /* EZCoreData.swift */,
 				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
 				1F86B9A221E75EEE0059D2CB /* NSManagedObject+CoreData.swift */,
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
@@ -549,7 +549,7 @@
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
-				1FAC98E821F11A19000B8E68 /* EZDataManager.swift in Sources */,
+				1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,
