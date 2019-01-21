@@ -331,10 +331,10 @@
 			children = (
 				1FAC98E721F11A19000B8E68 /* EZCoreData.swift */,
 				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
+				1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */,
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
 				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
 				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
-				1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */,
 			);
 			path = "My Core Data Framework";
 			sourceTree = "<group>";

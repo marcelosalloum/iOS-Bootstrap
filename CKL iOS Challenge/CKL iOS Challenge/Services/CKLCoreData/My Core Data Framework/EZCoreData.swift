@@ -61,7 +61,6 @@ public class EZCoreData: NSObject {
     // MARK: - Save
     // TODO: make a sync and and async saveChanges
     func saveChanges() {
-        _ = privateThreadContext.saveContextToStore()
+        privateThreadContext.saveContextToStore { _ in }
     }
-    
 }

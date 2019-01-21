@@ -23,7 +23,7 @@ class RestAPI: NSObject {
             switch response.result {
             case .success:
                 if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.asyncImportObjects(jsonArray, backgroundContext: EZCoreData.shared.privateThreadContext, completion: completion, idKey: "id")
+                    Article.importList(jsonArray, idKey: Constants.idKey, completion: completion)
                 } else {
                     completion(EZCoreDataResult<[Article]>.success(result: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")

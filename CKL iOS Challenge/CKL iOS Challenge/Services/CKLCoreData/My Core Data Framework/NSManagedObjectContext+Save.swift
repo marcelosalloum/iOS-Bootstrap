@@ -69,6 +69,7 @@ public extension NSManagedObjectContext {
             return
         }
         try save()
+        EZCoreDataLogger.log("Context successfully saved")
     }
     
 }
