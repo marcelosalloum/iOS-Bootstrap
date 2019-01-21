@@ -12,8 +12,9 @@ import CoreData
 
 // MARK: - Used for importing a JSON into an NSManagedObjectContext
 extension NSManagedObject {
+    /// All NSManagedObject children need to override this
     @objc func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
-        fatalError("\n\n ATTENTION, YOU MUST OVERRIDE METHOD populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) IN YOUR NSManagedObject subclasses!!! \n\n")
+        fatalError("\n\n [EZCoreData] FATAL ERROR!!!  ATTENTION, YOU MUST OVERRIDE METHOD populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) IN YOUR NSManagedObject subclasses!!! \n\n")
     }
 }
 
@@ -22,6 +23,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     
     // MARK: - Get or Create
+    /// GET or CREATE object with `attribute` equals `value`
     public static func getOrCreate(attribute: String?, value: String?, context: NSManagedObjectContext) -> Self? {
         // Initializing return variables
         var object: Self!
@@ -44,8 +46,28 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         
         return object
     }
+}
+
+
+// MARK: - Import from JSON
+extension NSFetchRequestResult where Self: NSManagedObject {
+    /// SYNC Import JSON Dict to Object
+    public static func importObject(_ jsonObject: [String: Any]?,
+                                    idKey: String = "id",
+                                    shouldSave: Bool,
+                                    context: NSManagedObjectContext = EZCoreData.mainThredContext) throws -> Self {
+        guard let jsonObject = jsonObject else { throw EZCoreDataError.jsonIsEmpty }
+        guard let objectId = jsonObject[idKey] as? Int else { throw EZCoreDataError.invalidIdKey }
+        guard let object = getOrCreate(attribute: idKey, value: String(describing: objectId), context: context) else { throw EZCoreDataError.getOrCreateObjIsEmpty }
+        object.populateFromJSON(jsonObject, context: context)
+        // Context Save
+        if (shouldSave) {
+            context.saveContextToStore()
+        }
+        return object
+    }
     
-    // MARK: - Import from JSON
+    /// SYNC import a JSON array into a list of objects and then save them to CoreData
     public static func importList(_ jsonArray: [[String: Any]]?,
                                   idKey: String = "id",
                                   shouldSave: Bool,
@@ -55,12 +77,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         if jsonArray.isEmpty { throw EZCoreDataError.jsonIsEmpty }
         var objectsArray: [Self] = []
 
-        // Looping over the array
+        // Looping over the array then GET or CREATE
         for objectJSON in jsonArray {
-            // GET or CREATE
-            guard let objectId = objectJSON[idKey] as? Int else { throw EZCoreDataError.invalidIdKey }
-            guard let object = getOrCreate(attribute: idKey, value: String(describing: objectId), context: context) else { throw EZCoreDataError.getOrCreateObjIsEmpty }
-            object.populateFromJSON(objectJSON, context: context)
+            let object = try importObject(objectJSON, idKey: idKey, shouldSave: false, context: context)
             objectsArray.append(object)
         }
 
@@ -71,6 +90,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         return objectsArray
     }
     
+    /// ASYNC import a JSON array into a list of objects and then save them to CoreData
     public static func importList(_ jsonArray: [[String: Any]]?,
                                   idKey: String = "id",
                                   backgroundContext: NSManagedObjectContext = EZCoreData.privateThreadContext,
@@ -81,17 +101,14 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             if jsonArray.isEmpty { return }
             var objectsArray: [Self] = []
             
-            // Looping over the array
+            // Looping over the array then GET or CREATE
             for objectJSON in jsonArray {
-                
-                // GET or CREATE
-                guard let objectId = objectJSON[idKey] as? Int else { return }
-                guard let object = self.getOrCreate(attribute: idKey, value: String(describing: objectId), context: backgroundContext) else {
-                    completion(EZCoreDataResult<[Self]>.failure(error: EZCoreDataError.getOrCreateObjIsEmpty))
-                    return
+                do {
+                    let object = try importObject(objectJSON, idKey: idKey, shouldSave: false, context: backgroundContext)
+                    objectsArray.append(object)
+                } catch let error {
+                    completion(EZCoreDataResult<[Self]>.failure(error: error))
                 }
-                object.populateFromJSON(objectJSON, context: backgroundContext)
-                objectsArray.append(object)
             }
             
             // Context Save

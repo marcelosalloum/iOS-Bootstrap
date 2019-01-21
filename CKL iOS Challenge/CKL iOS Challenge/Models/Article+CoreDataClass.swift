@@ -12,6 +12,7 @@ import CoreData
 
 
 public class Article: NSManagedObject {
+    /// Transfors the list of tagsinto a comma-separated string
     func tagsToString() -> String {
         
         guard let tags = self.tags else { return "" }
@@ -33,6 +34,7 @@ public class Article: NSManagedObject {
 
 
 extension Article {
+    /// Populates Article objects from JSON
     override public func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
         guard let id = json["id"] as? Int16 else { return }
         self.id = id
