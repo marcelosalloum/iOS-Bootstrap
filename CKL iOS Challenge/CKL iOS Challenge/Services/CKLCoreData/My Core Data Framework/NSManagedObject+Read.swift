@@ -15,7 +15,7 @@ import CoreData
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     /// SYNC Fetch Request for reading
-    static public func syncFetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+    fileprivate static func syncFetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()
         return fetchRequest
@@ -38,7 +38,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             completion(.failure(error: error))
         }
     }
-    
 }
 
 
@@ -46,7 +45,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     /// Fetch Request for reading the first result with the given predicate
-    static func readFirstFetchRequest(_ predicate: NSPredicate? = nil,
+    fileprivate static func readFirstFetchRequest(_ predicate: NSPredicate? = nil,
                                       context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = syncFetchRequest(context)
         fetchRequest.predicate = predicate
@@ -65,9 +64,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     
     /// ASYNC read first result with the given predicate
-    static public func asyncReadFirst(_ predicate: NSPredicate? = nil,
-                                      context: NSManagedObjectContext = EZCoreData.mainThredContext,
-                                      completion: @escaping (EZCoreDataResult<Self>) -> Void) {
+    static public func readFirst(_ predicate: NSPredicate? = nil,
+                                 context: NSManagedObjectContext = EZCoreData.mainThredContext,
+                                 completion: @escaping (EZCoreDataResult<Self>) -> Void) {
         let fetchRequest = readFirstFetchRequest(predicate, context: context)
         asyncFetchRequest(fetchRequest, context: context, completion: {awesomeResult in
             switch awesomeResult {
