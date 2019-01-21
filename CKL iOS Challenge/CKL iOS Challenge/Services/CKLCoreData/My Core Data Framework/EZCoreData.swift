@@ -52,31 +52,9 @@ class EZCoreData: NSObject {
     }
     
     // MARK: - Save
-    // TODO: make a sync and n async saveChanges
+    // TODO: make a sync and and async saveChanges
     func saveChanges() {
-        privateThreadContext.perform {
-            do {
-                if self.privateThreadContext.hasChanges {
-                    try self.privateThreadContext.save()
-                }
-            } catch {
-                let saveError = error as NSError
-                print("Unable to Save Changes of Managed Object Context")
-                print("\(saveError), \(saveError.localizedDescription)")
-            }
-            
-            self.mainThredContext.perform {
-                do {
-                    if self.mainThredContext.hasChanges {
-                        try self.mainThredContext.save()
-                    }
-                } catch {
-                    let saveError = error as NSError
-                    print("Unable to Save Changes of Private Managed Object Context")
-                    print("\(saveError), \(saveError.localizedDescription)")
-                }
-            }
-        }
+        _ = privateThreadContext.saveContextToStore()
     }
     
 }

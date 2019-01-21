@@ -15,7 +15,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Read First
     static func readFirstFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> NSFetchRequest<Self> {
-        let fetchRequest = syncFetchRequest(inContext: context)
+        let fetchRequest = syncFetchRequest(context)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1
         fetchRequest.returnsObjectsAsFaults = false
@@ -33,11 +33,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                                       predicate: NSPredicate? = nil,
                                       completion: @escaping (EZCoreDataResult<Self>) -> Void) {
         let fetchRequest = readFirstFetchRequest(inContext: context, predicate: predicate)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: {awesomeResult in
+        asyncFetchRequest(fetchRequest, context: context, completion: {awesomeResult in
             switch awesomeResult {
-            case EZCoreDataResult<[Self]>.success(objectList: let objectList):
+            case EZCoreDataResult<[Self]>.success(result: let objectList):
                 let firstObject: Self? = objectList?.first
-                completion(EZCoreDataResult<Self>.success(objectList: firstObject))
+                completion(EZCoreDataResult<Self>.success(result: firstObject))
             case EZCoreDataResult<[Self]>.failure(error: let error):
                 completion(EZCoreDataResult<Self>.failure(error: error))
             }
@@ -48,7 +48,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     // MARK: - Read All
     fileprivate static func readAllFetchRequest(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
-        let fetchRequest = syncFetchRequest(inContext: context)
+        let fetchRequest = syncFetchRequest(context)
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
         return fetchRequest
@@ -66,14 +66,14 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                                     completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
         let fetchRequest = readAllFetchRequest(inContext: context, predicate: predicate, sortDescriptors: sortDescriptors)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
+        asyncFetchRequest(fetchRequest, context: context, completion: completion)
     }
     
     
     // MARK: - Read With Attributes
     fileprivate static func readAwesomeFetchRequest(inContext context: NSManagedObjectContext, attribute: String? = nil, value: String? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> NSFetchRequest<Self> {
         // Prepare the request
-        let fetchRequest = syncFetchRequest(inContext: context)
+        let fetchRequest = syncFetchRequest(context)
         fetchRequest.sortDescriptors = sortDescriptors
         if let attribute = attribute, let value = value {
             fetchRequest.predicate = NSPredicate(format: "\(attribute) == \(value)")
@@ -94,14 +94,14 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                                         completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         // Prepare the request
         let fetchRequest = readAwesomeFetchRequest(inContext: context, attribute: attribute, value: value, sortDescriptors: sortDescriptors)
-        asyncFetchRequest(inContext: context, fetchRequest: fetchRequest, completion: completion)
+        asyncFetchRequest(fetchRequest, context: context, completion: completion)
     }
     
 
     // MARK: - Count
     static public func count(inContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) throws -> Int {
         // Prepare the request
-        let fetchRequest = syncFetchRequest(inContext: context)
+        let fetchRequest = syncFetchRequest(context)
         fetchRequest.includesSubentities = false
         fetchRequest.predicate = predicate
         return try context.count(for: fetchRequest)

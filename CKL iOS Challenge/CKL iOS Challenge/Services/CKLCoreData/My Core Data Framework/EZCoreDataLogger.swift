@@ -12,7 +12,7 @@ import UIKit
 
 // MARK: - Result Handling
 public enum EZCoreDataResult<Object> {
-    case success(objectList: Object?)
+    case success(result: Object?)
     case failure(error: Error)
 }
 

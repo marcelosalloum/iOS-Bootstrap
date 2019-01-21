@@ -61,6 +61,7 @@
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
 		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
+		1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */; };
 		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,7 @@
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
 		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
 				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
 				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
+				1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */,
 			);
 			path = "My Core Data Framework";
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
+				1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
 				1F86B9A321E75EEE0059D2CB /* NSManagedObject+CoreData.swift in Sources */,

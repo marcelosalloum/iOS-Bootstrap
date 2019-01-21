@@ -69,7 +69,7 @@ class ArticleTableViewModel: NSObject {
     func fetchAPIData() {
         RestAPI.getArticlesList { (apiCompletion) in
             switch apiCompletion {
-            case .success(objectList: let articleList):
+            case .success(result: let articleList):
                 Article.asyncDeleteAll(backgroundContext: EZCoreData.shared.privateThreadContext, except: articleList, completion: { _ in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
@@ -82,17 +82,11 @@ class ArticleTableViewModel: NSObject {
     
     
     // MARK: - Update the read status in the CoreData
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: ((EZCoreDataResult<[Article]>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?, completion: @escaping ((EZCoreDataResult<Any>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
         let context = EZCoreData.shared.mainThredContext
-        do {
-            try Article.save(context)
-            completion(.success(objectList: nil))
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-            completion(.failure(error: error))
-        }
+        context.saveContextToStore(completion)
     }
     
     

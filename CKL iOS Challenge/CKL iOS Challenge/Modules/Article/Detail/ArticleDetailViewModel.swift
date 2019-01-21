@@ -22,13 +22,9 @@ class ArticleDetailViewModel: NSObject {
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
         let context = EZCoreData.shared.mainThredContext
-        do {
-            try Article.save(context)
-            let newRightBarButtonItem = barButtonItem(for: article)
-            self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-        }
+        context.saveContextToStore()
+        let newRightBarButtonItem = barButtonItem(for: article)
+        self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
     }
     
     func barButtonItem(for article: Article?) -> UIBarButtonItem? {

@@ -14,19 +14,19 @@ import CoreData
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     // MARK: - Sync Read
-    static public func syncFetchRequest(inContext context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+    static public func syncFetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Self> {
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()
         return fetchRequest
     }
     
     // MARK: - Async Read
-    static public func asyncFetchRequest(inContext context: NSManagedObjectContext,
-                                         fetchRequest: NSFetchRequest<Self>,
+    static public func asyncFetchRequest(_ fetchRequest: NSFetchRequest<Self>,
+                                         context: NSManagedObjectContext,
                                          completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
         let asynchronousFetchRequest = NSAsynchronousFetchRequest<Self>(fetchRequest: fetchRequest) { (asyncFetchResult) in
             if let fetchedObjects = asyncFetchResult.finalResult {
-                completion(.success(objectList: fetchedObjects))
+                completion(.success(result: fetchedObjects))
             }
         }
         
@@ -38,12 +38,4 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
     }
     
-    // MARK: - Sync Save
-    static func save(_ context: NSManagedObjectContext) throws {
-        if context.hasChanges {
-            try context.save()
-        } else {
-            EZCoreDataLogger.logWarning("There is no new data to save in the Core Data")
-        }
-    }
 }

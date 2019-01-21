@@ -43,7 +43,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
                 try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
 //                try print(Article.count(inContext: backgroundContext))
 //                try print(Article.count(inContext: context))
-                completion(.success(objectList: nil))
+                completion(.success(result: nil))
                 EZCoreDataLogger.log("Deleted list of objects")
             } catch let error {
                 EZCoreDataLogger.logError(error.localizedDescription)
@@ -71,7 +71,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
             // Delete Request
             do {
                 try deleteAllFromFetchRequest(deleteFetchRequest, inContext: backgroundContext)
-                completion(.success(objectList: nil))
+                completion(.success(result: nil))
             } catch let error {
                 EZCoreDataLogger.logError(error.localizedDescription)
                 completion(.failure(error: error))
