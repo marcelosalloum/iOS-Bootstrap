@@ -12,8 +12,14 @@ import CoreData
 
 // MARK: - Delete One
 extension NSFetchRequestResult where Self: NSManagedObject {
+    /// Delete given object within the given context
     static public func delete(_ object: Self, context: NSManagedObjectContext = EZCoreData.mainThredContext) {
         context.delete(object)
+    }
+    
+    /// Delete the object within the given context
+    public func delete(context: NSManagedObjectContext = EZCoreData.mainThredContext) {
+        context.delete(self)
     }
 }
 
@@ -21,6 +27,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 // MARK: - Delete All
 extension NSFetchRequestResult where Self: NSManagedObject {
     
+    /// SYNC Delete all objects of this kind except the given list
     static public func deleteAll(except toKeep: [Self]? = nil,
                                  context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
         // Fech Reqest
@@ -34,6 +41,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         try deleteAllFromFetchRequest(deleteFetchRequest, context: context)
     }
     
+    /// ASYNC Delete all objects of this kind except the given list
     static public func deleteAll(except toKeep: [Self]? = nil,
                                  backgroundContext: NSManagedObjectContext = EZCoreData.privateThreadContext,
                                  completion: @escaping (EZCoreDataResult<[Self]>) -> Void) {
@@ -62,6 +70,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 // MARK: - Delete All By Attribute
 extension NSFetchRequestResult where Self: NSManagedObject {
     
+    /// SYNC Delete all objects of this kind except those with the given attribute
     static public func deleteAllByAttribute(except attributeName: String,
                                             toKeep: [String],
                                             context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
@@ -71,6 +80,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         try deleteAllFromFetchRequest(deleteFetchRequest, context: context)
     }
     
+    /// ASYNC Delete all objects of this kind except those with the given attribute
     static public func deleteAllByAttribute(except attributeName: String,
                                             toKeep: [String],
                                             backgroundContext: NSManagedObjectContext = EZCoreData.privateThreadContext,
