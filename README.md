@@ -16,6 +16,8 @@
 ## Utils
 
 * Generate all icon sizes from one source image: https://appicon.co/
+* [Unit Test]: [Faking App Delegate](https://marcosantadev.com/fake-appdelegate-unit-testing-swift/)
+* [Unit Test]: [Preparing InMemory Persistent Store](https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee) to avoid messing with production data
 
 ## Challenge for iOS Developer 2.0 | Cheesecake Labs
 

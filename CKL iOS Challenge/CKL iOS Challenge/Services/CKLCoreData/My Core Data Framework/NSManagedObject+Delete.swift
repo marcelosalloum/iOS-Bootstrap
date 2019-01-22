@@ -13,14 +13,16 @@ import CoreData
 // MARK: - Delete One
 extension NSFetchRequestResult where Self: NSManagedObject {
     /// Delete given object within the given context
-    static public func delete(_ object: Self, context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
+    static public func delete(_ object: Self, shouldSave: Bool = true, context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
         context.delete(object)
-        try context.save()
+        if (shouldSave) {
+            try context.save()
+        }
     }
     
     /// Delete the object within the given context
-    public func delete(context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
-        try Self.delete(self, context: context)
+    public func delete(shouldSave: Bool = true, context: NSManagedObjectContext = EZCoreData.mainThredContext) throws {
+        try Self.delete(self, shouldSave: shouldSave, context: context)
     }
 }
 
