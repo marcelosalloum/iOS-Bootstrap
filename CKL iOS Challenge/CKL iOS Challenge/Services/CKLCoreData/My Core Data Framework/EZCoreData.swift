@@ -51,8 +51,8 @@ public class EZCoreData: NSObject {
     
     // MARK: - Init
     /// Async initialization of the NSPersistentContainer
-    init(_ completion: @escaping () -> Void) {
-        persistentContainer = NSPersistentContainer(name: EZCoreData.databaseName)
+    init(_ databaseName: String = EZCoreData.databaseName, _ completion: @escaping () -> Void) {
+        persistentContainer = NSPersistentContainer(name: databaseName)
         persistentContainer.loadPersistentStores() { (description, error) in
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")
