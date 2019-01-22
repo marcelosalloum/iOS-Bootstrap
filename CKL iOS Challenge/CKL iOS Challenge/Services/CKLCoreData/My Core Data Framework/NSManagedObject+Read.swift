@@ -79,6 +79,37 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 }
 
 
+// MARK: - Read First By Attributte
+extension NSFetchRequestResult where Self: NSManagedObject {
+    
+    /// SYNC read first result with the given `attribute` and `value`
+    static public func readFirst(attribute: String,
+                                 value: String,
+                                 context: NSManagedObjectContext = EZCoreData.mainThredContext) throws -> Self? {
+        let predicate = NSPredicate(format: "\(attribute) == \(value)")
+        let fetchRequest = readFirstFetchRequest(predicate, context: context)
+        return try context.fetch(fetchRequest).first
+    }
+    
+    /// ASYNC read first result with the given `attribute` and `value`
+    static public func readFirst(attribute: String,
+                                 value: String,
+                                 context: NSManagedObjectContext = EZCoreData.mainThredContext,
+                                 completion: @escaping (EZCoreDataResult<Self>) -> Void) {
+        let predicate = NSPredicate(format: "\(attribute) == \(value)")
+        let fetchRequest = readFirstFetchRequest(predicate, context: context)
+        asyncFetchRequest(fetchRequest, context: context, completion: {awesomeResult in
+            switch awesomeResult {
+            case .success(result: let objectList):
+                completion(EZCoreDataResult<Self>.success(result: objectList?.first))
+            case .failure(error: let error):
+                completion(EZCoreDataResult<Self>.failure(error: error))
+            }
+        })
+    }
+}
+
+
 // MARK: - Read All
 extension NSFetchRequestResult where Self: NSManagedObject {
 
