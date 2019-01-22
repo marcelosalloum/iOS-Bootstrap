@@ -130,14 +130,29 @@ extension TestEZCoreData {
     }
     
     func testImportAsync() {
+        // Initial SetuUp
         purgeDatabase()
         let countZero = try? Article.count(context: context)
         XCTAssertEqual(countZero, 0)
         
-        Article.importList(mockArticleListResponseJSON, idKey: "id", backgroundContext: context) { _ in
-            let countSix = try? Article.count(context: self.context)
-            XCTAssertEqual(countSix, 6)
+        // Creating expectations
+        let successExpectation = self.expectation(description: "testReadAllAsync_success")
+        let failureExpectation = self.expectation(description: "testReadAllAsync_failure")
+        failureExpectation.isInverted = true
+        
+        Article.importList(mockArticleListResponseJSON, idKey: "id", backgroundContext: context) { result in
+            switch result {
+            case .success(result: _):
+                successExpectation.fulfill()
+            case .failure(error: _):
+                failureExpectation.fulfill()
+            }
         }
+        
+        // Waits for the expectations
+        waitForExpectations(timeout: 1, handler: nil)
+        let countSix = try? Article.count(context: self.context)
+        XCTAssertEqual(countSix, 6)
     }
     
     
@@ -147,6 +162,34 @@ extension TestEZCoreData {
         _ = try? Article.importList(mockArticleListResponseJSON, idKey: "id", shouldSave: true, context: context)
         let articles = try? Article.readAll(context: context)
         XCTAssertEqual(articles?.count, 6)
+    }
+    
+    func testReadAllAsync() {
+        // Initial SetuUp
+        purgeDatabase()
+        _ = try? Article.importList(mockArticleListResponseJSON, idKey: "id", shouldSave: true, context: context)
+        var articles: [Article] = []
+        
+        // Creating expectations
+        let successExpectation = self.expectation(description: "testReadAllAsync_success")
+        let failureExpectation = self.expectation(description: "testReadAllAsync_failure")
+        failureExpectation.isInverted = true
+        
+        // Performs the test
+        Article.readAll(context: context) { (result) in
+            switch result {
+            case .success(result: let articleList):
+                guard let articleList = articleList else { failureExpectation.fulfill(); return }
+                articles = articleList
+                successExpectation.fulfill()
+            case .failure(error: _):
+                failureExpectation.fulfill()
+            }
+        }
+        
+        // Waits for the expectations
+        waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertEqual(articles.count, 6)
     }
     
     // Mark: - Test Read
