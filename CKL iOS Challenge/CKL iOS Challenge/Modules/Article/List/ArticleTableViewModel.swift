@@ -76,7 +76,6 @@ class ArticleTableViewModel: NSObject {
             case .failure(error: let error):
                 self.delegate?.displayError(error: error, endRefreshing: true)
             }
-            
         }
     }
     

@@ -16,6 +16,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     /// SYNC Fetch Request for reading
     fileprivate static func syncFetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Self> {
+//        let fetchRequest = Self.fetchRequest() as! NSFetchRequest<Self>
         let fetchRequest = NSFetchRequest<Self>()
         fetchRequest.entity = entity()
         return fetchRequest
