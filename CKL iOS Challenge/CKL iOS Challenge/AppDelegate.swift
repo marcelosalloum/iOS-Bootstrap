@@ -12,7 +12,7 @@ import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
 
-@UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

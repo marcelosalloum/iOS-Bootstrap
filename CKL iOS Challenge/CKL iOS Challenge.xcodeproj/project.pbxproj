@@ -12,6 +12,7 @@
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
+		1F6C6DAC21F7304300E59082 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAB21F7304300E59082 /* main.swift */; };
 		1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */; };
 		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
 		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
@@ -84,6 +85,7 @@
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		1F6C6DAB21F7304300E59082 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreDataLogger.swift; sourceTree = "<group>"; };
 		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
 		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
+				1F6C6DAB21F7304300E59082 /* main.swift */,
 			);
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
+				1F6C6DAC21F7304300E59082 /* main.swift in Sources */,
 				1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
