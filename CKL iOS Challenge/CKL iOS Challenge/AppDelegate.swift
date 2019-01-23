@@ -11,6 +11,7 @@ import CoreData
 import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
+import EZCoreData
 
 
 class AppDelegate: UIResponder, UIApplicationDelegate {

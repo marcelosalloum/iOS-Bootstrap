@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftMessages
+import EZCoreData
 
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreData
+import EZCoreData
 
 
 struct APIPaths {
