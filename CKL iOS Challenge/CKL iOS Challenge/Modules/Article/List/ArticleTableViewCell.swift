@@ -12,17 +12,18 @@ class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tagsLabel: UILabel!
-
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    func updateWasReadStatus(_ wasRead: Bool) {
+        self.backgroundColor = wasRead ? UIColor.gray5() : UIColor.gray20()
+    }
 }

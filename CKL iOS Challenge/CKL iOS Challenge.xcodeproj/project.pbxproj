@@ -10,19 +10,77 @@
 		1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196BB621D6F7B1002421AB /* RestAPI.swift */; };
 		1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
+		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
+		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
+		1F6C6DAC21F7304300E59082 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAB21F7304300E59082 /* main.swift */; };
+		1F6C6DAE21F73CC000E59082 /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAD21F73CC000E59082 /* MockJSON.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
 		1F88EFED21D5766900275972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Main.storyboard */; };
 		1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */; };
 		1F88EFF221D5766900275972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF121D5766900275972 /* Assets.xcassets */; };
 		1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFF321D5766900275972 /* LaunchScreen.storyboard */; };
-		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */; };
+		1F8BDB4521E53592007A338A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
+		1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */; };
+		1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */; };
+		1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */; };
+		1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */; };
+		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
+		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
+		1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */; };
+		1F9B4A8221ED3F3700E5E360 /* Colfax-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */; };
+		1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */; };
+		1F9B4A8421ED3F3700E5E360 /* Colfax-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */; };
+		1F9B4A9021ED3F4700E5E360 /* ProximaNova-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */; };
+		1F9B4A9121ED3F4700E5E360 /* ProximaNova-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */; };
+		1F9B4A9221ED3F4700E5E360 /* ProximaNova-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */; };
+		1F9B4A9321ED3F4700E5E360 /* ProximaNova-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */; };
+		1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */; };
+		1F9B4A9521ED3F4700E5E360 /* ProximaNova-Extra-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */; };
+		1F9B4A9621ED3F4700E5E360 /* ProximaNova-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */; };
+		1F9B4A9721ED3F4700E5E360 /* ProximaNova-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */; };
+		1F9B4A9821ED3F4700E5E360 /* ProximaNova-Regular-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */; };
+		1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */; };
+		1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */; };
+		1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */; };
+		1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */; };
+		1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA021ED522100E5E360 /* Brandon_med.otf */; };
+		1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */; };
+		1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */; };
+		1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA321ED522100E5E360 /* Brandon_light.otf */; };
+		1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */; };
+		1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */; };
+		1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */; };
+		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
+		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
+		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
+		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
+		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
+		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
+		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
+		1FC76B2D21F6495A005782ED /* TestEZCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */; };
+		1FC76B3921F64D8B005782ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
+		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1FC76B2721F64475005782ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F88EFDC21D5766900275972 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F88EFE321D5766900275972;
+			remoteInfo = "CKL iOS Challenge";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F196BB621D6F7B1002421AB /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
+		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		1F6C6DAB21F7304300E59082 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1F6C6DAD21F73CC000E59082 /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,7 +88,49 @@
 		1F88EFF121D5766900275972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F88EFF421D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F88EFF621D5766900275972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift"; sourceTree = "<group>"; };
+		1F8BDB4421E53592007A338A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewModel.swift; sourceTree = "<group>"; };
+		1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
+		1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Reachability.swift"; sourceTree = "<group>"; };
+		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1F9B4A7721ECC61300E5E360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		1F9B4A7821ECC69900E5E360 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Medium.ttf"; sourceTree = "<group>"; };
+		1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Regular.ttf"; sourceTree = "<group>"; };
+		1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.ttf"; sourceTree = "<group>"; };
+		1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Extra-Bold.ttf"; sourceTree = "<group>"; };
+		1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.ttf"; sourceTree = "<group>"; };
+		1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.ttf"; sourceTree = "<group>"; };
+		1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light-Italic.ttf"; sourceTree = "<group>"; };
+		1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med_it.otf; sourceTree = "<group>"; };
+		1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld.otf; sourceTree = "<group>"; };
+		1F9B4AA021ED522100E5E360 /* Brandon_med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med.otf; sourceTree = "<group>"; };
+		1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light_it.otf; sourceTree = "<group>"; };
+		1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg.otf; sourceTree = "<group>"; };
+		1F9B4AA321ED522100E5E360 /* Brandon_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light.otf; sourceTree = "<group>"; };
+		1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk_it.otf; sourceTree = "<group>"; };
+		1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg_it.otf; sourceTree = "<group>"; };
+		1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin.otf; sourceTree = "<group>"; };
+		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
+		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
+		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
+		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CKL iOS Challenge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FC76B2621F64475005782ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEZCoreData.swift; sourceTree = "<group>"; };
+		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		B8DA3CF7472269D2DA9CAEFB /* Pods-CKL iOS Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +142,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FC76B1F21F64475005782ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +166,8 @@
 		1F1A409F21D694FF005BC0F3 /* Article */ = {
 			isa = PBXGroup;
 			children = (
-				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
-				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
+				1F86B9AA21E77A2D0059D2CB /* List */,
+				1F9B0CB021E50E4A0069FD3E /* Detail */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -68,16 +175,46 @@
 		1F6653ED21E37CB300982F99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */,
+				1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */,
+				1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */,
+				1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */,
 				1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1F86B9AA21E77A2D0059D2CB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
+				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
+				1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		1F86B9AB21E77A430059D2CB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1F1A409F21D694FF005BC0F3 /* Article */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1F86B9AD21E77ABA0059D2CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F196BB521D6F796002421AB /* APIs */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
-				1FDC4A1221E4C89F0064AC13 /* Extensions */,
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
+				1FC76B2321F64475005782ED /* CKL iOS Challenge Tests */,
 				1F88EFE521D5766900275972 /* Products */,
 				AE22B14963B4D54B33DAF208 /* Pods */,
 				782204D88925974F844285AB /* Frameworks */,
@@ -88,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFE421D5766900275972 /* CKL iOS Challenge.app */,
+				1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,22 +233,124 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B4A7C21ED3F0500E5E360 /* Resources */,
+				1F86B9AD21E77ABA0059D2CB /* Services */,
+				1FDC4A1221E4C89F0064AC13 /* Extensions */,
+				1F8BDB4021E53417007A338A /* Custom Views */,
 				1F6653ED21E37CB300982F99 /* Models */,
-				1F196BB521D6F796002421AB /* APIs */,
-				1F1A409F21D694FF005BC0F3 /* Article */,
+				1F86B9AB21E77A430059D2CB /* Modules */,
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
-				1F88EFF121D5766900275972 /* Assets.xcassets */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
+				1F6C6DAB21F7304300E59082 /* main.swift */,
 			);
 			path = "CKL iOS Challenge";
+			sourceTree = "<group>";
+		};
+		1F8BDB4021E53417007A338A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		1F9B0CB021E50E4A0069FD3E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */,
+				1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		1F9B4A7C21ED3F0500E5E360 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A7D21ED3F1A00E5E360 /* Fonts */,
+				1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */,
+				1F8BDB4421E53592007A338A /* Constants.swift */,
+				1F9B4A7421ECC43900E5E360 /* Localizable.strings */,
+				1F88EFF121D5766900275972 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1F9B4A7D21ED3F1A00E5E360 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A9D21ED522100E5E360 /* Brandon */,
+				1F9B4A8521ED3F4600E5E360 /* ProximaNova */,
+				1F9B4A7E21ED3F2100E5E360 /* Colfax */,
+				1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1F9B4A7E21ED3F2100E5E360 /* Colfax */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A8121ED3F3700E5E360 /* Colfax-Bold.ttf */,
+				1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */,
+				1F9B4A8021ED3F3600E5E360 /* Colfax-Regular.ttf */,
+			);
+			path = Colfax;
+			sourceTree = "<group>";
+		};
+		1F9B4A8521ED3F4600E5E360 /* ProximaNova */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */,
+				1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */,
+				1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */,
+				1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */,
+				1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */,
+				1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */,
+				1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */,
+				1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */,
+				1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */,
+				1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */,
+			);
+			path = ProximaNova;
+			sourceTree = "<group>";
+		};
+		1F9B4A9D21ED522100E5E360 /* Brandon */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */,
+				1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */,
+				1F9B4AA021ED522100E5E360 /* Brandon_med.otf */,
+				1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */,
+				1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */,
+				1F9B4AA321ED522100E5E360 /* Brandon_light.otf */,
+				1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */,
+				1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */,
+				1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */,
+				1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */,
+				1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */,
+				1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */,
+			);
+			path = Brandon;
+			sourceTree = "<group>";
+		};
+		1FC76B2321F64475005782ED /* CKL iOS Challenge Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1FC76B2621F64475005782ED /* Info.plist */,
+				1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */,
+				1F6C6DAD21F73CC000E59082 /* MockJSON.swift */,
+			);
+			path = "CKL iOS Challenge Tests";
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift */,
+				1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */,
+				1F9B4A7821ECC69900E5E360 /* String+Localized.swift */,
+				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */,
+				1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -143,7 +383,8 @@
 				1F88EFE021D5766900275972 /* Sources */,
 				1F88EFE121D5766900275972 /* Frameworks */,
 				1F88EFE221D5766900275972 /* Resources */,
-				586E302204C7343C46B0E7F4 /* [CP] Embed Pods Frameworks */,
+				8CE465B05CEC7EA7D45CA571 /* [CP] Embed Pods Frameworks */,
+				1F9B4A6C21ECA97700E5E360 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -154,19 +395,41 @@
 			productReference = 1F88EFE421D5766900275972 /* CKL iOS Challenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1FC76B2121F64475005782ED /* CKL iOS Challenge Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FC76B2B21F64475005782ED /* Build configuration list for PBXNativeTarget "CKL iOS Challenge Tests" */;
+			buildPhases = (
+				1FC76B1E21F64475005782ED /* Sources */,
+				1FC76B1F21F64475005782ED /* Frameworks */,
+				1FC76B2021F64475005782ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FC76B2821F64475005782ED /* PBXTargetDependency */,
+			);
+			name = "CKL iOS Challenge Tests";
+			productName = "CKL iOS Challenge Tests";
+			productReference = 1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1F88EFDC21D5766900275972 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Marcelo Salloum dos Santos";
 				TargetAttributes = {
 					1F88EFE321D5766900275972 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1010;
+					};
+					1FC76B2121F64475005782ED = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 1F88EFE321D5766900275972;
 					};
 				};
 			};
@@ -184,6 +447,7 @@
 			projectRoot = "";
 			targets = (
 				1F88EFE321D5766900275972 /* CKL iOS Challenge */,
+				1FC76B2121F64475005782ED /* CKL iOS Challenge Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,33 +457,93 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9B4A9821ED3F4700E5E360 /* ProximaNova-Regular-Italic.ttf in Resources */,
 				1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */,
+				1F9B4A9321ED3F4700E5E360 /* ProximaNova-Semibold.ttf in Resources */,
+				1F9B4A9521ED3F4700E5E360 /* ProximaNova-Extra-Bold.ttf in Resources */,
+				1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */,
+				1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */,
+				1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */,
+				1F9B4A8421ED3F3700E5E360 /* Colfax-Bold.ttf in Resources */,
+				1F9B4A9021ED3F4700E5E360 /* ProximaNova-Light.ttf in Resources */,
+				1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */,
+				1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */,
+				1F9B4A9121ED3F4700E5E360 /* ProximaNova-Bold.ttf in Resources */,
 				1F88EFF221D5766900275972 /* Assets.xcassets in Resources */,
+				1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */,
+				1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */,
+				1F9B4A9221ED3F4700E5E360 /* ProximaNova-Bold-Italic.ttf in Resources */,
+				1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */,
+				1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */,
+				1F9B4A8221ED3F3700E5E360 /* Colfax-Medium.ttf in Resources */,
+				1F9B4A9621ED3F4700E5E360 /* ProximaNova-Regular.ttf in Resources */,
+				1F9B4A9721ED3F4700E5E360 /* ProximaNova-Black.ttf in Resources */,
+				1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */,
+				1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */,
+				1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */,
+				1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */,
+				1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */,
+				1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */,
 				1F88EFED21D5766900275972 /* Main.storyboard in Resources */,
+				1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FC76B2021F64475005782ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		586E302204C7343C46B0E7F4 /* [CP] Embed Pods Frameworks */ = {
+		1F9B4A6C21ECA97700E5E360 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 58c10a60b7de9839551f21e4d344635fca8a820b 28f8f0e44de128bf5bc2d7c8eb4f90b50260b48383a319de3a378ee1ca33fd11\n";
+		};
+		8CE465B05CEC7EA7D45CA571 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/EZCoreData/EZCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flurry_iOS_SDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -251,22 +575,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift  .swift in Sources */,
+				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */,
+				1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */,
+				1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */,
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
+				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
+				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
+				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
+				1F6C6DAC21F7304300E59082 /* main.swift in Sources */,
+				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
+				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
+				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
+				1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */,
+				1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */,
+				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
+				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
+				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
+				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FC76B1E21F64475005782ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F6C6DAE21F73CC000E59082 /* MockJSON.swift in Sources */,
+				1FC76B3921F64D8B005782ED /* Constants.swift in Sources */,
+				1FC76B2D21F6495A005782ED /* TestEZCoreData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FC76B2821F64475005782ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F88EFE321D5766900275972 /* CKL iOS Challenge */;
+			targetProxy = 1FC76B2721F64475005782ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F88EFEB21D5766900275972 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1F88EFEC21D5766900275972 /* Base */,
+				1F9B4A7721ECC61300E5E360 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -402,7 +760,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K3UK62DH5A;
+				DEVELOPMENT_TEAM = USV2M54YFN;
 				INFOPLIST_FILE = "CKL iOS Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -421,7 +779,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K3UK62DH5A;
+				DEVELOPMENT_TEAM = USV2M54YFN;
 				INFOPLIST_FILE = "CKL iOS Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -431,6 +789,51 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1FC76B2921F64475005782ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USV2M54YFN;
+				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKL iOS Challenge.app/CKL iOS Challenge";
+			};
+			name = Debug;
+		};
+		1FC76B2A21F64475005782ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USV2M54YFN;
+				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKL iOS Challenge.app/CKL iOS Challenge";
 			};
 			name = Release;
 		};
@@ -451,6 +854,15 @@
 			buildConfigurations = (
 				1F88EFFA21D5766900275972 /* Debug */,
 				1F88EFFB21D5766900275972 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FC76B2B21F64475005782ED /* Build configuration list for PBXNativeTarget "CKL iOS Challenge Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FC76B2921F64475005782ED /* Debug */,
+				1FC76B2A21F64475005782ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

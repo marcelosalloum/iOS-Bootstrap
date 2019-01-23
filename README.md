@@ -16,6 +16,8 @@
 ## Utils
 
 * Generate all icon sizes from one source image: https://appicon.co/
+* [Unit Test]: [Faking App Delegate](https://marcosantadev.com/fake-appdelegate-unit-testing-swift/)
+* [Unit Test]: [Preparing InMemory Persistent Store](https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee) to avoid messing with production data
 
 ## Challenge for iOS Developer 2.0 | Cheesecake Labs
 
@@ -26,11 +28,13 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Create a table with the articles following the provided mockup;
 
-[] Ability to visualize content (all provided info);
+[x] Ability to visualize content (all provided info);
 
-[] Ability to sort articles (date, title and author);
+[x] Ability to search articles (title and author);
 
-[] Ability to mark articles as read/unread;
+[x] Ability to sort articles (date, title and author);
+
+[x] Ability to mark articles as read/unread;
 
 [] Push your code to the provided Github repository and create a Pull Request to the master branch adding "cheesecakelabs-challenges" user as a reviewer.
 
@@ -38,11 +42,11 @@ The applicant must develop an iOS app written in Swift that fetches the JSON lis
 
 [x] Use a dependency manager;
 
-[] Tablet-adaptive layout;
+[x] Tablet-adaptive layout;
 
-[-] Persistent info;
+[x] Persistent info;
 
-[-] Design tweaks: animation, icons, etc;
+[x] Design tweaks: animation, icons, etc;
 
 [] Manage network errors;
 
