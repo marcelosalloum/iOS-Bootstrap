@@ -12,10 +12,8 @@
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
-		1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */; };
-		1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */; };
-		1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */; };
-		1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */; };
+		1F6C6DAC21F7304300E59082 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAB21F7304300E59082 /* main.swift */; };
+		1F6C6DAE21F73CC000E59082 /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAD21F73CC000E59082 /* MockJSON.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
 		1F88EFED21D5766900275972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Main.storyboard */; };
 		1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld */; };
@@ -55,15 +53,25 @@
 		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
 		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
 		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
-		1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC98E721F11A19000B8E68 /* EZCoreData.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
 		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
-		1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */; };
+		1FC76B2D21F6495A005782ED /* TestEZCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */; };
+		1FC76B3921F64D8B005782ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
 		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1FC76B2721F64475005782ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F88EFDC21D5766900275972 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F88EFE321D5766900275972;
+			remoteInfo = "CKL iOS Challenge";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F196BB621D6F7B1002421AB /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
@@ -71,10 +79,8 @@
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreDataLogger.swift; sourceTree = "<group>"; };
-		1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Read.swift"; sourceTree = "<group>"; };
-		1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Update.swift"; sourceTree = "<group>"; };
-		1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Delete.swift"; sourceTree = "<group>"; };
+		1F6C6DAB21F7304300E59082 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1F6C6DAD21F73CC000E59082 /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* CKL iOS Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKL iOS Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,12 +123,13 @@
 		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
 		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
 		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
-		1FAC98E721F11A19000B8E68 /* EZCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZCoreData.swift; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
+		1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CKL iOS Challenge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FC76B2621F64475005782ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEZCoreData.swift; sourceTree = "<group>"; };
 		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		6033304A064BBB3698598AEA /* Pods_CKL_iOS_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKL_iOS_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCB3F79B5702C77FF8F6CC /* Pods-CKL iOS Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKL iOS Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +142,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB8E2DD593B5F0512D39FD3 /* Pods_CKL_iOS_Challenge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FC76B1F21F64475005782ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,19 +202,10 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		1F86B9AC21E77AA30059D2CB /* CKLCoreData */ = {
-			isa = PBXGroup;
-			children = (
-				1FC76B1A21F1DEB6005782ED /* My Core Data Framework */,
-			);
-			path = CKLCoreData;
-			sourceTree = "<group>";
-		};
 		1F86B9AD21E77ABA0059D2CB /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				1F196BB521D6F796002421AB /* APIs */,
-				1F86B9AC21E77AA30059D2CB /* CKLCoreData */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
+				1FC76B2321F64475005782ED /* CKL iOS Challenge Tests */,
 				1F88EFE521D5766900275972 /* Products */,
 				AE22B14963B4D54B33DAF208 /* Pods */,
 				782204D88925974F844285AB /* Frameworks */,
@@ -219,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFE421D5766900275972 /* CKL iOS Challenge.app */,
+				1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +243,7 @@
 				1F88EFEB21D5766900275972 /* Main.storyboard */,
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
 				1F88EFF621D5766900275972 /* Info.plist */,
+				1F6C6DAB21F7304300E59082 /* main.swift */,
 			);
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
@@ -326,17 +334,14 @@
 			path = Brandon;
 			sourceTree = "<group>";
 		};
-		1FC76B1A21F1DEB6005782ED /* My Core Data Framework */ = {
+		1FC76B2321F64475005782ED /* CKL iOS Challenge Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1FAC98E721F11A19000B8E68 /* EZCoreData.swift */,
-				1F86B99C21E669D10059D2CB /* EZCoreDataLogger.swift */,
-				1FC76B1C21F5F597005782ED /* NSManagedObjectContext+Save.swift */,
-				1F86B9A021E75A240059D2CB /* NSManagedObject+Read.swift */,
-				1F86B9A621E75F290059D2CB /* NSManagedObject+Update.swift */,
-				1F86B9A821E75F3A0059D2CB /* NSManagedObject+Delete.swift */,
+				1FC76B2621F64475005782ED /* Info.plist */,
+				1FC76B2C21F6495A005782ED /* TestEZCoreData.swift */,
+				1F6C6DAD21F73CC000E59082 /* MockJSON.swift */,
 			);
-			path = "My Core Data Framework";
+			path = "CKL iOS Challenge Tests";
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
@@ -390,19 +395,41 @@
 			productReference = 1F88EFE421D5766900275972 /* CKL iOS Challenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1FC76B2121F64475005782ED /* CKL iOS Challenge Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FC76B2B21F64475005782ED /* Build configuration list for PBXNativeTarget "CKL iOS Challenge Tests" */;
+			buildPhases = (
+				1FC76B1E21F64475005782ED /* Sources */,
+				1FC76B1F21F64475005782ED /* Frameworks */,
+				1FC76B2021F64475005782ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FC76B2821F64475005782ED /* PBXTargetDependency */,
+			);
+			name = "CKL iOS Challenge Tests";
+			productName = "CKL iOS Challenge Tests";
+			productReference = 1FC76B2221F64475005782ED /* CKL iOS Challenge Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1F88EFDC21D5766900275972 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Marcelo Salloum dos Santos";
 				TargetAttributes = {
 					1F88EFE321D5766900275972 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1010;
+					};
+					1FC76B2121F64475005782ED = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 1F88EFE321D5766900275972;
 					};
 				};
 			};
@@ -420,6 +447,7 @@
 			projectRoot = "";
 			targets = (
 				1F88EFE321D5766900275972 /* CKL iOS Challenge */,
+				1FC76B2121F64475005782ED /* CKL iOS Challenge Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -461,6 +489,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FC76B2021F64475005782ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -493,6 +528,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CKL iOS Challenge/Pods-CKL iOS Challenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/EZCoreData/EZCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
@@ -503,6 +539,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flurry_iOS_SDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -541,15 +578,12 @@
 				1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */,
 				1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */,
 				1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */,
-				1F86B9A121E75A240059D2CB /* NSManagedObject+Read.swift in Sources */,
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
-				1F86B9A721E75F290059D2CB /* NSManagedObject+Update.swift in Sources */,
-				1F86B99D21E669D10059D2CB /* EZCoreDataLogger.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
-				1FAC98E821F11A19000B8E68 /* EZCoreData.swift in Sources */,
+				1F6C6DAC21F7304300E59082 /* main.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,
@@ -559,15 +593,31 @@
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
-				1FC76B1D21F5F597005782ED /* NSManagedObjectContext+Save.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
-				1F86B9A921E75F3A0059D2CB /* NSManagedObject+Delete.swift in Sources */,
 				1F88EFF021D5766900275972 /* CKL_iOS_Challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FC76B1E21F64475005782ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F6C6DAE21F73CC000E59082 /* MockJSON.swift in Sources */,
+				1FC76B3921F64D8B005782ED /* Constants.swift in Sources */,
+				1FC76B2D21F6495A005782ED /* TestEZCoreData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FC76B2821F64475005782ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F88EFE321D5766900275972 /* CKL iOS Challenge */;
+			targetProxy = 1FC76B2721F64475005782ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F88EFEB21D5766900275972 /* Main.storyboard */ = {
@@ -742,6 +792,51 @@
 			};
 			name = Release;
 		};
+		1FC76B2921F64475005782ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USV2M54YFN;
+				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKL iOS Challenge.app/CKL iOS Challenge";
+			};
+			name = Debug;
+		};
+		1FC76B2A21F64475005782ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USV2M54YFN;
+				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.ckl.CKL-iOS-Challenge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKL iOS Challenge.app/CKL iOS Challenge";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -759,6 +854,15 @@
 			buildConfigurations = (
 				1F88EFFA21D5766900275972 /* Debug */,
 				1F88EFFB21D5766900275972 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FC76B2B21F64475005782ED /* Build configuration list for PBXNativeTarget "CKL iOS Challenge Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FC76B2921F64475005782ED /* Debug */,
+				1FC76B2A21F64475005782ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

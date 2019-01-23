@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftMessages
+import EZCoreData
 
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
@@ -76,7 +77,6 @@ class ArticleTableViewModel: NSObject {
             case .failure(error: let error):
                 self.delegate?.displayError(error: error, endRefreshing: true)
             }
-            
         }
     }
     

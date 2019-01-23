@@ -9,6 +9,7 @@
 
 import Foundation
 import CoreData
+import EZCoreData
 
 
 public class Article: NSManagedObject {
@@ -35,8 +36,8 @@ public class Article: NSManagedObject {
 
 extension Article {
     /// Populates Article objects from JSON
-    override public func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
-        guard let id = json["id"] as? Int16 else { return }
+    override open func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
+        guard let rawId = json["id"], let id = Int16("\(rawId)") else { return }
         self.id = id
         self.authors = json["authors"] as? String
         self.content = json["content"] as? String
@@ -59,7 +60,7 @@ extension Article {
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
             } catch let error {
-                EZCoreDataLogger.logError(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }

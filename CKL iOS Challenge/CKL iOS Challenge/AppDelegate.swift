@@ -11,8 +11,9 @@ import CoreData
 import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
+import EZCoreData
 
-@UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
