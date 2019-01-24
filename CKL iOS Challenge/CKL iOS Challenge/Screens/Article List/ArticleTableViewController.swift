@@ -110,23 +110,10 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         // Dequeue cell
         let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         
-        // Retrieve the correspondant article
+        // Retrieve the correspondant article and set-up the cell
         if indexPath.row >= viewModel.articles.count { return articleCell }
         let article = viewModel.articles[indexPath.row]
-
-        // Set-up the cell content
-        articleCell.titleLabel.text = article.title
-        articleCell.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
-        articleCell.authorLabel.text = article.authors
-        articleCell.updateWasReadStatus(article.wasRead)
-        
-        // Setup the cell image
-        guard let articleImageView = articleCell.articleImageView else { return articleCell }
-        guard let imageURL = article.imageUrl else { return articleCell }
-        guard let url = URL(string: imageURL) else { return articleCell }
-        // Image Caching
-        articleImageView.kf.indicatorType = .activity
-        articleImageView.kf.setImage(with: url)
+        articleCell.article = article
      
         return articleCell
     }
