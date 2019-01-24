@@ -17,7 +17,7 @@ struct APIPaths {
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
-class RestAPI: NSObject {
+class APIHelper: NSObject {
     
     static func getArticlesList(_ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
