@@ -1,4 +1,4 @@
-# ckl-ios-challenge
+# iOS-Bootstrap
 
 ## Project Requirements
 
