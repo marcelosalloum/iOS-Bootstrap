@@ -68,10 +68,10 @@ class ArticleTableViewModel: NSObject {
     
     // MARK: - GET Articles from API
     func fetchAPIData() {
-        RestAPI.getArticlesList { (apiCompletion) in
+        APIHelper.getArticlesList { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
-                Article.deleteAll(except: articleList, backgroundContext: EZCoreData.privateThreadContext, completion: { _ in
+                Article.deleteAll(except: articleList, completion: { (_) in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):

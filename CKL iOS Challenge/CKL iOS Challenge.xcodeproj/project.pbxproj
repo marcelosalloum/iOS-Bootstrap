@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196BB621D6F7B1002421AB /* RestAPI.swift */; };
+		1F196BB721D6F7B1002421AB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196BB621D6F7B1002421AB /* APIHelper.swift */; };
 		1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */; };
@@ -72,7 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F196BB621D6F7B1002421AB /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		1F196BB621D6F7B1002421AB /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
@@ -152,23 +152,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F196BB521D6F796002421AB /* APIs */ = {
-			isa = PBXGroup;
-			children = (
-				1F196BB621D6F7B1002421AB /* RestAPI.swift */,
-			);
-			path = APIs;
-			sourceTree = "<group>";
-		};
-		1F1A409F21D694FF005BC0F3 /* Article */ = {
-			isa = PBXGroup;
-			children = (
-				1F86B9AA21E77A2D0059D2CB /* List */,
-				1F9B0CB021E50E4A0069FD3E /* Detail */,
-			);
-			path = Article;
-			sourceTree = "<group>";
-		};
 		1F6653ED21E37CB300982F99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,30 +164,43 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1F86B9AA21E77A2D0059D2CB /* List */ = {
+		1F6CC45821F9CD100018869B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F88EFE721D5766900275972 /* AppDelegate.swift */,
+				1F88EFF621D5766900275972 /* Info.plist */,
+				1F6C6DAB21F7304300E59082 /* main.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F86B9AA21E77A2D0059D2CB /* Article List */ = {
 			isa = PBXGroup;
 			children = (
 				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
 				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
 				1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */,
 			);
-			path = List;
+			path = "Article List";
 			sourceTree = "<group>";
 		};
-		1F86B9AB21E77A430059D2CB /* Modules */ = {
+		1F86B9AB21E77A430059D2CB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				1F1A409F21D694FF005BC0F3 /* Article */,
+				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
+				1F88EFEB21D5766900275972 /* Main.storyboard */,
+				1F86B9AA21E77A2D0059D2CB /* Article List */,
+				1F9B0CB021E50E4A0069FD3E /* Article Detail */,
 			);
-			path = Modules;
+			path = Screens;
 			sourceTree = "<group>";
 		};
-		1F86B9AD21E77ABA0059D2CB /* Services */ = {
+		1F86B9AD21E77ABA0059D2CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				1F196BB521D6F796002421AB /* APIs */,
+				1F196BB621D6F7B1002421AB /* APIHelper.swift */,
 			);
-			path = Services;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		1F88EFDB21D5766900275972 = {
@@ -230,17 +226,13 @@
 		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				1F9B4A7C21ED3F0500E5E360 /* Resources */,
-				1F86B9AD21E77ABA0059D2CB /* Services */,
-				1FDC4A1221E4C89F0064AC13 /* Extensions */,
+				1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */,
 				1F8BDB4021E53417007A338A /* Custom Views */,
+				1F86B9AD21E77ABA0059D2CB /* Helpers */,
 				1F6653ED21E37CB300982F99 /* Models */,
-				1F86B9AB21E77A430059D2CB /* Modules */,
-				1F88EFE721D5766900275972 /* AppDelegate.swift */,
-				1F88EFEB21D5766900275972 /* Main.storyboard */,
-				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
-				1F88EFF621D5766900275972 /* Info.plist */,
-				1F6C6DAB21F7304300E59082 /* main.swift */,
+				1F9B4A7C21ED3F0500E5E360 /* Resources */,
+				1F86B9AB21E77A430059D2CB /* Screens */,
+				1F6CC45821F9CD100018869B /* Supporting Files */,
 			);
 			path = "CKL iOS Challenge";
 			sourceTree = "<group>";
@@ -262,13 +254,13 @@
 			path = "CKL iOS Challenge Tests";
 			sourceTree = "<group>";
 		};
-		1F9B0CB021E50E4A0069FD3E /* Detail */ = {
+		1F9B0CB021E50E4A0069FD3E /* Article Detail */ = {
 			isa = PBXGroup;
 			children = (
 				1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */,
 				1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */,
 			);
-			path = Detail;
+			path = "Article Detail";
 			sourceTree = "<group>";
 		};
 		1F9B4A7C21ED3F0500E5E360 /* Resources */ = {
@@ -340,7 +332,7 @@
 			path = Brandon;
 			sourceTree = "<group>";
 		};
-		1FDC4A1221E4C89F0064AC13 /* Extensions */ = {
+		1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */,
@@ -348,7 +340,7 @@
 				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */,
 				1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */,
 			);
-			path = Extensions;
+			path = "Convenience Extensions";
 			sourceTree = "<group>";
 		};
 		782204D88925974F844285AB /* Frameworks */ = {
@@ -575,7 +567,7 @@
 				1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */,
 				1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */,
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
-				1F196BB721D6F7B1002421AB /* RestAPI.swift in Sources */,
+				1F196BB721D6F7B1002421AB /* APIHelper.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
@@ -755,7 +747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USV2M54YFN;
-				INFOPLIST_FILE = "CKL iOS Challenge/Info.plist";
+				INFOPLIST_FILE = "CKL iOS Challenge/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -774,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USV2M54YFN;
-				INFOPLIST_FILE = "CKL iOS Challenge/Info.plist";
+				INFOPLIST_FILE = "CKL iOS Challenge/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

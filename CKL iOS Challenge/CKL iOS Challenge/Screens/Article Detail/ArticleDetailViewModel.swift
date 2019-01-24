@@ -23,7 +23,7 @@ class ArticleDetailViewModel: NSObject {
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
         let context = EZCoreData.shared.mainThredContext
-        context.saveContextToStore()
+        context.saveContextToStore()  // Saving synchronosuly because the user is waiting for the result
         let newRightBarButtonItem = barButtonItem(for: article)
         self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
     }

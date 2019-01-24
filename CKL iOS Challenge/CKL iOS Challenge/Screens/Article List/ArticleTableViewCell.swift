@@ -15,6 +15,23 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
+    var article: Article! {
+        didSet {
+            // Set-up the cell content
+            titleLabel.text = article.title
+            timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+            authorLabel.text = article.authors
+            updateWasReadStatus(article.wasRead)
+            
+            // Setup the cell image
+            guard let imageURL = article.imageUrl else { return }
+            guard let url = URL(string: imageURL) else { return }
+            // Image Caching
+            articleImageView.kf.indicatorType = .activity
+            articleImageView.kf.setImage(with: url)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
