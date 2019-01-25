@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Init Core Data
-        EZCoreData.databaseName = Constants.databaseName   // Initialize Core Data
-        _ = EZCoreData.shared                              // Initialize Core Data
+        EZCoreData.shared.setupInMemoryPersistence(Constants.databaseName)  // Initialize Core Data
         
         // Init Fabric and Crashlytics
         Fabric.with([Crashlytics.self])
