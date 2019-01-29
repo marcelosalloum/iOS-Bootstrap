@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.7.3)
   - Crashlytics (3.10.8):
     - Fabric (~> 1.7.12)
-  - EZCoreData (0.4.1)
+  - EZCoreData (0.4.2)
   - Fabric (1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (9.1.0)
   - Kingfisher (4.10.0)
@@ -35,7 +35,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
-  EZCoreData: 8d2d98a38b4d2e71e161139eee71bed0cc401de0
+  EZCoreData: 13d38d63bae04d05e78fc5e197b3c69bf25af4ef
   Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   Flurry-iOS-SDK: 5f321ecc8282cf10b051b64bfdc4657f6b280118
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
