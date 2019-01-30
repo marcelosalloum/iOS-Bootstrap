@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0397BF220218FE00335E6C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397BE220218FE00335E6C /* ApplicationCoordinator.swift */; };
+		1F0397C122021F6700335E6C /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */; };
+		1F0397C3220237FB00335E6C /* UITableViewCell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */; };
+		1F0397C52202481100335E6C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397C42202481100335E6C /* ViewModelProtocol.swift */; };
+		1F0397C722024BBB00335E6C /* ArticleDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397C622024BBB00335E6C /* ArticleDetailCoordinator.swift */; };
+		1F0397C922024C0400335E6C /* ArticleTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0397C822024C0400335E6C /* ArticleTableCoordinator.swift */; };
 		1F196BB721D6F7B1002421AB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F196BB621D6F7B1002421AB /* APIHelper.swift */; };
 		1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */; };
@@ -72,6 +78,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0397BE220218FE00335E6C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
+		1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Reusable.swift"; sourceTree = "<group>"; };
+		1F0397C42202481100335E6C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		1F0397C622024BBB00335E6C /* ArticleDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailCoordinator.swift; sourceTree = "<group>"; };
+		1F0397C822024C0400335E6C /* ArticleTableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableCoordinator.swift; sourceTree = "<group>"; };
 		1F196BB621D6F7B1002421AB /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -168,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				1F88EFE721D5766900275972 /* AppDelegate.swift */,
+				1F0397BE220218FE00335E6C /* ApplicationCoordinator.swift */,
 				1F88EFF621D5766900275972 /* Info.plist */,
 				1F6C6DAB21F7304300E59082 /* main.swift */,
 			);
@@ -177,6 +190,7 @@
 		1F86B9AA21E77A2D0059D2CB /* Article List */ = {
 			isa = PBXGroup;
 			children = (
+				1F0397C822024C0400335E6C /* ArticleTableCoordinator.swift */,
 				1F1A40A021D69524005BC0F3 /* ArticleTableViewController.swift */,
 				1F1A40A221D6953E005BC0F3 /* ArticleTableViewCell.swift */,
 				1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */,
@@ -199,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				1F196BB621D6F7B1002421AB /* APIHelper.swift */,
+				1F0397C42202481100335E6C /* ViewModelProtocol.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -257,6 +272,7 @@
 		1F9B0CB021E50E4A0069FD3E /* Article Detail */ = {
 			isa = PBXGroup;
 			children = (
+				1F0397C622024BBB00335E6C /* ArticleDetailCoordinator.swift */,
 				1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */,
 				1F1EC01421E7900D008EB3AF /* ArticleDetailViewModel.swift */,
 			);
@@ -339,6 +355,8 @@
 				1F9B4A7821ECC69900E5E360 /* String+Localized.swift */,
 				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */,
 				1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */,
+				1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */,
+				1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */,
 			);
 			path = "Convenience Extensions";
 			sourceTree = "<group>";
@@ -569,17 +587,23 @@
 				1F1A40A321D6953E005BC0F3 /* ArticleTableViewCell.swift in Sources */,
 				1F196BB721D6F7B1002421AB /* APIHelper.swift in Sources */,
 				1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */,
+				1F0397C52202481100335E6C /* ViewModelProtocol.swift in Sources */,
+				1F0397BF220218FE00335E6C /* ApplicationCoordinator.swift in Sources */,
+				1F0397C722024BBB00335E6C /* ArticleDetailCoordinator.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
 				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
 				1F6C6DAC21F7304300E59082 /* main.swift in Sources */,
+				1F0397C3220237FB00335E6C /* UITableViewCell+Reusable.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
 				1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */,
 				1F1EC01521E7900D008EB3AF /* ArticleDetailViewModel.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
+				1F0397C922024C0400335E6C /* ArticleTableCoordinator.swift in Sources */,
 				1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */,
 				1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */,
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* ArticleTableViewController.swift in Sources */,
+				1F0397C122021F6700335E6C /* UIViewController+Storyboard.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
