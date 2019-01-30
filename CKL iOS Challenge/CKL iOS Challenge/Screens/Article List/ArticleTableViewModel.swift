@@ -26,7 +26,7 @@ enum ArticlesOrder: String {
 }
 
 
-class ArticleTableViewModel: NSObject {
+class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     
     // MARK: - Initial Set-up
     var articles: [Article] = []
@@ -85,8 +85,7 @@ class ArticleTableViewModel: NSObject {
     func updateReadStatus(finalReadState: Bool, article: Article?, completion: @escaping ((EZCoreDataResult<Any>) -> ())) {
         guard let article = article else { return }
         article.wasRead = finalReadState
-        let context = EZCoreData.shared.mainThredContext
-        context.saveContextToStore(completion)
+        article.managedObjectContext?.saveContextToStore(completion)
     }
     
     

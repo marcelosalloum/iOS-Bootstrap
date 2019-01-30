@@ -17,11 +17,11 @@ import EZCoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var applicationCoordinator: ApplicationCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Init Core Data
-        EZCoreData.databaseName = Constants.databaseName   // Initialize Core Data
-        _ = EZCoreData.shared                              // Initialize Core Data
+        EZCoreData.shared.setupPersistence(Constants.databaseName)  // Initialize Core Data
         
         // Init Fabric and Crashlytics
         Fabric.with([Crashlytics.self])
@@ -31,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .init()
             .withCrashReporting(true)
             .withLogLevel(FlurryLogLevelNone))
+        
+        // Setup Window and Application Coordinator
+        window = UIWindow(frame: UIScreen.main.bounds)
+        applicationCoordinator = ApplicationCoordinator(window: window!)
+        applicationCoordinator?.start()
+        
         return true
     }
 
