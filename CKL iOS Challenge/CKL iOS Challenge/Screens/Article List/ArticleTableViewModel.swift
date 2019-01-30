@@ -26,7 +26,7 @@ enum ArticlesOrder: String {
 }
 
 
-class ArticleTableViewModel: NSObject {
+class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     
     // MARK: - Initial Set-up
     var articles: [Article] = []

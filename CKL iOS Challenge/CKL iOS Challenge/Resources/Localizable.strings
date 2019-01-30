@@ -10,3 +10,7 @@
 "Warning" = "Warning";
 "No Internet Connection" = "No Internet Connection";
 "Search the news..." = "Search the news...";
+
+
+// Error Messages:
+"EMPTY_OBJECT_LIST" = "Object list was not populated";

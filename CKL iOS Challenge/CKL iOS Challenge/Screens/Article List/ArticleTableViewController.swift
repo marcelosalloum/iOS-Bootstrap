@@ -20,6 +20,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     let viewModel = ArticleTableViewModel()
     
+    weak var coordinator: ArticleTableViewControllerDelegate?
+    
     // MARK: - RefreshControl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -87,16 +89,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         self.pullToRefresh(refreshControl)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Data validations
-        guard let articleDetailViewController = segue.destination as? ArticleDetailViewController else { return }
-        guard let row = tableView.indexPathForSelectedRow?.row else { return }
-        if row >= viewModel.articles.count { return }
-        
-        // Article Detail Setup
-        articleDetailViewController.viewModel.article = viewModel.articles[row]
-    }
-    
     // MARK: - TableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -107,21 +99,15 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Dequeue cell
-        let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
-        
-        // Retrieve the correspondant article and set-up the cell
-        if indexPath.row >= viewModel.articles.count { return articleCell }
-        let article = viewModel.articles[indexPath.row]
-        articleCell.article = article
-     
+        let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
+        articleCell.article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
         return articleCell
     }
     
     // MARK: - TableViewDelegate:
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "articleDetail", sender: self)
+        let article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
+        coordinator?.articleTableViewControllerDidSelectArticle(article)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -138,7 +124,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { tableViewRowAction, indexPath in
             self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) { completion in
                 if case .failure(_) = completion { return }
-                let articleCell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+                let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
                 articleCell.updateWasReadStatus(initialReadStatus)
                 tableView.reloadRows(at: [indexPath], with: .none)
             }

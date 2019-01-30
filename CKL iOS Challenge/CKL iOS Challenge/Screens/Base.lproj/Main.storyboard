@@ -50,7 +50,7 @@
         <!--News-->
         <scene sceneID="3z4-6B-4Fc">
             <objects>
-                <viewController id="SBW-QV-xEd" customClass="ArticleTableViewController" customModule="CKL_iOS_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SBW-QV-xEd" customClass="ArticleTableViewController" customModule="CKL_iOS_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NCo-RL-C1k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="2L7-pD-5NS">
             <objects>
-                <viewController id="DeF-FT-CjK" customClass="ArticleDetailViewController" customModule="CKL_iOS_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DeF-FT-CjK" customClass="ArticleDetailViewController" customModule="CKL_iOS_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rbr-bL-R4g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
