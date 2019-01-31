@@ -25,10 +25,16 @@ class ArticleTableCoordinator: Coordinator {
     }
     
     func start() {
+        // View Controller:
         guard let articleTableViewController = ArticleTableViewController.fromStoryboard("Main") else { return }
         articleTableViewController.title = "News"
-        presenter.pushViewController(articleTableViewController, animated: true)
         articleTableViewController.coordinator = self
+        // View Model:
+        let viewModel = ArticleTableViewModel()
+        articleTableViewController.viewModel = viewModel
+        viewModel.delegate = articleTableViewController
+        // Present View Controller:
+        presenter.pushViewController(articleTableViewController, animated: true)
         self.articleTableViewController = articleTableViewController
     }
 }

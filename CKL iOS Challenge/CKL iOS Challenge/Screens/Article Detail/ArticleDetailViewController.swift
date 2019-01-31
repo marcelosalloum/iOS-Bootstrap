@@ -20,7 +20,7 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     
     
     // MARK: - View Model
-    let viewModel = ArticleDetailViewModel()
+    var viewModel: ArticleDetailViewModel!
     
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
         self.viewModel.updateReadStatus(!viewModel.article.wasRead)
@@ -34,7 +34,6 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel.updateReadStatus(true)
-        viewModel.delegate = self
         setupView()
     }
     
@@ -54,6 +53,6 @@ class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
         timeLabel?.text = NSDate.timeAgoSince(viewModel.article.date)
         tagsLabel?.text = viewModel.article.tagsToString()
 
-        self.navigationItem.rightBarButtonItem = viewModel.barButtonItem(for: viewModel.article)
+        self.navigationItem.rightBarButtonItem = viewModel.newBarButtonItem(for: viewModel.article)
     }
 }

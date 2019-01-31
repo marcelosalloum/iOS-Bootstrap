@@ -18,7 +18,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = ArticleTableViewModel()
+    var viewModel: ArticleTableViewModel!
     
     weak var coordinator: ArticleTableViewControllerDelegate?
     
@@ -65,7 +65,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         navigationItem.searchController = searchController
 
         // ViewModel
-        viewModel.delegate = self
         viewModel.searchTerm = ""  // Runs first Search by setting this value
         viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
 

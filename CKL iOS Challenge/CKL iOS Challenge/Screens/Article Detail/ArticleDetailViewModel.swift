@@ -23,11 +23,11 @@ class ArticleDetailViewModel: NSObject {
     func updateReadStatus(_ finalReadState: Bool) {
         article.wasRead = finalReadState
         article.managedObjectContext?.saveContextToStore()  // Sync task because the user is waiting for the result
-        let newRightBarButtonItem = barButtonItem(for: article)
+        let newRightBarButtonItem = newBarButtonItem(for: article)
         self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
     }
     
-    func barButtonItem(for article: Article?) -> UIBarButtonItem? {
+    func newBarButtonItem(for article: Article?) -> UIBarButtonItem? {
         guard let wasRead = article?.wasRead else { return nil }
         let buttonText = ArticleState.getText(initialReadStatus: wasRead)
         return UIBarButtonItem(title: buttonText, style: .plain, target: self.delegate, action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_: )))

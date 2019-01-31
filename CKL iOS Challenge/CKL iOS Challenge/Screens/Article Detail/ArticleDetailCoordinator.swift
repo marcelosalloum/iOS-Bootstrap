@@ -20,9 +20,15 @@ class ArticleDetailCoordinator: Coordinator {
     }
     
     func start() {
+        // View Controller:
         guard let articleDetailViewController = ArticleDetailViewController.fromStoryboard("Main") else { return }
         articleDetailViewController.title = "📚"
-        articleDetailViewController.viewModel.article = article
+        // View Model:
+        let viewModel = ArticleDetailViewModel()
+        viewModel.article = article
+        viewModel.delegate = articleDetailViewController
+        articleDetailViewController.viewModel = viewModel
+        // Present View Controller:
         presenter.pushViewController(articleDetailViewController, animated: true)
         self.articleDetailViewController = articleDetailViewController
     }
