@@ -8,6 +8,7 @@
 
 
 import UIKit
+import EZCoreData
 
 
 protocol ArticleTableViewControllerDelegate: class {
@@ -17,11 +18,13 @@ protocol ArticleTableViewControllerDelegate: class {
 
 class ArticleTableCoordinator: Coordinator {
     private let presenter: UINavigationController
+    private var ezCoreData: EZCoreData!
     private weak var articleTableViewController: ArticleTableViewController?
     private var articleDetailCoordinator: ArticleDetailCoordinator?
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
+        self.ezCoreData = ezCoreData
     }
     
     override func start() {
@@ -34,6 +37,7 @@ class ArticleTableCoordinator: Coordinator {
         let viewModel = ArticleTableViewModel()
         articleTableViewController.viewModel = viewModel
         viewModel.delegate = articleTableViewController
+        viewModel.ezCoreData = ezCoreData
         // Present View Controller:
         presenter.pushViewController(articleTableViewController, animated: true)
         self.articleTableViewController = articleTableViewController

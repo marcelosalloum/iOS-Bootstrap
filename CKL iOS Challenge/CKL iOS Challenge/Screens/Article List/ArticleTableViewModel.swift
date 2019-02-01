@@ -31,6 +31,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     // MARK: - Initial Set-up
     var articles: [Article] = []
     weak var delegate: ArticleTableProtocol?
+    var ezCoreData: EZCoreData!
     
     
     // MARK: - Filtering CoreData Results
@@ -58,7 +59,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
 
         // Read from the database
         do {
-            articles = try Article.readAll(predicate: predicate, sortDescriptors: [sortDescriptor])
+            articles = try Article.readAll(predicate: predicate, context: ezCoreData.mainThreadContext, sortDescriptors: [sortDescriptor])
             self.delegate?.updateData(articles: articles, endRefreshing: true)
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")
@@ -68,10 +69,10 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     
     // MARK: - GET Articles from API
     func fetchAPIData() {
-        APIHelper.getArticlesList { (apiCompletion) in
+        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
-                Article.deleteAll(except: articleList, completion: { (_) in
+                Article.deleteAll(except: articleList, backgroundContext: self.ezCoreData.privateThreadContext, completion: { (_) in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):

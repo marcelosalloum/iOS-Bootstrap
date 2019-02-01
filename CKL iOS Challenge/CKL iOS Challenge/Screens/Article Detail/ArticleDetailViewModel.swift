@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EZCoreData
 
 
 protocol ArticleDetailProtocol: class {

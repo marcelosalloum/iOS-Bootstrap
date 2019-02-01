@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZCoreData
 
 
 class ArticleDetailCoordinator: Coordinator {

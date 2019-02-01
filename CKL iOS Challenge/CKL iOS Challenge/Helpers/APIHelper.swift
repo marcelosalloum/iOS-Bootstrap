@@ -19,12 +19,12 @@ struct APIPaths {
 
 class APIHelper: NSObject {
     
-    static func getArticlesList(_ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
+    static func getArticlesList(_ context: NSManagedObjectContext, _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
                 if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.importList(jsonArray, idKey: Constants.idKey, completion: completion)
+                    Article.importList(jsonArray, idKey: Constants.idKey, backgroundContext: context, completion: completion)
                 } else {
                     completion(EZCoreDataResult<[Article]>.success(result: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")

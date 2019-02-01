@@ -7,23 +7,29 @@
 //
 
 import UIKit
+import EZCoreData
 
 
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow
+    var ezCoreData: EZCoreData
     let rootViewController: UINavigationController
     var articleTableCoordinator: ArticleTableCoordinator?
+    
     
     init(window: UIWindow) {
         // Init Values
         self.window = window
         rootViewController = UINavigationController()
+        ezCoreData = EZCoreData()
         super.init()
+        // Init Core Data
+        ezCoreData.setupPersistence(Constants.databaseName)  // Initialize Core Data
         
         // Configures RootVC
         rootViewController.navigationBar.prefersLargeTitles = true
         // Setups ArticleTableCoordinator
-        let articleTableCoordinator = ArticleTableCoordinator(presenter: rootViewController)
+        let articleTableCoordinator = ArticleTableCoordinator(presenter: rootViewController, ezCoreData: ezCoreData)
         articleTableCoordinator.start()
         articleTableCoordinator.stop = {
             self.articleTableCoordinator = nil
