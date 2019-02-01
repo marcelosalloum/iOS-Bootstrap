@@ -6,36 +6,33 @@
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
-import Foundation
-
-protocol Coordinator {
-    func start()
-}
-
-
 import UIKit
+
 
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow
     let rootViewController: UINavigationController
-    let articleTableCoordinator: ArticleTableCoordinator
+    var articleTableCoordinator: ArticleTableCoordinator?
     
     init(window: UIWindow) {
+        // Init Values
         self.window = window
-        
-        // Setups RootVC
         rootViewController = UINavigationController()
+        super.init()
+        
+        // Configures RootVC
+        rootViewController.navigationBar.prefersLargeTitles = true
+        // Setups ArticleTableCoordinator
         let articleTableCoordinator = ArticleTableCoordinator(presenter: rootViewController)
         articleTableCoordinator.start()
+        articleTableCoordinator.stop = {
+            self.articleTableCoordinator = nil
+        }
         self.articleTableCoordinator = articleTableCoordinator
-        rootViewController.navigationBar.prefersLargeTitles = true
     }
     
-    func start() {  // 6
+    override func start() {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
 }
-
-
-

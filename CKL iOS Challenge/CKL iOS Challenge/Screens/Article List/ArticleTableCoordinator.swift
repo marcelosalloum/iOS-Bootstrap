@@ -17,16 +17,17 @@ protocol ArticleTableViewControllerDelegate: class {
 
 class ArticleTableCoordinator: Coordinator {
     private let presenter: UINavigationController
-    private var articleTableViewController: ArticleTableViewController?
+    private weak var articleTableViewController: ArticleTableViewController?
     private var articleDetailCoordinator: ArticleDetailCoordinator?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
     }
     
-    func start() {
+    override func start() {
         // View Controller:
         guard let articleTableViewController = ArticleTableViewController.fromStoryboard("Main") else { return }
+        setDeallocallable(with: articleTableViewController)
         articleTableViewController.title = "News"
         articleTableViewController.coordinator = self
         // View Model:
@@ -44,6 +45,9 @@ extension ArticleTableCoordinator: ArticleTableViewControllerDelegate {
     func articleTableViewControllerDidSelectArticle(_ selectedArticle: Article) {
         let articleDetailCoordinator = ArticleDetailCoordinator(presenter: presenter, article: selectedArticle)
         articleDetailCoordinator.start()
+        articleDetailCoordinator.stop = {
+            self.articleDetailCoordinator = nil
+        }
         self.articleDetailCoordinator = articleDetailCoordinator
     }
 }

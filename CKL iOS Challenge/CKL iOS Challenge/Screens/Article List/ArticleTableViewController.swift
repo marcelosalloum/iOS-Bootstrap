@@ -12,7 +12,7 @@ import Kingfisher
 import SwiftMessages
 
 
-class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
+class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
     @IBOutlet weak var bottomViewConstraintBottom: NSLayoutConstraint!
     

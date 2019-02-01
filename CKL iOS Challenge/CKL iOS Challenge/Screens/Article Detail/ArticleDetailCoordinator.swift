@@ -11,7 +11,7 @@ import UIKit
 
 class ArticleDetailCoordinator: Coordinator {
     private let presenter: UINavigationController
-    private var articleDetailViewController: ArticleDetailViewController?
+    private weak var articleDetailViewController: ArticleDetailViewController?
     private var article: Article
     
     init(presenter: UINavigationController, article: Article) {
@@ -19,7 +19,7 @@ class ArticleDetailCoordinator: Coordinator {
         self.article = article
     }
     
-    func start() {
+    override func start() {
         // View Controller:
         guard let articleDetailViewController = ArticleDetailViewController.fromStoryboard("Main") else { return }
         articleDetailViewController.title = "📚"
@@ -30,6 +30,7 @@ class ArticleDetailCoordinator: Coordinator {
         articleDetailViewController.viewModel = viewModel
         // Present View Controller:
         presenter.pushViewController(articleDetailViewController, animated: true)
+        setDeallocallable(with: articleDetailViewController)
         self.articleDetailViewController = articleDetailViewController
     }
 }

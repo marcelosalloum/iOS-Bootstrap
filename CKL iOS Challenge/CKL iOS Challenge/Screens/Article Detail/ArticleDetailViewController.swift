@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleDetailViewController: UIViewController, ArticleDetailProtocol {
+class ArticleDetailViewController: CoordinatedViewController, ArticleDetailProtocol {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
