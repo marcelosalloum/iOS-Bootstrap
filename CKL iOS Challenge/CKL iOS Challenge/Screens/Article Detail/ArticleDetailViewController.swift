@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ArticleDetailViewController: CoordinatedViewController, ArticleDetailProtocol {
+class ArticleDetailViewController: CoordinatedViewController {
     
+    // MARK: - Properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -22,18 +23,14 @@ class ArticleDetailViewController: CoordinatedViewController, ArticleDetailProto
     // MARK: - View Model
     var viewModel: ArticleDetailViewModel!
     
+    // MARK - User Action
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
-        self.viewModel.updateReadStatus(!viewModel.article.wasRead)
-    }
-    
-    func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?) {
-        self.navigationItem.rightBarButtonItem = barButtonItem
+        self.viewModel.userSwitchedReadStatus()
     }
     
     // MARK - View Controller methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.updateReadStatus(true)
         setupView()
     }
     
@@ -47,12 +44,25 @@ class ArticleDetailViewController: CoordinatedViewController, ArticleDetailProto
         guard let url = URL(string: imageUrl) else { return }
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: url)
+        
         titleLabel?.text = viewModel.article.title
         authorLabel?.text = viewModel.article.authors
         contentLabel?.text = viewModel.article.content
         timeLabel?.text = NSDate.timeAgoSince(viewModel.article.date)
         tagsLabel?.text = viewModel.article.tagsToString()
 
-        self.navigationItem.rightBarButtonItem = viewModel.newBarButtonItem(for: viewModel.article)
+        resetRightBarButtonItem()
+    }
+}
+
+
+extension ArticleDetailViewController: ArticleDetailProtocol {
+    // MARK: - ArticleDetailProtocol
+    func resetRightBarButtonItem(withText buttonText: String = ArticleState.markUnread) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: buttonText,
+            style: .plain,
+            target: self,
+            action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_: )))
     }
 }
