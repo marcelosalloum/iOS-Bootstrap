@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/marcelosalloum/Workspace/iOS-Bootstrap/CKL iOS Challenge/iOS Bootstrap.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:iOS Bootstrap.xcodeproj">
    </FileRef>
    <FileRef
