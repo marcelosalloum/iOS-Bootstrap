@@ -10,11 +10,14 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
+class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpdating {
 
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+
+    // MARK: - Filter (bottomView)
+    @IBOutlet weak var bottomView: UIView!
 
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
@@ -81,8 +84,10 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         self.pullToRefresh(refreshControl)
         super.viewDidAppear(animated)
     }
+}
 
-    // MARK: - TableViewDataSource
+// MARK: - TableViewDataSource
+extension ArticleTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -97,14 +102,16 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         return articleCell
     }
 
-    // MARK: - TableViewDelegate:
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+
+// MARK: - UITableViewDelegate:
+extension ArticleTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
         coordinator?.articleTableViewControllerDidSelectArticle(article)
-    }
-
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -124,8 +131,10 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
 
         return [readStatus]
     }
+}
 
-    // MARK: - View Model ArticleTableProtocol
+// MARK: - View Model ArticleTableProtocol
+extension ArticleTableViewController: ArticleTableProtocol {
 
     func updateData(articles: [Article], endRefreshing: Bool) {
         if endRefreshing {
@@ -145,8 +154,10 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         self.toastr(message)
     }
 
-    // MARK: - Filter (bottomView)
-    @IBOutlet weak var bottomView: UIView!
+}
+
+// MARK: - Filter Button and BottomView animation
+extension ArticleTableViewController {
 
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
         bottomViewBottomConstraint.constant = viewModel.toggledContraintForFilterView(self.bottomView.frame.height)
