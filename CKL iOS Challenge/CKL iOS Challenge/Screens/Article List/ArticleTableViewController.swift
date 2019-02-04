@@ -12,9 +12,12 @@ import Kingfisher
 import SwiftMessages
 
 
+
 class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
-    @IBOutlet weak var bottomViewConstraintBottom: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
@@ -68,7 +71,7 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         viewModel.searchTerm = ""  // Runs first Search by setting this value
         
         // BottomView
-        bottomViewConstraintBottom.constant = -44
+        bottomViewBottomConstraint.constant = -100
 
         // Navigation Controller
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -85,9 +88,10 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         NotificationCenter.default.removeObserver(viewModel, name: AppNotifications.PhoneIsOffline, object: nil)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        bottomViewHeightConstraint.constant = 44 + self.view.safeAreaInsets.bottom
         self.pullToRefresh(refreshControl)
+        super.viewDidAppear(animated)
     }
 
     // MARK: - TableViewDataSource
@@ -153,8 +157,9 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
     @IBOutlet weak var bottomView: UIView!
     
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
-        bottomViewConstraintBottom.constant = viewModel.toggledContraintForFilterView()
-        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
+        bottomViewBottomConstraint.constant = viewModel.toggledContraintForFilterView(self.bottomView.frame.height)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
             self.bottomView.superview?.layoutIfNeeded()
         })
     }

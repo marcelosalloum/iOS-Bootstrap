@@ -99,9 +99,9 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     // MARK: - Animating Bottom Bar
     var isShowingBottomView: Bool = false
     
-    func toggledContraintForFilterView() -> CGFloat {
+    func toggledContraintForFilterView(_ height: CGFloat) -> CGFloat {
         isShowingBottomView = !isShowingBottomView
-        return isShowingBottomView ? 0 : -44
+        return isShowingBottomView ? 0 : -height
     }
     
     // MARK: - Online/Offline modes
