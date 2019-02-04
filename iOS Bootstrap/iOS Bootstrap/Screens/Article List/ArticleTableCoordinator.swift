@@ -6,27 +6,24 @@
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
-
 import UIKit
 import EZCoreData
-
 
 protocol ArticleTableViewControllerDelegate: class {
     func articleTableViewControllerDidSelectArticle(_ selectedArticle: Article)
 }
-
 
 class ArticleTableCoordinator: Coordinator {
     private let presenter: UINavigationController
     private var ezCoreData: EZCoreData!
     private weak var articleTableViewController: ArticleTableViewController?
     private var articleDetailCoordinator: ArticleDetailCoordinator?
-    
+
     init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
         self.ezCoreData = ezCoreData
     }
-    
+
     override func start() {
         // View Controller:
         guard let articleTableViewController = ArticleTableViewController.fromStoryboard("Main") else { return }
@@ -43,7 +40,6 @@ class ArticleTableCoordinator: Coordinator {
         self.articleTableViewController = articleTableViewController
     }
 }
-
 
 extension ArticleTableCoordinator: ArticleTableViewControllerDelegate {
     func articleTableViewControllerDidSelectArticle(_ selectedArticle: Article) {

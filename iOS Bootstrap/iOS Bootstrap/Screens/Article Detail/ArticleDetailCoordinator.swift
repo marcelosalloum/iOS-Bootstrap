@@ -9,17 +9,16 @@
 import UIKit
 import EZCoreData
 
-
 class ArticleDetailCoordinator: Coordinator {
     private let presenter: UINavigationController
     private weak var articleDetailViewController: ArticleDetailViewController?
     private var article: Article
-    
+
     init(presenter: UINavigationController, article: Article) {
         self.presenter = presenter
         self.article = article
     }
-    
+
     override func start() {
         // View Controller:
         guard let articleDetailViewController = ArticleDetailViewController.fromStoryboard("Main") else { return }

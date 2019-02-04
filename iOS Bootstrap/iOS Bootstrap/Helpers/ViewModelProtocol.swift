@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol ListViewModelProtocol {
     static func getObject<T: Any>(from objectsList: [T], with indexPath: IndexPath) -> T
 }
