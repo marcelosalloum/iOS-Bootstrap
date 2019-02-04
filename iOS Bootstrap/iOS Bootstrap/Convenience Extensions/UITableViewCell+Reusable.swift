@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol ReusableObject {}
 
 extension ReusableObject {

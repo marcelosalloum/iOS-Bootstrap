@@ -14,7 +14,7 @@ fileprivate struct CustomFont {
     static let ExtraBold: String = "Extrabld"
     static let Black: String = "Black"
     static let Bold: String = "Bold"
-    static let It: String = "It"
+    static let Italic: String = "It"
     static let Light: String = "Light"
     static let Regular: String = "Regular"
     static let Semibold: String = "Semibold"
@@ -36,7 +36,7 @@ extension UIFont {
     }
     
     class func regular(withSize size: CGFloat, italic: Bool) -> UIFont? {
-        let attributes = italic ? [CustomFont.Regular, CustomFont.It] : [CustomFont.Regular]
+        let attributes = italic ? [CustomFont.Regular, CustomFont.Italic] : [CustomFont.Regular]
         return UIFont.init(attributes: attributes, size: size)
     }
     
@@ -51,7 +51,7 @@ extension UIFont {
     }
     
     class func bold(withSize size: CGFloat, italic: Bool) -> UIFont? {
-        let attributes = italic ? [CustomFont.Bold, CustomFont.It] : [CustomFont.Bold]
+        let attributes = italic ? [CustomFont.Bold, CustomFont.Italic] : [CustomFont.Bold]
         return UIFont(attributes: attributes, size: size)
     }
     
@@ -66,7 +66,7 @@ extension UIFont {
     }
     
     class func light(withSize size: CGFloat, italic: Bool) -> UIFont? {
-        let attributes = italic ? [CustomFont.Light, CustomFont.It] : [CustomFont.Light]
+        let attributes = italic ? [CustomFont.Light, CustomFont.Italic] : [CustomFont.Light]
         return UIFont(attributes: attributes, size: size)
     }
     
@@ -76,7 +76,7 @@ extension UIFont {
     }
     
     class func semibold(withSize size: CGFloat, italic: Bool) -> UIFont? {
-        let attributes: [String] = italic ? [CustomFont.Semibold, CustomFont.It] : [CustomFont.Semibold]
+        let attributes: [String] = italic ? [CustomFont.Semibold, CustomFont.Italic] : [CustomFont.Semibold]
         return UIFont(attributes: attributes, size: size)
     }
     

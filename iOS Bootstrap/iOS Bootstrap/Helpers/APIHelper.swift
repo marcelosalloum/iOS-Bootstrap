@@ -19,7 +19,8 @@ struct APIPaths {
 
 struct APIHelper {
     
-    static func getArticlesList(_ context: NSManagedObjectContext, _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
+    static func getArticlesList(_ context: NSManagedObjectContext,
+                                _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:

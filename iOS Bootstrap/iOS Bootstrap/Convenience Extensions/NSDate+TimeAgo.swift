@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension NSDate {
     
     static public func timeAgoSince(_ date: NSDate?, shortPattern: Bool = false) -> String? {
@@ -56,9 +55,9 @@ extension NSDate {
     }
     
     fileprivate static func timeAgoText(shortPattern: Bool, amount: Int, shortText: String, plural: String, singular: String) -> String {
-        if (shortPattern) {
+        if shortPattern {
             return "\(amount) \(shortText)"
-        } else if (amount >= 2) {
+        } else if amount >= 2 {
             return "\(amount) \(plural) ago"
         }
         return "Last \(singular)"
