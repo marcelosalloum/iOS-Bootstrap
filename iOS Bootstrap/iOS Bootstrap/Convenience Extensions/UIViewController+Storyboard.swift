@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ReusableObject where Self: UIViewController {
     static func fromStoryboard(_ storyboardName: String) -> Self? {
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)

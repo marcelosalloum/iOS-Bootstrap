@@ -12,28 +12,28 @@ import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
 
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private var applicationCoordinator: ApplicationCoordinator?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
         // Init Fabric and Crashlytics
         Fabric.with([Crashlytics.self])
-        
+
         // Init Flurry
         Flurry.startSession(Constants.flurryAPIKey, with: FlurrySessionBuilder
-            .init()
-            .withCrashReporting(true)
-            .withLogLevel(FlurryLogLevelNone))
-        
+                .init()
+                .withCrashReporting(true)
+                .withLogLevel(FlurryLogLevelNone))
+
         // Setup Window and Application Coordinator
         window = UIWindow(frame: UIScreen.main.bounds)
         applicationCoordinator = ApplicationCoordinator(window: window!)
         applicationCoordinator?.start()
-        
+
         return true
     }
 

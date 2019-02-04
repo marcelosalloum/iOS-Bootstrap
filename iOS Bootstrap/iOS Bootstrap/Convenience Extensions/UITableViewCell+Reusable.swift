@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ReusableObject {}
+protocol ReusableObject { }
 
 extension ReusableObject {
     static var reuseIdentifier: String {
@@ -25,4 +25,3 @@ extension ReusableObject where Self: UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath) as! Self
     }
 }
-

@@ -11,11 +11,9 @@ import Foundation
 import CoreData
 import EZCoreData
 
-
 public class Tag: NSManagedObject {
-    
-}
 
+}
 
 extension Tag {
     /// Populates Tag objects from JSON

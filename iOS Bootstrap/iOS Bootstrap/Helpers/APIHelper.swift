@@ -11,14 +11,13 @@ import Alamofire
 import CoreData
 import EZCoreData
 
-
 struct APIPaths {
     static let rootUrl: String = "https://private-0d75e8-cklchallenge.apiary-mock.com"
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
 struct APIHelper {
-    
+
     static func getArticlesList(_ context: NSManagedObjectContext,
                                 _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
         Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
@@ -38,7 +37,6 @@ struct APIHelper {
     }
 }
 
-
 struct AppNotifications {
     static let PhoneIsOffline = Notification.Name("PhoneIsOffline")
     static let PhoneIsOnline = Notification.Name("PhoneIsOnline")
@@ -46,7 +44,7 @@ struct AppNotifications {
 
 extension APIHelper {
     static let reachabilityManager = NetworkReachabilityManager()
-    
+
     static func setupReachability() {
         reachabilityManager?.startListening()
         reachabilityManager?.listener = { _ in

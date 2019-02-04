@@ -29,7 +29,7 @@
 		1F8BDB4521E53592007A338A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
 		1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */; };
 		1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */; };
-		1F9144D621F9CC050060A74B /* iOS_Bootstrap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */; };
+		1F9144D621F9CC050060A74B /* IOSBootstrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */; };
 		1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */; };
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
@@ -104,7 +104,7 @@
 		1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewModel.swift; sourceTree = "<group>"; };
 		1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
 		1F9144D321F9CC050060A74B /* iOS Bootstrap Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Bootstrap Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Bootstrap_Tests.swift; sourceTree = "<group>"; };
+		1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSBootstrapTests.swift; sourceTree = "<group>"; };
 		1F9144D721F9CC050060A74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 		1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */,
+				1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */,
 				1F9144D721F9CC050060A74B /* Info.plist */,
 			);
 			path = "iOS Bootstrap Tests";
@@ -394,6 +394,7 @@
 				1F88EFE221D5766900275972 /* Resources */,
 				1F9B4A6C21ECA97700E5E360 /* Crashlytics */,
 				3C313699C20C344E6EEF1795 /* [CP] Embed Pods Frameworks */,
+				1FFDC15522088EDE00C61420 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -527,6 +528,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 58c10a60b7de9839551f21e4d344635fca8a820b 28f8f0e44de128bf5bc2d7c8eb4f90b50260b48383a319de3a378ee1ca33fd11\n";
 		};
+		1FFDC15522088EDE00C61420 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		3C313699C20C344E6EEF1795 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -621,7 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9144D621F9CC050060A74B /* iOS_Bootstrap_Tests.swift in Sources */,
+				1F9144D621F9CC050060A74B /* IOSBootstrapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

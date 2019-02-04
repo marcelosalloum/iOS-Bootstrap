@@ -9,12 +9,12 @@
 import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    
+
     var article: Article! {
         didSet {
             // Set-up the cell content
@@ -22,7 +22,7 @@ class ArticleTableViewCell: UITableViewCell {
             timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
             authorLabel.text = article.authors
             updateWasReadStatus(article.wasRead)
-            
+
             // Setup the cell image
             guard let imageURL = article.imageUrl else { return }
             guard let url = URL(string: imageURL) else { return }
@@ -31,7 +31,7 @@ class ArticleTableViewCell: UITableViewCell {
             articleImageView.kf.setImage(with: url)
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -39,7 +39,7 @@ class ArticleTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     func updateWasReadStatus(_ wasRead: Bool) {
         self.backgroundColor = wasRead ? UIColor.gray5() : UIColor.gray20()
     }
