@@ -9,7 +9,7 @@
 import XCTest
 @testable import CKL_iOS_Challenge
 
-class CKL_iOS_Challenge_Tests: XCTestCase {
+class iOS_Bootstrap_Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

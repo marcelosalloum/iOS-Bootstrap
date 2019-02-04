@@ -29,7 +29,7 @@
 		1F8BDB4521E53592007A338A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
 		1F8BDB4721E54150007A338A /* ArticleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */; };
 		1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */; };
-		1F9144D621F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift */; };
+		1F9144D621F9CC050060A74B /* iOS_Bootstrap_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */; };
 		1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */; };
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
@@ -104,7 +104,7 @@
 		1F8BDB4621E54150007A338A /* ArticleTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewModel.swift; sourceTree = "<group>"; };
 		1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
 		1F9144D321F9CC050060A74B /* CKL iOS Challenge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CKL iOS Challenge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9144D521F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKL_iOS_Challenge_Tests.swift; sourceTree = "<group>"; };
+		1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Bootstrap_Tests.swift; sourceTree = "<group>"; };
 		1F9144D721F9CC050060A74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
-				1F88EFE621D5766900275972 /* CKL iOS Challenge */,
-				1F9144D421F9CC050060A74B /* CKL iOS Challenge Tests */,
+				1F88EFE621D5766900275972 /* iOS Bootstrap */,
+				1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */,
 				1F88EFE521D5766900275972 /* Products */,
 				AE22B14963B4D54B33DAF208 /* Pods */,
 				782204D88925974F844285AB /* Frameworks */,
@@ -241,7 +241,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1F88EFE621D5766900275972 /* CKL iOS Challenge */ = {
+		1F88EFE621D5766900275972 /* iOS Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
 				1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */,
@@ -252,7 +252,7 @@
 				1F86B9AB21E77A430059D2CB /* Screens */,
 				1F6CC45821F9CD100018869B /* Supporting Files */,
 			);
-			path = "CKL iOS Challenge";
+			path = "iOS Bootstrap";
 			sourceTree = "<group>";
 		};
 		1F8BDB4021E53417007A338A /* Custom Views */ = {
@@ -263,13 +263,13 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		1F9144D421F9CC050060A74B /* CKL iOS Challenge Tests */ = {
+		1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1F9144D521F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift */,
+				1F9144D521F9CC050060A74B /* iOS_Bootstrap_Tests.swift */,
 				1F9144D721F9CC050060A74B /* Info.plist */,
 			);
-			path = "CKL iOS Challenge Tests";
+			path = "iOS Bootstrap Tests";
 			sourceTree = "<group>";
 		};
 		1F9B0CB021E50E4A0069FD3E /* Article Detail */ = {
@@ -617,7 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9144D621F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift in Sources */,
+				1F9144D621F9CC050060A74B /* iOS_Bootstrap_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,7 +773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LDUSTM628;
-				INFOPLIST_FILE = "CKL iOS Challenge/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "iOS Bootstrap/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -792,7 +792,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LDUSTM628;
-				INFOPLIST_FILE = "CKL iOS Challenge/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "iOS Bootstrap/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -810,7 +810,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LDUSTM628;
-				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				INFOPLIST_FILE = "iOS Bootstrap Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -833,7 +833,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LDUSTM628;
-				INFOPLIST_FILE = "CKL iOS Challenge Tests/Info.plist";
+				INFOPLIST_FILE = "iOS Bootstrap Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
