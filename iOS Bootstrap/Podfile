@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'iOS Bootstrap' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Makes REST requests:
+  pod 'EZCoreData'                          # Deals with Core Data
+  pod 'Alamofire', '4.7.3'                  # Deals with API requests
+  pod 'PKHUD', '5.2.0'                      # HUD: Head-Up Display
+  pod 'Kingfisher', '4.10.0'                # Image caching
+  pod 'Fabric', '1.7.12'                    # Beta distribution
+  pod 'Crashlytics', '3.10.8'               # Crash reports
+  pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'   # Analytics
+end
