@@ -12,6 +12,5 @@ target 'CKL iOS Challenge' do
   pod 'Kingfisher', '4.10.0'                # Image caching
   pod 'Fabric', '1.7.12'                    # Beta distribution
   pod 'Crashlytics', '3.10.8'               # Crash reports
-  pod 'SwiftMessages', '6.0.0'              # Display Status Bar Messages
   pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'   # Analytics
 end

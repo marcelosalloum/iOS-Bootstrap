@@ -9,7 +9,6 @@
 import UIKit
 import PKHUD
 import Kingfisher
-import SwiftMessages
 
 
 class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
