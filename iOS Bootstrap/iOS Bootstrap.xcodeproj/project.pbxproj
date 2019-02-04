@@ -392,9 +392,9 @@
 				1F88EFE021D5766900275972 /* Sources */,
 				1F88EFE121D5766900275972 /* Frameworks */,
 				1F88EFE221D5766900275972 /* Resources */,
-				1F9B4A6C21ECA97700E5E360 /* Crashlytics */,
 				3C313699C20C344E6EEF1795 /* [CP] Embed Pods Frameworks */,
 				1FFDC15522088EDE00C61420 /* Swift Lint */,
+				1F9B4A6C21ECA97700E5E360 /* Crashlytics */,
 			);
 			buildRules = (
 			);
