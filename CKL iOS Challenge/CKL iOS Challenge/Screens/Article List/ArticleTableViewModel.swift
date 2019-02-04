@@ -15,6 +15,7 @@ import EZCoreData
 protocol ArticleTableProtocol: class {
     func updateData(articles: [Article], endRefreshing: Bool)
     func displayError(error: Error, endRefreshing: Bool)
+    func displayMessage(_ message: String)
 }
 
 
@@ -32,6 +33,21 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     var articles: [Article] = []
     weak var delegate: ArticleTableProtocol?
     var ezCoreData: EZCoreData!
+    
+    override init() {
+        super.init()
+        
+        // Observes offline mode
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)),
+                                               name: AppNotifications.PhoneIsOffline,
+                                               object: nil)
+    }
+    
+    deinit {
+        // Deallocs observers
+        NotificationCenter.default.removeObserver(self, name: AppNotifications.PhoneIsOffline, object: nil)
+    }
     
     
     // MARK: - Filtering CoreData Results
@@ -104,28 +120,8 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
         return isShowingBottomView ? 0 : -height
     }
     
-    // MARK: - Online/Offline modes
-    @objc func phoneIsOnline(notification: Notification) {
-        SwiftMessages.hide()
-    }
-    
-    deinit {
-        SwiftMessages.hide()
-    }
-    
-    lazy var offlineMessageView: MessageView = {
-        let view = MessageView.viewFromNib(layout: .statusLine)
-        view.configureTheme(.warning)
-        view.configureDropShadow()
-        view.configureContent(title: "Warning".localized, body: "No Internet Connection".localized)
-        view.layoutMarginAdditions = UIEdgeInsets(top: 2, left: 20, bottom: 2, right: 20)
-        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
-        return view
-    }()
-    
+    // MARK: - Offline modes
     @objc func phoneIsOffline(notification: Notification) {
-        var config = SwiftMessages.defaultConfig
-        config.duration = .forever
-        SwiftMessages.show(config: config, view: offlineMessageView)
+        delegate?.displayMessage("No Internet Connection")
     }
 }

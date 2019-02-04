@@ -12,7 +12,6 @@ import Kingfisher
 import SwiftMessages
 
 
-
 class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
@@ -78,14 +77,6 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         
         // Offline Handling
         type(of: self).setupReachability()
-        
-        NotificationCenter.default.addObserver(viewModel, selector: #selector(ArticleTableViewModel.phoneIsOnline(notification:)), name: AppNotifications.PhoneIsOnline, object: nil)
-        NotificationCenter.default.addObserver(viewModel, selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)), name: AppNotifications.PhoneIsOffline, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(viewModel, name: AppNotifications.PhoneIsOnline, object: nil)
-        NotificationCenter.default.removeObserver(viewModel, name: AppNotifications.PhoneIsOffline, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -137,7 +128,7 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
         return [readStatus]
     }
 
-    // MARK: - ArticleTableProtocol
+    // MARK: - View Model ArticleTableProtocol
     
     func updateData(articles: [Article], endRefreshing: Bool) {
         if endRefreshing {
@@ -151,6 +142,10 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
             self.refreshControl.endRefreshing()
         }
         HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+    }
+    
+    func displayMessage(_ message: String) {
+        self.toastr(message)
     }
     
     // MARK: - Filter (bottomView)
