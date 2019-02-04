@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F88EFE321D5766900275972"
-               BuildableName = "CKL iOS Challenge.app"
-               BlueprintName = "CKL iOS Challenge"
-               ReferencedContainer = "container:CKL iOS Challenge.xcodeproj">
+               BuildableName = "iOS Bootstrap.app"
+               BlueprintName = "iOS Bootstrap"
+               ReferencedContainer = "container:iOS Bootstrap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1FC76B2121F64475005782ED"
-               BuildableName = "CKL iOS Challenge Tests.xctest"
-               BlueprintName = "CKL iOS Challenge Tests"
-               ReferencedContainer = "container:CKL iOS Challenge.xcodeproj">
+               BlueprintIdentifier = "1F9144D221F9CC050060A74B"
+               BuildableName = "iOS Bootstrap Tests.xctest"
+               BlueprintName = "iOS Bootstrap Tests"
+               ReferencedContainer = "container:iOS Bootstrap.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F88EFE321D5766900275972"
-            BuildableName = "CKL iOS Challenge.app"
-            BlueprintName = "CKL iOS Challenge"
-            ReferencedContainer = "container:CKL iOS Challenge.xcodeproj">
+            BuildableName = "iOS Bootstrap.app"
+            BlueprintName = "iOS Bootstrap"
+            ReferencedContainer = "container:iOS Bootstrap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F88EFE321D5766900275972"
-            BuildableName = "CKL iOS Challenge.app"
-            BlueprintName = "CKL iOS Challenge"
-            ReferencedContainer = "container:CKL iOS Challenge.xcodeproj">
+            BuildableName = "iOS Bootstrap.app"
+            BlueprintName = "iOS Bootstrap"
+            ReferencedContainer = "container:iOS Bootstrap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F88EFE321D5766900275972"
-            BuildableName = "CKL iOS Challenge.app"
-            BlueprintName = "CKL iOS Challenge"
-            ReferencedContainer = "container:CKL iOS Challenge.xcodeproj">
+            BuildableName = "iOS Bootstrap.app"
+            BlueprintName = "iOS Bootstrap"
+            ReferencedContainer = "container:iOS Bootstrap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
