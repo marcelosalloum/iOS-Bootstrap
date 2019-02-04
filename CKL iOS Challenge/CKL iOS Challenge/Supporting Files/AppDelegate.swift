@@ -11,7 +11,6 @@ import CoreData
 import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
-import EZCoreData
 
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var applicationCoordinator: ApplicationCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Init Core Data
-        EZCoreData.shared.setupPersistence(Constants.databaseName)  // Initialize Core Data
         
         // Init Fabric and Crashlytics
         Fabric.with([Crashlytics.self])
@@ -61,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        EZCoreData.shared.privateThreadContext.saveContextToStore()
+        applicationCoordinator?.ezCoreData.privateThreadContext.saveContextToStore()
     }
 
 }

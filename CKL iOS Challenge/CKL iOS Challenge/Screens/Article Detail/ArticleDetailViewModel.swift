@@ -6,30 +6,34 @@
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
-import UIKit
-import EZCoreData
+import Foundation
 
 
 protocol ArticleDetailProtocol: class {
-    func updateRightBarButtonItem(_ barButtonItem: UIBarButtonItem?)
+    func resetRightBarButtonItem(withText buttonText: String)
 }
 
 
 class ArticleDetailViewModel: NSObject {
+    
+    // MARK: - Properties
     weak var delegate: ArticleDetailProtocol?
     
-    var article: Article!
-    
-    func updateReadStatus(_ finalReadState: Bool) {
-        article.wasRead = finalReadState
-        article.managedObjectContext?.saveContextToStore()  // Sync task because the user is waiting for the result
-        let newRightBarButtonItem = barButtonItem(for: article)
-        self.delegate?.updateRightBarButtonItem(newRightBarButtonItem)
+    var article: Article! {
+        didSet {
+            updateReadStatus(true)
+        }
     }
     
-    func barButtonItem(for article: Article?) -> UIBarButtonItem? {
-        guard let wasRead = article?.wasRead else { return nil }
-        let buttonText = ArticleState.getText(initialReadStatus: wasRead)
-        return UIBarButtonItem(title: buttonText, style: .plain, target: self.delegate, action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_: )))
+    // MARK: - From the VC:
+    func userSwitchedReadStatus() {
+        updateReadStatus(!article.wasRead)
+    }
+    
+    fileprivate func updateReadStatus(_ finalReadState: Bool) {
+        article.wasRead = finalReadState
+        article.managedObjectContext?.saveContextToStore()  // Sync task because the user is waiting for the result
+        let buttonText = ArticleState.getText(initialReadStatus: article.wasRead)
+        self.delegate?.resetRightBarButtonItem(withText: buttonText)
     }
 }

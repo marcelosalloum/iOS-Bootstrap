@@ -6,7 +6,7 @@
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SwiftMessages
 import EZCoreData
 
@@ -31,6 +31,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     // MARK: - Initial Set-up
     var articles: [Article] = []
     weak var delegate: ArticleTableProtocol?
+    var ezCoreData: EZCoreData!
     
     
     // MARK: - Filtering CoreData Results
@@ -58,8 +59,11 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
 
         // Read from the database
         do {
-            articles = try Article.readAll(predicate: predicate, sortDescriptors: [sortDescriptor])
-            self.delegate?.updateData(articles: articles, endRefreshing: true)
+            articles = try Article.readAll(predicate: predicate, context: ezCoreData.mainThreadContext, sortDescriptors: [sortDescriptor])
+            DispatchQueue.main.async {
+                self.delegate?.updateData(articles: self.articles,
+                                          endRefreshing: true)
+            }
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")
         }
@@ -68,63 +72,37 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     
     // MARK: - GET Articles from API
     func fetchAPIData() {
-        APIHelper.getArticlesList { (apiCompletion) in
+        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
-                Article.deleteAll(except: articleList, completion: { (_) in
+                Article.deleteAll(except: articleList, backgroundContext: self.ezCoreData.privateThreadContext, completion: { (_) in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):
-                self.delegate?.displayError(error: error, endRefreshing: true)
+                DispatchQueue.main.async {
+                    self.delegate?.displayError(error: error,
+                                                endRefreshing: true)
+                }
             }
         }
     }
     
     
     // MARK: - Update the read status in the CoreData
-    func updateReadStatus(finalReadState: Bool, article: Article?, completion: @escaping ((EZCoreDataResult<Any>) -> ())) {
+    func updateReadStatus(finalReadState: Bool, article: Article?) {
         guard let article = article else { return }
         article.wasRead = finalReadState
-        article.managedObjectContext?.saveContextToStore(completion)
+        article.managedObjectContext?.saveContextToStore()
     }
     
     
     // MARK: - Animating Bottom Bar
-    let bottomViewHeight: CGFloat = 44;
     var isShowingBottomView: Bool = false
     
-    private func rectForVisibleBottomView(_ view: UIView) -> CGRect? {
-        guard let superviewFrame = view.superview?.frame else { return nil }
-        return CGRect(x: superviewFrame.minX,
-                      y: superviewFrame.maxY - bottomViewHeight,
-                      width: superviewFrame.maxX,
-                      height: bottomViewHeight)
-    }
-    
-    private func rectForHiddenBottomView(_ view: UIView) -> CGRect? {
-        guard let superviewFrame = view.superview?.frame else { return nil }
-        return CGRect(x: superviewFrame.minX,
-                      y: superviewFrame.maxY,
-                      width: superviewFrame.maxX,
-                      height: bottomViewHeight)
-    }
-    
-    func transitionBottomView(_ bottomView: UIView, shouldShow: Bool, layoutConstraint: NSLayoutConstraint, animated: Bool = true) {
-        let constraintConstant: CGFloat = shouldShow ? 0 : -44
-        
-        layoutConstraint.constant = constraintConstant
-        if animated {
-            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
-                bottomView.layoutIfNeeded()
-            })
-        }
-    }
-    
-    func filterButtonClicked(_ bottomView: UIView, layoutConstraint: NSLayoutConstraint, animated: Bool = true) {
-        transitionBottomView(bottomView, shouldShow: !isShowingBottomView, layoutConstraint: layoutConstraint, animated: animated)
+    func toggledContraintForFilterView() -> CGFloat {
         isShowingBottomView = !isShowingBottomView
+        return isShowingBottomView ? 0 : -44
     }
-    
     
     // MARK: - Online/Offline modes
     @objc func phoneIsOnline(notification: Notification) {

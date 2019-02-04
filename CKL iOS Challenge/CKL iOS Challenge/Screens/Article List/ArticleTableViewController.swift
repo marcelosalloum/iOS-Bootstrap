@@ -12,13 +12,13 @@ import Kingfisher
 import SwiftMessages
 
 
-class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
+class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate, UITableViewDataSource, ArticleTableProtocol, UISearchResultsUpdating {
     
     @IBOutlet weak var bottomViewConstraintBottom: NSLayoutConstraint!
     
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = ArticleTableViewModel()
+    var viewModel: ArticleTableViewModel!
     
     weak var coordinator: ArticleTableViewControllerDelegate?
     
@@ -65,9 +65,10 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         navigationItem.searchController = searchController
 
         // ViewModel
-        viewModel.delegate = self
         viewModel.searchTerm = ""  // Runs first Search by setting this value
-        viewModel.transitionBottomView(bottomView, shouldShow: false, layoutConstraint: bottomViewConstraintBottom, animated: false)
+        
+        // BottomView
+        bottomViewConstraintBottom.constant = -44
 
         // Navigation Controller
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -116,18 +117,16 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Get Article:
-        let article = viewModel.articles[indexPath.row]
+        let article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
         let initialReadStatus = article.wasRead
         let finalReadStatusText = ArticleState.getText(initialReadStatus: initialReadStatus)
         
         // Setups Button Text
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { tableViewRowAction, indexPath in
-            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article) { completion in
-                if case .failure(_) = completion { return }
-                let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
-                articleCell.updateWasReadStatus(initialReadStatus)
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
+            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article)
+            let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
+            articleCell.updateWasReadStatus(initialReadStatus)
+            tableView.reloadRows(at: [indexPath], with: .none)
         }
         readStatus.backgroundColor = Color.mainColor()
         
@@ -137,28 +136,27 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - ArticleTableProtocol
     
     func updateData(articles: [Article], endRefreshing: Bool) {
-        DispatchQueue.main.async {
-            if endRefreshing {
-                self.refreshControl.endRefreshing()
-            }
-            self.tableView.reloadData()
+        if endRefreshing {
+            self.refreshControl.endRefreshing()
         }
+        self.tableView.reloadData()
     }
     
     func displayError(error: Error, endRefreshing: Bool) {
-        DispatchQueue.main.async {
-            if endRefreshing {
-                self.refreshControl.endRefreshing()
-            }
-            HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+        if endRefreshing {
+            self.refreshControl.endRefreshing()
         }
+        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
     }
     
-    // MARK: - Filter
+    // MARK: - Filter (bottomView)
     @IBOutlet weak var bottomView: UIView!
     
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
-        viewModel.filterButtonClicked(self.view, layoutConstraint: bottomViewConstraintBottom)
+        bottomViewConstraintBottom.constant = viewModel.toggledContraintForFilterView()
+        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveLinear, animations: {
+            self.bottomView.superview?.layoutIfNeeded()
+        })
     }
     
     @IBAction func titleFilterClicked(_ sender: UIButton) {
