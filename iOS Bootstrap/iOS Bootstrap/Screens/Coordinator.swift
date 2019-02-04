@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: - Making it so that when a ViewController is removed from the stack, it's Coordinator is atomatically dealocated
-// All ViewController should conform to that:
+// MARK: - Deintiable Coordinator
+/// When a ViewController is removed from the stack, it's Coordinator is atomatically dealocated
 protocol DeInitCallable: AnyObject {
     var onDeinit: (() -> Void)? { get set }
 }
@@ -32,7 +32,8 @@ protocol CoordinatorProtocol: AnyObject {
 }
 
 extension CoordinatorProtocol {
-    /// sets the key Deallocallable object for a coordinator, this enables dealloaction of the coordinator once the object gets deallocated via onDeinit closure.
+    /// Sets the key Deallocallable object for a coordinator
+    /// This enables dealloaction of the coordinator once the object gets deallocated via onDeinit closure.
     func setDeallocallable(with object: DeInitCallable) {
         deallocallable?.onDeinit = nil
         object.onDeinit = { [weak self] in

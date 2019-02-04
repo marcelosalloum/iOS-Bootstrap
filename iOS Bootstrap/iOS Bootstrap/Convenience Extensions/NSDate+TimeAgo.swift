@@ -24,37 +24,41 @@ extension NSDate {
         let components = (calendar as NSCalendar).components(unitFlags, from: date, to: now, options: [])
 
         if let year = components.year {
-            return timeAgoText(shortPattern: shortPattern, amount: year, shortText: "y", plural: "years", singular: "year")
+            return timeAgoText(shortPattern, amount: year, shortText: "y", plural: "years", singular: "year")
         }
 
         if let month = components.month {
-            return timeAgoText(shortPattern: shortPattern, amount: month, shortText: "m", plural: "months", singular: "month")
+            return timeAgoText(shortPattern, amount: month, shortText: "m", plural: "months", singular: "month")
         }
 
         if let week = components.weekOfYear {
-            return timeAgoText(shortPattern: shortPattern, amount: week, shortText: "w", plural: "weeks", singular: "week")
+            return timeAgoText(shortPattern, amount: week, shortText: "w", plural: "weeks", singular: "week")
         }
 
         if let day = components.day {
-            return timeAgoText(shortPattern: shortPattern, amount: day, shortText: "d", plural: "days", singular: "day")
+            return timeAgoText(shortPattern, amount: day, shortText: "d", plural: "days", singular: "day")
         }
 
         if let hour = components.hour {
-            return timeAgoText(shortPattern: shortPattern, amount: hour, shortText: "h", plural: "hours", singular: "hour")
+            return timeAgoText(shortPattern, amount: hour, shortText: "h", plural: "hours", singular: "hour")
         }
 
         if let minute = components.minute {
-            return timeAgoText(shortPattern: shortPattern, amount: minute, shortText: "min", plural: "minutes", singular: "minute")
+            return timeAgoText(shortPattern, amount: minute, shortText: "min", plural: "minutes", singular: "minute")
         }
 
         if let second = components.second {
-            return timeAgoText(shortPattern: shortPattern, amount: second, shortText: "s", plural: "seconds", singular: "second")
+            return timeAgoText(shortPattern, amount: second, shortText: "s", plural: "seconds", singular: "second")
         }
 
         return "Just now"
     }
 
-    fileprivate static func timeAgoText(shortPattern: Bool, amount: Int, shortText: String, plural: String, singular: String) -> String {
+    fileprivate static func timeAgoText(_ shortPattern: Bool,
+                                        amount: Int,
+                                        shortText: String,
+                                        plural: String,
+                                        singular: String) -> String {
         if shortPattern {
             return "\(amount) \(shortText)"
         } else if amount >= 2 {

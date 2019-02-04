@@ -24,7 +24,10 @@ struct APIHelper {
             switch response.result {
             case .success:
                 if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.importList(jsonArray, idKey: Constants.idKey, backgroundContext: context, completion: completion)
+                    Article.importList(jsonArray,
+                                       idKey: Constants.idKey,
+                                       backgroundContext: context,
+                                       completion: completion)
                 } else {
                     completion(EZCoreDataResult<[Article]>.success(result: []))
                     print("Method **getArticlesList** got empty results from GET Request to the API")

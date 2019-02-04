@@ -69,7 +69,9 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
 
         // Read from the database
         do {
-            articles = try Article.readAll(predicate: predicate, context: ezCoreData.mainThreadContext, sortDescriptors: [sortDescriptor])
+            articles = try Article.readAll(predicate: predicate,
+                                           context: ezCoreData.mainThreadContext,
+                                           sortDescriptors: [sortDescriptor])
             DispatchQueue.main.async {
                 self.delegate?.updateData(articles: self.articles,
                     endRefreshing: true)
@@ -84,7 +86,9 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
         APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
-                Article.deleteAll(except: articleList, backgroundContext: self.ezCoreData.privateThreadContext, completion: { (_) in
+                Article.deleteAll(except: articleList,
+                                  backgroundContext: self.ezCoreData.privateThreadContext,
+                                  completion: { (_) in
                     self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
                 })
             case .failure(error: let error):
