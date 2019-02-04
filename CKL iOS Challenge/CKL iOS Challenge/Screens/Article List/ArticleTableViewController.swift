@@ -74,9 +74,6 @@ class ArticleTableViewController: CoordinatedViewController, UITableViewDelegate
 
         // Navigation Controller
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // Offline Handling
-        type(of: self).setupReachability()
     }
 
     override func viewDidAppear(_ animated: Bool) {

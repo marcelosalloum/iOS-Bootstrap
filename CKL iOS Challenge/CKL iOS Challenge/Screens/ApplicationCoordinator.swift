@@ -22,6 +22,10 @@ class ApplicationCoordinator: Coordinator {
         self.window = window
         rootViewController = UINavigationController()
         ezCoreData = EZCoreData()
+        
+        // Offline Handling
+        APIHelper.setupReachability()
+        
         super.init()
         // Init Core Data
         ezCoreData.setupPersistence(Constants.databaseName)  // Initialize Core Data

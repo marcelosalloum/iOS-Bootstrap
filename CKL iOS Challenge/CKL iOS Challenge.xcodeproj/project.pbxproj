@@ -31,7 +31,6 @@
 		1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */; };
 		1F9144D621F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift */; };
 		1F9B0CB221E50E610069FD3E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */; };
-		1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */; };
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
 		1F9B4A7B21ECE6CF00E5E360 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */; };
@@ -108,7 +107,6 @@
 		1F9144D521F9CC050060A74B /* CKL_iOS_Challenge_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKL_iOS_Challenge_Tests.swift; sourceTree = "<group>"; };
 		1F9144D721F9CC050060A74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9B0CB121E50E610069FD3E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
-		1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Reachability.swift"; sourceTree = "<group>"; };
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1F9B4A7721ECC61300E5E360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1F9B4A7821ECC69900E5E360 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 				1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */,
 				1F9B4A7821ECC69900E5E360 /* String+Localized.swift */,
 				1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */,
-				1F9B4A6D21ECAFA300E5E360 /* UIViewController+Reachability.swift */,
 				1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */,
 				1F2BD47422087D4300C128CE /* UIViewController+Toastr.swift */,
 				1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */,
@@ -597,7 +594,6 @@
 				1F0397BF220218FE00335E6C /* ApplicationCoordinator.swift in Sources */,
 				1F0397C722024BBB00335E6C /* ArticleDetailCoordinator.swift in Sources */,
 				1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */,
-				1F9B4A6E21ECAFA300E5E360 /* UIViewController+Reachability.swift in Sources */,
 				1F6C6DAC21F7304300E59082 /* main.swift in Sources */,
 				1F0397C3220237FB00335E6C /* UITableViewCell+Reusable.swift in Sources */,
 				1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */,
