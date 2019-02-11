@@ -9,11 +9,18 @@
 import UIKit
 
 extension ReusableObject where Self: UIViewController {
-    static func fromStoryboard(_ storyboardName: String) -> Self? {
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+    static func fromStoryboard(_ storyboardName: StoryboardName) -> Self? {
+        let storyboard = UIStoryboard(name: storyboardName.rawValue, bundle: Bundle.main)
         let viewControllerID = self.reuseIdentifier
         let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerID)
         guard let newViewController = viewController as? Self else { return nil }
         return newViewController
     }
+}
+
+enum StoryboardName: String {
+    case welcome = "Welcome"
+    case auth = "Auth"
+    case news = "News"
+    case collection = "Collection"
 }

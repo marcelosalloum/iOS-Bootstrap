@@ -21,7 +21,7 @@ class ArticleDetailCoordinator: Coordinator {
 
     override func start() {
         // View Controller:
-        guard let articleDetailViewController = ArticleDetailViewController.fromStoryboard("Main") else { return }
+        guard let articleDetailViewController = ArticleDetailViewController.fromStoryboard(.news) else { return }
         articleDetailViewController.title = "📚"
         // View Model:
         let viewModel = ArticleDetailViewModel()

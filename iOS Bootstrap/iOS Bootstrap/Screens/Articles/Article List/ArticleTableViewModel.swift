@@ -28,6 +28,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     // MARK: - Initial Set-up
     var articles: [Article] = []
     weak var delegate: ArticleTableProtocol?
+    weak var coordinator: ArticleTableViewControllerDelegate?
     var ezCoreData: EZCoreData!
 
     override init() {
@@ -35,9 +36,9 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
 
         // Observes offline mode
         NotificationCenter.default.addObserver(self,
-            selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)),
-            name: AppNotifications.PhoneIsOffline,
-            object: nil)
+                                               selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)),
+                                               name: AppNotifications.PhoneIsOffline,
+                                               object: nil)
     }
 
     deinit {
@@ -57,6 +58,11 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
         }
     }
 
+    func userDidSelect(indexPath: IndexPath) {
+        let article = ArticleTableViewModel.getObject(from: articles, with: indexPath)
+        coordinator?.articleTableViewControllerDidSelectArticle(article)
+    }
+
     fileprivate func searchArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
         // Build NSPredicate
         var predicate: NSPredicate?
@@ -74,7 +80,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
                                            sortDescriptors: [sortDescriptor])
             DispatchQueue.main.async {
                 self.delegate?.updateData(articles: self.articles,
-                    endRefreshing: true)
+                                          endRefreshing: true)
             }
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")
@@ -89,12 +95,12 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
                 Article.deleteAll(except: articleList,
                                   backgroundContext: self.ezCoreData.privateThreadContext,
                                   completion: { (_) in
-                    self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-                })
+                                      self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+                                  })
             case .failure(error: let error):
                 DispatchQueue.main.async {
                     self.delegate?.displayError(error: error,
-                        endRefreshing: true)
+                                                endRefreshing: true)
                 }
             }
         }

@@ -11,6 +11,9 @@ import CoreData
 import Fabric
 import Crashlytics
 import Flurry_iOS_SDK
+#if DEBUG
+import Bagel
+#endif
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        //import Bagel
+        #if DEBUG
+        Bagel.start()
+        #endif
 
         // Init Fabric and Crashlytics
         Fabric.with([Crashlytics.self])

@@ -29,11 +29,14 @@ protocol CoordinatorProtocol: AnyObject {
     // method and variable used to make coordinators easy to deallocate
     func setDeallocallable(with object: DeInitCallable)
     var deallocallable: DeInitCallable? { get set }
+
+    /// The array containing any child Coordinators
+    var childCoordinators: [Coordinator] { get set }
 }
 
 extension CoordinatorProtocol {
-    /// Sets the key Deallocallable object for a coordinator
-    /// This enables dealloaction of the coordinator once the object gets deallocated via onDeinit closure.
+    /// Sets the key Deallocable object for a coordinator
+    /// This enables dealloacation of the coordinator once the object gets deallocated via onDeinit closure.
     func setDeallocallable(with object: DeInitCallable) {
         deallocallable?.onDeinit = nil
         object.onDeinit = { [weak self] in
@@ -41,14 +44,34 @@ extension CoordinatorProtocol {
         }
         deallocallable = object
     }
+
+    /// Add a child coordinator to the parent
+    func addChildCoordinator(childCoordinator: Coordinator) {
+        self.childCoordinators.append(childCoordinator)
+    }
+
+    /// Remove a child coordinator from the parent
+    func removeChildCoordinator(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
+    }
+
 }
 
 // MARK: - Declaring the cordinator base class
 class Coordinator: NSObject, CoordinatorProtocol {
 
     // MARK: Properties
+    func start() { }
     var stop: (() -> Void)?
     weak var deallocallable: DeInitCallable?
 
-    func start() { }
+    var childCoordinators = [Coordinator]()
+
+    func startCoordinator(_ childCoordinator: Coordinator) {
+        childCoordinator.start()
+        childCoordinator.stop = {
+            self.removeChildCoordinator(childCoordinator: childCoordinator)
+        }
+        self.addChildCoordinator(childCoordinator: childCoordinator)
+    }
 }

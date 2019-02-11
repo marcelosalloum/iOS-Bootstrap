@@ -13,4 +13,5 @@ target 'iOS Bootstrap' do
   pod 'Fabric', '1.7.12'                    # Beta distribution
   pod 'Crashlytics', '3.10.8'               # Crash reports
   pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'   # Analytics
+  pod 'Bagel', '~>  1.3.2', :configurations => ['Debug']
 end

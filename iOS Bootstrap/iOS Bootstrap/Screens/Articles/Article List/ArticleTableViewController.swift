@@ -23,8 +23,6 @@ class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpda
     @IBOutlet weak var tableView: UITableView!
     var viewModel: ArticleTableViewModel!
 
-    weak var coordinator: ArticleTableViewControllerDelegate?
-
     // MARK: - RefreshControl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -77,6 +75,7 @@ class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpda
 
         // Navigation Controller
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -110,8 +109,7 @@ extension ArticleTableViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate:
 extension ArticleTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
-        coordinator?.articleTableViewControllerDidSelectArticle(article)
+        viewModel.userDidSelect(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
