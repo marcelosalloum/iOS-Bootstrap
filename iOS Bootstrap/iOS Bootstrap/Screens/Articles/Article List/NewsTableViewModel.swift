@@ -73,7 +73,7 @@ extension NewsTableViewModel: ObserveOfflineProtocol {
     }
 }
 
-// ListViewModelProtocol
+// MARK: - User Selected index path
 extension NewsTableViewModel: ListViewModelProtocol {
     func userDidSelect(indexPath: IndexPath) {
         let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
