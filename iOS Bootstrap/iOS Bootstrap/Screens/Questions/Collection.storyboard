@@ -69,7 +69,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-xk-O2w">
-                                                    <rect key="frame" x="8" y="41" width="359" height="101"/>
+                                                    <rect key="frame" x="8" y="41" width="367" height="109"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kzZ-Cm-jv8">
                                                         <size key="itemSize" width="293" height="110.66666666666667"/>
@@ -79,13 +79,13 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InnerCardCollectionViewCell" id="5Dk-VQ-VMc" customClass="InnerCardCollectionViewCell" customModule="iOS_Bootstrap" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-5" width="293" height="110.66666666666667"/>
+                                                            <rect key="frame" x="0.0" y="-1" width="293" height="110.66666666666667"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="293" height="110.66666666666667"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHU-E3-dql">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHU-E3-dql">
                                                                         <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="110.66666666666667"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="bHU-E3-dql" secondAttribute="height" id="MVk-Xr-AYP"/>
@@ -111,7 +111,7 @@
                                                                             <constraint firstAttribute="width" constant="2" id="oW2-dk-lwS"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzb-Sk-NmL">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzb-Sk-NmL">
                                                                         <rect key="frame" x="182.66666666666666" y="79" width="47.666666666666657" height="15.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
                                                                         <color key="textColor" red="0.1411764771" green="0.40392157439999998" blue="0.91764706370000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,13 +145,13 @@
                                                 </collectionView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="d6d-Dc-4NQ" firstAttribute="leading" secondItem="0vv-ub-HIB" secondAttribute="leading" constant="8" id="6OP-Fj-p5T"/>
                                             <constraint firstItem="Sfa-xk-O2w" firstAttribute="leading" secondItem="0vv-ub-HIB" secondAttribute="leadingMargin" id="78s-HO-7UD"/>
                                             <constraint firstItem="d6d-Dc-4NQ" firstAttribute="top" secondItem="0vv-ub-HIB" secondAttribute="top" constant="16" id="XXY-oY-zIW"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Sfa-xk-O2w" secondAttribute="bottom" id="gKH-z4-vd4"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Sfa-xk-O2w" secondAttribute="trailing" id="kTL-lO-3Q3"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sfa-xk-O2w" secondAttribute="bottom" id="gKH-z4-vd4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sfa-xk-O2w" secondAttribute="trailing" id="kTL-lO-3Q3"/>
                                             <constraint firstItem="Sfa-xk-O2w" firstAttribute="top" secondItem="d6d-Dc-4NQ" secondAttribute="bottom" constant="8" id="zxe-TQ-nzy"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="150"/>
