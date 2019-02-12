@@ -18,6 +18,8 @@ import Foundation
 class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
+    weak var coordinator: ArticleTableViewControllerDelegate?
+
     var articlesTag: Tag! {
         didSet {
             guard let articles = articlesTag.articles?.allObjects as? [Article] else { return }
@@ -31,6 +33,7 @@ class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 //    weak var coordinator: ArticleTableViewControllerDelegate?
 
     func userDidSelect(indexPath: IndexPath) {
-        // TODO: load Article Detail
+        let article = type(of: self).getObject(from: articles, with: indexPath)
+        coordinator?.articleTableViewControllerDidSelectArticle(article)
     }
 }

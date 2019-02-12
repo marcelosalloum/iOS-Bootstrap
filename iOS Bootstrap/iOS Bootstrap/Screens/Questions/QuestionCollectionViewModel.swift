@@ -20,9 +20,12 @@ class QuestionCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
     var tags: [Tag] = []
-    weak var delegate: QuestionCollectionProtocol?
-    weak var coordinator: ArticleTableViewControllerDelegate?
+
     var ezCoreData: EZCoreData!
+
+    weak var delegate: QuestionCollectionProtocol?
+
+    weak var coordinator: ArticleTableViewControllerDelegate?
 
     override init() {
         super.init()

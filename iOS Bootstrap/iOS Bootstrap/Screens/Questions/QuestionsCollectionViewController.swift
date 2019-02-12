@@ -12,7 +12,6 @@ import PKHUD
 class QuestionsCollectionViewController: CoordinatedViewController {
 
     var viewModel: QuestionCollectionViewModel!
-    weak var coordinator: QuestionsCollectionViewControllerDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -22,14 +21,16 @@ class QuestionsCollectionViewController: CoordinatedViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        // View Model
-        viewModel.updateDataSource()
-
         self.title = "Collection Sample"
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // Nav Bar
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        // View Model
+        viewModel.updateDataSource()
+
         super.viewWillAppear(animated)
     }
 }
@@ -46,6 +47,7 @@ extension QuestionsCollectionViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                       for: indexPath)  as! UserTextCollectionViewCell
         cell.articlesTag = QuestionCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
+        cell.coordinator = viewModel.coordinator
         return cell
     }
 }

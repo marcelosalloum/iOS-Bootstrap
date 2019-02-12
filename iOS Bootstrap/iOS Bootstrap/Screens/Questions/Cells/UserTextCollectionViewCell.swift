@@ -11,7 +11,17 @@ import UIKit
 class UserTextCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+
     var viewModel = InnerCollectionViewModel()
+
+    weak var coordinator: ArticleTableViewControllerDelegate? {
+        get {
+            return viewModel.coordinator
+        }
+        set(newValue) {
+            viewModel.coordinator = newValue
+        }
+    }
 
     var articlesTag: Tag! {
         get {
@@ -20,6 +30,7 @@ class UserTextCollectionViewCell: UICollectionViewCell {
         set(newValue) {
             viewModel.articlesTag = newValue
             titleLabel.text = viewModel.articlesTag.label
+            innerCollectionView.reloadData()
         }
     }
 
@@ -44,7 +55,6 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
         let cellId = String(describing: InnerCardCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                       for: indexPath) as! InnerCardCollectionViewCell
-        cell.backgroundColor = UIColor.random()
         cell.article = InnerCollectionViewModel.getObject(from: viewModel.articles, with: indexPath)
 
         return cell
@@ -52,6 +62,9 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
 }
 
 extension UserTextCollectionViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.userDidSelect(indexPath: indexPath)
+    }
 //    func collectionView(_ collectionView: UICollectionView,
 //                        layout collectionViewLayout: UICollectionViewLayout,
 //                        sizeForItemAt indexPath: IndexPath) -> CGSize {

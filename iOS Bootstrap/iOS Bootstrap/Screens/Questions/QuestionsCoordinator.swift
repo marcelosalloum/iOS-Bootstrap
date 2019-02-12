@@ -19,8 +19,6 @@ class QuestionsCollectionCoordinator: Coordinator {
     private var ezCoreData: EZCoreData
 
     private weak var questionsCollectionViewController: QuestionsCollectionViewController?
-    private var loginCoordinator: LoginCoordinator?
-    private var signUpCoordinator: SignUpCoordinator?
 
     init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
@@ -31,13 +29,13 @@ class QuestionsCollectionCoordinator: Coordinator {
         // View Model
         let viewModel = QuestionCollectionViewModel()
         viewModel.ezCoreData = ezCoreData
+        viewModel.coordinator = self
 
         // View Controller:
         guard let questionsCollectionViewController =
             QuestionsCollectionViewController.fromStoryboard(.collection) else { return }
         questionsCollectionViewController.viewModel = viewModel
         viewModel.delegate = questionsCollectionViewController
-        questionsCollectionViewController.coordinator = self
 
         // Present View Controller:
         presenter.pushViewController(questionsCollectionViewController, animated: true)
@@ -46,23 +44,10 @@ class QuestionsCollectionCoordinator: Coordinator {
     }
 }
 
-extension QuestionsCollectionCoordinator: QuestionsCollectionViewControllerDelegate {
-    func userDidClickLogin() {
-        let loginCoordinator = LoginCoordinator(presenter: presenter)
-        loginCoordinator.start()
-        loginCoordinator.stop = {
-            self.loginCoordinator = nil
-        }
-        self.loginCoordinator = loginCoordinator
-
-    }
-
-    func userDidClickSignUp() {
-        let signUpCoordinator = SignUpCoordinator(presenter: presenter)
-        signUpCoordinator.start()
-        signUpCoordinator.stop = {
-            self.signUpCoordinator = nil
-        }
-        self.signUpCoordinator = signUpCoordinator
+// MARK: - ArticleTableViewControllerDelegate
+extension QuestionsCollectionCoordinator: ArticleTableViewControllerDelegate {
+    func articleTableViewControllerDidSelectArticle(_ selectedArticle: Article) {
+        let articleDetailCoordinator = ArticleDetailCoordinator(presenter: presenter, article: selectedArticle)
+        startCoordinator(articleDetailCoordinator)
     }
 }
