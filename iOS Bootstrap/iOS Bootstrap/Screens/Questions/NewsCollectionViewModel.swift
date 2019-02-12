@@ -9,13 +9,6 @@
 import Foundation
 import EZCoreData
 
-// MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-protocol NewsCollectionProtocol: class {
-    func updateData(tags: [Tag], endRefreshing: Bool)
-    func displayError(error: Error, endRefreshing: Bool)
-    func displayMessage(_ message: String)
-}
-
 class NewsCollectionViewModel: NSObject {
     // MARK: - Initial Set-up
     var tags: [Tag] = []
@@ -23,10 +16,10 @@ class NewsCollectionViewModel: NSObject {
     var ezCoreData: EZCoreData!
 
     /// Delegate to ViewController
-    weak var delegate: NewsCollectionProtocol?
+    weak var delegate: NewsCollectionViewDelegate?
 
     /// Coordinator delegate to Coordinator
-    weak var coordinator: ArticleInteractionProtocol?
+    weak var coordinator: NewsInteractionProtocol?
 
     // MARK: - Observe for Offline mode
     override init() {
@@ -57,7 +50,7 @@ extension NewsCollectionViewModel {
         do {
             tags = try Tag.readAll(context: ezCoreData.mainThreadContext)
             DispatchQueue.main.async {
-                self.delegate?.updateData(tags: self.tags, endRefreshing: true)
+                self.delegate?.reloadData(endRefreshing: true)
             }
         } catch let error as NSError {
             print("ERROR: \(error.localizedDescription)")

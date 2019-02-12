@@ -9,9 +9,10 @@
 import UIKit
 import EZCoreData
 
+// MARK: - Coordinator Mandatory Implementation
 class NewsDetailCoordinator: Coordinator {
+    // MARK: - Init
     private let presenter: UINavigationController
-    private weak var newsDetailViewController: NewsDetailViewController?
     private var article: Article
 
     init(presenter: UINavigationController, article: Article) {
@@ -19,6 +20,8 @@ class NewsDetailCoordinator: Coordinator {
         self.article = article
     }
 
+    // MARK: - Start
+    private weak var newsDetailViewController: NewsDetailViewController?
     override func start() {
         // View Controller:
         guard let newsDetailViewController = NewsDetailViewController.fromStoryboard(.news) else { return }

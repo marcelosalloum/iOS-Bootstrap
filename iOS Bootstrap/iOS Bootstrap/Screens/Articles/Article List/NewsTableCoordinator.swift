@@ -11,15 +11,17 @@ import EZCoreData
 
 // MARK: - Coordinator Mandatory Implementation
 class NewsTableCoordinator: Coordinator {
+    // MARK: - Init
     private let presenter: UINavigationController
     private var ezCoreData: EZCoreData!
-    private weak var newsTableViewController: NewsTableViewController?
 
     init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
         self.ezCoreData = ezCoreData
     }
 
+    // MARK: - Start
+    private weak var newsTableViewController: NewsTableViewController?
     override func start() {
         // View Controller:
         guard let newsTableViewController = NewsTableViewController.fromStoryboard(.news) else { return }
@@ -39,7 +41,7 @@ class NewsTableCoordinator: Coordinator {
 }
 
 // MARK: - Article Interaction Protocol
-extension NewsTableCoordinator: ArticleInteractionProtocol {
+extension NewsTableCoordinator: NewsInteractionProtocol {
     func userDidSelectArticle(_ selectedArticle: Article) {
         let newsDetailCoordinator = NewsDetailCoordinator(presenter: presenter, article: selectedArticle)
         startCoordinator(newsDetailCoordinator)

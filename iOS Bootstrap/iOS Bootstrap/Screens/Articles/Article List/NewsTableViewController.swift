@@ -131,10 +131,9 @@ extension NewsTableViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - View Model NewsTableProtocol
-extension NewsTableViewController: NewsTableProtocol {
-
-    func updateData(articles: [Article], endRefreshing: Bool) {
+// MARK: - View Model NewsCollectionViewDelegate
+extension NewsTableViewController: NewsCollectionViewDelegate {
+    func reloadData(endRefreshing: Bool) {
         if endRefreshing {
             self.refreshControl.endRefreshing()
         }
@@ -151,7 +150,6 @@ extension NewsTableViewController: NewsTableProtocol {
     func displayMessage(_ message: String) {
         self.toastr(message)
     }
-
 }
 
 // MARK: - Filter Button and BottomView animation

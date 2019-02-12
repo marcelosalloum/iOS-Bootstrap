@@ -8,12 +8,14 @@
 
 import UIKit
 import PKHUD
-//https://www.youtube.com/watch?v=Ko9oNhlTwH0
+
 class NewsCollectionViewController: CoordinatedViewController {
 
-    var viewModel: NewsCollectionViewModel!
+    // MARK: - Injected Dependencies (Interface Builder included)
     @IBOutlet weak var collectionView: UICollectionView!
+    var viewModel: NewsCollectionViewModel!
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,7 @@ class NewsCollectionViewController: CoordinatedViewController {
     }
 }
 
+// MARK: - Data Source
 extension NewsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -43,15 +46,18 @@ extension NewsCollectionViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Get Cell
         let cellId = String(describing: UserTextCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                       for: indexPath) as! UserTextCollectionViewCell
+        // Configure Cell
         cell.articlesTag = NewsCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
         cell.coordinator = viewModel.coordinator
         return cell
     }
 }
 
+// MARK: - Delegate
 extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -60,8 +66,8 @@ extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension NewsCollectionViewController: NewsCollectionProtocol {
-    func updateData(tags: [Tag], endRefreshing: Bool) {
+extension NewsCollectionViewController: NewsCollectionViewDelegate {
+    func reloadData(endRefreshing: Bool) {
         self.collectionView.reloadData()
     }
 

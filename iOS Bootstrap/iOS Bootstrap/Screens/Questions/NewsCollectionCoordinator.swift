@@ -9,22 +9,19 @@
 import UIKit
 import EZCoreData
 
-protocol NewsCollectionViewControllerDelegate: class {
-    func userDidClickLogin()
-    func userDidClickSignUp()
-}
-
+// MARK: - Coordinator Mandatory Implementation
 class NewsCollectionCoordinator: Coordinator {
+    // MARK: - Init
     private let presenter: UINavigationController
     private var ezCoreData: EZCoreData
-
-    private weak var newsCollectionViewController: NewsCollectionViewController?
 
     init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
         self.ezCoreData = ezCoreData
     }
 
+    // MARK: - Start
+    private weak var newsCollectionViewController: NewsCollectionViewController?
     override func start() {
         // View Model
         let viewModel = NewsCollectionViewModel()
@@ -44,8 +41,8 @@ class NewsCollectionCoordinator: Coordinator {
     }
 }
 
-// MARK: - ArticleInteractionProtocol
-extension NewsCollectionCoordinator: ArticleInteractionProtocol {
+// MARK: - NewsInteractionProtocol
+extension NewsCollectionCoordinator: NewsInteractionProtocol {
     func userDidSelectArticle(_ selectedArticle: Article) {
         let newsDetailCoordinator = NewsDetailCoordinator(presenter: presenter, article: selectedArticle)
         startCoordinator(newsDetailCoordinator)

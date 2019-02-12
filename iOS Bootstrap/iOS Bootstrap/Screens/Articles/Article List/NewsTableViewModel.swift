@@ -9,13 +9,6 @@
 import Foundation
 import EZCoreData
 
-// MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-protocol NewsTableProtocol: class {
-    func updateData(articles: [Article], endRefreshing: Bool)
-    func displayError(error: Error, endRefreshing: Bool)
-    func displayMessage(_ message: String)
-}
-
 // MARK: - Used to order the Articles
 enum ArticlesOrder: String {
     case id
@@ -32,9 +25,9 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtoco
     var ezCoreData: EZCoreData!
 
     // MARK: - Delegate (to ViewController) and coordinator delegate (to Coordinator)
-    weak var delegate: NewsTableProtocol?
+    weak var delegate: NewsCollectionViewDelegate?
 
-    weak var coordinator: ArticleInteractionProtocol?
+    weak var coordinator: NewsInteractionProtocol?
 
     // MARK: - Handling Offline mode with message to the user
     override init() {
@@ -84,8 +77,7 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtoco
                                            context: ezCoreData.mainThreadContext,
                                            sortDescriptors: [sortDescriptor])
             DispatchQueue.main.async {
-                self.delegate?.updateData(articles: self.articles,
-                                          endRefreshing: true)
+                self.delegate?.reloadData(endRefreshing: true)
             }
         } catch let e as NSError {
             print("ERROR: \(e.localizedDescription)")

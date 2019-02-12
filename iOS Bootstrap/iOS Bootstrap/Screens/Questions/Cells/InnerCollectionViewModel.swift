@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-//protocol NewsCollectionProtocol: class {
+//protocol NewsCollectionViewDelegate: class {
 //    func updateData(tags: [Tag], endRefreshing: Bool)
 //    func displayError(error: Error, endRefreshing: Bool)
 //    func displayMessage(_ message: String)
@@ -18,7 +18,7 @@ import Foundation
 class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
-    weak var coordinator: ArticleInteractionProtocol?
+    weak var coordinator: NewsInteractionProtocol?
 
     var articlesTag: Tag! {
         didSet {
@@ -29,8 +29,8 @@ class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     var articles: [Article] = []
 
-//    weak var delegate: NewsCollectionProtocol?
-//    weak var coordinator: ArticleInteractionProtocol?
+//    weak var delegate: NewsCollectionViewDelegate?
+//    weak var coordinator: NewsInteractionProtocol?
 
     func userDidSelect(indexPath: IndexPath) {
         let article = type(of: self).getObject(from: articles, with: indexPath)
