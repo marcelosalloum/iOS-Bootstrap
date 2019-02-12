@@ -308,8 +308,8 @@
 			children = (
 				1F0397C822024C0400335E6C /* NewsTableCoordinator.swift */,
 				1F1A40A021D69524005BC0F3 /* NewsTableViewController.swift */,
-				1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */,
 				1F8BDB4621E54150007A338A /* NewsTableViewModel.swift */,
+				1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */,
 			);
 			path = "Article List";
 			sourceTree = "<group>";

@@ -53,7 +53,7 @@ extension ObserveOfflineProtocol {
     func startWatchingOfflineMode() {
         // Observes offline mode
         NotificationCenter.default.addObserver(self,
-                                               selector: Selector("handleOfflineSituation"),
+                                               selector: Selector(("handleOfflineSituation")),
                                                name: ReachabilityNotifications.PhoneIsOffline,
                                                object: nil)
     }
@@ -80,7 +80,7 @@ extension ObserveOnlineProtocol {
     func startWatchingOnlineMode() {
         // Observes offline mode
         NotificationCenter.default.addObserver(self,
-                                               selector: Selector("handleOnlineSituation"),
+                                               selector: Selector(("handleOnlineSituation")),
                                                name: ReachabilityNotifications.PhoneIsOnline,
                                                object: nil)
     }

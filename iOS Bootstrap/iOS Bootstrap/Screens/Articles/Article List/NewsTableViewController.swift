@@ -10,50 +10,25 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class NewsTableViewController: CoordinatedViewController, UISearchResultsUpdating {
+class NewsTableViewController: CoordinatedViewController {
 
+    // MARK: - Injected Dependencies
+    // bottomView and it's constraints:
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
 
-    // MARK: - Filter (bottomView)
-    @IBOutlet weak var bottomView: UIView!
-
-    // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
+
     var viewModel: NewsTableViewModel!
 
-    // MARK: - RefreshControl
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self,
-                                 action: #selector(NewsTableViewController.pullToRefresh(_:)),
-                                 for: UIControl.Event.valueChanged)
-        return refreshControl
-    }()
+    /// `UIRefreshControl` used for pullToRefresh
+    var refreshControl: UIRefreshControl!
 
-    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
-        viewModel.fetchAPIData()
-    }
+    /// `UISearchController` used to search throughout the news
+    var searchController: UISearchController!
 
-    // MARK: - Search Controller
-    lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search the news...".localized
-        definesPresentationContext = true
-        return searchController
-    }()
-
-    func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
-            viewModel.searchTerm = searchText
-        }
-    }
-
-    // MARK: - ViewController
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,10 +37,10 @@ class NewsTableViewController: CoordinatedViewController, UISearchResultsUpdatin
         tableView.dataSource = self
 
         // Refresh Controller
-        tableView.addSubview(self.refreshControl)
+        setupRefreshControl()
 
         // Search Controller
-        navigationItem.searchController = searchController
+        setupSearchController()
 
         // ViewModel
         viewModel.searchTerm = "" // Runs first Search by setting this value
@@ -85,7 +60,43 @@ class NewsTableViewController: CoordinatedViewController, UISearchResultsUpdatin
     }
 }
 
-// MARK: - TableViewDataSource
+// MARK: - Pull to Refresh
+extension NewsTableViewController {
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self,
+                                 action: #selector(NewsTableViewController.pullToRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        // Refresh Controller
+        tableView.addSubview(refreshControl)
+    }
+
+    @IBAction func pullToRefresh(_ sender: UIRefreshControl) {
+        viewModel.fetchAPIData()
+    }
+}
+
+// MARK: - Search Controller
+extension  NewsTableViewController: UISearchResultsUpdating {
+    func setupSearchController() {
+        // SearchViewController
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "SEARCH_NEWS_PLACEHOLDER".localized
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+    }
+
+    // UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            viewModel.searchTerm = searchText
+        }
+    }
+}
+
+// MARK: - Data Source
 extension NewsTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -106,7 +117,7 @@ extension NewsTableViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate:
+// MARK: - Delegate
 extension NewsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.userDidSelect(indexPath: indexPath)
@@ -120,7 +131,7 @@ extension NewsTableViewController: UITableViewDelegate {
 
         // Setups Button Text
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { _, indexPath in
-            self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article)
+            self.viewModel.toggleReadStatus(article: article)
             let articleCell = NewsTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
             articleCell.updateWasReadStatus(initialReadStatus)
             tableView.reloadRows(at: [indexPath], with: .none)

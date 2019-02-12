@@ -23,6 +23,7 @@ class NewsCollectionViewController: CoordinatedViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 
+        // Nav Bar
         self.title = "Collection Sample"
     }
 
@@ -66,6 +67,7 @@ extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - View Model: NewsCollectionViewDelegate
 extension NewsCollectionViewController: NewsCollectionViewDelegate {
     func reloadData(endRefreshing: Bool) {
         self.collectionView.reloadData()

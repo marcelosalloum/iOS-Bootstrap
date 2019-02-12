@@ -16,17 +16,19 @@ enum ArticlesOrder: String {
     case title
 }
 
-class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtocol {
+class NewsTableViewModel: NSObject {
 
     // MARK: - Data source
     var articles: [Article] = []
 
-    // MARK: - Core Data service
+    // MARK: - Injected properties:
+    /// Core Data service
     var ezCoreData: EZCoreData!
 
-    // MARK: - Delegate (to ViewController) and coordinator delegate (to Coordinator)
+    /// Delegate (to ViewController)
     weak var delegate: NewsCollectionViewDelegate?
 
+    /// Coordinator delegate (to Coordinator)
     weak var coordinator: NewsInteractionProtocol?
 
     // MARK: - Handling Offline mode with message to the user
@@ -37,10 +39,6 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtoco
 
     deinit {
         stopWatchingOfflineMode()
-    }
-
-    @objc func handleOfflineSituation() {
-        delegate?.displayMessage("No Internet Connection")
     }
 
     // MARK: - Search on the database when the user seearches for a term or chaanges the list ordering
@@ -56,11 +54,56 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtoco
         }
     }
 
+    /// Bottom Bar Showing/Hidding current stare
+    fileprivate var isShowingBottomView: Bool = false
+}
+
+// MARK: - Bottom Bar Show/Hide
+extension NewsTableViewModel {
+    func toggledContraintForFilterView(_ height: CGFloat) -> CGFloat {
+        isShowingBottomView = !isShowingBottomView
+        return isShowingBottomView ? 0 : -height
+    }
+}
+
+// MARK: - Offline Handler
+extension NewsTableViewModel: ObserveOfflineProtocol {
+    @objc func handleOfflineSituation() {
+        delegate?.displayMessage("No Internet Connection")
+    }
+}
+
+// ListViewModelProtocol
+extension NewsTableViewModel: ListViewModelProtocol {
     func userDidSelect(indexPath: IndexPath) {
         let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
         coordinator?.userDidSelectArticle(article)
     }
+}
 
+// MARK: - API Service: GET Articles
+extension NewsTableViewModel {
+    func fetchAPIData() {
+        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
+            switch apiCompletion {
+            case .success(result: let articleList):
+                Article.deleteAll(except: articleList,
+                                  backgroundContext: self.ezCoreData.privateThreadContext,
+                                  completion: { (_) in
+                                      self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
+                                  })
+            case .failure(error: let error):
+                DispatchQueue.main.async {
+                    self.delegate?.displayError(error: error,
+                                                endRefreshing: true)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Core Data Service
+extension NewsTableViewModel {
     fileprivate func searchArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
         // Build NSPredicate
         var predicate: NSPredicate?
@@ -83,45 +126,13 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtoco
             print("ERROR: \(e.localizedDescription)")
         }
     }
-
-    // MARK: - GET Articles from API
-    func fetchAPIData() {
-        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
-            switch apiCompletion {
-            case .success(result: let articleList):
-                Article.deleteAll(except: articleList,
-                                  backgroundContext: self.ezCoreData.privateThreadContext,
-                                  completion: { (_) in
-                                      self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-                                  })
-            case .failure(error: let error):
-                DispatchQueue.main.async {
-                    self.delegate?.displayError(error: error,
-                                                endRefreshing: true)
-                }
-            }
-        }
-    }
-
-    // MARK: - Update the read status in the CoreData
-    func updateReadStatus(finalReadState: Bool, article: Article?) {
-        guard let article = article else { return }
-        article.wasRead = finalReadState
-        article.managedObjectContext?.saveContextToStore()
-    }
-
-    // MARK: - Animating Bottom Bar
-    var isShowingBottomView: Bool = false
-
-    func toggledContraintForFilterView(_ height: CGFloat) -> CGFloat {
-        isShowingBottomView = !isShowingBottomView
-        return isShowingBottomView ? 0 : -height
-    }
 }
 
-//extension NewsTableViewController: ListViewModelProtocol {
-//    func userDidSelect(indexPath: IndexPath) {
-//        let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
-//        coordinator?.userDidSelectArticle(article)
-//    }
-//}
+// MARK: - Read Status (upon swipe to action)
+extension NewsTableViewModel {
+    /// Updates the read status in the CoreData
+    func toggleReadStatus(article: Article) {
+        article.wasRead = !article.wasRead
+        article.managedObjectContext?.saveContextToStore()
+    }
+}

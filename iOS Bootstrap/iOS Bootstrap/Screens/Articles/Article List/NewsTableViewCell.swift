@@ -10,6 +10,7 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    // MARK: - Injected Dependencies
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -17,23 +18,26 @@ class NewsTableViewCell: UITableViewCell {
 
     var article: Article! {
         didSet {
-            // Set-up the cell content
-            titleLabel.text = article.title
-            timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
-            authorLabel.text = article.authors
-            updateWasReadStatus(article.wasRead)
-
-            // Setup the cell image
-            guard let imageURL = article.imageUrl else { return }
-            guard let url = URL(string: imageURL) else { return }
-            // Image Caching
-            articleImageView.kf.indicatorType = .activity
-            articleImageView.kf.setImage(with: url)
+            setupSubviews()
         }
     }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+// MARK: - Interface Setup & Customization
+extension NewsTableViewCell {
+    func setupSubviews() {
+        // Set-up the cell content
+        titleLabel.text = article.title
+        timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+        authorLabel.text = article.authors
+        updateWasReadStatus(article.wasRead)
+
+        // Setup the cell image
+        guard let imageURL = article.imageUrl else { return }
+        guard let url = URL(string: imageURL) else { return }
+        // Image Caching
+        articleImageView.kf.indicatorType = .activity
+        articleImageView.kf.setImage(with: url)
     }
 
     func updateWasReadStatus(_ wasRead: Bool) {
