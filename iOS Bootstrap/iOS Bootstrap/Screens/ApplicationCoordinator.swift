@@ -8,6 +8,7 @@
 
 import UIKit
 import EZCoreData
+import CoreData
 
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow

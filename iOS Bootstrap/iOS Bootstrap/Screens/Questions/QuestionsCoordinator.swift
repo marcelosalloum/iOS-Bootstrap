@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZCoreData
 
 protocol QuestionsCollectionViewControllerDelegate: class {
     func userDidClickLogin()
@@ -15,18 +16,27 @@ protocol QuestionsCollectionViewControllerDelegate: class {
 
 class QuestionsCollectionCoordinator: Coordinator {
     private let presenter: UINavigationController
+    private var ezCoreData: EZCoreData
+
     private weak var questionsCollectionViewController: QuestionsCollectionViewController?
     private var loginCoordinator: LoginCoordinator?
     private var signUpCoordinator: SignUpCoordinator?
 
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, ezCoreData: EZCoreData) {
         self.presenter = presenter
+        self.ezCoreData = ezCoreData
     }
 
     override func start() {
+        // View Model
+        let viewModel = QuestionCollectionViewModel()
+        viewModel.ezCoreData = ezCoreData
+
         // View Controller:
         guard let questionsCollectionViewController =
             QuestionsCollectionViewController.fromStoryboard(.collection) else { return }
+        questionsCollectionViewController.viewModel = viewModel
+        viewModel.delegate = questionsCollectionViewController
         questionsCollectionViewController.coordinator = self
 
         // Present View Controller:

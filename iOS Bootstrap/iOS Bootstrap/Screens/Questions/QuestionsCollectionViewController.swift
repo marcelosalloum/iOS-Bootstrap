@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import PKHUD
 //https://www.youtube.com/watch?v=Ko9oNhlTwH0
 class QuestionsCollectionViewController: CoordinatedViewController {
 
+    var viewModel: QuestionCollectionViewModel!
     weak var coordinator: QuestionsCollectionViewControllerDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Collection View
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        // View Model
+        viewModel.updateDataSource()
+
         self.title = "Collection Sample"
     }
 
@@ -29,7 +37,7 @@ class QuestionsCollectionViewController: CoordinatedViewController {
 extension QuestionsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.tags.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -41,6 +49,7 @@ extension QuestionsCollectionViewController: UICollectionViewDataSource {
                                             green: CGFloat.random(in: 0...256)/256,
                                             blue: CGFloat.random(in: 0...256)/256,
                                             alpha: CGFloat.random(in: 128...256)/256)
+        cell.articlesTag = QuestionCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
         return cell
     }
 }
@@ -51,4 +60,20 @@ extension QuestionsCollectionViewController: UICollectionViewDelegateFlowLayout 
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 150)
     }
+}
+
+extension QuestionsCollectionViewController: QuestionCollectionProtocol {
+    func updateData(tags: [Tag], endRefreshing: Bool) {
+        self.collectionView.reloadData()
+    }
+
+    func displayError(error: Error, endRefreshing: Bool) {
+        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+    }
+
+    func displayMessage(_ message: String) {
+        self.toastr(message)
+    }
+
+
 }

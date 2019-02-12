@@ -10,6 +10,8 @@ import UIKit
 
 class UserTextCollectionViewCell: UICollectionViewCell {
 
+    var articlesTag: Tag!
+
     @IBOutlet weak var innerCollectionView: UICollectionView!
 
     override func awakeFromNib() {
@@ -22,7 +24,7 @@ class UserTextCollectionViewCell: UICollectionViewCell {
 extension UserTextCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return articlesTag.articles?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -34,6 +36,7 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
                                             green: CGFloat.random(in: 0...256)/256,
                                             blue: CGFloat.random(in: 0...256)/256,
                                             alpha: CGFloat.random(in: 128...256)/256)
+
         return cell
     }
 }
