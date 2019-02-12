@@ -14,34 +14,18 @@ class UserTextCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var innerCollectionView: UICollectionView!
 
-    // TODO: parent view model should setup all of this
-    var viewModel = InnerCollectionViewModel()
-
-    weak var coordinator: NewsInteractionProtocol? {
-        get {
-            return viewModel.coordinator
-        }
-        set(newValue) {
-            viewModel.coordinator = newValue
-        }
-    }
-
-    var articlesTag: Tag! {
-        get {
-            return viewModel.articlesTag
-        }
-        set(newValue) {
-            viewModel.articlesTag = newValue
+    var viewModel: InnerCollectionViewModel! {
+        didSet {
             setupSubviews()
-            innerCollectionView.reloadData()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        //  Subviews
-        setupSubviews()
+        // Collection View
+        innerCollectionView.delegate = self
+        innerCollectionView.dataSource = self
     }
 }
 
@@ -49,12 +33,9 @@ class UserTextCollectionViewCell: UICollectionViewCell {
 extension UserTextCollectionViewCell {
     /// Setup Subview(s)
     func setupSubviews() {
-        // Collection View
-        innerCollectionView.delegate = self
-        innerCollectionView.dataSource = self
-
         // titleLabel
         titleLabel.text = viewModel.articlesTag.label
+        innerCollectionView.reloadData()
     }
 }
 

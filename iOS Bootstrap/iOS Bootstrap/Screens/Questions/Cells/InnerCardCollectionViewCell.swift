@@ -18,6 +18,7 @@ class InnerCardCollectionViewCell: UICollectionViewCell {
 
     var article: Article! {
         didSet {
+            setupSubviews()
         }
     }
 }

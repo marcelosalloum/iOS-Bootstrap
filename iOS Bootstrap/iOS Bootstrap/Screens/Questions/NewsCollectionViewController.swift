@@ -52,8 +52,8 @@ extension NewsCollectionViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                       for: indexPath) as! UserTextCollectionViewCell
         // Configure Cell
-        cell.articlesTag = NewsCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
-        cell.coordinator = viewModel.coordinator
+        let cellViewModel = NewsCollectionViewModel.getObject(from: viewModel.tagsViewModels, with: indexPath)
+        cell.viewModel = cellViewModel
         return cell
     }
 }

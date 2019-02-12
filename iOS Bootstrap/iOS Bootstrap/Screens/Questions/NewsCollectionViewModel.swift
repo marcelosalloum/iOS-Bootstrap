@@ -11,7 +11,19 @@ import EZCoreData
 
 class NewsCollectionViewModel: NSObject {
     // MARK: - Initial Set-up
-    var tags: [Tag] = []
+    var tags: [Tag] = [] {
+        didSet {
+            var newTagsViewModels = [InnerCollectionViewModel]()
+            for tag in tags {
+                let newChildModel = InnerCollectionViewModel()
+                newChildModel.coordinator = coordinator
+                newChildModel.articlesTag = tag
+                newTagsViewModels.append(newChildModel)
+            }
+            self.tagsViewModels = newTagsViewModels
+        }
+    }
+    var tagsViewModels: [InnerCollectionViewModel] = []
 
     var ezCoreData: EZCoreData!
 
