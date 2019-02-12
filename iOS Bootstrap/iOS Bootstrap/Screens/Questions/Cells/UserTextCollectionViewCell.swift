@@ -10,8 +10,11 @@ import UIKit
 
 class UserTextCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Injected Dependencies
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var innerCollectionView: UICollectionView!
 
+    // TODO: parent view model should setup all of this
     var viewModel = InnerCollectionViewModel()
 
     weak var coordinator: NewsInteractionProtocol? {
@@ -29,21 +32,33 @@ class UserTextCollectionViewCell: UICollectionViewCell {
         }
         set(newValue) {
             viewModel.articlesTag = newValue
-            titleLabel.text = viewModel.articlesTag.label
+            setupSubviews()
             innerCollectionView.reloadData()
         }
     }
 
-    @IBOutlet weak var innerCollectionView: UICollectionView!
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        innerCollectionView.delegate = self
-        innerCollectionView.dataSource = self
+        //  Subviews
+        setupSubviews()
     }
 }
 
+// MARK: - Interface Setup & Customization
+extension UserTextCollectionViewCell {
+    /// Setup Subview(s)
+    func setupSubviews() {
+        // Collection View
+        innerCollectionView.delegate = self
+        innerCollectionView.dataSource = self
+
+        // titleLabel
+        titleLabel.text = viewModel.articlesTag.label
+    }
+}
+
+// MARK: - Data Source
 extension UserTextCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -61,6 +76,7 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
+// MARK: - Delegate
 extension UserTextCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.userDidSelect(indexPath: indexPath)
