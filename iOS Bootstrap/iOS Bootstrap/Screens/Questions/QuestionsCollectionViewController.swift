@@ -45,10 +45,6 @@ extension QuestionsCollectionViewController: UICollectionViewDataSource {
         let cellId = String(describing: UserTextCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                       for: indexPath)  as! UserTextCollectionViewCell
-        cell.backgroundColor = UIColor.init(displayP3Red: CGFloat.random(in: 0...256)/256,
-                                            green: CGFloat.random(in: 0...256)/256,
-                                            blue: CGFloat.random(in: 0...256)/256,
-                                            alpha: CGFloat.random(in: 128...256)/256)
         cell.articlesTag = QuestionCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
         return cell
     }
@@ -74,6 +70,4 @@ extension QuestionsCollectionViewController: QuestionCollectionProtocol {
     func displayMessage(_ message: String) {
         self.toastr(message)
     }
-
-
 }

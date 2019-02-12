@@ -9,7 +9,34 @@
 import UIKit
 
 class InnerCardCollectionViewCell: UICollectionViewCell {
+
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var authorsLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    var article: Article! {
+        didSet {
+            // Set-up the cell content
+            titleLabel.text = article.title
+            timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+            authorsLabel.text = article.authors
+            updateWasReadStatus(article.wasRead)
+
+            // Setup the cell image
+            guard let imageURL = article.imageUrl else { return }
+            guard let url = URL(string: imageURL) else { return }
+            // Image Caching
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: url)
+        }
+    }
+
+    func updateWasReadStatus(_ wasRead: Bool) {
+        self.backgroundColor = wasRead ? UIColor.gray5() : UIColor.gray20()
     }
 }

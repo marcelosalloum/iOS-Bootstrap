@@ -10,11 +10,18 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    class func mainColor() -> UIColor {  // mainBlueColor
+    class func random() -> UIColor {
+        return UIColor(displayP3Red: CGFloat.random(in: 0...256) / 256,
+                       green: CGFloat.random(in: 0...256) / 256,
+                       blue: CGFloat.random(in: 0...256) / 256,
+                       alpha: CGFloat.random(in: 128...256) / 256)
+    }
+
+    class func mainColor() -> UIColor { // mainBlueColor
         return UIColor(red: 59.0 / 255.0, green: 141.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
     }
 
-    class func mainColorHighlighted() -> UIColor {  // mainBlueColorHighlighted
+    class func mainColorHighlighted() -> UIColor { // mainBlueColorHighlighted
         return UIColor(red: 18.0 / 255.0, green: 102.0 / 255.0, blue: 203.0 / 255.0, alpha: 1.0)
     }
 

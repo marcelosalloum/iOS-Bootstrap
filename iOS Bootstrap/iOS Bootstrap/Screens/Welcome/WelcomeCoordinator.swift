@@ -57,7 +57,8 @@ extension WelcomeCoordinator: WelcomeViewControllerDelegate {
 
     fileprivate func setupQuestionsCollectionScreen() {
         // Setups QuestionsCollectionCoordinator
-        let questionsCollectionCoordinator = QuestionsCollectionCoordinator(presenter: presenter, ezCoreData: ezCoreData)
+        let questionsCollectionCoordinator = QuestionsCollectionCoordinator(presenter: presenter,
+                                                                            ezCoreData: ezCoreData)
         startCoordinator(questionsCollectionCoordinator)
     }
 
