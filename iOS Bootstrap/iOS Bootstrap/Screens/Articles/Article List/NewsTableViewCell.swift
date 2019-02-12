@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewCell.swift
+//  NewsTableViewCell.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 28/12/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleTableViewCell: UITableViewCell {
+class NewsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

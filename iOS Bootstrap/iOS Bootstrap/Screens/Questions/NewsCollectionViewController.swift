@@ -1,5 +1,5 @@
 //
-//  QuestionsCollectionViewController.swift
+//  NewsCollectionViewController.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 05/02/19.
@@ -9,9 +9,9 @@
 import UIKit
 import PKHUD
 //https://www.youtube.com/watch?v=Ko9oNhlTwH0
-class QuestionsCollectionViewController: CoordinatedViewController {
+class NewsCollectionViewController: CoordinatedViewController {
 
-    var viewModel: QuestionCollectionViewModel!
+    var viewModel: NewsCollectionViewModel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class QuestionsCollectionViewController: CoordinatedViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Nav Bar
         navigationController?.setNavigationBarHidden(false, animated: false)
-        
+
         // View Model
         viewModel.updateDataSource()
 
@@ -35,7 +35,7 @@ class QuestionsCollectionViewController: CoordinatedViewController {
     }
 }
 
-extension QuestionsCollectionViewController: UICollectionViewDataSource {
+extension NewsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return viewModel.tags.count
@@ -45,14 +45,14 @@ extension QuestionsCollectionViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: UserTextCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
-                                                      for: indexPath)  as! UserTextCollectionViewCell
-        cell.articlesTag = QuestionCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
+                                                      for: indexPath) as! UserTextCollectionViewCell
+        cell.articlesTag = NewsCollectionViewModel.getObject(from: viewModel.tags, with: indexPath)
         cell.coordinator = viewModel.coordinator
         return cell
     }
 }
 
-extension QuestionsCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -60,7 +60,7 @@ extension QuestionsCollectionViewController: UICollectionViewDelegateFlowLayout 
     }
 }
 
-extension QuestionsCollectionViewController: QuestionCollectionProtocol {
+extension NewsCollectionViewController: NewsCollectionProtocol {
     func updateData(tags: [Tag], endRefreshing: Bool) {
         self.collectionView.reloadData()
     }

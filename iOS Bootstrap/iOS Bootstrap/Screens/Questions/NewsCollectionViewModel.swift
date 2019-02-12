@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewModel.swift
+//  NewsTableViewModel.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 08/01/19.
@@ -10,29 +10,29 @@ import Foundation
 import EZCoreData
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-protocol QuestionCollectionProtocol: class {
+protocol NewsCollectionProtocol: class {
     func updateData(tags: [Tag], endRefreshing: Bool)
     func displayError(error: Error, endRefreshing: Bool)
     func displayMessage(_ message: String)
 }
 
-class QuestionCollectionViewModel: NSObject, ListViewModelProtocol {
+class NewsCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
     var tags: [Tag] = []
 
     var ezCoreData: EZCoreData!
 
-    weak var delegate: QuestionCollectionProtocol?
+    weak var delegate: NewsCollectionProtocol?
 
-    weak var coordinator: ArticleTableViewControllerDelegate?
+    weak var coordinator: NewsTableViewControllerDelegate?
 
     override init() {
         super.init()
 
         // Observes offline mode
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)),
+                                               selector: #selector(NewsTableViewModel.phoneIsOffline(notification:)),
                                                name: AppNotifications.PhoneIsOffline,
                                                object: nil)
     }

@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewModel.swift
+//  NewsTableViewModel.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 08/01/19.
@@ -10,7 +10,7 @@ import Foundation
 import EZCoreData
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-protocol ArticleTableProtocol: class {
+protocol NewsTableProtocol: class {
     func updateData(articles: [Article], endRefreshing: Bool)
     func displayError(error: Error, endRefreshing: Bool)
     func displayMessage(_ message: String)
@@ -23,12 +23,12 @@ enum ArticlesOrder: String {
     case title
 }
 
-class ArticleTableViewModel: NSObject, ListViewModelProtocol {
+class NewsTableViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
     var articles: [Article] = []
-    weak var delegate: ArticleTableProtocol?
-    weak var coordinator: ArticleTableViewControllerDelegate?
+    weak var delegate: NewsTableProtocol?
+    weak var coordinator: NewsTableViewControllerDelegate?
     var ezCoreData: EZCoreData!
 
     override init() {
@@ -36,7 +36,7 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
 
         // Observes offline mode
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(ArticleTableViewModel.phoneIsOffline(notification:)),
+                                               selector: #selector(NewsTableViewModel.phoneIsOffline(notification:)),
                                                name: AppNotifications.PhoneIsOffline,
                                                object: nil)
     }
@@ -59,8 +59,8 @@ class ArticleTableViewModel: NSObject, ListViewModelProtocol {
     }
 
     func userDidSelect(indexPath: IndexPath) {
-        let article = ArticleTableViewModel.getObject(from: articles, with: indexPath)
-        coordinator?.articleTableViewControllerDidSelectArticle(article)
+        let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
+        coordinator?.newsTableViewControllerDidSelectArticle(article)
     }
 
     fileprivate func searchArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {

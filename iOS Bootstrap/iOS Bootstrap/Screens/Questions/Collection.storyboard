@@ -40,7 +40,7 @@
         <!--Collection Sample-->
         <scene sceneID="lrn-A4-GpR">
             <objects>
-                <viewController storyboardIdentifier="QuestionsCollectionViewController" title="Collection Sample" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Kw-P1-P2k" customClass="QuestionsCollectionViewController" customModule="iOS_Bootstrap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsCollectionViewController" title="Collection Sample" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Kw-P1-P2k" customClass="NewsCollectionViewController" customModule="iOS_Bootstrap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yJb-At-ABr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

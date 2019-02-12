@@ -1,5 +1,5 @@
 //
-//  ArticleDetailViewController.swift
+//  NewsDetailViewController.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 08/01/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleDetailViewController: CoordinatedViewController {
+class NewsDetailViewController: CoordinatedViewController {
 
     // MARK: - Properties
     @IBOutlet weak var imageView: UIImageView!
@@ -20,7 +20,7 @@ class ArticleDetailViewController: CoordinatedViewController {
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
 
     // MARK: - View Model
-    var viewModel: ArticleDetailViewModel!
+    var viewModel: NewsDetailViewModel!
 
     // MARK: - User Action
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
@@ -54,13 +54,13 @@ class ArticleDetailViewController: CoordinatedViewController {
     }
 }
 
-extension ArticleDetailViewController: ArticleDetailProtocol {
-    // MARK: - ArticleDetailProtocol
+extension NewsDetailViewController: NewsDetailProtocol {
+    // MARK: - NewsDetailProtocol
     func resetRightBarButtonItem(withText buttonText: String = ArticleState.markUnread) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: buttonText,
             style: .plain,
             target: self,
-            action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_:)))
+            action: #selector(NewsDetailViewController.didSelectRightBarButtonItem(_:)))
     }
 }

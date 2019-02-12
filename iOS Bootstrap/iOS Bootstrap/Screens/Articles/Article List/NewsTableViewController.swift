@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewController.swift
+//  NewsTableViewController.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 28/12/18.
@@ -10,7 +10,7 @@ import UIKit
 import PKHUD
 import Kingfisher
 
-class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpdating {
+class NewsTableViewController: CoordinatedViewController, UISearchResultsUpdating {
 
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
 
@@ -21,13 +21,13 @@ class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpda
 
     // MARK: - Initializers
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: ArticleTableViewModel!
+    var viewModel: NewsTableViewModel!
 
     // MARK: - RefreshControl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self,
-                                 action: #selector(ArticleTableViewController.pullToRefresh(_:)),
+                                 action: #selector(NewsTableViewController.pullToRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
         return refreshControl
     }()
@@ -86,7 +86,7 @@ class ArticleTableViewController: CoordinatedViewController, UISearchResultsUpda
 }
 
 // MARK: - TableViewDataSource
-extension ArticleTableViewController: UITableViewDataSource {
+extension NewsTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -96,8 +96,8 @@ extension ArticleTableViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
-        articleCell.article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
+        let articleCell = NewsTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
+        articleCell.article = NewsTableViewModel.getObject(from: viewModel.articles, with: indexPath)
         return articleCell
     }
 
@@ -107,21 +107,21 @@ extension ArticleTableViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate:
-extension ArticleTableViewController: UITableViewDelegate {
+extension NewsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.userDidSelect(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Get Article:
-        let article = ArticleTableViewModel.getObject(from: viewModel.articles, with: indexPath)
+        let article = NewsTableViewModel.getObject(from: viewModel.articles, with: indexPath)
         let initialReadStatus = article.wasRead
         let finalReadStatusText = ArticleState.getText(initialReadStatus: initialReadStatus)
 
         // Setups Button Text
         let readStatus = UITableViewRowAction(style: .normal, title: finalReadStatusText) { _, indexPath in
             self.viewModel.updateReadStatus(finalReadState: !article.wasRead, article: article)
-            let articleCell = ArticleTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
+            let articleCell = NewsTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
             articleCell.updateWasReadStatus(initialReadStatus)
             tableView.reloadRows(at: [indexPath], with: .none)
         }
@@ -131,8 +131,8 @@ extension ArticleTableViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - View Model ArticleTableProtocol
-extension ArticleTableViewController: ArticleTableProtocol {
+// MARK: - View Model NewsTableProtocol
+extension NewsTableViewController: NewsTableProtocol {
 
     func updateData(articles: [Article], endRefreshing: Bool) {
         if endRefreshing {
@@ -155,7 +155,7 @@ extension ArticleTableViewController: ArticleTableProtocol {
 }
 
 // MARK: - Filter Button and BottomView animation
-extension ArticleTableViewController {
+extension NewsTableViewController {
 
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
         bottomViewBottomConstraint.constant = viewModel.toggledContraintForFilterView(self.bottomView.frame.height)

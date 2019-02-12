@@ -14,7 +14,7 @@ class UserTextCollectionViewCell: UICollectionViewCell {
 
     var viewModel = InnerCollectionViewModel()
 
-    weak var coordinator: ArticleTableViewControllerDelegate? {
+    weak var coordinator: NewsTableViewControllerDelegate? {
         get {
             return viewModel.coordinator
         }

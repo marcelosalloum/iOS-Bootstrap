@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewModel.swift
+//  NewsTableViewModel.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 08/01/19.
@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Protocol to comunicate from ViewModel o ViewController (MVVM)
-//protocol QuestionCollectionProtocol: class {
+//protocol NewsCollectionProtocol: class {
 //    func updateData(tags: [Tag], endRefreshing: Bool)
 //    func displayError(error: Error, endRefreshing: Bool)
 //    func displayMessage(_ message: String)
@@ -18,7 +18,7 @@ import Foundation
 class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
-    weak var coordinator: ArticleTableViewControllerDelegate?
+    weak var coordinator: NewsTableViewControllerDelegate?
 
     var articlesTag: Tag! {
         didSet {
@@ -29,11 +29,11 @@ class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     var articles: [Article] = []
 
-//    weak var delegate: QuestionCollectionProtocol?
-//    weak var coordinator: ArticleTableViewControllerDelegate?
+//    weak var delegate: NewsCollectionProtocol?
+//    weak var coordinator: NewsTableViewControllerDelegate?
 
     func userDidSelect(indexPath: IndexPath) {
         let article = type(of: self).getObject(from: articles, with: indexPath)
-        coordinator?.articleTableViewControllerDidSelectArticle(article)
+        coordinator?.newsTableViewControllerDidSelectArticle(article)
     }
 }

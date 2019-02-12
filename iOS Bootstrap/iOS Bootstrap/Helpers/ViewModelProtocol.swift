@@ -25,19 +25,19 @@ extension ListViewModelProtocol {
     }
 }
 
-protocol CollectionViewModelProtocol {
-    static func getObject<T: Any>(from objectsList: [T], with indexPath: IndexPath) -> T
-    func userDidSelect(indexPath: IndexPath)
-}
-
-extension CollectionViewModelProtocol {
-    ///  Returns an object from a given array type [T] according to the indexPath
-    static func getCollectionSectionData<T: Any>(from objectsList: [[T]], with indexPath: IndexPath) -> [T] {
-        // Retrieve the correspondant article and set-up the cell
-        if indexPath.section >= objectsList.count {
-            fatalError("EMPTY_OBJECT_LIST".localized)
-        }
-        let articleList = objectsList[indexPath.section]
-        return articleList
-    }
-}
+//protocol CollectionViewModelProtocol {
+//    static func getObject<T: Any>(from objectsList: [T], with indexPath: IndexPath) -> T
+//    func userDidSelect(indexPath: IndexPath)
+//}
+//
+//extension CollectionViewModelProtocol {
+//    ///  Returns an object from a given array type [T] according to the indexPath
+//    static func getCollectionSectionData<T: Any>(from objectsList: [[T]], with indexPath: IndexPath) -> [T] {
+//        // Retrieve the correspondant article and set-up the cell
+//        if indexPath.section >= objectsList.count {
+//            fatalError("EMPTY_OBJECT_LIST".localized)
+//        }
+//        let articleList = objectsList[indexPath.section]
+//        return articleList
+//    }
+//}

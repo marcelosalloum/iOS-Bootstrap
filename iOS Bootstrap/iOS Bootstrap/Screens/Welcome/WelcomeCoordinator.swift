@@ -48,28 +48,28 @@ extension WelcomeCoordinator: WelcomeViewControllerDelegate {
         case .auth:
             setupAuthHomeCoordinator()
         case .collection:
-            setupQuestionsCollectionScreen()
+            setupNewsCollectionScreen()
         default:
             break
         }
 
     }
 
-    fileprivate func setupQuestionsCollectionScreen() {
-        // Setups QuestionsCollectionCoordinator
-        let questionsCollectionCoordinator = QuestionsCollectionCoordinator(presenter: presenter,
+    fileprivate func setupNewsCollectionScreen() {
+        // Setups NewsCollectionCoordinator
+        let newsCollectionCoordinator = NewsCollectionCoordinator(presenter: presenter,
                                                                             ezCoreData: ezCoreData)
-        startCoordinator(questionsCollectionCoordinator)
+        startCoordinator(newsCollectionCoordinator)
     }
 
     fileprivate func setupArticleListScreen() {
-        // Setups ArticleTableCoordinator
-        let articleTableCoordinator = ArticleTableCoordinator(presenter: presenter, ezCoreData: ezCoreData)
-        startCoordinator(articleTableCoordinator)
+        // Setups NewsTableCoordinator
+        let newsTableCoordinator = NewsTableCoordinator(presenter: presenter, ezCoreData: ezCoreData)
+        startCoordinator(newsTableCoordinator)
     }
 
     fileprivate func setupAuthHomeCoordinator() {
-        // Setups ArticleTableCoordinator
+        // Setups NewsTableCoordinator
         let authHomeCoordinator = AuthHomeCoordinator(presenter: presenter, ezCoreData: ezCoreData)
         startCoordinator(authHomeCoordinator)
     }
