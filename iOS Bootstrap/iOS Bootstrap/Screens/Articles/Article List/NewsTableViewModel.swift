@@ -23,29 +23,34 @@ enum ArticlesOrder: String {
     case title
 }
 
-class NewsTableViewModel: NSObject, ListViewModelProtocol {
+class NewsTableViewModel: NSObject, ListViewModelProtocol, ObserveOfflineProtocol {
 
-    // MARK: - Initial Set-up
+    // MARK: - Data source
     var articles: [Article] = []
-    weak var delegate: NewsTableProtocol?
-    weak var coordinator: NewsTableViewControllerDelegate?
+
+    // MARK: - Core Data service
     var ezCoreData: EZCoreData!
 
+    // MARK: - Delegate (to ViewController) and coordinator delegate (to Coordinator)
+    weak var delegate: NewsTableProtocol?
+
+    weak var coordinator: ArticleInteractionProtocol?
+
+    // MARK: - Handling Offline mode with message to the user
     override init() {
         super.init()
-
-        // Observes offline mode
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(NewsTableViewModel.phoneIsOffline(notification:)),
-                                               name: AppNotifications.PhoneIsOffline,
-                                               object: nil)
+        startWatchingOfflineMode()
     }
 
     deinit {
-        // Deallocs observers
-        NotificationCenter.default.removeObserver(self, name: AppNotifications.PhoneIsOffline, object: nil)
+        stopWatchingOfflineMode()
     }
 
+    @objc func handleOfflineSituation() {
+        delegate?.displayMessage("No Internet Connection")
+    }
+
+    // MARK: - Search on the database when the user seearches for a term or chaanges the list ordering
     var articlesOrder: ArticlesOrder = .id {
         didSet {
             searchArticles(searchTerm, orderBy: articlesOrder, ascending: true)
@@ -60,7 +65,7 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol {
 
     func userDidSelect(indexPath: IndexPath) {
         let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
-        coordinator?.newsTableViewControllerDidSelectArticle(article)
+        coordinator?.userDidSelectArticle(article)
     }
 
     fileprivate func searchArticles(_ searchTerm: String = "", orderBy: ArticlesOrder = .id, ascending: Bool = true) {
@@ -120,9 +125,11 @@ class NewsTableViewModel: NSObject, ListViewModelProtocol {
         isShowingBottomView = !isShowingBottomView
         return isShowingBottomView ? 0 : -height
     }
-
-    // MARK: - Offline modes
-    @objc func phoneIsOffline(notification: Notification) {
-        delegate?.displayMessage("No Internet Connection")
-    }
 }
+
+//extension NewsTableViewController: ListViewModelProtocol {
+//    func userDidSelect(indexPath: IndexPath) {
+//        let article = NewsTableViewModel.getObject(from: articles, with: indexPath)
+//        coordinator?.userDidSelectArticle(article)
+//    }
+//}

@@ -9,10 +9,7 @@
 import UIKit
 import EZCoreData
 
-protocol NewsTableViewControllerDelegate: class {
-    func newsTableViewControllerDidSelectArticle(_ selectedArticle: Article)
-}
-
+// MARK: - Coordinator Mandatory Implementation
 class NewsTableCoordinator: Coordinator {
     private let presenter: UINavigationController
     private var ezCoreData: EZCoreData!
@@ -41,8 +38,9 @@ class NewsTableCoordinator: Coordinator {
     }
 }
 
-extension NewsTableCoordinator: NewsTableViewControllerDelegate {
-    func newsTableViewControllerDidSelectArticle(_ selectedArticle: Article) {
+// MARK: - Article Interaction Protocol
+extension NewsTableCoordinator: ArticleInteractionProtocol {
+    func userDidSelectArticle(_ selectedArticle: Article) {
         let newsDetailCoordinator = NewsDetailCoordinator(presenter: presenter, article: selectedArticle)
         startCoordinator(newsDetailCoordinator)
     }

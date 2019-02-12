@@ -16,35 +16,43 @@ protocol NewsCollectionProtocol: class {
     func displayMessage(_ message: String)
 }
 
-class NewsCollectionViewModel: NSObject, ListViewModelProtocol {
-
+class NewsCollectionViewModel: NSObject {
     // MARK: - Initial Set-up
     var tags: [Tag] = []
 
     var ezCoreData: EZCoreData!
 
+    /// Delegate to ViewController
     weak var delegate: NewsCollectionProtocol?
 
-    weak var coordinator: NewsTableViewControllerDelegate?
+    /// Coordinator delegate to Coordinator
+    weak var coordinator: ArticleInteractionProtocol?
 
+    // MARK: - Observe for Offline mode
     override init() {
         super.init()
-
-        // Observes offline mode
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(NewsTableViewModel.phoneIsOffline(notification:)),
-                                               name: AppNotifications.PhoneIsOffline,
-                                               object: nil)
+        startWatchingOfflineMode()
     }
 
     deinit {
-        // Deallocs observers
-        NotificationCenter.default.removeObserver(self, name: AppNotifications.PhoneIsOffline, object: nil)
+        stopWatchingOfflineMode()
     }
+}
 
-    func userDidSelect(indexPath: IndexPath) {
+// MARK: - Offline mode
+extension NewsCollectionViewModel: ObserveOfflineProtocol {
+    @objc func handleOfflineSituation() {
+        delegate?.displayMessage("No Internet Connection")
     }
+}
 
+// MARK: - User Selected index path
+extension NewsCollectionViewModel: ListViewModelProtocol {
+    func userDidSelect(indexPath: IndexPath) { }
+}
+
+// MARK: - Core Data Service: GET Tags (and Articles)
+extension NewsCollectionViewModel {
     func updateDataSource() {
         do {
             tags = try Tag.readAll(context: ezCoreData.mainThreadContext)
@@ -55,8 +63,10 @@ class NewsCollectionViewModel: NSObject, ListViewModelProtocol {
             print("ERROR: \(error.localizedDescription)")
         }
     }
+}
 
-    // MARK: - GET Articles from API
+// MARK: - API Service: GET Articles (and Tags)
+extension NewsCollectionViewModel {
     func fetchAPIData() {
         APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
@@ -64,18 +74,13 @@ class NewsCollectionViewModel: NSObject, ListViewModelProtocol {
                 Article.deleteAll(except: articleList,
                                   backgroundContext: self.ezCoreData.privateThreadContext,
                                   completion: { _ in
-                    self.updateDataSource()
-                })
+                                      self.updateDataSource()
+                                  })
             case .failure(error: let error):
                 DispatchQueue.main.async {
                     self.delegate?.displayError(error: error, endRefreshing: true)
                 }
             }
         }
-    }
-
-    // MARK: - Offline modes
-    @objc func phoneIsOffline(notification: Notification) {
-        delegate?.displayMessage("No Internet Connection")
     }
 }

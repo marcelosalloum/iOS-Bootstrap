@@ -44,9 +44,9 @@ class NewsCollectionCoordinator: Coordinator {
     }
 }
 
-// MARK: - NewsTableViewControllerDelegate
-extension NewsCollectionCoordinator: NewsTableViewControllerDelegate {
-    func newsTableViewControllerDidSelectArticle(_ selectedArticle: Article) {
+// MARK: - ArticleInteractionProtocol
+extension NewsCollectionCoordinator: ArticleInteractionProtocol {
+    func userDidSelectArticle(_ selectedArticle: Article) {
         let newsDetailCoordinator = NewsDetailCoordinator(presenter: presenter, article: selectedArticle)
         startCoordinator(newsDetailCoordinator)
     }

@@ -18,7 +18,7 @@ import Foundation
 class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
 
     // MARK: - Initial Set-up
-    weak var coordinator: NewsTableViewControllerDelegate?
+    weak var coordinator: ArticleInteractionProtocol?
 
     var articlesTag: Tag! {
         didSet {
@@ -30,10 +30,10 @@ class InnerCollectionViewModel: NSObject, ListViewModelProtocol {
     var articles: [Article] = []
 
 //    weak var delegate: NewsCollectionProtocol?
-//    weak var coordinator: NewsTableViewControllerDelegate?
+//    weak var coordinator: ArticleInteractionProtocol?
 
     func userDidSelect(indexPath: IndexPath) {
         let article = type(of: self).getObject(from: articles, with: indexPath)
-        coordinator?.newsTableViewControllerDidSelectArticle(article)
+        coordinator?.userDidSelectArticle(article)
     }
 }
