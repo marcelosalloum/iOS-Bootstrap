@@ -331,7 +331,7 @@
 			path = "News Table";
 			sourceTree = "<group>";
 		};
-		1F86B9AB21E77A430059D2CB /* Screens */ = {
+		1F86B9AB21E77A430059D2CB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				1F88EFF321D5766900275972 /* LaunchScreen.storyboard */,
@@ -341,7 +341,7 @@
 				1FA831FF220A122500FB2B61 /* Auth */,
 				1F277617220E333C00496030 /* News */,
 			);
-			path = Screens;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		1F86B9AD21E77ABA0059D2CB /* Helpers */ = {
@@ -382,7 +382,7 @@
 				1F86B9AD21E77ABA0059D2CB /* Helpers */,
 				1F6653ED21E37CB300982F99 /* Models */,
 				1F9B4A7C21ED3F0500E5E360 /* Resources */,
-				1F86B9AB21E77A430059D2CB /* Screens */,
+				1F86B9AB21E77A430059D2CB /* Scenes */,
 				1F6CC45821F9CD100018869B /* Supporting Files */,
 			);
 			path = "iOS Bootstrap";
