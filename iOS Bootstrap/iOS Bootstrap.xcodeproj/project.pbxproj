@@ -24,7 +24,6 @@
 		1F27762022119D9000496030 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761F22119D9000496030 /* WelcomeViewController.swift */; };
 		1F27762222119E8500496030 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27762122119E8500496030 /* WelcomeViewModel.swift */; };
 		1F2776242211A1AA00496030 /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2776232211A1AA00496030 /* WelcomeTableViewCell.swift */; };
-		1F2ACF12220B9DD80084BFF0 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */; };
 		1F2ACF16220BA3460084BFF0 /* NewsCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF15220BA3460084BFF0 /* NewsCollectionCoordinator.swift */; };
 		1F2ACF18220BA35B0084BFF0 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF17220BA35B0084BFF0 /* NewsCollectionViewController.swift */; };
 		1F2ACF1A220BA3CB0084BFF0 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2ACF19220BA3CB0084BFF0 /* Collection.storyboard */; };
@@ -129,7 +128,6 @@
 		1F27761F22119D9000496030 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1F27762122119E8500496030 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		1F2776232211A1AA00496030 /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
-		1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		1F2ACF15220BA3460084BFF0 /* NewsCollectionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionCoordinator.swift; sourceTree = "<group>"; };
 		1F2ACF17220BA35B0084BFF0 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		1F2ACF19220BA3CB0084BFF0 /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		1F2ACF13220B9E000084BFF0 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */,
 				1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */,
 				1F9B4A7D21ED3F1A00E5E360 /* Fonts */,
 			);
@@ -862,7 +859,6 @@
 				1FA83214220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift in Sources */,
 				1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */,
 				1F27761E22119D0400496030 /* WelcomeCoordinator.swift in Sources */,
-				1F2ACF12220B9DD80084BFF0 /* AppTheme.swift in Sources */,
 				1F0397CB220476E200335E6C /* Coordinator.swift in Sources */,
 				1F3C24DE2211BD3C00A7C996 /* LoginViewModel.swift in Sources */,
 				1FE5D2A422133E3900021F3E /* NewsProtocols.swift in Sources */,
