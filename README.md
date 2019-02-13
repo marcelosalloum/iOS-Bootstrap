@@ -1,49 +1,80 @@
 # iOS-Bootstrap
 
+This app contains a set of pre-build common structures so serve as a search base. In other words, the idea is to use this structure as a basis for my/your new features and project structure. 
+
 ## Project Requirements
 
-* iOS Version: *9.4.1*
-* Swift version: *Swift 4*
-* Cocoapods Version: *1.5.3*
+* iOS Min Version: **10.0**
+* Swift version: **Swift 4.2**
+* Cocoapods Version: **1.5.3**
 
 ## Pods Versions
 
 * Alamofire: **4.7.3**                  # Deals with API requests
+* Bagel: **1.3.2**                      # Helps debugging network requests
 * Crashlytics: **3.10.8**               # Crash reports
 * EZCoreData: **0.2.0**                 # Deals withCore Data
 * Fabric: **1.7.12**                    # Beta distribution
 * Flurry-SDK/FlurrySDK **9.1.0**        # Analytics
 * Kingfisher: **4.10.0**                # Image caching
-* PKHUD: **5.2.0**                      # HUD: Head-Up Display
 * SwiftMessages: **6.0.0**              # Display Status Bar Messages
+* PKHUD: **5.2.0**                      # HUD: Head-Up Display
 
-## Proposal
+## Project Structure
 
-The main goal of this bootstrap is to put in place some of the basic of a project that would take 1 week for an experienced developer to write down. With this, there is a sensible ground from where to start building your awesome project.
+I'm using a few things I consider vital to an iOS project. A more in-depth explanation can be found in the items below:
 
-### MVP
+### Views
 
-[x] Create a table with the articles following the provided mockup;
+* Views Interface: the interface was mainly built from storyboards. Since I currently hav more experience with code built interfaces, I decided to challenge myself with storyboard this time, to make sure I know well of both approaches.
+* Reusable Views: The project uses reusable Xibs that are actually drawn in the interface builder through `IBDesignable`.
+* IBInspectable: there are a few designable views that are not being highly used at te moment, but are very customizable
 
-[x] Ability to visualize content (all provided info);
+### API
 
-[x] Ability to search articles (title and author);
+At the moment, the app is using a very simple API that is defined within a struct. It uses Alamofire and the async callbacks use clojures. A must-do in the short future is start using Promises, probably the [PromiseKit](https://github.com/mxcl/PromiseKit) library.
 
-[x] Ability to sort articles (date, title and author);
+### Persistence
 
-[x] Ability to mark articles as read/unread;
+For persistence the project currently uses the cocapod [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData), which is a pod authored by me in my persuit to better understand Core Data for iOS 10+.
 
-[x] Use a dependency manager;
+As a rule of thumb, I firsly use CoreData to show the locally stored data before updating it from the backend. A step-by-step explanation:
 
-[x] Tablet-adaptive layout;
+1. A user opens a screen (a table view or a colection view for instance)
+2. The app first shows any available data that is already stored in core data
+3. Meanwhile, the app performs an API request to update the data with the API response
+4. The retrieved data is then stored in the core data and any outdated data is removed
+5. Finally, the app displays the most recently updated data from the backend to the user
 
-[x] Persistent info;
+### Localization
 
-[x] Design tweaks: animation, icons, etc;
+The structure for Localizationis currently in place for the global project and one of the Storyboards.
 
-[x] Manage network errors;
+### Constants
 
-[x] Image caching;
+All constants are placed in a dedicated struct, to avoid using literals.
+
+### Custom Fonts
+
+There is a class declaring custom fonts using class/static methods, that instantiate the fonts nams using a string-struct instead of String literals. That is a very common setup to be used in any kind if project that uses custom fonts.
+
+### Custom Colors
+
+There is a class declaring custom colors using computed properties (similar to `UIColor.blue`, for instance). This is too a very common setup to be used in any kind if project that uses custom colors.
+
+### Crash Tracking
+
+Crashlytics is configured in the project but the keyy is actually public, which is a bad practice.
+
+### User Interaction Tracking
+
+Flurry is configured in the project but the keyy is actually public, which is a bad practice.
+
+### TO-DO
+
+* Implement promises using [PromiseKit](https://github.com/mxcl/PromiseKit)
+* Make sure all Storyboardsare localized
+* Put on an implementation of `Codable` that makes sense for my current `NSManagedObject` models
 
 ## Study Sources
 
