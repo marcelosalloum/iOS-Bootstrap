@@ -1,5 +1,5 @@
 //
-//  ArticleDetailViewModel.swift
+//  NewsDetailViewModel.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 10/01/19.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol ArticleDetailProtocol: class {
+protocol NewsDetailProtocol: class {
     func resetRightBarButtonItem(withText buttonText: String)
 }
 
-class ArticleDetailViewModel: NSObject {
+class NewsDetailViewModel: NSObject {
 
     // MARK: - Properties
-    weak var delegate: ArticleDetailProtocol?
+    weak var delegate: NewsDetailProtocol?
 
     var article: Article! {
         didSet {

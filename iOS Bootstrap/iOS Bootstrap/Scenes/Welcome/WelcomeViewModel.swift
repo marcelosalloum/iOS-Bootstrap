@@ -9,16 +9,17 @@
 import UIKit
 
 class WelcomeViewModel: NSObject {
+    // MARK: - Injected Dependencies
     weak var coordinator: WelcomeViewControllerDelegate?
 
-    public let objects: [StoryboardName] = [.auth, .news, .collection]
+    // MARK: - Properties
+    public let objects: [StoryboardName] = [.auth, .table, .collection]
+}
 
+// MARK: - User Selected index path
+extension WelcomeViewModel: ListViewModelProtocol {
     func userDidSelect(indexPath: IndexPath) {
         let storyboardName = WelcomeViewModel.getObject(from: objects, with: indexPath)
         coordinator?.userDidSelectStoryboard(storyboardName)
     }
-}
-
-extension WelcomeViewModel: ListViewModelProtocol {
-
 }

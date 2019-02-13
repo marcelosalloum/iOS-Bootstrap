@@ -1,5 +1,5 @@
 //
-//  ArticleDetailViewController.swift
+//  NewsDetailViewController.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 08/01/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ArticleDetailViewController: CoordinatedViewController {
+class NewsDetailViewController: CoordinatedViewController {
 
-    // MARK: - Properties
+    // MARK: - Injected Dependencies
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -19,15 +19,14 @@ class ArticleDetailViewController: CoordinatedViewController {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
 
-    // MARK: - View Model
-    var viewModel: ArticleDetailViewModel!
+    var viewModel: NewsDetailViewModel!
 
     // MARK: - User Action
     @IBAction func didSelectRightBarButtonItem(_ sender: UIBarButtonItem) {
         self.viewModel.userSwitchedReadStatus()
     }
 
-    // MARK: - View Controller methods
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -38,29 +37,36 @@ class ArticleDetailViewController: CoordinatedViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 
+}
+
+// MARK: - Interface Customization
+extension NewsDetailViewController: NewsDetailProtocol {
+
+    /// Setups the view appearance
     fileprivate func setupView() {
+        // Image
         guard let imageUrl = viewModel.article.imageUrl else { return }
         guard let url = URL(string: imageUrl) else { return }
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: url)
 
+        // Labels
         titleLabel?.text = viewModel.article.title
         authorLabel?.text = viewModel.article.authors
         contentLabel?.text = viewModel.article.content
         timeLabel?.text = NSDate.timeAgoSince(viewModel.article.date)
         tagsLabel?.text = viewModel.article.tagsToString()
 
+        // Navbar Button
         resetRightBarButtonItem()
     }
-}
 
-extension ArticleDetailViewController: ArticleDetailProtocol {
-    // MARK: - ArticleDetailProtocol
+    /// Sets up the right bar button in the navbar
     func resetRightBarButtonItem(withText buttonText: String = ArticleState.markUnread) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: buttonText,
             style: .plain,
             target: self,
-            action: #selector(ArticleDetailViewController.didSelectRightBarButtonItem(_:)))
+            action: #selector(NewsDetailViewController.didSelectRightBarButtonItem(_:)))
     }
 }

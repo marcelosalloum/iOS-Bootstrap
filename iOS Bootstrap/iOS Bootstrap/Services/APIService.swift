@@ -1,5 +1,5 @@
 //
-//  RestAPI.swift
+//  APIService.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 28/12/18.
@@ -16,7 +16,7 @@ struct APIPaths {
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
-struct APIHelper {
+struct APIService {
 
     static func getArticlesList(_ context: NSManagedObjectContext,
                                 _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
@@ -40,22 +40,7 @@ struct APIHelper {
     }
 }
 
-struct AppNotifications {
-    static let PhoneIsOffline = Notification.Name("PhoneIsOffline")
-    static let PhoneIsOnline = Notification.Name("PhoneIsOnline")
-}
-
-extension APIHelper {
+// MARK: - Reachability
+extension APIService: EnableReachabilityProtocol {
     static let reachabilityManager = NetworkReachabilityManager()
-
-    static func setupReachability() {
-        reachabilityManager?.startListening()
-        reachabilityManager?.listener = { _ in
-            if let isNetworkReachable = self.reachabilityManager?.isReachable, isNetworkReachable == true {
-                NotificationCenter.default.post(name: AppNotifications.PhoneIsOnline, object: nil)
-            } else {
-                NotificationCenter.default.post(name: AppNotifications.PhoneIsOffline, object: nil)
-            }
-        }
-    }
 }

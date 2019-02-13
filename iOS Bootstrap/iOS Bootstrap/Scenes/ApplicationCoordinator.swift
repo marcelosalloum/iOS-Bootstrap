@@ -8,6 +8,7 @@
 
 import UIKit
 import EZCoreData
+import CoreData
 
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow
@@ -22,7 +23,7 @@ class ApplicationCoordinator: Coordinator {
         ezCoreData = EZCoreData()
 
         // Offline Handling
-        APIHelper.setupReachability()
+        APIService.setupReachability()
 
         super.init()
         // Init Core Data
