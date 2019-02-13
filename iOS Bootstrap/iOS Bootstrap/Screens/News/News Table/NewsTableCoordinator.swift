@@ -24,7 +24,7 @@ class NewsTableCoordinator: Coordinator {
     private weak var newsTableViewController: NewsTableViewController?
     override func start() {
         // View Controller:
-        guard let newsTableViewController = NewsTableViewController.fromStoryboard(.news) else { return }
+        guard let newsTableViewController = NewsTableViewController.fromStoryboard(.table) else { return }
         setDeallocallable(with: newsTableViewController)
 
         // View Model:

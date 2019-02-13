@@ -43,7 +43,7 @@ class WelcomeCoordinator: Coordinator {
 extension WelcomeCoordinator: WelcomeViewControllerDelegate {
     func userDidSelectStoryboard(_ storyboardName: StoryboardName) {
         switch storyboardName {
-        case .news:
+        case .table:
             setupArticleListScreen()
         case .auth:
             setupAuthHomeCoordinator()

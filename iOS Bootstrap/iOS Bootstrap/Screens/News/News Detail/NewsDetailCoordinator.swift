@@ -24,7 +24,7 @@ class NewsDetailCoordinator: Coordinator {
     private weak var newsDetailViewController: NewsDetailViewController?
     override func start() {
         // View Controller:
-        guard let newsDetailViewController = NewsDetailViewController.fromStoryboard(.news) else { return }
+        guard let newsDetailViewController = NewsDetailViewController.fromStoryboard(.table) else { return }
         newsDetailViewController.title = "📚"
         // View Model:
         let viewModel = NewsDetailViewModel()

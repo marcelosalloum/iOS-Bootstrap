@@ -1,5 +1,5 @@
 //
-//  UserTextCollectionViewCell.swift
+//  NewsFirstLevelCollectionViewCell.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 07/02/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserTextCollectionViewCell: UICollectionViewCell {
+class NewsFirstLevelCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Injected Dependencies
     @IBOutlet weak var titleLabel: UILabel!
@@ -30,7 +30,7 @@ class UserTextCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - Interface Setup & Customization
-extension UserTextCollectionViewCell {
+extension NewsFirstLevelCollectionViewCell {
     /// Setup Subview(s)
     func setupSubviews() {
         // titleLabel
@@ -40,7 +40,7 @@ extension UserTextCollectionViewCell {
 }
 
 // MARK: - Data Source
-extension UserTextCollectionViewCell: UICollectionViewDataSource {
+extension NewsFirstLevelCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return viewModel.articles.count
@@ -48,9 +48,9 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellId = String(describing: InnerCardCollectionViewCell.self)
+        let cellId = String(describing: NewsSecondLevelCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
-                                                      for: indexPath) as! InnerCardCollectionViewCell
+                                                      for: indexPath) as! NewsSecondLevelCollectionViewCell
         cell.article = InnerCollectionViewModel.getObject(from: viewModel.articles, with: indexPath)
 
         return cell
@@ -58,7 +58,7 @@ extension UserTextCollectionViewCell: UICollectionViewDataSource {
 }
 
 // MARK: - Delegate
-extension UserTextCollectionViewCell: UICollectionViewDelegateFlowLayout {
+extension NewsFirstLevelCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.userDidSelect(indexPath: indexPath)
     }

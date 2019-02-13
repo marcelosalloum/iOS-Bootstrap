@@ -42,15 +42,15 @@ class NewsCollectionViewController: CoordinatedViewController {
 extension NewsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.tags.count
+        return viewModel.tagsViewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Get Cell
-        let cellId = String(describing: UserTextCollectionViewCell.self)
+        let cellId = String(describing: NewsFirstLevelCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
-                                                      for: indexPath) as! UserTextCollectionViewCell
+                                                      for: indexPath) as! NewsFirstLevelCollectionViewCell
         // Configure Cell
         let cellViewModel = NewsCollectionViewModel.getObject(from: viewModel.tagsViewModels, with: indexPath)
         cell.viewModel = cellViewModel

@@ -1,5 +1,5 @@
 //
-//  UserTextCollectionViewCell.swift
+//  NewsFirstLevelCollectionViewCell.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 07/02/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InnerCardCollectionViewCell: UICollectionViewCell {
+class NewsSecondLevelCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Injected Dependencies (Interface Builder included)
     @IBOutlet weak var imageView: UIImageView!
@@ -24,7 +24,7 @@ class InnerCardCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - Interface Setup & Customization
-extension InnerCardCollectionViewCell {
+extension NewsSecondLevelCollectionViewCell {
     func setupSubviews() {
         // Set-up the cell content
         titleLabel.text = article.title

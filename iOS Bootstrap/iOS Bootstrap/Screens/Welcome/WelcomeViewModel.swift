@@ -13,7 +13,7 @@ class WelcomeViewModel: NSObject {
     weak var coordinator: WelcomeViewControllerDelegate?
 
     // MARK: - Properties
-    public let objects: [StoryboardName] = [.auth, .news, .collection]
+    public let objects: [StoryboardName] = [.auth, .table, .collection]
 }
 
 // MARK: - User Selected index path
