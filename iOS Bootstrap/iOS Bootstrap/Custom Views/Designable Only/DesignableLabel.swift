@@ -29,7 +29,7 @@ public class DesignableLabel: UILabel {
 
     fileprivate func commonInit() {
         self.font = UIFont.withSize(16)
-        self.tintColor = UIColor.mainColor()
+        self.tintColor = UIColor.mainColor
     }
 
     // MARK: - Formatting

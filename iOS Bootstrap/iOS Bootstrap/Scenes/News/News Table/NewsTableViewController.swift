@@ -136,7 +136,7 @@ extension NewsTableViewController: UITableViewDelegate {
             articleCell.updateWasReadStatus(initialReadStatus)
             tableView.reloadRows(at: [indexPath], with: .none)
         }
-        readStatus.backgroundColor = Color.mainColor()
+        readStatus.backgroundColor = Color.mainColor
 
         return [readStatus]
     }
