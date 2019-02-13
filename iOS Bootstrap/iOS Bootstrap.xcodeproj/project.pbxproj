@@ -232,6 +232,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F22B647221454DB001A34AD /* Designable Only */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
+				1FEDC18F220A315000AC5E84 /* DesignableButton.swift */,
+				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
+				1FE54135220A516200981D82 /* DesignableTextField.swift */,
+			);
+			path = "Designable Only";
+			sourceTree = "<group>";
+		};
 		1F277617220E333C00496030 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,10 +407,7 @@
 		1F8BDB4021E53417007A338A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
-				1FEDC18F220A315000AC5E84 /* DesignableButton.swift */,
-				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
-				1FE54135220A516200981D82 /* DesignableTextField.swift */,
+				1F22B647221454DB001A34AD /* Designable Only */,
 				1FB6105422144B9A00B5F1A3 /* MyCustomView.swift */,
 				1FB6105622144BA900B5F1A3 /* MyCustomView.xib */,
 			);
