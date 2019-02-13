@@ -7,12 +7,16 @@
 //
 //
 
-import Foundation
 import CoreData
 import EZCoreData
 
+// MARK: - NSManagedObject Declaration
 public class Article: NSManagedObject {
-    /// Transfors the list of tagsinto a comma-separated string
+}
+
+// MARK: - Convenience methods
+extension Article {
+    /// Transforms the list of tags into a comma-separated string
     func tagsToString() -> String {
 
         guard let tags = self.tags else { return "" }
@@ -32,6 +36,7 @@ public class Article: NSManagedObject {
     }
 }
 
+// MARK: - EZCoreData
 extension Article {
     /// Populates Article objects from JSON
     override open func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {
