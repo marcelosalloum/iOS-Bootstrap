@@ -73,7 +73,7 @@ extension NewsCollectionViewModel {
 // MARK: - API Service: GET Articles (and Tags)
 extension NewsCollectionViewModel {
     func fetchAPIData() {
-        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
+        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
                 Article.deleteAll(except: articleList,

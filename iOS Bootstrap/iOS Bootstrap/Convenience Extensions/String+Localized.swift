@@ -13,17 +13,7 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 
-    public func localizedWithComment(comment: String) -> String {
-        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
-    }
-
-    public func capitalizingFirstLetter() -> String {
-        let first = prefix(1).uppercased()
-        let other = self.lowercased().dropFirst()
-        return first + other
-    }
-
-    public mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
+    public func localized(value: String = "", comment: String = "") -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: value, comment: comment)
     }
 }

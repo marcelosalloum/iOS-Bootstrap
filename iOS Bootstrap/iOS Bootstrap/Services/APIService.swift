@@ -1,5 +1,5 @@
 //
-//  RestAPI.swift
+//  APIService.swift
 //  iOS Bootstrap
 //
 //  Created by Marcelo Salloum dos Santos on 28/12/18.
@@ -16,7 +16,7 @@ struct APIPaths {
     static let articleURL: String = "\(APIPaths.rootUrl)/article"
 }
 
-struct APIHelper {
+struct APIService {
 
     static func getArticlesList(_ context: NSManagedObjectContext,
                                 _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
@@ -41,6 +41,6 @@ struct APIHelper {
 }
 
 // MARK: - Reachability
-extension APIHelper: EnableReachabilityProtocol {
+extension APIService: EnableReachabilityProtocol {
     static let reachabilityManager = NetworkReachabilityManager()
 }

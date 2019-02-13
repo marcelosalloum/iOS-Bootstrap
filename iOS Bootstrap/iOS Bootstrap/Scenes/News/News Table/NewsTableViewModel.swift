@@ -84,7 +84,7 @@ extension NewsTableViewModel: ListViewModelProtocol {
 // MARK: - API Service: GET Articles
 extension NewsTableViewModel {
     func fetchAPIData() {
-        APIHelper.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
+        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
             switch apiCompletion {
             case .success(result: let articleList):
                 Article.deleteAll(except: articleList,

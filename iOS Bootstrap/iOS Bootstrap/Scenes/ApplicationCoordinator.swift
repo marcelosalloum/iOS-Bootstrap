@@ -23,7 +23,7 @@ class ApplicationCoordinator: Coordinator {
         ezCoreData = EZCoreData()
 
         // Offline Handling
-        APIHelper.setupReachability()
+        APIService.setupReachability()
 
         super.init()
         // Init Core Data
