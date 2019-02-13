@@ -6,12 +6,12 @@ target 'iOS Bootstrap' do
   use_frameworks!
 
   # Makes REST requests:
-  pod 'EZCoreData'                          # Deals with Core Data
-  pod 'Alamofire', '4.7.3'                  # Deals with API requests
-  pod 'PKHUD', '5.2.0'                      # HUD: Head-Up Display
-  pod 'Kingfisher', '4.10.0'                # Image caching
-  pod 'Fabric', '1.7.12'                    # Beta distribution
-  pod 'Crashlytics', '3.10.8'               # Crash reports
-  pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'   # Analytics
-  pod 'Bagel', '~>  1.3.2', :configurations => ['Debug']
+  pod 'Alamofire', '4.7.3'                                  # Deals with API requests
+  pod 'Bagel', '~>  1.3.2', :configurations => ['Debug']    # Debugging network requests
+  pod 'Crashlytics', '3.10.8'                               # Crash reports
+  pod 'EZCoreData'                                          # Deals with Core Data
+  pod 'Fabric', '1.7.12'                                    # Beta distribution
+  pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'                   # Analytics
+  pod 'Kingfisher', '4.10.0'                                # Image caching
+  pod 'PKHUD', '5.2.0'                                      # HUD: Head-Up Display
 end
