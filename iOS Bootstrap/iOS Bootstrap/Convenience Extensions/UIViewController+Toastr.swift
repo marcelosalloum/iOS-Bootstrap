@@ -8,9 +8,8 @@
 
 import UIKit
 
-
 extension UIViewController {
-    
+
     /// Displays a simple toastr in the ViewController
     func toastr(_ message: String, delay: Double = 2.0) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
@@ -19,5 +18,5 @@ extension UIViewController {
             alert.dismiss(animated: true)
         }
     }
-    
+
 }

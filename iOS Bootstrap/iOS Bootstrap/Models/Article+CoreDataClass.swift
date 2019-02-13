@@ -11,15 +11,14 @@ import Foundation
 import CoreData
 import EZCoreData
 
-
 public class Article: NSManagedObject {
     /// Transfors the list of tagsinto a comma-separated string
     func tagsToString() -> String {
-        
+
         guard let tags = self.tags else { return "" }
         if tags.count == 0 { return "" }
         guard let tagsArray = tags.allObjects as? [Tag] else { return "" }
-        
+
         var stringfiedTags = ""
         for tag in tagsArray {
             guard let label = tag.label else { continue }
@@ -28,11 +27,10 @@ public class Article: NSManagedObject {
             }
             stringfiedTags += label
         }
-        
+
         return stringfiedTags
     }
 }
-
 
 extension Article {
     /// Populates Article objects from JSON
@@ -56,7 +54,10 @@ extension Article {
 
         if let tags = json["tags"] as? [[String: Any]] {
             do {
-                guard let tagObjects = try Tag.importList(tags, idKey: "id", shouldSave: false, context: context) else { return }
+                guard let tagObjects = try Tag.importList(tags,
+                                                          idKey: "id",
+                                                          shouldSave: false,
+                                                          context: context) else { return }
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)
             } catch let error {

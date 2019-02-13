@@ -9,7 +9,7 @@
 "ARTICLES_LIST_TITLE" = "News";
 "Warning" = "Warning";
 "No Internet Connection" = "No Internet Connection";
-"Search the news..." = "Search the news...";
+"SEARCH_NEWS_PLACEHOLDER" = "Search the news...";
 
 
 // Error Messages:
