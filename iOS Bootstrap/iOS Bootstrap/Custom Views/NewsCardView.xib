@@ -20,7 +20,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsCardView" customModule="iOS_Bootstrap" customModuleProvider="target">
             <connections>
+                <outlet property="authorsLabel" destination="zWp-yJ-z3f" id="O5Q-v1-DgU"/>
                 <outlet property="imageView" destination="kMg-rR-R6c" id="118-Oc-iX8"/>
+                <outlet property="timeLabel" destination="umK-uG-TlZ" id="hd6-GZ-F9x"/>
+                <outlet property="titleLabel" destination="e0E-uR-bK6" id="gK1-X5-KAA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -40,7 +43,7 @@
                     <color key="textColor" red="0.2039215714" green="0.21176470820000001" blue="0.24705882370000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umK-uG-TlZ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umK-uG-TlZ">
                     <rect key="frame" x="136" y="96" width="30" height="16"/>
                     <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
                     <color key="textColor" red="0.48235294220000002" green="0.48235294220000002" blue="0.50588238240000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,16 +67,17 @@
             <color key="backgroundColor" red="0.91764706370000004" green="0.92941176889999999" blue="0.95686274770000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="e0E-uR-bK6" firstAttribute="leading" secondItem="kMg-rR-R6c" secondAttribute="trailing" constant="8" id="66c-B3-nkc"/>
-                <constraint firstItem="umK-uG-TlZ" firstAttribute="leading" secondItem="e0E-uR-bK6" secondAttribute="leading" id="6v1-ac-pMp"/>
-                <constraint firstItem="OwI-Ny-HPV" firstAttribute="leading" secondItem="umK-uG-TlZ" secondAttribute="trailing" constant="16" id="R9Q-UT-eUd"/>
-                <constraint firstItem="OwI-Ny-HPV" firstAttribute="centerY" secondItem="umK-uG-TlZ" secondAttribute="centerY" id="SYF-VF-py5"/>
-                <constraint firstItem="zWp-yJ-z3f" firstAttribute="leading" secondItem="OwI-Ny-HPV" secondAttribute="trailing" constant="16" id="Tdp-qQ-Go8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="umK-uG-TlZ" secondAttribute="bottom" constant="16" id="AOT-kc-KL8"/>
+                <constraint firstItem="zWp-yJ-z3f" firstAttribute="centerY" secondItem="OwI-Ny-HPV" secondAttribute="centerY" id="BMm-VU-TMt"/>
+                <constraint firstItem="zWp-yJ-z3f" firstAttribute="leading" secondItem="OwI-Ny-HPV" secondAttribute="trailing" constant="16" id="Bop-Of-ZaK"/>
+                <constraint firstItem="umK-uG-TlZ" firstAttribute="leading" secondItem="e0E-uR-bK6" secondAttribute="leading" id="LMf-DB-Rnr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zWp-yJ-z3f" secondAttribute="trailing" constant="8" id="SLP-4x-x85"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e0E-uR-bK6" secondAttribute="trailing" constant="8" id="aIh-8W-tcP"/>
                 <constraint firstItem="kMg-rR-R6c" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="aKi-L0-FVI"/>
                 <constraint firstItem="e0E-uR-bK6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="dgY-oD-k0a"/>
+                <constraint firstItem="OwI-Ny-HPV" firstAttribute="centerY" secondItem="umK-uG-TlZ" secondAttribute="centerY" id="g00-PT-iyH"/>
                 <constraint firstItem="kMg-rR-R6c" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gcb-6Z-ln6"/>
-                <constraint firstItem="zWp-yJ-z3f" firstAttribute="centerY" secondItem="OwI-Ny-HPV" secondAttribute="centerY" id="jiE-nO-3EQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="umK-uG-TlZ" secondAttribute="bottom" constant="16" id="zgc-cL-XuZ"/>
+                <constraint firstItem="OwI-Ny-HPV" firstAttribute="leading" secondItem="umK-uG-TlZ" secondAttribute="trailing" constant="16" id="igc-Vy-hVq"/>
                 <constraint firstItem="kMg-rR-R6c" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zoj-Ze-vH2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

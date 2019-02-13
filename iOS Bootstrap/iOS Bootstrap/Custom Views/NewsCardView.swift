@@ -12,7 +12,10 @@ import UIKit
 open class NewsCardView: UIView, NibFileOwnerLoadable {
 
     @IBOutlet weak var imageView: UIImageView!
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var authorsLabel: UILabel!
+    
     // MARK: - Custom Init
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
