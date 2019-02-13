@@ -58,7 +58,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zuy-SR-uBN" customClass="MyCustomView" customModule="iOS_Bootstrap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zuy-SR-uBN" customClass="NewsCardView" customModule="iOS_Bootstrap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="311" width="375" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>

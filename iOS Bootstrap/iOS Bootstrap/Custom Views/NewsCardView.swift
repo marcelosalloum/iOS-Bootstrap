@@ -9,7 +9,9 @@
 import UIKit
 
 @IBDesignable
-open class MyCustomView: UIView, NibFileOwnerLoadable {
+open class NewsCardView: UIView, NibFileOwnerLoadable {
+
+    @IBOutlet weak var imageView: UIImageView!
 
     // MARK: - Custom Init
     required public init?(coder aDecoder: NSCoder) {

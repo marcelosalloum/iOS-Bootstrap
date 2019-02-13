@@ -87,8 +87,8 @@
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
 		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
 		1FB6105322144B2900B5F1A3 /* NibFileOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6105222144B2900B5F1A3 /* NibFileOwnerLoadable.swift */; };
-		1FB6105522144B9A00B5F1A3 /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6105422144B9A00B5F1A3 /* MyCustomView.swift */; };
-		1FB6105722144BA900B5F1A3 /* MyCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6105622144BA900B5F1A3 /* MyCustomView.xib */; };
+		1FB6105522144B9A00B5F1A3 /* NewsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */; };
+		1FB6105722144BA900B5F1A3 /* NewsCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6105622144BA900B5F1A3 /* NewsCardView.xib */; };
 		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		1FE54134220A50AE00981D82 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE54133220A50AE00981D82 /* DesignableLabel.swift */; };
 		1FE54136220A516200981D82 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE54135220A516200981D82 /* DesignableTextField.swift */; };
@@ -197,8 +197,8 @@
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FB6105222144B2900B5F1A3 /* NibFileOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibFileOwnerLoadable.swift; sourceTree = "<group>"; };
-		1FB6105422144B9A00B5F1A3 /* MyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
-		1FB6105622144BA900B5F1A3 /* MyCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomView.xib; sourceTree = "<group>"; };
+		1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardView.swift; sourceTree = "<group>"; };
+		1FB6105622144BA900B5F1A3 /* NewsCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCardView.xib; sourceTree = "<group>"; };
 		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		1FE54133220A50AE00981D82 /* DesignableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
 		1FE54135220A516200981D82 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
@@ -408,8 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				1F22B647221454DB001A34AD /* Designable Only */,
-				1FB6105422144B9A00B5F1A3 /* MyCustomView.swift */,
-				1FB6105622144BA900B5F1A3 /* MyCustomView.xib */,
+				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
+				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -707,7 +707,7 @@
 				1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */,
 				1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */,
 				1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */,
-				1FB6105722144BA900B5F1A3 /* MyCustomView.xib in Resources */,
+				1FB6105722144BA900B5F1A3 /* NewsCardView.xib in Resources */,
 				1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */,
 				1F88EFED21D5766900275972 /* Table.storyboard in Resources */,
 				1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */,
@@ -879,7 +879,7 @@
 				1FE5D2A02212026B00021F3E /* NewsCollectionViewModel.swift in Sources */,
 				1F3DB457220CD73500F931A5 /* NewsFirstLevelCollectionViewCell.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
-				1FB6105522144B9A00B5F1A3 /* MyCustomView.swift in Sources */,
+				1FB6105522144B9A00B5F1A3 /* NewsCardView.swift in Sources */,
 				1F88EFF021D5766900275972 /* iOS_Bootstrap.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
