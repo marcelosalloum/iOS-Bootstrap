@@ -46,6 +46,14 @@ As a rule of thumb, I firsly use CoreData to show the locally stored data before
 4. The retrieved data is then stored in the core data and any outdated data is removed
 5. Finally, the app displays the most recently updated data from the backend to the user
 
+### App Architecture: MVVM-C
+
+ The project makes use of MVVM-C (Model–View–ViewModel Coordinator). It basically has all advantages of classic MVVM and adds a layer for dependency injection and flow coordination, which is the Coordinator.
+
+ I'm particularly a big fan of raw MVVM and I'm finding great advantages of using the Coordinator as well, such as having simpler ViewControllers that con't know where they are in terms of application flow. This way it's easier to reuse ViewControllers throughout the application.
+
+ If you don't use Cordinators, you're probabbly placing some of that code in a custom NavigationController or UIViewController. I find coordinators a more elegant solution though.
+
 ### Localization
 
 The structure for Localizationis currently in place for the global project and one of the Storyboards.
@@ -70,10 +78,17 @@ Crashlytics is configured in the project but the keyy is actually public, which 
 
 Flurry is configured in the project but the keyy is actually public, which is a bad practice.
 
+### Unit Tests
+
+Currently, that part is still missing in this project but I've made a setup to make sure the AppDelegate won't be loaded for the Unit Tests, which makes your environment easier to control.
+
+If you'd like to check how I like o do Unit Tests, have a look on my Core Data lib: [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData). 
+
 ### TO-DO
 
 * Implement promises using [PromiseKit](https://github.com/mxcl/PromiseKit)
 * Make sure all Storyboardsare localized
+* Add a few Unit tsts and UI tests.
 * Put on an implementation of `Codable` that makes sense for my current `NSManagedObject` models
 
 ## Study Sources
