@@ -26,9 +26,9 @@ I'm using a few things I consider vital to an iOS project. A more in-depth expla
 
 ### Views
 
-* Views Interface: the interface was mainly built from storyboards. Since I currently hav more experience with code built interfaces, I decided to challenge myself with storyboard this time, to make sure I know well of both approaches.
-* Reusable Views: The project uses reusable Xibs that are actually drawn in the interface builder through `IBDesignable`.
-* IBInspectable: there are a few designable views that are not being highly used at te moment, but are very customizable
+* **Views Interface**: the interface was mainly built from storyboards. Since I currently hav more experience with code built interfaces, I decided to challenge myself with storyboard this time, to make sure I know well of both approaches.
+* **Reusable Views**: The project uses reusable Xibs that are actually drawn in the interface builder through `IBDesignable`.
+* **IBInspectable**: there are a few designable views that are not being highly used at te moment, but are very customizable
 
 ### API
 
@@ -77,6 +77,10 @@ Crashlytics is configured in the project but the keyy is actually public, which 
 ### User Interaction Tracking
 
 Flurry is configured in the project but the keyy is actually public, which is a bad practice.
+
+### Continuous Integration (CI)
+
+This project is currently not making use of CI, but I recommend Travis-CI or even fastlane, which you can run rom your machine, which should be a more controllable environment.
 
 ### Unit Tests
 
