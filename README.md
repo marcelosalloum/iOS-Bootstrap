@@ -10,15 +10,17 @@ This app contains a set of pre-build common structures so serve as a search base
 
 ## Pods Versions
 
-* Alamofire: **4.7.3**                  # Deals with API requests
-* Bagel: **1.3.2**                      # Helps debugging network requests
-* Crashlytics: **3.10.8**               # Crash reports
-* EZCoreData: **0.2.0**                 # Deals withCore Data
-* Fabric: **1.7.12**                    # Beta distribution
-* Flurry-SDK/FlurrySDK **9.1.0**        # Analytics
-* Kingfisher: **4.10.0**                # Image caching
-* SwiftMessages: **6.0.0**              # Display Status Bar Messages
-* PKHUD: **5.2.0**                      # HUD: Head-Up Display
+| Pod | Version | Description |
+|:------|:-----------|:-----------|
+| Alamofire| **4.7.3** | Deals with API requests |
+| Bagel | **1.3.2** | Helps debugging network requests |
+| Crashlytics    | **3.10.8** | Crash reports |
+| [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData)    | **0.2.0** | Deals with Core Data and concurrent core data requests |
+| Fabric    | **1.7.12** | Beta distribution |
+| Flurry-SDK/FlurrySDK    | **9.1.0** | Analytics |
+| Kingfisher    | **4.10.0** | Image caching |
+| SwiftMessages    | **6.0.0** | Display Status Bar Messages |
+| PKHUD    | **5.2.0** | HUD: Head-Up Display |
 
 ## Project Structure
 
