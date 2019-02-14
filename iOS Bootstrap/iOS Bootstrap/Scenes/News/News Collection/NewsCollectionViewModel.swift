@@ -47,7 +47,7 @@ class NewsCollectionViewModel: NSObject {
 // MARK: - Offline mode
 extension NewsCollectionViewModel: ObserveOfflineProtocol {
     @objc func handleOfflineSituation() {
-        delegate?.displayMessage("No Internet Connection")
+        delegate?.displayMessage("NO_INTERNET_CONNECTION".localized)
     }
 }
 

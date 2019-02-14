@@ -24,7 +24,7 @@ class NewsCollectionViewController: CoordinatedViewController {
         collectionView.delegate = self
 
         // Nav Bar
-        self.title = "Collection Sample"
+        self.title = "COLLECTION".localized
     }
 
     override func viewWillAppear(_ animated: Bool) {

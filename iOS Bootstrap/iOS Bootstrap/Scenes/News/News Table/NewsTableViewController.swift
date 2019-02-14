@@ -48,7 +48,8 @@ class NewsTableViewController: CoordinatedViewController {
         // BottomView
         bottomViewBottomConstraint.constant = -100
 
-        // Navigation Controller
+        // Navbar
+        self.title = "NEWS".localized
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.setNavigationBarHidden(false, animated: false)
     }

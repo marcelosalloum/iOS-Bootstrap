@@ -57,7 +57,8 @@ extension NewsDetailViewController: NewsDetailProtocol {
         timeLabel?.text = NSDate.timeAgoSince(viewModel.article.date)
         tagsLabel?.text = viewModel.article.tagsToString()
 
-        // Navbar Button
+        // Navbar
+        self.title = "NEWS".localized
         resetRightBarButtonItem()
     }
 
