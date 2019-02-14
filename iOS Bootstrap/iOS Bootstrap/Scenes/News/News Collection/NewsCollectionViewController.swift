@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PKHUD
 
 class NewsCollectionViewController: CoordinatedViewController {
 
@@ -68,13 +67,13 @@ extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - View Model: NewsCollectionViewDelegate
-extension NewsCollectionViewController: NewsCollectionViewDelegate {
+extension NewsCollectionViewController: NewsCollectionViewDelegate, HUD {
     func reloadData(endRefreshing: Bool) {
         self.collectionView.reloadData()
     }
 
     func displayError(error: Error, endRefreshing: Bool) {
-        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+        self.showErrorHUD(message: error.localizedDescription)
     }
 
     func displayMessage(_ message: String) {

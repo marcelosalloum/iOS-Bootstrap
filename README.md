@@ -20,7 +20,7 @@ This app contains a set of pre-build common structures so serve as a search base
 | Flurry-SDK/FlurrySDK                                          | **9.1.0**     | Analytics |
 | Kingfisher                                                    | **4.10.0**    | Image caching |
 | SwiftMessages                                                 | **6.0.0**     | Display Status Bar Messages |
-| PKHUD                                                         | **5.2.0**     |HUD: Head-Up Display |
+| SVProgressHUD                                                 | **2.2.5**     |HUD: Head-Up Display |
 
 ## Project Structure
 

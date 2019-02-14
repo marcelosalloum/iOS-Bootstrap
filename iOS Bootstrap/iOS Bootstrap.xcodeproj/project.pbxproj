@@ -18,6 +18,7 @@
 		1F1A40A121D69524005BC0F3 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* NewsTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* NewsDetailViewModel.swift */; };
+		1F22B64B2215A128001A34AD /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */; };
 		1F27761922119B0A00496030 /* AuthHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761822119B0A00496030 /* AuthHomeViewController.swift */; };
 		1F27761C22119C5600496030 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F27761B22119C5600496030 /* Welcome.storyboard */; };
 		1F27761E22119D0400496030 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761D22119D0400496030 /* WelcomeCoordinator.swift */; };
@@ -110,6 +111,7 @@
 		1F1A40A021D69524005BC0F3 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		1F27761822119B0A00496030 /* AuthHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHomeViewController.swift; sourceTree = "<group>"; };
 		1F27761B22119C5600496030 /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		1F27761D22119D0400496030 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				1F2BD47422087D4300C128CE /* UIViewController+Toastr.swift */,
 				1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */,
 				1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */,
+				1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */,
 			);
 			path = "Convenience Extensions";
 			sourceTree = "<group>";
@@ -716,7 +719,7 @@
 				"${BUILT_PRODUCTS_DIR}/EZCoreData/EZCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -728,7 +731,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flurry_iOS_SDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -815,6 +818,7 @@
 				1FA83216220A1AE200FB2B61 /* ForgotPasswordViewController.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F27762222119E8500496030 /* WelcomeViewModel.swift in Sources */,
+				1F22B64B2215A128001A34AD /* UIViewController+HUD.swift in Sources */,
 				1FE5D2A02212026B00021F3E /* NewsCollectionViewModel.swift in Sources */,
 				1F3DB457220CD73500F931A5 /* NewsFirstLevelCollectionViewCell.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
