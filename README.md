@@ -11,16 +11,16 @@ This app contains a set of pre-build common structures so serve as a search base
 ## Pods Versions
 
 | Pod | Version | Description |
-|:------|:-----------|:-----------|
-| Alamofire| **4.7.3** | Deals with API requests |
-| Bagel | **1.3.2** | Helps debugging network requests |
-| Crashlytics    | **3.10.8** | Crash reports |
-| [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData)    | **0.2.0** | Deals with Core Data and concurrent core data requests |
-| Fabric    | **1.7.12** | Beta distribution |
-| Flurry-SDK/FlurrySDK    | **9.1.0** | Analytics |
-| Kingfisher    | **4.10.0** | Image caching |
-| SwiftMessages    | **6.0.0** | Display Status Bar Messages |
-| PKHUD    | **5.2.0** | HUD: Head-Up Display |
+|:------                                                        |:-----------   |:----------- |
+| Alamofire                                                     | **4.7.3**     | Deals with API requests |
+| Bagel                                                         | **1.3.2**     | Helps debugging network requests |
+| Crashlytics                                                   | **3.10.8**    | Crash reports |
+| [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData)    | **0.2.0**     | Deals with Core Data and concurrent core data requests |
+| Fabric                                                        | **1.7.12**    | Beta distribution |
+| Flurry-SDK/FlurrySDK                                          | **9.1.0**     | Analytics |
+| Kingfisher                                                    | **4.10.0**    | Image caching |
+| SwiftMessages                                                 | **6.0.0**     | Display Status Bar Messages |
+| PKHUD                                                         | **5.2.0**     |HUD: Head-Up Display |
 
 ## Project Structure
 
@@ -35,6 +35,10 @@ I'm using a few things I consider vital to an iOS project. A more in-depth expla
 ### API
 
 At the moment, the app is using a very simple API that is defined within a struct. It uses Alamofire and the async callbacks use clojures. A must-do in the short future is start using Promises, probably the [PromiseKit](https://github.com/mxcl/PromiseKit) library.
+
+My API is actually an apIary (mocked API), which dosn't have authentication in place.
+
+The API calls implement a layer on top of Alamofire, which is a good practice and better explained [here](https://mecid.github.io/2019/02/13/hiding-third-party-dependencies-with-protocols-and-extensions/).
 
 ### Persistence
 
@@ -54,7 +58,7 @@ As a rule of thumb, I firsly use CoreData to show the locally stored data before
 
  I'm particularly a big fan of raw MVVM and I'm finding great advantages of using the Coordinator as well, such as having simpler ViewControllers that con't know where they are in terms of application flow. This way it's easier to reuse ViewControllers throughout the application.
 
- If you don't use Cordinators, you're probabbly placing some of that code in a custom NavigationController or UIViewController. I find coordinators a more elegant solution though.
+ If you don't use Cordinators, you're probabbly placing some of that kind of code in a custom UINavigationController or a base UIViewController. I find coordinators a more elegant solution though.
 
 ### Localization
 
@@ -94,11 +98,12 @@ If you'd like to check how I like o do Unit Tests, have a look on my Core Data l
 
 * Implement promises using [PromiseKit](https://github.com/mxcl/PromiseKit)
 * Make sure all Storyboardsare localized
-* Add a few Unit tsts and UI tests.
+* Add a few Unit tests and UI tests.
 * Put on an implementation of `Codable` that makes sense for my current `NSManagedObject` models
 
-## Study Sources
+## Interesting Links
 
 * Generate all icon sizes from one source image: https://appicon.co/
 * [Unit Test]: [Faking App Delegate](https://marcosantadev.com/fake-appdelegate-unit-testing-swift/)
 * [Unit Test]: [Preparing InMemory Persistent Store](https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee) to avoid messing with production data
+* [Hiding third-party dependencies with protocols and extensions](https://mecid.github.io/2019/02/13/hiding-third-party-dependencies-with-protocols-and-extensions/)
