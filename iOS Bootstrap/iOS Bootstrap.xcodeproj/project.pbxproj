@@ -70,6 +70,7 @@
 		1FA83212220A19E500FB2B61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83211220A19E500FB2B61 /* SignUpViewController.swift */; };
 		1FA83214220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */; };
 		1FA83216220A1AE200FB2B61 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */; };
+		1FA9C638221731F70017A58D /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C637221731F70017A58D /* UIView+Animation.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -167,6 +168,7 @@
 		1FA83211220A19E500FB2B61 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCoordinator.swift; sourceTree = "<group>"; };
 		1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		1FA9C637221731F70017A58D /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -515,6 +517,14 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		1FA9C636221731BF0017A58D /* View Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FA9C637221731F70017A58D /* UIView+Animation.swift */,
+			);
+			path = "View Extensions";
+			sourceTree = "<group>";
+		};
 		1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,6 +831,7 @@
 				1FE5D2A22212F32300021F3E /* InnerCollectionViewModel.swift in Sources */,
 				1FE54134220A50AE00981D82 /* DesignableLabel.swift in Sources */,
 				1FB6105322144B2900B5F1A3 /* NibFileOwnerLoadable.swift in Sources */,
+				1FA9C638221731F70017A58D /* UIView+Animation.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* NewsTableViewController.swift in Sources */,
 				1F0397C122021F6700335E6C /* UIViewController+Storyboard.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
