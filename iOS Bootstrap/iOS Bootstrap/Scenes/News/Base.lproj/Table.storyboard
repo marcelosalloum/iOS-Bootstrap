@@ -62,67 +62,25 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NewsTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="100" id="0un-nb-UQs" customClass="NewsTableViewCell" customModule="iOS_Bootstrap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0un-nb-UQs" id="AeO-Jd-eOx">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0un-nb-UQs" id="AeO-Jd-eOx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KWE-T4-czB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100.33333333333333"/>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="Q2p-bO-Vzs"/>
-                                                        <constraint firstAttribute="width" secondItem="KWE-T4-czB" secondAttribute="height" multiplier="1:1" id="m8W-BL-gtI"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOJ-E0-QFQ">
-                                                    <rect key="frame" x="108" y="8.3333333333333339" width="36.666666666666657" height="20.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="Colfax-Bold" family="Colfax" pointSize="17"/>
-                                                    <color key="textColor" red="0.20392157137393951" green="0.21176470816135406" blue="0.24705882370471954" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6G-J6-L0O">
-                                                    <rect key="frame" x="108" y="73.666666666666657" width="30" height="15.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
-                                                    <color key="textColor" red="0.48235294222831726" green="0.48235294222831726" blue="0.5058823823928833" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82K-gs-2uN">
-                                                    <rect key="frame" x="154" y="73" width="2" height="17"/>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="2" id="4SP-NK-V65"/>
-                                                        <constraint firstAttribute="height" constant="17" id="ZiD-fO-V4H"/>
-                                                    </constraints>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snB-z3-OHV" customClass="NewsCardView" customModule="iOS_Bootstrap" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DG-J2-fNQ">
-                                                    <rect key="frame" x="172" y="73.666666666666657" width="47.666666666666657" height="15.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
-                                                    <color key="textColor" red="0.14117647707462311" green="0.40392157435417175" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="KWE-T4-czB" firstAttribute="leading" secondItem="AeO-Jd-eOx" secondAttribute="leading" id="3Nq-Ws-WHM"/>
-                                                <constraint firstItem="0DG-J2-fNQ" firstAttribute="leading" secondItem="82K-gs-2uN" secondAttribute="trailing" constant="16" id="G7T-qk-InY"/>
-                                                <constraint firstItem="xOJ-E0-QFQ" firstAttribute="top" secondItem="KWE-T4-czB" secondAttribute="top" constant="8" id="MfG-GO-sG6"/>
-                                                <constraint firstItem="L6G-J6-L0O" firstAttribute="bottom" secondItem="KWE-T4-czB" secondAttribute="bottomMargin" constant="-3" id="OhI-D1-Rxk"/>
-                                                <constraint firstItem="82K-gs-2uN" firstAttribute="leading" secondItem="L6G-J6-L0O" secondAttribute="trailing" constant="16" id="Tpv-PV-JIx"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0DG-J2-fNQ" secondAttribute="trailing" constant="8" id="aNh-QR-cXf"/>
-                                                <constraint firstItem="L6G-J6-L0O" firstAttribute="leading" secondItem="xOJ-E0-QFQ" secondAttribute="leading" id="alz-Ci-ZOA"/>
-                                                <constraint firstItem="0DG-J2-fNQ" firstAttribute="centerY" secondItem="82K-gs-2uN" secondAttribute="centerY" id="btE-wC-rMY"/>
-                                                <constraint firstAttribute="bottom" secondItem="KWE-T4-czB" secondAttribute="bottom" id="dxm-8d-NYG"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xOJ-E0-QFQ" secondAttribute="trailing" constant="8" id="lx1-Pl-wwg"/>
-                                                <constraint firstItem="xOJ-E0-QFQ" firstAttribute="leading" secondItem="KWE-T4-czB" secondAttribute="trailing" constant="8" id="sGS-q2-RDQ"/>
-                                                <constraint firstItem="KWE-T4-czB" firstAttribute="top" secondItem="AeO-Jd-eOx" secondAttribute="top" id="voE-jL-hoP"/>
-                                                <constraint firstItem="82K-gs-2uN" firstAttribute="centerY" secondItem="L6G-J6-L0O" secondAttribute="centerY" id="yN1-vA-btZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="snB-z3-OHV" secondAttribute="trailing" id="Gte-RE-STo"/>
+                                                <constraint firstItem="snB-z3-OHV" firstAttribute="top" secondItem="AeO-Jd-eOx" secondAttribute="top" id="Lje-hv-XDt"/>
+                                                <constraint firstAttribute="bottom" secondItem="snB-z3-OHV" secondAttribute="bottom" id="p1f-os-AP1"/>
+                                                <constraint firstItem="snB-z3-OHV" firstAttribute="leading" secondItem="AeO-Jd-eOx" secondAttribute="leading" id="sqc-b7-PNn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="articleImageView" destination="KWE-T4-czB" id="MAb-Ux-Zuo"/>
-                                            <outlet property="authorLabel" destination="0DG-J2-fNQ" id="9W9-fm-irh"/>
-                                            <outlet property="timeLabel" destination="L6G-J6-L0O" id="bUl-tY-J1k"/>
-                                            <outlet property="titleLabel" destination="xOJ-E0-QFQ" id="Vgk-Aa-SOj"/>
+                                            <outlet property="newsContentView" destination="snB-z3-OHV" id="ZdF-FV-5MO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

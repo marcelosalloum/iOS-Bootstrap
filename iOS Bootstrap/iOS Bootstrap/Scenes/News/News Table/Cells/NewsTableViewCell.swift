@@ -11,10 +11,7 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
 
     // MARK: - Injected Dependencies
-    @IBOutlet weak var articleImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var newsContentView: NewsCardView!
 
     var article: Article! {
         didSet {
@@ -27,17 +24,17 @@ class NewsTableViewCell: UITableViewCell {
 extension NewsTableViewCell {
     func setupSubviews() {
         // Set-up the cell content
-        titleLabel.text = article.title
-        timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
-        authorLabel.text = article.authors
+        newsContentView.titleLabel.text = article.title
+        newsContentView.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+        newsContentView.authorsLabel.text = article.authors
         updateWasReadStatus(article.wasRead)
 
         // Setup the cell image
         guard let imageURL = article.imageUrl else { return }
         guard let url = URL(string: imageURL) else { return }
         // Image Caching
-        articleImageView.kf.indicatorType = .activity
-        articleImageView.kf.setImage(with: url)
+        newsContentView.imageView.kf.indicatorType = .activity
+        newsContentView.imageView.kf.setImage(with: url)
     }
 
     func updateWasReadStatus(_ wasRead: Bool) {

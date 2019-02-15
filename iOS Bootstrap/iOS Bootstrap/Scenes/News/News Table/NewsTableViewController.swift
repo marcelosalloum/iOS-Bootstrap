@@ -140,6 +140,10 @@ extension NewsTableViewController: UITableViewDelegate {
 
         return [readStatus]
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 }
 
 // MARK: - View Model NewsCollectionViewDelegate
