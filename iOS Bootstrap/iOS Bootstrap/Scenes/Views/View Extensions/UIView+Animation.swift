@@ -10,11 +10,11 @@ import UIKit
 
 extension UIView {
     public func animateTouchDown(_ completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.alpha = 0.9
-            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        UIView.animate(withDuration: 0.09, animations: {
+            self.alpha = 0.89
+            self.transform = CGAffineTransform(scaleX: 0.89, y: 0.89)
         }, completion: { _ in
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.09, animations: {
                 self.alpha = 1
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: { _ in
@@ -27,7 +27,7 @@ extension UIView {
         UIView .animate(withDuration: 0.3, animations: {
             self.backgroundColor = toColor
         }, completion: { _ in
-
+            completion?()
         })
     }
 }
