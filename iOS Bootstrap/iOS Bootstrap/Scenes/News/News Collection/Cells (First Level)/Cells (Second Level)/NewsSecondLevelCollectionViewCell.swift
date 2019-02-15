@@ -11,10 +11,7 @@ import UIKit
 class NewsSecondLevelCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Injected Dependencies (Interface Builder included)
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var authorsLabel: UILabel!
+    @IBOutlet weak var newsCardView: NewsCardView!
 
     var article: Article! {
         didSet {
@@ -27,17 +24,17 @@ class NewsSecondLevelCollectionViewCell: UICollectionViewCell {
 extension NewsSecondLevelCollectionViewCell {
     func setupSubviews() {
         // Set-up the cell content
-        titleLabel.text = article.title
-        timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
-        authorsLabel.text = article.authors
+        newsCardView.titleLabel.text = article.title
+        newsCardView.timeLabel.text = NSDate.timeAgoSince(article.date, shortPattern: true)
+        newsCardView.authorsLabel.text = article.authors
         updateWasReadStatus(article.wasRead)
 
         // Setup the cell image
         guard let imageURL = article.imageUrl else { return }
         guard let url = URL(string: imageURL) else { return }
         // Image Caching
-        imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url)
+        newsCardView.imageView.kf.indicatorType = .activity
+        newsCardView.imageView.kf.setImage(with: url)
     }
 
     func updateWasReadStatus(_ wasRead: Bool) {

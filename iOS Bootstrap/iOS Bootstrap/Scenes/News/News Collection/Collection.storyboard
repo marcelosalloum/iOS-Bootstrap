@@ -10,12 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Colfax-Bold.ttf">
-            <string>Colfax-Bold</string>
-        </array>
-        <array key="Colfax-Regular.ttf">
-            <string>Colfax-Regular</string>
-        </array>
         <array key="ProximaNova-Regular.ttf">
             <string>ProximaNova-Regular</string>
         </array>
@@ -85,60 +79,20 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="293" height="110.66666666666667"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHU-E3-dql">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="110.66666666666667"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="bHU-E3-dql" secondAttribute="height" id="MVk-Xr-AYP"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azv-rI-suR">
-                                                                        <rect key="frame" x="118.66666666666667" y="16" width="36.666666666666671" height="20.666666666666671"/>
-                                                                        <fontDescription key="fontDescription" name="Colfax-Bold" family="Colfax" pointSize="17"/>
-                                                                        <color key="textColor" red="0.2039215714" green="0.21176470820000001" blue="0.24705882370000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CD9-iC-Ifq">
-                                                                        <rect key="frame" x="118.66666666666669" y="79" width="30" height="15.666666666666671"/>
-                                                                        <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
-                                                                        <color key="textColor" red="0.48235294220000002" green="0.48235294220000002" blue="0.50588238240000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGA-sr-7hg">
-                                                                        <rect key="frame" x="164.66666666666666" y="78.333333333333329" width="2" height="17"/>
-                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="17" id="Q8A-UZ-RUg"/>
-                                                                            <constraint firstAttribute="width" constant="2" id="oW2-dk-lwS"/>
-                                                                        </constraints>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnr-iY-H3w" customClass="NewsCardView" customModule="iOS_Bootstrap" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="110.66666666666667"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzb-Sk-NmL">
-                                                                        <rect key="frame" x="182.66666666666666" y="79" width="47.666666666666657" height="15.666666666666671"/>
-                                                                        <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="13"/>
-                                                                        <color key="textColor" red="0.1411764771" green="0.40392157439999998" blue="0.91764706370000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="bHU-E3-dql" secondAttribute="bottom" id="Q7r-40-IXa"/>
-                                                                <constraint firstItem="gzb-Sk-NmL" firstAttribute="leading" secondItem="nGA-sr-7hg" secondAttribute="trailing" constant="16" id="UuX-Mj-Vrq"/>
-                                                                <constraint firstItem="azv-rI-suR" firstAttribute="leading" secondItem="bHU-E3-dql" secondAttribute="trailing" constant="8" id="Vcd-ov-FnD"/>
-                                                                <constraint firstItem="bHU-E3-dql" firstAttribute="top" secondItem="5Dk-VQ-VMc" secondAttribute="top" id="Z1Y-kE-q8x"/>
-                                                                <constraint firstItem="CD9-iC-Ifq" firstAttribute="leading" secondItem="azv-rI-suR" secondAttribute="leading" id="dGp-ba-n0A"/>
-                                                                <constraint firstItem="nGA-sr-7hg" firstAttribute="leading" secondItem="CD9-iC-Ifq" secondAttribute="trailing" constant="16" id="ebH-xl-wef"/>
-                                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="azv-rI-suR" secondAttribute="trailing" id="hU7-lG-8Fl"/>
-                                                                <constraint firstAttribute="bottom" secondItem="CD9-iC-Ifq" secondAttribute="bottom" constant="16" id="iaK-D1-q2i"/>
-                                                                <constraint firstItem="bHU-E3-dql" firstAttribute="leading" secondItem="5Dk-VQ-VMc" secondAttribute="leading" id="jhI-aF-L5v"/>
-                                                                <constraint firstItem="nGA-sr-7hg" firstAttribute="centerY" secondItem="CD9-iC-Ifq" secondAttribute="centerY" id="kIk-bx-J44"/>
-                                                                <constraint firstItem="gzb-Sk-NmL" firstAttribute="centerY" secondItem="nGA-sr-7hg" secondAttribute="centerY" id="lEr-s4-y1s"/>
-                                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gzb-Sk-NmL" secondAttribute="trailing" constant="8" id="qlz-9O-tjz"/>
-                                                                <constraint firstItem="azv-rI-suR" firstAttribute="top" secondItem="5Dk-VQ-VMc" secondAttribute="top" constant="16" id="vhF-po-Afl"/>
+                                                                <constraint firstItem="Cnr-iY-H3w" firstAttribute="leading" secondItem="5Dk-VQ-VMc" secondAttribute="leading" id="Hom-1n-26P"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Cnr-iY-H3w" secondAttribute="trailing" id="Pik-DK-Nc6"/>
+                                                                <constraint firstItem="Cnr-iY-H3w" firstAttribute="top" secondItem="5Dk-VQ-VMc" secondAttribute="top" id="ScC-qL-EkW"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Cnr-iY-H3w" secondAttribute="bottom" id="jNK-Va-BZI"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="authorsLabel" destination="gzb-Sk-NmL" id="xeJ-Zp-gq3"/>
-                                                                <outlet property="imageView" destination="bHU-E3-dql" id="Va5-pw-n5c"/>
-                                                                <outlet property="timeLabel" destination="CD9-iC-Ifq" id="taG-8O-Wzo"/>
-                                                                <outlet property="titleLabel" destination="azv-rI-suR" id="uGk-MQ-GC4"/>
+                                                                <outlet property="newsCardView" destination="Cnr-iY-H3w" id="kFr-1m-Pbg"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
