@@ -14,6 +14,8 @@ class ForgotPasswordViewController: CoordinatedViewController {
     var viewModel: ForgotPasswordViewModel!
 
     @IBAction func forgotPasswordClicked(_ sender: UIButton) {
-        viewModel.forgotPassword(email: emailTextField.text)
+        sender.animateTouchDown {
+            self.viewModel.forgotPassword(email: self.emailTextField.text)
+        }
     }
 }

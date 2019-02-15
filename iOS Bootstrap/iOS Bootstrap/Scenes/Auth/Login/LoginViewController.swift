@@ -14,13 +14,17 @@ class LoginViewController: CoordinatedViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordFied: UITextField!
 
-    @IBAction func loginButtonClicked(_ sender: Any) {
-        self.toastr("loginButtonClicked with -mail: \(emailField.text!), password: \(passwordFied.text!)")
-        viewModel.login(email: emailField.text, password: passwordFied.text)
+    @IBAction func loginButtonClicked(_ sender: UIButton) {
+        sender.animateTouchDown {
+            self.toastr("loginButtonClicked with -mail: \(self.emailField.text!), password: \(self.passwordFied.text!)")
+            self.viewModel.login(email: self.emailField.text, password: self.passwordFied.text)
+        }
     }
 
     @IBAction func forgotPasswordClicked(_ sender: UIButton) {
-        viewModel.userDidClickForgotPassword()
+        sender.animateTouchDown {
+            self.viewModel.userDidClickForgotPassword()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
