@@ -73,19 +73,19 @@ extension NewsCollectionViewModel {
 // MARK: - API Service: GET Articles (and Tags)
 extension NewsCollectionViewModel {
     func fetchAPIData() {
-        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
-            switch apiCompletion {
-            case .success(result: let articleList):
-                Article.deleteAll(except: articleList,
-                                  backgroundContext: self.ezCoreData.privateThreadContext,
-                                  completion: { _ in
-                                      self.updateDataSource()
-                                  })
-            case .failure(error: let error):
-                DispatchQueue.main.async {
-                    self.delegate?.displayError(error: error, endRefreshing: true)
-                }
-            }
-        }
+//        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
+//            switch apiCompletion {
+//            case .success(result: let articleList):
+//                Article.deleteAll(except: articleList,
+//                                  backgroundContext: self.ezCoreData.privateThreadContext,
+//                                  completion: { _ in
+//                                      self.updateDataSource()
+//                                  })
+//            case .failure(error: let error):
+//                DispatchQueue.main.async {
+//                    self.delegate?.displayError(error: error, endRefreshing: true)
+//                }
+//            }
+//        }
     }
 }

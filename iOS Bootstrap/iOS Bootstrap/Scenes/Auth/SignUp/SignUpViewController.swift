@@ -17,7 +17,7 @@ class SignUpViewController: CoordinatedViewController {
     var viewModel: SignUpViewModel!
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        sender.animateTouchDown {
+        sender.animateTouchDown().done {
             let emailText = self.emailTextField.text
             let passText = self.passwordTextField.text
             let confirmPassText = self.passwordConfirmationTextField.text
