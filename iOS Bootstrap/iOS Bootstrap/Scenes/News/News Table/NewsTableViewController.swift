@@ -120,7 +120,10 @@ extension NewsTableViewController: UITableViewDataSource {
 // MARK: - Delegate
 extension NewsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidSelect(indexPath: indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
+        cell.animateTouchDown({
+            self.viewModel.userDidSelect(indexPath: indexPath)
+        })
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
