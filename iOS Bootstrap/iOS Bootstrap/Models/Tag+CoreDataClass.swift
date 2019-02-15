@@ -7,14 +7,14 @@
 //
 //
 
-import Foundation
 import CoreData
 import EZCoreData
 
+// MARK: - NSManagedObject Declaration
 public class Tag: NSManagedObject {
-
 }
 
+// MARK: - EZCoreData
 extension Tag {
     /// Populates Tag objects from JSON
     override open func populateFromJSON(_ json: [String: Any], context: NSManagedObjectContext) {

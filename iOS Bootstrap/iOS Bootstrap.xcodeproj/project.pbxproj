@@ -18,13 +18,13 @@
 		1F1A40A121D69524005BC0F3 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A021D69524005BC0F3 /* NewsTableViewController.swift */; };
 		1F1A40A321D6953E005BC0F3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */; };
 		1F1EC01521E7900D008EB3AF /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC01421E7900D008EB3AF /* NewsDetailViewModel.swift */; };
+		1F22B64B2215A128001A34AD /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */; };
 		1F27761922119B0A00496030 /* AuthHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761822119B0A00496030 /* AuthHomeViewController.swift */; };
 		1F27761C22119C5600496030 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F27761B22119C5600496030 /* Welcome.storyboard */; };
 		1F27761E22119D0400496030 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761D22119D0400496030 /* WelcomeCoordinator.swift */; };
 		1F27762022119D9000496030 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27761F22119D9000496030 /* WelcomeViewController.swift */; };
 		1F27762222119E8500496030 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27762122119E8500496030 /* WelcomeViewModel.swift */; };
 		1F2776242211A1AA00496030 /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2776232211A1AA00496030 /* WelcomeTableViewCell.swift */; };
-		1F2ACF12220B9DD80084BFF0 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */; };
 		1F2ACF16220BA3460084BFF0 /* NewsCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF15220BA3460084BFF0 /* NewsCollectionCoordinator.swift */; };
 		1F2ACF18220BA35B0084BFF0 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2ACF17220BA35B0084BFF0 /* NewsCollectionViewController.swift */; };
 		1F2ACF1A220BA3CB0084BFF0 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2ACF19220BA3CB0084BFF0 /* Collection.storyboard */; };
@@ -63,18 +63,6 @@
 		1F9B4A9821ED3F4700E5E360 /* ProximaNova-Regular-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */; };
 		1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */; };
 		1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */; };
-		1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */; };
-		1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */; };
-		1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA021ED522100E5E360 /* Brandon_med.otf */; };
-		1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */; };
-		1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */; };
-		1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA321ED522100E5E360 /* Brandon_light.otf */; };
-		1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */; };
-		1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */; };
-		1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */; };
-		1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */; };
-		1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */; };
-		1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */; };
 		1FA8320A220A12E500FB2B61 /* AuthHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83209220A12E500FB2B61 /* AuthHomeCoordinator.swift */; };
 		1FA8320C220A167100FB2B61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8320B220A167100FB2B61 /* LoginViewController.swift */; };
 		1FA8320E220A168700FB2B61 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8320D220A168700FB2B61 /* LoginCoordinator.swift */; };
@@ -86,6 +74,9 @@
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
 		1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */; };
+		1FB6105322144B2900B5F1A3 /* NibFileOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6105222144B2900B5F1A3 /* NibFileOwnerLoadable.swift */; };
+		1FB6105522144B9A00B5F1A3 /* NewsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */; };
+		1FB6105722144BA900B5F1A3 /* NewsCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6105622144BA900B5F1A3 /* NewsCardView.xib */; };
 		1FDC4A1421E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */; };
 		1FE54134220A50AE00981D82 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE54133220A50AE00981D82 /* DesignableLabel.swift */; };
 		1FE54136220A516200981D82 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE54135220A516200981D82 /* DesignableTextField.swift */; };
@@ -120,13 +111,13 @@
 		1F1A40A021D69524005BC0F3 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		1F1A40A221D6953E005BC0F3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1F1EC01421E7900D008EB3AF /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		1F27761822119B0A00496030 /* AuthHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHomeViewController.swift; sourceTree = "<group>"; };
 		1F27761B22119C5600496030 /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		1F27761D22119D0400496030 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		1F27761F22119D9000496030 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1F27762122119E8500496030 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		1F2776232211A1AA00496030 /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
-		1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		1F2ACF15220BA3460084BFF0 /* NewsCollectionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionCoordinator.swift; sourceTree = "<group>"; };
 		1F2ACF17220BA35B0084BFF0 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		1F2ACF19220BA3CB0084BFF0 /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
@@ -153,7 +144,6 @@
 		1F9144D721F9CC050060A74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9B0CB121E50E610069FD3E /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		1F9B4A7721ECC61300E5E360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Table.strings; sourceTree = "<group>"; };
 		1F9B4A7821ECC69900E5E360 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		1F9B4A7F21ED3F3600E5E360 /* Colfax-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Colfax-Medium.ttf"; sourceTree = "<group>"; };
@@ -170,18 +160,6 @@
 		1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular-Italic.ttf"; sourceTree = "<group>"; };
 		1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light-Italic.ttf"; sourceTree = "<group>"; };
 		1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
-		1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med_it.otf; sourceTree = "<group>"; };
-		1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld.otf; sourceTree = "<group>"; };
-		1F9B4AA021ED522100E5E360 /* Brandon_med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_med.otf; sourceTree = "<group>"; };
-		1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light_it.otf; sourceTree = "<group>"; };
-		1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg.otf; sourceTree = "<group>"; };
-		1F9B4AA321ED522100E5E360 /* Brandon_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light.otf; sourceTree = "<group>"; };
-		1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk_it.otf; sourceTree = "<group>"; };
-		1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg_it.otf; sourceTree = "<group>"; };
-		1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin.otf; sourceTree = "<group>"; };
-		1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_bld_it.otf; sourceTree = "<group>"; };
-		1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_thin_it.otf; sourceTree = "<group>"; };
-		1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_blk.otf; sourceTree = "<group>"; };
 		1FA83209220A12E500FB2B61 /* AuthHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHomeCoordinator.swift; sourceTree = "<group>"; };
 		1FA8320B220A167100FB2B61 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1FA8320D220A168700FB2B61 /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -193,6 +171,9 @@
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5D21E782E7000A4E2E /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FB6105222144B2900B5F1A3 /* NibFileOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibFileOwnerLoadable.swift; sourceTree = "<group>"; };
+		1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardView.swift; sourceTree = "<group>"; };
+		1FB6105622144BA900B5F1A3 /* NewsCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCardView.xib; sourceTree = "<group>"; };
 		1FDC4A1321E4C8B40064AC13 /* UIRefreshControl+ProgramaticallyBeginRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+ProgramaticallyBeginRefresh.swift"; sourceTree = "<group>"; };
 		1FE54133220A50AE00981D82 /* DesignableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
 		1FE54135220A516200981D82 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
@@ -226,6 +207,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F22B647221454DB001A34AD /* Designable Only */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
+				1FEDC18F220A315000AC5E84 /* DesignableButton.swift */,
+				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
+				1FE54135220A516200981D82 /* DesignableTextField.swift */,
+			);
+			path = "Designable Only";
+			sourceTree = "<group>";
+		};
 		1F277617220E333C00496030 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +245,6 @@
 		1F2ACF13220B9E000084BFF0 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				1F2ACF11220B9DD80084BFF0 /* AppTheme.swift */,
 				1F9B4A7A21ECE6CF00E5E360 /* UIColor+Custom.swift */,
 				1F9B4A7D21ED3F1A00E5E360 /* Fonts */,
 			);
@@ -390,10 +381,9 @@
 		1F8BDB4021E53417007A338A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
-				1FEDC18F220A315000AC5E84 /* DesignableButton.swift */,
-				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
-				1FE54135220A516200981D82 /* DesignableTextField.swift */,
+				1F22B647221454DB001A34AD /* Designable Only */,
+				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
+				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -431,7 +421,6 @@
 		1F9B4A7D21ED3F1A00E5E360 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				1F9B4A9D21ED522100E5E360 /* Brandon */,
 				1F9B4A8521ED3F4600E5E360 /* ProximaNova */,
 				1F9B4A7E21ED3F2100E5E360 /* Colfax */,
 				1F9B4A9B21ED3F7300E5E360 /* UIFont+Custom.swift */,
@@ -452,37 +441,18 @@
 		1F9B4A8521ED3F4600E5E360 /* ProximaNova */ = {
 			isa = PBXGroup;
 			children = (
-				1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */,
+				1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */,
 				1F9B4A8721ED3F4600E5E360 /* ProximaNova-Bold.ttf */,
 				1F9B4A8821ED3F4600E5E360 /* ProximaNova-Bold-Italic.ttf */,
+				1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */,
+				1F9B4A8621ED3F4600E5E360 /* ProximaNova-Light.ttf */,
+				1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */,
+				1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */,
+				1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */,
 				1F9B4A8921ED3F4600E5E360 /* ProximaNova-Semibold.ttf */,
 				1F9B4A8A21ED3F4600E5E360 /* ProximaNova-Semibold-Italic.ttf */,
-				1F9B4A8B21ED3F4600E5E360 /* ProximaNova-Extra-Bold.ttf */,
-				1F9B4A8C21ED3F4600E5E360 /* ProximaNova-Regular.ttf */,
-				1F9B4A8D21ED3F4600E5E360 /* ProximaNova-Black.ttf */,
-				1F9B4A8E21ED3F4600E5E360 /* ProximaNova-Regular-Italic.ttf */,
-				1F9B4A8F21ED3F4600E5E360 /* ProximaNova-Light-Italic.ttf */,
 			);
 			path = ProximaNova;
-			sourceTree = "<group>";
-		};
-		1F9B4A9D21ED522100E5E360 /* Brandon */ = {
-			isa = PBXGroup;
-			children = (
-				1F9B4A9E21ED522100E5E360 /* Brandon_med_it.otf */,
-				1F9B4A9F21ED522100E5E360 /* Brandon_bld.otf */,
-				1F9B4AA021ED522100E5E360 /* Brandon_med.otf */,
-				1F9B4AA121ED522100E5E360 /* Brandon_light_it.otf */,
-				1F9B4AA221ED522100E5E360 /* Brandon_reg.otf */,
-				1F9B4AA321ED522100E5E360 /* Brandon_light.otf */,
-				1F9B4AA421ED522100E5E360 /* Brandon_blk_it.otf */,
-				1F9B4AA521ED522100E5E360 /* Brandon_reg_it.otf */,
-				1F9B4AA621ED522100E5E360 /* Brandon_thin.otf */,
-				1F9B4AA721ED522100E5E360 /* Brandon_bld_it.otf */,
-				1F9B4AA821ED522100E5E360 /* Brandon_thin_it.otf */,
-				1F9B4AA921ED522100E5E360 /* Brandon_blk.otf */,
-			);
-			path = Brandon;
 			sourceTree = "<group>";
 		};
 		1FA831FF220A122500FB2B61 /* Auth */ = {
@@ -545,6 +515,7 @@
 				1F2BD47422087D4300C128CE /* UIViewController+Toastr.swift */,
 				1F0397C022021F6700335E6C /* UIViewController+Storyboard.swift */,
 				1F0397C2220237FB00335E6C /* UITableViewCell+Reusable.swift */,
+				1F22B64A2215A128001A34AD /* UIViewController+HUD.swift */,
 			);
 			path = "Convenience Extensions";
 			sourceTree = "<group>";
@@ -554,6 +525,7 @@
 			children = (
 				1FE5D2A6221346FE00021F3E /* OnlineOfflineProtocols.swift */,
 				1F0397C42202481100335E6C /* ViewModelProtocol.swift */,
+				1FB6105222144B2900B5F1A3 /* NibFileOwnerLoadable.swift */,
 			);
 			path = "Convenience Protocols";
 			sourceTree = "<group>";
@@ -665,32 +637,21 @@
 				1F88EFF521D5766900275972 /* LaunchScreen.storyboard in Resources */,
 				1F9B4A9321ED3F4700E5E360 /* ProximaNova-Semibold.ttf in Resources */,
 				1F9B4A9521ED3F4700E5E360 /* ProximaNova-Extra-Bold.ttf in Resources */,
-				1F9B4AB521ED522200E5E360 /* Brandon_blk.otf in Resources */,
 				1FEDC18C220A234C00AC5E84 /* Auth.storyboard in Resources */,
-				1F9B4AAA21ED522200E5E360 /* Brandon_med_it.otf in Resources */,
-				1F9B4AAE21ED522200E5E360 /* Brandon_reg.otf in Resources */,
 				1F9B4A8421ED3F3700E5E360 /* Colfax-Bold.ttf in Resources */,
 				1F9B4A9021ED3F4700E5E360 /* ProximaNova-Light.ttf in Resources */,
 				1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */,
-				1F9B4AB021ED522200E5E360 /* Brandon_blk_it.otf in Resources */,
 				1F9B4A9121ED3F4700E5E360 /* ProximaNova-Bold.ttf in Resources */,
 				1F88EFF221D5766900275972 /* Assets.xcassets in Resources */,
-				1F9B4AB321ED522200E5E360 /* Brandon_bld_it.otf in Resources */,
-				1F9B4AB121ED522200E5E360 /* Brandon_reg_it.otf in Resources */,
 				1F9B4A9221ED3F4700E5E360 /* ProximaNova-Bold-Italic.ttf in Resources */,
-				1F9B4AAC21ED522200E5E360 /* Brandon_med.otf in Resources */,
-				1F9B4AAD21ED522200E5E360 /* Brandon_light_it.otf in Resources */,
 				1F9B4A8221ED3F3700E5E360 /* Colfax-Medium.ttf in Resources */,
 				1F9B4A9621ED3F4700E5E360 /* ProximaNova-Regular.ttf in Resources */,
 				1F27761C22119C5600496030 /* Welcome.storyboard in Resources */,
 				1F9B4A9721ED3F4700E5E360 /* ProximaNova-Black.ttf in Resources */,
-				1F9B4AB421ED522200E5E360 /* Brandon_thin_it.otf in Resources */,
 				1F2ACF1A220BA3CB0084BFF0 /* Collection.storyboard in Resources */,
-				1F9B4AB221ED522200E5E360 /* Brandon_thin.otf in Resources */,
 				1F9B4A8321ED3F3700E5E360 /* Colfax-Regular.ttf in Resources */,
-				1F9B4AAB21ED522200E5E360 /* Brandon_bld.otf in Resources */,
 				1F9B4A9421ED3F4700E5E360 /* ProximaNova-Semibold-Italic.ttf in Resources */,
-				1F9B4AAF21ED522200E5E360 /* Brandon_light.otf in Resources */,
+				1FB6105722144BA900B5F1A3 /* NewsCardView.xib in Resources */,
 				1F88EFED21D5766900275972 /* Table.storyboard in Resources */,
 				1F9B4A9921ED3F4700E5E360 /* ProximaNova-Light-Italic.ttf in Resources */,
 			);
@@ -758,7 +719,7 @@
 				"${BUILT_PRODUCTS_DIR}/EZCoreData/EZCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -770,7 +731,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flurry_iOS_SDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -844,22 +805,24 @@
 				1FA83214220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift in Sources */,
 				1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */,
 				1F27761E22119D0400496030 /* WelcomeCoordinator.swift in Sources */,
-				1F2ACF12220B9DD80084BFF0 /* AppTheme.swift in Sources */,
 				1F0397CB220476E200335E6C /* Coordinator.swift in Sources */,
 				1F3C24DE2211BD3C00A7C996 /* LoginViewModel.swift in Sources */,
 				1FE5D2A422133E3900021F3E /* NewsProtocols.swift in Sources */,
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1FE5D2A22212F32300021F3E /* InnerCollectionViewModel.swift in Sources */,
 				1FE54134220A50AE00981D82 /* DesignableLabel.swift in Sources */,
+				1FB6105322144B2900B5F1A3 /* NibFileOwnerLoadable.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* NewsTableViewController.swift in Sources */,
 				1F0397C122021F6700335E6C /* UIViewController+Storyboard.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,
 				1FA83216220A1AE200FB2B61 /* ForgotPasswordViewController.swift in Sources */,
 				1FADAF6121E782E7000A4E2E /* Article+CoreDataProperties.swift in Sources */,
 				1F27762222119E8500496030 /* WelcomeViewModel.swift in Sources */,
+				1F22B64B2215A128001A34AD /* UIViewController+HUD.swift in Sources */,
 				1FE5D2A02212026B00021F3E /* NewsCollectionViewModel.swift in Sources */,
 				1F3DB457220CD73500F931A5 /* NewsFirstLevelCollectionViewCell.swift in Sources */,
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
+				1FB6105522144B9A00B5F1A3 /* NewsCardView.swift in Sources */,
 				1F88EFF021D5766900275972 /* iOS_Bootstrap.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -887,7 +850,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1F88EFEC21D5766900275972 /* Base */,
-				1F9B4A7721ECC61300E5E360 /* en */,
 			);
 			name = Table.storyboard;
 			sourceTree = "<group>";

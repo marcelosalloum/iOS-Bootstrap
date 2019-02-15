@@ -1,52 +1,109 @@
 # iOS-Bootstrap
 
+This app contains a set of pre-build common structures so serve as a search base. In other words, the idea is to use this structure as a basis for my/your new features and project structure. 
+
 ## Project Requirements
 
-* iOS Version: *9.4.1*
-* Swift version: *Swift 4*
-* Cocoapods Version: *1.5.3*
+* iOS Min Version: **10.0**
+* Swift version: **Swift 4.2**
+* Cocoapods Version: **1.5.3**
 
 ## Pods Versions
 
-* Alamofire: **4.7.3**                  # Deals with API requests
-* Crashlytics: **3.10.8**               # Crash reports
-* EZCoreData: **0.2.0**                 # Deals withCore Data
-* Fabric: **1.7.12**                    # Beta distribution
-* Flurry-SDK/FlurrySDK **9.1.0**        # Analytics
-* Kingfisher: **4.10.0**                # Image caching
-* PKHUD: **5.2.0**                      # HUD: Head-Up Display
-* SwiftMessages: **6.0.0**              # Display Status Bar Messages
+| Pod | Version | Description |
+|:------                                                        |:-----------   |:----------- |
+| Alamofire                                                     | **4.7.3**     | Deals with API requests |
+| Bagel                                                         | **1.3.2**     | Helps debugging network requests |
+| Crashlytics                                                   | **3.10.8**    | Crash reports |
+| [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData)    | **0.2.0**     | Deals with Core Data and concurrent core data requests |
+| Fabric                                                        | **1.7.12**    | Beta distribution |
+| Flurry-SDK/FlurrySDK                                          | **9.1.0**     | Analytics |
+| Kingfisher                                                    | **4.10.0**    | Image caching |
+| SwiftMessages                                                 | **6.0.0**     | Display Status Bar Messages |
+| SVProgressHUD                                                 | **2.2.5**     |HUD: Head-Up Display |
 
-## Proposal
+## Project Structure
 
-The main goal of this bootstrap is to put in place some of the basic of a project that would take 1 week for an experienced developer to write down. With this, there is a sensible ground from where to start building your awesome project.
+I'm using a few things I consider vital to an iOS project. A more in-depth explanation can be found in the items below:
 
-### MVP
+### Views
 
-[x] Create a table with the articles following the provided mockup;
+* **Views Interface**: the interface was mainly built from storyboards. Since I currently hav more experience with code built interfaces, I decided to challenge myself with storyboard this time, to make sure I know well of both approaches.
+* **Reusable Views**: The project uses reusable Xibs that are actually drawn in the interface builder through `IBDesignable`.
+* **IBInspectable**: there are a few designable views that are not being highly used at te moment, but are very customizable
 
-[x] Ability to visualize content (all provided info);
+### API
 
-[x] Ability to search articles (title and author);
+At the moment, the app is using a very simple API that is defined within a struct. It uses Alamofire and the async callbacks use clojures. A must-do in the short future is start using Promises, probably the [PromiseKit](https://github.com/mxcl/PromiseKit) library.
 
-[x] Ability to sort articles (date, title and author);
+My API is actually an apIary (mocked API), which dosn't have authentication in place.
 
-[x] Ability to mark articles as read/unread;
+The API calls implement a layer on top of Alamofire, which is a good practice and better explained [here](https://mecid.github.io/2019/02/13/hiding-third-party-dependencies-with-protocols-and-extensions/).
 
-[x] Use a dependency manager;
+### Persistence
 
-[x] Tablet-adaptive layout;
+For persistence the project currently uses the cocapod [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData), which is a pod authored by me in my persuit to better understand Core Data for iOS 10+.
 
-[x] Persistent info;
+As a rule of thumb, I firsly use CoreData to show the locally stored data before updating it from the backend. A step-by-step explanation:
 
-[x] Design tweaks: animation, icons, etc;
+1. A user opens a screen (a table view or a colection view for instance)
+2. The app first shows any available data that is already stored in core data
+3. Meanwhile, the app performs an API request to update the data with the API response
+4. The retrieved data is then stored in the core data and any outdated data is removed
+5. Finally, the app displays the most recently updated data from the backend to the user
 
-[x] Manage network errors;
+### App Architecture: MVVM-C
 
-[x] Image caching;
+ The project makes use of MVVM-C (Model–View–ViewModel Coordinator). It basically has all advantages of classic MVVM and adds a layer for dependency injection and flow coordination, which is the Coordinator.
 
-## Study Sources
+ I'm particularly a big fan of raw MVVM and I'm finding great advantages of using the Coordinator as well, such as having simpler ViewControllers that con't know where they are in terms of application flow. This way it's easier to reuse ViewControllers throughout the application.
+
+ If you don't use Cordinators, you're probabbly placing some of that kind of code in a custom UINavigationController or a base UIViewController. I find coordinators a more elegant solution though.
+
+### Localization
+
+The structure for Localizationis currently in place for the global project and one of the Storyboards.
+
+### Constants
+
+All constants are placed in a dedicated struct, to avoid using literals.
+
+### Custom Fonts
+
+There is a class declaring custom fonts using class/static methods, that instantiate the fonts nams using a string-struct instead of String literals. That is a very common setup to be used in any kind if project that uses custom fonts.
+
+### Custom Colors
+
+There is a class declaring custom colors using computed properties (similar to `UIColor.blue`, for instance). This is too a very common setup to be used in any kind if project that uses custom colors.
+
+### Crash Tracking
+
+Crashlytics is configured in the project but the keyy is actually public, which is a bad practice.
+
+### User Interaction Tracking
+
+Flurry is configured in the project but the keyy is actually public, which is a bad practice.
+
+### Continuous Integration (CI)
+
+This project is currently not making use of CI, but I recommend Travis-CI or even fastlane, which you can run rom your machine, which should be a more controllable environment.
+
+### Unit Tests
+
+Currently, that part is still missing in this project but I've made a setup to make sure the AppDelegate won't be loaded for the Unit Tests, which makes your environment easier to control.
+
+If you'd like to check how I like o do Unit Tests, have a look on my Core Data lib: [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData). 
+
+### TO-DO
+
+* Implement promises using [PromiseKit](https://github.com/mxcl/PromiseKit)
+* Make sure all Storyboardsare localized
+* Add a few Unit tests and UI tests.
+* Put on an implementation of `Codable` that makes sense for my current `NSManagedObject` models
+
+## Interesting Links
 
 * Generate all icon sizes from one source image: https://appicon.co/
 * [Unit Test]: [Faking App Delegate](https://marcosantadev.com/fake-appdelegate-unit-testing-swift/)
 * [Unit Test]: [Preparing InMemory Persistent Store](https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee) to avoid messing with production data
+* [Hiding third-party dependencies with protocols and extensions](https://mecid.github.io/2019/02/13/hiding-third-party-dependencies-with-protocols-and-extensions/)

@@ -6,11 +6,10 @@
   Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 */
 
-"ARTICLES_LIST_TITLE" = "News";
-"Warning" = "Warning";
-"No Internet Connection" = "No Internet Connection";
+"NEWS"                    = "News";
+"COLLECTION"              = "Collection";
+"NO_INTERNET_CONNECTION"  = "No Internet Connection";
 "SEARCH_NEWS_PLACEHOLDER" = "Search the news...";
 
-
-// Error Messages:
-"EMPTY_OBJECT_LIST" = "Object list was not populated";
+// Error Messages :
+"EMPTY_OBJECT_LIST"       = "Object list was not populated";

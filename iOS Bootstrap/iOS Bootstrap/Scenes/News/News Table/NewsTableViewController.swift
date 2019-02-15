@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PKHUD
 import Kingfisher
 
 class NewsTableViewController: CoordinatedViewController {
@@ -48,7 +47,8 @@ class NewsTableViewController: CoordinatedViewController {
         // BottomView
         bottomViewBottomConstraint.constant = -100
 
-        // Navigation Controller
+        // Navbar
+        self.title = "NEWS".localized
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -136,14 +136,14 @@ extension NewsTableViewController: UITableViewDelegate {
             articleCell.updateWasReadStatus(initialReadStatus)
             tableView.reloadRows(at: [indexPath], with: .none)
         }
-        readStatus.backgroundColor = Color.mainColor()
+        readStatus.backgroundColor = Color.mainColor
 
         return [readStatus]
     }
 }
 
 // MARK: - View Model NewsCollectionViewDelegate
-extension NewsTableViewController: NewsCollectionViewDelegate {
+extension NewsTableViewController: NewsCollectionViewDelegate, HUD {
     func reloadData(endRefreshing: Bool) {
         if endRefreshing {
             self.refreshControl.endRefreshing()
@@ -155,7 +155,7 @@ extension NewsTableViewController: NewsCollectionViewDelegate {
         if endRefreshing {
             self.refreshControl.endRefreshing()
         }
-        HUD.flash(.labeledError(title: "Error", subtitle: error.localizedDescription), delay: 2.0)
+        self.showErrorHUD(message: error.localizedDescription)
     }
 
     func displayMessage(_ message: String) {

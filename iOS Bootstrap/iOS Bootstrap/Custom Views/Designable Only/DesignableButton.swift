@@ -28,9 +28,9 @@ open class DesignableButton: UIButton {
     }
 
     fileprivate func commonInit() {
-        self.titleLabel?.font = UIFont.withSize(18)
+        self.titleLabel?.font = UIFont.proximaNovaRegular(size: 18)
         self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor.mainColor()
+        self.backgroundColor = UIColor.mainColor
 
         layer.cornerRadius = 30
         layer.borderWidth = 1

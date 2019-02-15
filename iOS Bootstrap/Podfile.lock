@@ -9,7 +9,7 @@ PODS:
   - Fabric (1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (9.1.0)
   - Kingfisher (4.10.0)
-  - PKHUD (5.2.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (= 4.7.3)
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - Fabric (= 1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (= 9.1.0)
   - Kingfisher (= 4.10.0)
-  - PKHUD (= 5.2.0)
+  - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -31,7 +31,7 @@ SPEC REPOS:
     - Fabric
     - Flurry-iOS-SDK
     - Kingfisher
-    - PKHUD
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -42,8 +42,8 @@ SPEC CHECKSUMS:
   Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   Flurry-iOS-SDK: 5f321ecc8282cf10b051b64bfdc4657f6b280118
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
-  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: ed440f36b39d9725516a58dd22369539284adf35
+PODFILE CHECKSUM: 7cafe1f0e8523e3633920feac9f912d53e2dc4c0
 
 COCOAPODS: 1.5.3

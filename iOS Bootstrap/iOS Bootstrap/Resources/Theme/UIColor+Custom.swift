@@ -9,68 +9,60 @@
 import Foundation
 import UIKit
 
+// MARK: - Convenience Methods
 extension UIColor {
-    class func random() -> UIColor {
-        return UIColor(displayP3Red: CGFloat.random(in: 0...256) / 256,
-                       green: CGFloat.random(in: 0...256) / 256,
-                       blue: CGFloat.random(in: 0...256) / 256,
-                       alpha: CGFloat.random(in: 128...256) / 256)
+    /// Init UIColor with values between 0 and 255 (instead of 0...1)
+    convenience init(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ alpha: CGFloat = 1) {
+        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
     }
 
-    class func mainColor() -> UIColor { // mainBlueColor
-        return UIColor(red: 59.0 / 255.0, green: 141.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
+    /// Generates a Random Color
+    class var random: UIColor {
+        return UIColor(CGFloat.random(in: 0...255), CGFloat.random(in: 0...255),
+                       CGFloat.random(in: 0...255), CGFloat.random(in: 0...1))
+    }
+}
+
+// MARK: - Custom Colors
+extension UIColor {
+
+    class var mainColor: UIColor {
+        return UIColor(59.0, 141.0, 238.0)
     }
 
-    class func mainColorHighlighted() -> UIColor { // mainBlueColorHighlighted
-        return UIColor(red: 18.0 / 255.0, green: 102.0 / 255.0, blue: 203.0 / 255.0, alpha: 1.0)
+    class var mainColorHighlighted: UIColor {
+        return UIColor(18.0, 102.0, 203.0)
     }
 
-    class func whiteColorHighlighted() -> UIColor {
+    class var whiteColorHighlighted: UIColor {
         return UIColor(white: 217.0 / 255.0, alpha: 1.0)
     }
 
-    class func warningRedColor() -> UIColor {
-        return UIColor(red: 255.0 / 255.0, green: 59.0 / 255.0, blue: 48.0 / 255.0, alpha: 1.0)
+    class var warningRedColor: UIColor {
+        return UIColor(255.0, 59.0, 48.0)
     }
 
-    class func gray80() -> UIColor {
-        return UIColor(red: 77.0 / 255.0, green: 80.0 / 255.0, blue: 90.0 / 255.0, alpha: 1.0)
+    class var gray80: UIColor {
+        return UIColor(77.0, 80.0, 90.0)
     }
 
-    class func gray50() -> UIColor {
-        return UIColor(red: 106.0 / 255.0, green: 110.0 / 255.0, blue: 124.0 / 255.0, alpha: 1.0)
+    class var gray50: UIColor {
+        return UIColor(106.0, 110.0, 124.0)
     }
 
-    class func gray30() -> UIColor {
-        return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
+    class var gray30: UIColor {
+        return UIColor(142.0, 142.0, 147.0)
     }
 
-    class func gray20() -> UIColor {
-        return UIColor(red: 200.0 / 255.0, green: 204.0 / 255.0, blue: 215.0 / 255.0, alpha: 1.0)
+    class var gray20: UIColor {
+        return UIColor(200.0, 204.0, 215.0)
     }
 
-    class func gray5() -> UIColor {
-        return UIColor(red: 240.0 / 255.0, green: 243.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
+    class var gray5: UIColor {
+        return UIColor(240.0, 243.0, 247.0)
     }
 
-    class func navBarColor() -> UIColor {
-        return UIColor(red: 246.0 / 255.0, green: 247.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
+    class var navBarColor: UIColor {
+        return UIColor(246.0, 247.0, 247.0)
     }
-
-//    + (UIColor *)inactiveLockButtonColor
-//    {
-//    return [UIColor colorWithRed:176.0f / 255.0f green:178.0f / 255.0f blue:186.0f / 255.0f alpha:1.0];
-//    }
-//
-//
-//    + (UIColor *)lockerGreen
-//    {
-//    return [UIColor colorWithRed:61.0f / 255.0f green:201.0f / 255.0f blue:116.0f / 255.0f alpha:1.0];
-//    }
-//
-//
-//    + (UIColor *)lockerRed
-//    {
-//    return [UIColor colorWithRed:216.0f / 255.0f green:76.0f / 255.0f blue:76.0f / 255.0f alpha:1.0];
-//    }
 }

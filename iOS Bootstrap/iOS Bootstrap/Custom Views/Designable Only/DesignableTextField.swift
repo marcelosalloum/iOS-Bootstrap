@@ -32,8 +32,8 @@ open class DesignableTextField: UITextField {
     }
 
     fileprivate func commonInit() {
-        self.backgroundColor = UIColor.gray5()
-        self.font = UIFont.withSize(15, italic: true)
+        self.backgroundColor = UIColor.gray5
+        self.font = UIFont.proximaNovaRegular(size: 15)
         self.borderStyle = .none
     }
 
