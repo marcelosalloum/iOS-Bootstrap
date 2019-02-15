@@ -331,6 +331,7 @@
 				1F27761A22119C3D00496030 /* Welcome */,
 				1FA831FF220A122500FB2B61 /* Auth */,
 				1F277617220E333C00496030 /* News */,
+				1F8BDB4021E53417007A338A /* Custom Views */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -368,7 +369,6 @@
 			children = (
 				1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */,
 				1FE5D2A5221346E900021F3E /* Convenience Protocols */,
-				1F8BDB4021E53417007A338A /* Custom Views */,
 				1F6653ED21E37CB300982F99 /* Models */,
 				1F9B4A7C21ED3F0500E5E360 /* Resources */,
 				1F86B9AB21E77A430059D2CB /* Scenes */,
