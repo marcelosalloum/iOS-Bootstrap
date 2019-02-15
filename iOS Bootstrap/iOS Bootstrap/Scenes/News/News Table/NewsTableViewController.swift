@@ -186,14 +186,20 @@ extension NewsTableViewController {
     }
 
     @IBAction func titleFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .title
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .title
+        }
     }
 
     @IBAction func authorsFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .authors
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .authors
+        }
     }
 
-    @IBAction func defaultFilterClicked(_ sender: Any) {
-        viewModel.articlesOrder = .id
+    @IBAction func defaultFilterClicked(_ sender: UIButton) {
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .id
+        }
     }
 }
