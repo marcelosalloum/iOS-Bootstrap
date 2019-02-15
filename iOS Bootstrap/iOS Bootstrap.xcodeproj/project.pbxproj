@@ -207,7 +207,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F22B647221454DB001A34AD /* Designable Only */ = {
+		1F22B647221454DB001A34AD /* IBDesignable */ = {
 			isa = PBXGroup;
 			children = (
 				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
@@ -215,7 +215,7 @@
 				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
 				1FE54135220A516200981D82 /* DesignableTextField.swift */,
 			);
-			path = "Designable Only";
+			path = IBDesignable;
 			sourceTree = "<group>";
 		};
 		1F277617220E333C00496030 /* News */ = {
@@ -331,7 +331,7 @@
 				1F27761A22119C3D00496030 /* Welcome */,
 				1FA831FF220A122500FB2B61 /* Auth */,
 				1F277617220E333C00496030 /* News */,
-				1F8BDB4021E53417007A338A /* Custom Views */,
+				1F8BDB4021E53417007A338A /* Views */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -378,14 +378,14 @@
 			path = "iOS Bootstrap";
 			sourceTree = "<group>";
 		};
-		1F8BDB4021E53417007A338A /* Custom Views */ = {
+		1F8BDB4021E53417007A338A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F22B647221454DB001A34AD /* Designable Only */,
-				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
-				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
+				1FA9C635221731940017A58D /* Custom Views */,
+				1F22B647221454DB001A34AD /* IBDesignable */,
+				1FA9C636221731BF0017A58D /* View Extensions */,
 			);
-			path = "Custom Views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */ = {
@@ -504,6 +504,15 @@
 				1F3C24DF2211BE9D00A7C996 /* ForgotPasswordViewModel.swift */,
 			);
 			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		1FA9C635221731940017A58D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
+				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */ = {
