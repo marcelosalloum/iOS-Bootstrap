@@ -29,10 +29,10 @@ extension WelcomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let storyboardRouteCell = WelcomeTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
+        let cell = WelcomeTableViewCell.dequeuedReusableCell(tableView, indexPath: indexPath)
         let storyboardName = WelcomeViewModel.getObject(from: viewModel.objects, with: indexPath)
-        storyboardRouteCell.textLabel?.text = storyboardName.rawValue
-        return storyboardRouteCell
+        cell.textLabel?.text = storyboardName.rawValue
+        return cell
     }
 }
 
