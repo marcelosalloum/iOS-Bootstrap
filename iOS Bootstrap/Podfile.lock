@@ -9,6 +9,15 @@ PODS:
   - Fabric (1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (9.1.0)
   - Kingfisher (4.10.0)
+  - PromiseKit (6.8.1):
+    - PromiseKit/CorePromise (= 6.8.1)
+    - PromiseKit/Foundation (= 6.8.1)
+    - PromiseKit/UIKit (= 6.8.1)
+  - PromiseKit/CorePromise (6.8.1)
+  - PromiseKit/Foundation (6.8.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.1):
+    - PromiseKit/CorePromise
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -19,6 +28,7 @@ DEPENDENCIES:
   - Fabric (= 1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (= 9.1.0)
   - Kingfisher (= 4.10.0)
+  - PromiseKit (= 6.8.1)
   - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
@@ -31,6 +41,7 @@ SPEC REPOS:
     - Fabric
     - Flurry-iOS-SDK
     - Kingfisher
+    - PromiseKit
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -42,8 +53,9 @@ SPEC CHECKSUMS:
   Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   Flurry-iOS-SDK: 5f321ecc8282cf10b051b64bfdc4657f6b280118
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  PromiseKit: cd5df8e6553887c93cc009d1260cdf6f7efbcbbd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 7cafe1f0e8523e3633920feac9f912d53e2dc4c0
+PODFILE CHECKSUM: d56e11b5f35bd435732fa965956696bbc32a1969
 
 COCOAPODS: 1.5.3

@@ -8,6 +8,7 @@
 
 import Foundation
 import EZCoreData
+import PromiseKit
 
 class NewsCollectionViewModel: NSObject {
     // MARK: - Initial Set-up
@@ -73,19 +74,16 @@ extension NewsCollectionViewModel {
 // MARK: - API Service: GET Articles (and Tags)
 extension NewsCollectionViewModel {
     func fetchAPIData() {
-        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
-            switch apiCompletion {
-            case .success(result: let articleList):
-                Article.deleteAll(except: articleList,
-                                  backgroundContext: self.ezCoreData.privateThreadContext,
-                                  completion: { _ in
-                                      self.updateDataSource()
-                                  })
-            case .failure(error: let error):
-                DispatchQueue.main.async {
-                    self.delegate?.displayError(error: error, endRefreshing: true)
-                }
-            }
+        firstly { () -> Promise<[[String: Any]]> in
+            APIService.getArticlesList(ezCoreData.privateThreadContext)
+        }.then { json -> Promise<[Article]?> in
+            Article.importList(json, idKey: Constants.idKey, backgroundContext: self.ezCoreData.privateThreadContext)
+        }.then { importedArticles -> Promise<[Article]?> in
+            Article.deleteAll(except: importedArticles, backgroundContext: self.ezCoreData.privateThreadContext)
+        }.asVoid().done {
+            self.updateDataSource()
+        }.catch { error in
+            self.delegate?.displayError(error: error, endRefreshing: true)
         }
     }
 }

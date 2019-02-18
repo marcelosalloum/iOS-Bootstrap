@@ -60,6 +60,9 @@ extension NewsFirstLevelCollectionViewCell: UICollectionViewDataSource {
 // MARK: - Delegate
 extension NewsFirstLevelCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.userDidSelect(indexPath: indexPath)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NewsSecondLevelCollectionViewCell else { return }
+        cell.animateTouchDown().done {
+            self.viewModel.userDidSelect(indexPath: indexPath)
+        }
     }
 }

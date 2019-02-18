@@ -13,11 +13,15 @@ class AuthHomeViewController: CoordinatedViewController {
     weak var coordinator: AuthHomeViewControllerDelegate?
 
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        self.coordinator?.userDidClickLogin()
+        sender.animateTouchDown().done {
+            self.coordinator?.userDidClickLogin()
+        }
     }
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        self.coordinator?.userDidClickSignUp()
+        sender.animateTouchDown().done {
+            self.coordinator?.userDidClickSignUp()
+        }
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        navigationController?.setNavigationBarHidden(true, animated: false)

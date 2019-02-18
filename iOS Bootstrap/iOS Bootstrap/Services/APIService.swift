@@ -10,32 +10,24 @@ import UIKit
 import Alamofire
 import CoreData
 import EZCoreData
+import PromiseKit
 
-struct APIPaths {
+struct APIPath {
     static let rootUrl: String = "https://private-0d75e8-cklchallenge.apiary-mock.com"
-    static let articleURL: String = "\(APIPaths.rootUrl)/article"
+    static let articleURL: String = "\(rootUrl)/article"
 }
 
 struct APIService {
 
-    static func getArticlesList(_ context: NSManagedObjectContext,
-                                _ completion: @escaping (EZCoreDataResult<[Article]>) -> Void) {
-        Alamofire.request(APIPaths.articleURL).validate().responseJSON { (response) in
-            switch response.result {
-            case .success:
-                if let jsonArray = response.result.value as? [[String: Any]] {
-                    Article.importList(jsonArray,
-                                       idKey: Constants.idKey,
-                                       backgroundContext: context,
-                                       completion: completion)
-                } else {
-                    completion(EZCoreDataResult<[Article]>.success(result: []))
-                    print("Method **getArticlesList** got empty results from GET Request to the API")
+    static func getArticlesList(_ context: NSManagedObjectContext) -> Promise<[[String: Any]]> {
+        return Alamofire.request(APIPath.articleURL).validate().responseJSON()
+            .map { (json, _) -> [[String: Any]] in
+
+                guard let jsonDict = json as? [[String: Any]] else {
+                    throw DefaultError.unknownError
                 }
-            case .failure(let error):
-                print(error)
-                completion(EZCoreDataResult<[Article]>.failure(error: error))
-            }
+
+                return jsonDict
         }
     }
 }

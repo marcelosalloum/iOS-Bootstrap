@@ -77,7 +77,7 @@ extension NewsTableViewController {
 }
 
 // MARK: - Search Controller
-extension  NewsTableViewController: UISearchResultsUpdating {
+extension NewsTableViewController: UISearchResultsUpdating {
     func setupSearchController() {
         // SearchViewController
         searchController = UISearchController(searchResultsController: nil)
@@ -120,7 +120,10 @@ extension NewsTableViewController: UITableViewDataSource {
 // MARK: - Delegate
 extension NewsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidSelect(indexPath: indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
+        cell.animateTouchDown().done {
+            self.viewModel.userDidSelect(indexPath: indexPath)
+        }
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -172,25 +175,31 @@ extension NewsTableViewController {
 
     @IBAction func filterButtonClicked(_ sender: UIBarButtonItem) {
         bottomViewBottomConstraint.constant = viewModel.toggledContraintForFilterView(self.bottomView.frame.height)
-
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(.promise,
+                       duration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 5,
-                       options: .curveEaseInOut, animations: {
+                       options: .curveEaseOut) {
             self.bottomView.superview?.layoutIfNeeded()
-        })
+        }
     }
 
     @IBAction func titleFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .title
+        sender.animateTouchDown().done {
+            self.viewModel.articlesOrder = .title
+        }
     }
 
     @IBAction func authorsFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .authors
+        sender.animateTouchDown().done {
+            self.viewModel.articlesOrder = .authors
+        }
     }
 
-    @IBAction func defaultFilterClicked(_ sender: Any) {
-        viewModel.articlesOrder = .id
+    @IBAction func defaultFilterClicked(_ sender: UIButton) {
+        sender.animateTouchDown().done {
+            self.viewModel.articlesOrder = .id
+        }
     }
 }

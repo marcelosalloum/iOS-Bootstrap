@@ -1,6 +1,8 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2bdb7d141ace469dbe74e362ca150d68)](https://www.codacy.com/app/marcelosalloum/iOS-Bootstrap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcelosalloum/iOS-Bootstrap&amp;utm_campaign=Badge_Grade)
+
 # iOS-Bootstrap
 
-This app contains a set of pre-build common structures so serve as a search base. In other words, the idea is to use this structure as a basis for my/your new features and project structure. 
+This app contains a set of pre-build common structures so serve as a search base. In other words, the idea is to use this structure as a basis for my/your new features and project structure.
 
 ## Project Requirements
 
@@ -21,6 +23,7 @@ This app contains a set of pre-build common structures so serve as a search base
 | Kingfisher                                                    | **4.10.0**    | Image caching |
 | SwiftMessages                                                 | **6.0.0**     | Display Status Bar Messages |
 | SVProgressHUD                                                 | **2.2.5**     |HUD: Head-Up Display |
+| PromiseKit                                                 | **6.8.1**     |Promises impleemntation, used to improve callback readability |
 
 ## Project Structure
 
@@ -36,13 +39,13 @@ I'm using a few things I consider vital to an iOS project. A more in-depth expla
 
 At the moment, the app is using a very simple API that is defined within a struct. It uses Alamofire and the async callbacks use clojures. A must-do in the short future is start using Promises, probably the [PromiseKit](https://github.com/mxcl/PromiseKit) library.
 
-My API is actually an apIary (mocked API), which dosn't have authentication in place.
+The API is actually a mocked APIary, which doesn't have authentication in place.
 
 The API calls implement a layer on top of Alamofire, which is a good practice and better explained [here](https://mecid.github.io/2019/02/13/hiding-third-party-dependencies-with-protocols-and-extensions/).
 
 ### Persistence
 
-For persistence the project currently uses the cocapod [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData), which is a pod authored by me in my persuit to better understand Core Data for iOS 10+.
+For persistence the project currently uses the cocapod [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData), which is a pod authored by me in my persuit to better understand Core Data for iOS 10+. In the future I consider to migrate EZCoreData to use PromiseKit.
 
 As a rule of thumb, I firsly use CoreData to show the locally stored data before updating it from the backend. A step-by-step explanation:
 
@@ -60,21 +63,35 @@ As a rule of thumb, I firsly use CoreData to show the locally stored data before
 
  If you don't use Cordinators, you're probabbly placing some of that kind of code in a custom UINavigationController or a base UIViewController. I find coordinators a more elegant solution though.
 
+ There are a few posts about the subject, some [over complicated](https://medium.com/sudo-by-icalia-labs/ios-architecture-mvvm-c-introduction-1-6-815204248518) and others [over simplified](https://tech.trivago.com/2016/08/26/mvvm-c-a-simple-way-to-navigate/). It's definetly not a must-go rhitectures, but it's a nice way to split your application, in my opinion.
+
 ### Localization
 
-The structure for Localizationis currently in place for the global project and one of the Storyboards.
+The structure for Localization is currently in place making use only of a base language (which is in english). It can be easily replicated to other languages, since the structure is already in place, like in the following piece of code:
+```Swift
+self.title = "NEWS".localized
+```
 
 ### Constants
 
-All constants are placed in a dedicated struct, to avoid using literals.
+All constants are placed in a dedicated struct to avoid using literals. You could call the database name constant by invoking:
+```Swift
+let databaseName = Constants.databaseName
+```
 
 ### Custom Fonts
 
-There is a class declaring custom fonts using class/static methods, that instantiate the fonts nams using a string-struct instead of String literals. That is a very common setup to be used in any kind if project that uses custom fonts.
+There is a class declaring custom fonts using class/static methods, that instantiate the fonts nams using a string-struct instead of String literals. That is a very common setup to be used in any kind if project that uses custom fonts. You can call a cusstom font as easy as:
+```Swift
+self.font = UIFont.proximaNovaRegular(size: 16)
+```
 
 ### Custom Colors
 
-There is a class declaring custom colors using computed properties (similar to `UIColor.blue`, for instance). This is too a very common setup to be used in any kind if project that uses custom colors.
+There is a class declaring custom colors using computed properties (similar to `UIColor.blue`, for instance). This is too a very common setup to be used in any kind if project. Check out an example below:
+```Swift
+self.backgroundColor = .gray5
+```
 
 ### Crash Tracking
 
@@ -86,18 +103,16 @@ Flurry is configured in the project but the keyy is actually public, which is a 
 
 ### Continuous Integration (CI)
 
-This project is currently not making use of CI, but I recommend Travis-CI or even fastlane, which you can run rom your machine, which should be a more controllable environment.
+The only CI tool this project is currently using is Codacy's Code Quality. It's not meant for building, testing or delivering, just for measuring the overall code quality of the project.
 
 ### Unit Tests
 
 Currently, that part is still missing in this project but I've made a setup to make sure the AppDelegate won't be loaded for the Unit Tests, which makes your environment easier to control.
 
-If you'd like to check how I like o do Unit Tests, have a look on my Core Data lib: [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData). 
+If you'd like to check how I like o do Unit Tests, have a look on my Core Data lib: [EZCoreData](https://github.com/CheesecakeLabs/EZCoreData).
 
 ### TO-DO
 
-* Implement promises using [PromiseKit](https://github.com/mxcl/PromiseKit)
-* Make sure all Storyboardsare localized
 * Add a few Unit tests and UI tests.
 * Put on an implementation of `Codable` that makes sense for my current `NSManagedObject` models
 
