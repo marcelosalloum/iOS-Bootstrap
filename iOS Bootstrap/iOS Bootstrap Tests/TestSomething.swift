@@ -1,15 +1,14 @@
 //
-//  iOS_Bootstrap_Tests.swift
+//  TestSomething.swift
 //  iOS Bootstrap Tests
 //
-//  Created by Marcelo Salloum dos Santos on 24/01/19.
+//  Created by Marcelo Salloum dos Santos on 18/02/19.
 //  Copyright © 2019 Marcelo Salloum dos Santos. All rights reserved.
 //
 
 import XCTest
-@testable import iOS_Bootstrap
 
-class IOSBootstraTests: XCTestCase {
+class TestSomething: DefaultTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
