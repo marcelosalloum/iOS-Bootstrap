@@ -85,31 +85,12 @@ extension NewsTableViewModel: ListViewModelProtocol {
 // MARK: - API Service: GET Articles
 extension NewsTableViewModel {
     func fetchAPIData() {
-//        APIService.getArticlesList(ezCoreData.privateThreadContext) { (apiCompletion) in
-//            switch apiCompletion {
-//            case .success(result: let articleList):
-//                Article.deleteAll(except: articleList,
-//                                  backgroundContext: self.ezCoreData.privateThreadContext,
-//                                  completion: { (_) in
-//                                      self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-//                                  })
-//            case .failure(error: let error):
-//                DispatchQueue.main.async {
-//                    self.delegate?.displayError(error: error,
-//                                                endRefreshing: true)
-//                }
-//            }
-//        }
-
-//        APIService.getArticlesList(ezCoreData.privateThreadContext).done { _ in
-//            self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
-//        }.catch { error in
-//            self.delegate?.displayError(error: error,
-//                                        endRefreshing: true)
-//        }
-
-        firstly { () -> Promise<[Article]?> in
+        firstly { () -> Promise<[[String: Any]]> in
             APIService.getArticlesList(ezCoreData.privateThreadContext)
+        }.then { json -> Promise<[Article]?> in
+            Article.importList(json, idKey: Constants.idKey, backgroundContext: self.ezCoreData.privateThreadContext)
+        }.then { importedArticles -> Promise<[Article]?> in
+            Article.deleteAll(except: importedArticles, backgroundContext: self.ezCoreData.privateThreadContext)
         }.done { _ in
             self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
         }.catch { error in
