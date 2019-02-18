@@ -91,7 +91,7 @@ extension NewsTableViewModel {
             Article.importList(json, idKey: Constants.idKey, backgroundContext: self.ezCoreData.privateThreadContext)
         }.then { importedArticles -> Promise<[Article]?> in
             Article.deleteAll(except: importedArticles, backgroundContext: self.ezCoreData.privateThreadContext)
-        }.done { _ in
+        }.asVoid().done {
             self.searchArticles(self.searchTerm, orderBy: self.articlesOrder, ascending: true)
         }.catch { error in
             self.delegate?.displayError(error: error, endRefreshing: true)

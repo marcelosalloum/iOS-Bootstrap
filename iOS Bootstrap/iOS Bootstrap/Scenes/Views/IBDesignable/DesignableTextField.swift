@@ -32,7 +32,7 @@ open class DesignableTextField: UITextField {
     }
 
     fileprivate func commonInit() {
-        self.backgroundColor = UIColor.gray5
+        self.backgroundColor = .gray5
         self.font = UIFont.proximaNovaRegular(size: 15)
         self.borderStyle = .none
     }

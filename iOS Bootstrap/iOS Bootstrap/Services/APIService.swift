@@ -12,7 +12,7 @@ import CoreData
 import EZCoreData
 import PromiseKit
 
-struct APIPaths {
+struct APIPath {
     static let rootUrl: String = "https://private-0d75e8-cklchallenge.apiary-mock.com"
     static let articleURL: String = "\(rootUrl)/article"
 }
@@ -20,7 +20,7 @@ struct APIPaths {
 struct APIService {
 
     static func getArticlesList(_ context: NSManagedObjectContext) -> Promise<[[String: Any]]> {
-        return Alamofire.request(APIPaths.articleURL).validate().responseJSON()
+        return Alamofire.request(APIPath.articleURL).validate().responseJSON()
             .map { (json, _) -> [[String: Any]] in
 
                 guard let jsonDict = json as? [[String: Any]] else {

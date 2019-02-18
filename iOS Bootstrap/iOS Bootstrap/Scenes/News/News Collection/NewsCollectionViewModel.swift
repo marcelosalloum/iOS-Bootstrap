@@ -80,7 +80,7 @@ extension NewsCollectionViewModel {
             Article.importList(json, idKey: Constants.idKey, backgroundContext: self.ezCoreData.privateThreadContext)
         }.then { importedArticles -> Promise<[Article]?> in
             Article.deleteAll(except: importedArticles, backgroundContext: self.ezCoreData.privateThreadContext)
-        }.done { _ in
+        }.asVoid().done {
             self.updateDataSource()
         }.catch { error in
             self.delegate?.displayError(error: error, endRefreshing: true)

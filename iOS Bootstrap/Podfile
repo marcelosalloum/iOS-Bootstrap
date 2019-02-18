@@ -13,6 +13,6 @@ target 'iOS Bootstrap' do
   pod 'Fabric', '1.7.12'                                    # Beta distribution
   pod 'Flurry-iOS-SDK/FlurrySDK', '9.1.0'                   # Analytics
   pod 'Kingfisher', '4.10.0'                                # Image caching
+  pod 'PromiseKit', '6.8.1'                                 # Promises implementation, used to improve callback readability and code decoupling
   pod 'SVProgressHUD', '2.2.5'                              # HUD: Head-Up Display
-  pod 'PromiseKit', '6.8.1'                                 # Promises impleemntation, used to improve callback readability
 end
