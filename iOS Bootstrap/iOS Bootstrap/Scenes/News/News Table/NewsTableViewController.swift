@@ -120,7 +120,10 @@ extension NewsTableViewController: UITableViewDataSource {
 // MARK: - Delegate
 extension NewsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.userDidSelect(indexPath: indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
+        cell.animateTouchDown({
+            self.viewModel.userDidSelect(indexPath: indexPath)
+        })
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -183,14 +186,20 @@ extension NewsTableViewController {
     }
 
     @IBAction func titleFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .title
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .title
+        }
     }
 
     @IBAction func authorsFilterClicked(_ sender: UIButton) {
-        viewModel.articlesOrder = .authors
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .authors
+        }
     }
 
-    @IBAction func defaultFilterClicked(_ sender: Any) {
-        viewModel.articlesOrder = .id
+    @IBAction func defaultFilterClicked(_ sender: UIButton) {
+        sender.animateTouchDown {
+            self.viewModel.articlesOrder = .id
+        }
     }
 }

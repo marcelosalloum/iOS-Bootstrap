@@ -116,7 +116,7 @@
                                         <fontDescription key="fontDescription" name="Colfax-Regular" family="Colfax" pointSize="17"/>
                                         <state key="normal" title="Default"/>
                                         <connections>
-                                            <action selector="defaultFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="UnU-vc-Qlc"/>
+                                            <action selector="defaultFilterClicked:" destination="SBW-QV-xEd" eventType="touchUpInside" id="u1P-ov-Ssu"/>
                                         </connections>
                                     </button>
                                 </subviews>

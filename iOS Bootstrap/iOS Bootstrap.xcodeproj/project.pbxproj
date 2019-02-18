@@ -70,6 +70,7 @@
 		1FA83212220A19E500FB2B61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83211220A19E500FB2B61 /* SignUpViewController.swift */; };
 		1FA83214220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */; };
 		1FA83216220A1AE200FB2B61 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */; };
+		1FA9C638221731F70017A58D /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C637221731F70017A58D /* UIView+Animation.swift */; };
 		1FADAF5E21E782E7000A4E2E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */; };
 		1FADAF5F21E782E7000A4E2E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */; };
 		1FADAF6021E782E7000A4E2E /* Article+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */; };
@@ -167,6 +168,7 @@
 		1FA83211220A19E500FB2B61 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCoordinator.swift; sourceTree = "<group>"; };
 		1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		1FA9C637221731F70017A58D /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		1FADAF5A21E782E7000A4E2E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FADAF5B21E782E7000A4E2E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FADAF5C21E782E7000A4E2E /* Article+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -207,7 +209,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F22B647221454DB001A34AD /* Designable Only */ = {
+		1F22B647221454DB001A34AD /* IBDesignable */ = {
 			isa = PBXGroup;
 			children = (
 				1F4EC6C021E521600060B9DA /* PaddingLabel.swift */,
@@ -215,7 +217,7 @@
 				1FE54133220A50AE00981D82 /* DesignableLabel.swift */,
 				1FE54135220A516200981D82 /* DesignableTextField.swift */,
 			);
-			path = "Designable Only";
+			path = IBDesignable;
 			sourceTree = "<group>";
 		};
 		1F277617220E333C00496030 /* News */ = {
@@ -331,6 +333,7 @@
 				1F27761A22119C3D00496030 /* Welcome */,
 				1FA831FF220A122500FB2B61 /* Auth */,
 				1F277617220E333C00496030 /* News */,
+				1F8BDB4021E53417007A338A /* Views */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -368,7 +371,6 @@
 			children = (
 				1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */,
 				1FE5D2A5221346E900021F3E /* Convenience Protocols */,
-				1F8BDB4021E53417007A338A /* Custom Views */,
 				1F6653ED21E37CB300982F99 /* Models */,
 				1F9B4A7C21ED3F0500E5E360 /* Resources */,
 				1F86B9AB21E77A430059D2CB /* Scenes */,
@@ -378,14 +380,14 @@
 			path = "iOS Bootstrap";
 			sourceTree = "<group>";
 		};
-		1F8BDB4021E53417007A338A /* Custom Views */ = {
+		1F8BDB4021E53417007A338A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F22B647221454DB001A34AD /* Designable Only */,
-				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
-				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
+				1FA9C635221731940017A58D /* Custom Views */,
+				1F22B647221454DB001A34AD /* IBDesignable */,
+				1FA9C636221731BF0017A58D /* View Extensions */,
 			);
-			path = "Custom Views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */ = {
@@ -504,6 +506,23 @@
 				1F3C24DF2211BE9D00A7C996 /* ForgotPasswordViewModel.swift */,
 			);
 			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		1FA9C635221731940017A58D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FB6105422144B9A00B5F1A3 /* NewsCardView.swift */,
+				1FB6105622144BA900B5F1A3 /* NewsCardView.xib */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		1FA9C636221731BF0017A58D /* View Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FA9C637221731F70017A58D /* UIView+Animation.swift */,
+			);
+			path = "View Extensions";
 			sourceTree = "<group>";
 		};
 		1FDC4A1221E4C89F0064AC13 /* Convenience Extensions */ = {
@@ -812,6 +831,7 @@
 				1FE5D2A22212F32300021F3E /* InnerCollectionViewModel.swift in Sources */,
 				1FE54134220A50AE00981D82 /* DesignableLabel.swift in Sources */,
 				1FB6105322144B2900B5F1A3 /* NibFileOwnerLoadable.swift in Sources */,
+				1FA9C638221731F70017A58D /* UIView+Animation.swift in Sources */,
 				1F1A40A121D69524005BC0F3 /* NewsTableViewController.swift in Sources */,
 				1F0397C122021F6700335E6C /* UIViewController+Storyboard.swift in Sources */,
 				1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */,

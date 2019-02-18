@@ -17,10 +17,15 @@ class SignUpViewController: CoordinatedViewController {
     var viewModel: SignUpViewModel!
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        self.toastr("signUpButtonClicked with -mail: \(emailTextField.text!), password: \(passwordTextField.text!)")
-        viewModel.signUp(email: emailTextField.text,
-                         password: passwordTextField.text,
-                         passwordConfirmation: passwordConfirmationTextField.text)
+        sender.animateTouchDown {
+            let emailText = self.emailTextField.text
+            let passText = self.passwordTextField.text
+            let confirmPassText = self.passwordConfirmationTextField.text
+            self.toastr("signUpButtonClicked with e-mail: \(emailText!), password: \(passText!)")
+            self.viewModel.signUp(email: emailText,
+                                  password: passText,
+                                  passwordConfirmation: confirmPassText)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
