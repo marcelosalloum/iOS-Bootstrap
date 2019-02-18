@@ -24,3 +24,27 @@ struct ArticleState {
         return ArticleState.markRead
     }
 }
+
+enum DefaultError: Error {
+    case unknownError
+//    case connectionError
+//    case invalidCredentials
+//    case invalidRequest
+//    case notFound
+//    case invalidResponse
+//    case serverError
+//    case serverUnavailable
+//    case timeOut
+//    case unsuppotedURL
+}
+
+extension DefaultError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .unknownError:
+            return NSLocalizedString("Oops, something went wrong", comment: "DefaultError")
+//        default:
+//            return NSLocalizedString("Oops, something went wrong", comment: "DefaultError")
+        }
+    }
+}

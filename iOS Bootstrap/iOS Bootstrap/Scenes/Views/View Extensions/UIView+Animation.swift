@@ -7,27 +7,24 @@
 //
 
 import UIKit
+import PromiseKit
 
 extension UIView {
-    public func animateTouchDown(_ completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.09, animations: {
+    public func animateTouchDown() -> Guarantee<Void> {
+        return UIView.animate(.promise, duration: 0.09) {
             self.alpha = 0.89
             self.transform = CGAffineTransform(scaleX: 0.89, y: 0.89)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.09, animations: {
+        }.then { _ -> Guarantee<Bool> in
+            UIView.animate(.promise, duration: 0.09) {
                 self.alpha = 1
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: { _ in
-                completion?()
-            })
-        })
+            }
+        }.asVoid()
     }
 
-    public func animateColorChange(toColor: UIColor, _ completion: (() -> Void)? = nil) {
-        UIView .animate(withDuration: 0.3, animations: {
+    public func animateColorChange(toColor: UIColor) -> Guarantee<Void> {
+        return UIView.animate(.promise, duration: 0.3) {
             self.backgroundColor = toColor
-        }, completion: { _ in
-            completion?()
-        })
+        }.asVoid()
     }
 }

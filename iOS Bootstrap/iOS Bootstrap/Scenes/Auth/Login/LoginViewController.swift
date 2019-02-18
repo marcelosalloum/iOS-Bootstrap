@@ -15,14 +15,14 @@ class LoginViewController: CoordinatedViewController {
     @IBOutlet weak var passwordFied: UITextField!
 
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        sender.animateTouchDown {
+        sender.animateTouchDown().done {
             self.toastr("loginButtonClicked with -mail: \(self.emailField.text!), password: \(self.passwordFied.text!)")
             self.viewModel.login(email: self.emailField.text, password: self.passwordFied.text)
         }
     }
 
     @IBAction func forgotPasswordClicked(_ sender: UIButton) {
-        sender.animateTouchDown {
+        sender.animateTouchDown().done {
             self.viewModel.userDidClickForgotPassword()
         }
     }

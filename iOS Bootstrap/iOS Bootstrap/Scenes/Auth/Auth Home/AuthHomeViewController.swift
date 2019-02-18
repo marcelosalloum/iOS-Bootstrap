@@ -13,13 +13,13 @@ class AuthHomeViewController: CoordinatedViewController {
     weak var coordinator: AuthHomeViewControllerDelegate?
 
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        sender.animateTouchDown {
+        sender.animateTouchDown().done {
             self.coordinator?.userDidClickLogin()
         }
     }
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        sender.animateTouchDown {
+        sender.animateTouchDown().done {
             self.coordinator?.userDidClickSignUp()
         }
     }
