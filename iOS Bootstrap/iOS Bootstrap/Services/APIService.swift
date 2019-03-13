@@ -12,6 +12,15 @@ import CoreData
 import EZCoreData
 import PromiseKit
 
+// MARK: - Result Handling
+/// Handles any kind of results
+enum APIResult<Value> {
+    /// Handles success results
+    case success(_ result: Value?)
+
+    /// Handles failure results
+    case failure(_ error: CustomError)
+}
 
 // MARK: - String Endpoints
 /// List of Endpoints
@@ -40,6 +49,44 @@ struct APIService {
 // MARK: - Reachability
 extension APIService: EnableReachabilityProtocol {
     static let reachabilityManager = NetworkReachabilityManager()
+}
+
+// MARK: - Helper methods
+extension APIService {
+    /// Handles response JSON, dealing with the common errors
+    private static func handleResponseJSON<T, U>(result resultData: Alamofire.Result<Any>,
+                                                 inputType: U.Type,
+                                                 outputType: T.Type,
+                                                 completion: @escaping (APIResult<T>) -> Void,
+                                                 _ code: @escaping (U) throws -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            switch resultData {
+
+            case .success(let value):
+                if let jsonArray = value as? U {
+                    do {
+                        try code(jsonArray)
+                    } catch let error {
+                        self.modelInconsistencyError(error, completion)
+                    }
+                } else {
+                    modelInconsistencyError(nil, completion)
+                }
+
+            case .failure(let error):
+                Logger.log(error, verboseLevel: .error)
+                completion(.failure(CustomError(error: error)))
+            }
+        }
+    }
+
+    /// Regular model inconsistency error
+    fileprivate static func modelInconsistencyError<T>(_ error: Error?, _ completion: (APIResult<T>) -> Void) {
+        let errorStatus = CustomError(code: .customError, error: error)
+        errorStatus.localizedDescription = "Model inconsistency found when parsing data from API."
+        Logger.log(errorStatus, verboseLevel: .error)
+        completion(.failure(errorStatus))
+    }
 }
 
 // MARK: - Request Cancellation
