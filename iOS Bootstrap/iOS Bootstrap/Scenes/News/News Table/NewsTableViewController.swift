@@ -150,7 +150,7 @@ extension NewsTableViewController: UITableViewDelegate {
 }
 
 // MARK: - View Model NewsCollectionViewDelegate
-extension NewsTableViewController: NewsCollectionViewDelegate, HUD {
+extension NewsTableViewController: NewsCollectionViewDelegate {
     func reloadData(endRefreshing: Bool) {
         if endRefreshing {
             self.refreshControl.endRefreshing()

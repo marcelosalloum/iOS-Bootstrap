@@ -37,6 +37,7 @@
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
 		1F6C6DAC21F7304300E59082 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAB21F7304300E59082 /* main.swift */; };
 		1F874E442237FE0C0071DE26 /* APIErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */; };
+		1F874E452237FE0C0071DE26 /* UIViewController+ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F874E432237FE0C0071DE26 /* UIViewController+ErrorHandling.swift */; };
 		1F874E472237FE320071DE26 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F874E462237FE320071DE26 /* Logger.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
 		1F88EFED21D5766900275972 /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Table.storyboard */; };
@@ -135,6 +136,7 @@
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1F6C6DAB21F7304300E59082 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIErrorHandling.swift; sourceTree = "<group>"; };
+		1F874E432237FE0C0071DE26 /* UIViewController+ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorHandling.swift"; sourceTree = "<group>"; };
 		1F874E462237FE320071DE26 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* iOS Bootstrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Bootstrap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */,
+				1F874E432237FE0C0071DE26 /* UIViewController+ErrorHandling.swift */,
 				1F874E462237FE320071DE26 /* Logger.swift */,
 			);
 			path = "Error Handling";
@@ -838,6 +841,7 @@
 				1FA8320A220A12E500FB2B61 /* AuthHomeCoordinator.swift in Sources */,
 				1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */,
 				1F3C24DC2211BA6B00A7C996 /* SignUpViewModel.swift in Sources */,
+				1F874E452237FE0C0071DE26 /* UIViewController+ErrorHandling.swift in Sources */,
 				1FA83212220A19E500FB2B61 /* SignUpViewController.swift in Sources */,
 				1F2ACF16220BA3460084BFF0 /* NewsCollectionCoordinator.swift in Sources */,
 				1F0397C922024C0400335E6C /* NewsTableCoordinator.swift in Sources */,

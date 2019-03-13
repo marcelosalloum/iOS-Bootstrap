@@ -67,7 +67,7 @@ extension NewsCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - View Model: NewsCollectionViewDelegate
-extension NewsCollectionViewController: NewsCollectionViewDelegate, HUD {
+extension NewsCollectionViewController: NewsCollectionViewDelegate {
     func reloadData(endRefreshing: Bool) {
         self.collectionView.reloadData()
     }
