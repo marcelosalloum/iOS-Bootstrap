@@ -61,7 +61,6 @@ extension Article {
             do {
                 guard let tagObjects = try Tag.importList(tags,
                                                           idKey: "id",
-                                                          shouldSave: false,
                                                           context: context) else { return }
                 let tagsSet = NSSet(array: tagObjects)
                 self.addToTags(tagsSet)

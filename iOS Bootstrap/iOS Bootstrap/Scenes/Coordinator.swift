@@ -14,6 +14,8 @@ protocol DeInitCallable: AnyObject {
     var onDeinit: (() -> Void)? { get set }
 }
 
+/// A ViewController that calls method `onDeinit` when being deallocated.
+/// This will ensure the coordinator is being deallocated as well
 class CoordinatedViewController: UIViewController, DeInitCallable {
 
     var onDeinit: (() -> Void)?
@@ -22,6 +24,7 @@ class CoordinatedViewController: UIViewController, DeInitCallable {
     }
 }
 
+/// A Protocol adopted by the coordinator class, containing it's basic methods
 protocol CoordinatorProtocol: AnyObject {
     // Start and stopdefault functions
     func start()
@@ -57,7 +60,8 @@ extension CoordinatorProtocol {
 
 }
 
-// MARK: - Declaring the cordinator base class
+// MARK: - Cordinator base class
+/// Cordinator base class
 class Coordinator: NSObject, CoordinatorProtocol {
 
     // MARK: Properties
@@ -69,8 +73,10 @@ class Coordinator: NSObject, CoordinatorProtocol {
 
     func startCoordinator(_ childCoordinator: Coordinator) {
         childCoordinator.start()
-        childCoordinator.stop = {
-            self.removeChildCoordinator(childCoordinator: childCoordinator)
+        childCoordinator.stop = { [weak self, weak childCoordinator] in
+            guard let strongSelf = self else { return }
+            guard let childCoordinator = childCoordinator else { return }
+            strongSelf.removeChildCoordinator(childCoordinator: childCoordinator)
         }
         self.addChildCoordinator(childCoordinator: childCoordinator)
     }

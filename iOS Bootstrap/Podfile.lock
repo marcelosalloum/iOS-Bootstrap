@@ -5,7 +5,7 @@ PODS:
   - CocoaAsyncSocket (7.6.3)
   - Crashlytics (3.10.8):
     - Fabric (~> 1.7.12)
-  - EZCoreData (0.4.2)
+  - EZCoreData (0.7.0)
   - Fabric (1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (9.1.0)
   - Kingfisher (4.10.0)
@@ -24,7 +24,7 @@ DEPENDENCIES:
   - Alamofire (= 4.7.3)
   - Bagel (~> 1.3.2)
   - Crashlytics (= 3.10.8)
-  - EZCoreData
+  - EZCoreData (= 0.7.0)
   - Fabric (= 1.7.12)
   - Flurry-iOS-SDK/FlurrySDK (= 9.1.0)
   - Kingfisher (= 4.10.0)
@@ -49,13 +49,13 @@ SPEC CHECKSUMS:
   Bagel: 199e0105ac694d6eee9db54dd006c940da6ce81b
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
-  EZCoreData: 13d38d63bae04d05e78fc5e197b3c69bf25af4ef
+  EZCoreData: 4bcb839fdf3efd9edb191b5a1a555d84a4cf434d
   Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   Flurry-iOS-SDK: 5f321ecc8282cf10b051b64bfdc4657f6b280118
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   PromiseKit: cd5df8e6553887c93cc009d1260cdf6f7efbcbbd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 6e815461bc68923287db7405dc3085a98bcaff02
+PODFILE CHECKSUM: c92b13b1252b1129611a6050be7ce64510b0af31
 
 COCOAPODS: 1.5.3
