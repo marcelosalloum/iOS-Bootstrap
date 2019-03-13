@@ -47,7 +47,7 @@
 		1F8BDB4521E53592007A338A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4421E53592007A338A /* Constants.swift */; };
 		1F8BDB4721E54150007A338A /* NewsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4621E54150007A338A /* NewsTableViewModel.swift */; };
 		1F8BDB4921E605C5007A338A /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */; };
-		1F9144D621F9CC050060A74B /* IOSBootstrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */; };
+		1F9144D621F9CC050060A74B /* DefaultTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9144D521F9CC050060A74B /* DefaultTestCase.swift */; };
 		1F9B0CB221E50E610069FD3E /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B0CB121E50E610069FD3E /* NewsDetailViewController.swift */; };
 		1F9B4A7521ECC43900E5E360 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7421ECC43900E5E360 /* Localizable.strings */; };
 		1F9B4A7921ECC69900E5E360 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4A7821ECC69900E5E360 /* String+Localized.swift */; };
@@ -73,6 +73,7 @@
 		1FA83212220A19E500FB2B61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83211220A19E500FB2B61 /* SignUpViewController.swift */; };
 		1FA83214220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */; };
 		1FA83216220A1AE200FB2B61 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */; };
+		1FA9C63A221B2A170017A58D /* TestSomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C639221B2A170017A58D /* TestSomething.swift */; };
 		1FA9C638221731F70017A58D /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9C637221731F70017A58D /* UIView+Animation.swift */; };
 		1FAA821B221B30C800EFB623 /* PromisesExtensios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA821A221B30C800EFB623 /* PromisesExtensios.swift */; };
 		1FAA821D221B3EBA00EFB623 /* Alamofire+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA821C221B3EBA00EFB623 /* Alamofire+Promise.swift */; };
@@ -149,7 +150,7 @@
 		1F8BDB4621E54150007A338A /* NewsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewModel.swift; sourceTree = "<group>"; };
 		1F8BDB4821E605C5007A338A /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
 		1F9144D321F9CC050060A74B /* iOS Bootstrap Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Bootstrap Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSBootstrapTests.swift; sourceTree = "<group>"; };
+		1F9144D521F9CC050060A74B /* DefaultTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTestCase.swift; sourceTree = "<group>"; };
 		1F9144D721F9CC050060A74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9B0CB121E50E610069FD3E /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		1F9B4A7421ECC43900E5E360 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 		1FA83211220A19E500FB2B61 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1FA83213220A1AB400FB2B61 /* ForgotPasswordCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCoordinator.swift; sourceTree = "<group>"; };
 		1FA83215220A1AE200FB2B61 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		1FA9C639221B2A170017A58D /* TestSomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSomething.swift; sourceTree = "<group>"; };
 		1FA9C637221731F70017A58D /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		1FAA821A221B30C800EFB623 /* PromisesExtensios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisesExtensios.swift; sourceTree = "<group>"; };
 		1FAA821C221B3EBA00EFB623 /* Alamofire+Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alamofire+Promise.swift"; sourceTree = "<group>"; };
@@ -413,8 +415,9 @@
 		1F9144D421F9CC050060A74B /* iOS Bootstrap Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1F9144D521F9CC050060A74B /* IOSBootstrapTests.swift */,
+				1F9144D521F9CC050060A74B /* DefaultTestCase.swift */,
 				1F9144D721F9CC050060A74B /* Info.plist */,
+				1FA9C639221B2A170017A58D /* TestSomething.swift */,
 			);
 			path = "iOS Bootstrap Tests";
 			sourceTree = "<group>";
@@ -881,7 +884,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9144D621F9CC050060A74B /* IOSBootstrapTests.swift in Sources */,
+				1FA9C63A221B2A170017A58D /* TestSomething.swift in Sources */,
+				1F9144D621F9CC050060A74B /* DefaultTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
