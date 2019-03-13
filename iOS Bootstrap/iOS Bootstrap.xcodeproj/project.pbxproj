@@ -36,6 +36,8 @@
 		1F3DB459220DA9BB00F931A5 /* NewsSecondLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DB458220DA9BB00F931A5 /* NewsSecondLevelCollectionViewCell.swift */; };
 		1F4EC6C121E521600060B9DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EC6C021E521600060B9DA /* PaddingLabel.swift */; };
 		1F6C6DAC21F7304300E59082 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C6DAB21F7304300E59082 /* main.swift */; };
+		1F874E442237FE0C0071DE26 /* APIErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */; };
+		1F874E472237FE320071DE26 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F874E462237FE320071DE26 /* Logger.swift */; };
 		1F88EFE821D5766900275972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFE721D5766900275972 /* AppDelegate.swift */; };
 		1F88EFED21D5766900275972 /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88EFEB21D5766900275972 /* Table.storyboard */; };
 		1F88EFF021D5766900275972 /* iOS_Bootstrap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F88EFEE21D5766900275972 /* iOS_Bootstrap.xcdatamodeld */; };
@@ -132,6 +134,8 @@
 		1F3DB458220DA9BB00F931A5 /* NewsSecondLevelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSecondLevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4EC6C021E521600060B9DA /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1F6C6DAB21F7304300E59082 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIErrorHandling.swift; sourceTree = "<group>"; };
+		1F874E462237FE320071DE26 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F88EFE421D5766900275972 /* iOS Bootstrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Bootstrap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F88EFE721D5766900275972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F88EFEC21D5766900275972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Table.storyboard; sourceTree = "<group>"; };
@@ -350,6 +354,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		1F874E412237FE0C0071DE26 /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				1F874E422237FE0C0071DE26 /* APIErrorHandling.swift */,
+				1F874E462237FE320071DE26 /* Logger.swift */,
+			);
+			path = "Error Handling";
+			sourceTree = "<group>";
+		};
 		1F88EFDB21D5766900275972 = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +429,7 @@
 		1F9B4A7C21ED3F0500E5E360 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F874E412237FE0C0071DE26 /* Error Handling */,
 				1F8BDB4421E53592007A338A /* Constants.swift */,
 				1F9B4A7421ECC43900E5E360 /* Localizable.strings */,
 				1F88EFF121D5766900275972 /* Assets.xcassets */,
@@ -834,6 +848,7 @@
 				1F27761E22119D0400496030 /* WelcomeCoordinator.swift in Sources */,
 				1F0397CB220476E200335E6C /* Coordinator.swift in Sources */,
 				1F3C24DE2211BD3C00A7C996 /* LoginViewModel.swift in Sources */,
+				1F874E472237FE320071DE26 /* Logger.swift in Sources */,
 				1FE5D2A422133E3900021F3E /* NewsProtocols.swift in Sources */,
 				1F8BDB4521E53592007A338A /* Constants.swift in Sources */,
 				1FE5D2A22212F32300021F3E /* InnerCollectionViewModel.swift in Sources */,
@@ -854,6 +869,7 @@
 				1F9B4A9C21ED3F7300E5E360 /* UIFont+Custom.swift in Sources */,
 				1FB6105522144B9A00B5F1A3 /* NewsCardView.swift in Sources */,
 				1F88EFF021D5766900275972 /* iOS_Bootstrap.xcdatamodeld in Sources */,
+				1F874E442237FE0C0071DE26 /* APIErrorHandling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
