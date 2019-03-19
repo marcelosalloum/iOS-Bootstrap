@@ -38,6 +38,6 @@ extension NewsTableViewCell {
     }
 
     func updateWasReadStatus(_ wasRead: Bool) {
-        self.backgroundColor = wasRead ? UIColor.gray5 : UIColor.gray20
+        newsContentView.backgroundColor = wasRead ? UIColor.gray5 : UIColor.gray20
     }
 }

@@ -38,6 +38,6 @@ extension NewsSecondLevelCollectionViewCell {
     }
 
     func updateWasReadStatus(_ wasRead: Bool) {
-        self.backgroundColor = wasRead ? UIColor.gray5 : UIColor.gray20
+        newsCardView.backgroundColor = wasRead ? UIColor.gray5 : UIColor.gray20
     }
 }
